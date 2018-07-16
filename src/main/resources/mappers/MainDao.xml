@@ -377,22 +377,34 @@
         WHERE InDh = #{0}
     </select>
 
-    <select id="getBcpTkNonCheckData" resultType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
+    <select id="getBcpTkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.BcpTkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
         SELECT *
         FROM Tkd_Bcp
-        WHERE ShR = #{0}
+        WHERE 1=1
+        <if test="fzrID!=null">
+            and FzrID=#{fzrID}
+        </if>
+        <if test="zjyID!=null">
+            and ZjyID=#{zjyID}
+        </if>
     </select>
 
     <select id="getBcpCkNonCheckData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         SELECT *
         FROM Ckd_Bcp
-        WHERE FhR = #{0}
+        WHERE FzrID = #{0}
     </select>
 
-    <select id="getBcpRkNonCheckData" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
+    <select id="getBcpRkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.BcpRkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
         SELECT *
         FROM Rkd_Bcp
-        WHERE ShR = #{0}
+        WHERE 1=1
+        <if test="fzrID!=null">
+            and FzrID=#{fzrID}
+        </if>
+        <if test="zjyID!=null">
+            and ZjyID=#{zjyID}
+        </if>
     </select>
 
     <select id="getWlTkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.WlTkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlTkdBean">

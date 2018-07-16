@@ -1547,7 +1547,7 @@ public class MainController {
                     bean.setState(single.getCheckState());
                     allBeans.add(bean);
                 }
-                List<BcpRkdBean> bcpRkNonCheckData = mainService.getBcpRkNonCheckData(param.getRealName());
+                List<BcpRkdBean> bcpRkNonCheckData = mainService.getBcpRkNonCheckData(fzrID,zjyID);
                 for (int i = 0; i < bcpRkNonCheckData.size(); i++) {
                     NonCheckBean bean = new NonCheckBean();
                     BcpRkdBean single = bcpRkNonCheckData.get(i);
@@ -1557,7 +1557,7 @@ public class MainController {
                     bean.setState(single.getCheckState());
                     allBeans.add(bean);
                 }
-                List<BcpCkdBean> bcpCkNonCheckData = mainService.getBcpCkNonCheckData(param.getRealName());
+                List<BcpCkdBean> bcpCkNonCheckData = mainService.getBcpCkNonCheckData(fzrID);
                 for (int i = 0; i < bcpCkNonCheckData.size(); i++) {
                     NonCheckBean bean = new NonCheckBean();
                     BcpCkdBean single = bcpCkNonCheckData.get(i);
@@ -1567,7 +1567,7 @@ public class MainController {
                     bean.setState(single.getCheckState());
                     allBeans.add(bean);
                 }
-                List<BcpTkdBean> bcpTkNonCheckData = mainService.getBcpTkNonCheckData(param.getRealName());
+                List<BcpTkdBean> bcpTkNonCheckData = mainService.getBcpTkNonCheckData(fzrID,zjyID);
                 for (int i = 0; i < bcpTkNonCheckData.size(); i++) {
                     NonCheckBean bean = new NonCheckBean();
                     BcpTkdBean single = bcpTkNonCheckData.get(i);

@@ -212,11 +212,11 @@ public interface MainDao {
 
     List<WlTkdBean> getWlTkNonCheckData(WlTkdBean wltkd);
 
-    List<BcpRkdBean> getBcpRkNonCheckData(String realName);
+    List<BcpRkdBean> getBcpRkNonCheckData(BcpRkdBean bcprkd);
 
-    List<BcpCkdBean> getBcpCkNonCheckData(String realName);
+    List<BcpCkdBean> getBcpCkNonCheckData(Integer fzrID);
 
-    List<BcpTkdBean> getBcpTkNonCheckData(String realName);
+    List<BcpTkdBean> getBcpTkNonCheckData(BcpTkdBean bcptkd);
 
     WlRkdBean getWlRkdBean(String dh);
 

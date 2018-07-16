@@ -495,16 +495,25 @@ public class MainService {
 		return mainDao.getWlTkNonCheckData(wltkd);
 	}
 
-	public List<BcpRkdBean> getBcpRkNonCheckData(String realName) {
-		return mainDao.getBcpRkNonCheckData(realName);
+	public List<BcpRkdBean> getBcpRkNonCheckData(Integer  fzrID, Integer  zjyID) {
+		BcpRkdBean bcprkd=new BcpRkdBean();
+		bcprkd.setFzrID(fzrID);
+		bcprkd.setZjyID(zjyID);
+
+		return mainDao.getBcpRkNonCheckData(bcprkd);
 	}
 
-	public List<BcpCkdBean> getBcpCkNonCheckData(String realName) {
-		return mainDao.getBcpCkNonCheckData(realName);
+	public List<BcpCkdBean> getBcpCkNonCheckData(Integer fzrID) {
+
+		return mainDao.getBcpCkNonCheckData(fzrID);
 	}
 
-	public List<BcpTkdBean> getBcpTkNonCheckData(String realName) {
-		return mainDao.getBcpTkNonCheckData(realName);
+	public List<BcpTkdBean> getBcpTkNonCheckData(Integer fzrID, Integer zjyID) {
+		BcpTkdBean bcptkd=new BcpTkdBean();
+		bcptkd.setFzrID(fzrID);
+		bcptkd.setZjyID(zjyID);
+
+		return mainDao.getBcpTkNonCheckData(bcptkd);
 	}
 
 	public WlRkdBean getWlRkdBean(String dh) {
