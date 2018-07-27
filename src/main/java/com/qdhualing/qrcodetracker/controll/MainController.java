@@ -86,10 +86,14 @@ public class MainController {
                      * @author 马鹏昊
                      * @desc 插入到库存表
                      */
+                    int count=a;
                     a = mainService.queryWLS(wlinParam.getqRCodeID());
                     if (a <= 0) {
                         a = mainService.insertWLS(wlinParam);
-                        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "库存表插入记录成功");
+                        String errorTipMsg="库存表插入记录成功";
+                        if(count<wlinParam.getShl())
+                            errorTipMsg+=("已经录入"+count+"条，还有"+((int)wlinParam.getShl()-count)+"条没有录入");
+                        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
                     } else if (a > 1) {
                         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "库存表中出现了二维码id相同的多条记录");
                     } else {

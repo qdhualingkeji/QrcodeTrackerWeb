@@ -733,7 +733,16 @@ public class MainService {
 	}
 
 	public int updateWLIN_M(WLINParam wlinParam) {
-		return mainDao.updateWLIN_M(wlinParam);
+    	int count=0;
+		Long rCodeID = Long.valueOf(wlinParam.getqRCodeID());
+		Long shl = (long)wlinParam.getShl();
+		for(long i=rCodeID;i<rCodeID + shl;i++){
+			if(i!=rCodeID){
+				wlinParam.setqRCodeID(i+"");//批量录入时，设置下一个二维码编号
+			}
+			count+=mainDao.updateWLIN_M(wlinParam);
+		}
+		return count;
 	}
 
 	public int createWL_RKD_New(CreateWLRKDParam rkdpParams) {
