@@ -231,7 +231,11 @@ public class MainController {
                 WLOutShowDataResult showDataResult = mainService.getWLSData(param.getQrcodeId());
                 if (showDataResult == null) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "获取基本信息失败,请重新扫码");
-                } else {
+                }
+                else if(showDataResult.getShl()==0){
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "已经没有库存了,请重新扫码");
+                }
+                else{
                     result.setResult(showDataResult);
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 }
@@ -377,7 +381,8 @@ public class MainController {
                 WLTKShowDataResult showDataResult = mainService.getWLTempSData(param.getQrcodeId());
                 if (showDataResult == null) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "获取基本信息失败,请重新扫码");
-                } else {
+                }
+                else {
                     result.setResult(showDataResult);
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 }

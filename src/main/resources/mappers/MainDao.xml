@@ -2415,7 +2415,9 @@ SmlPk45		= #{smlPk45},
 
     <update id="updateWLTempSByTl" parameterType="com.qdhualing.qrcodetracker.bean.WLThrowParam">
         UPDATE M_WLTempS
-        SET SHL = SHL - #{tlShl}
+        SET
+        PCZL = PCZL - #{dwzl}*#{tlShl},
+        SHL = SHL - #{tlShl}
         WHERE QRCode_ID = #{qrcodeId};
     </update>
 
@@ -2462,7 +2464,9 @@ SmlPk45		= #{smlPk45},
 
     <update id="updateWLTempSByTk" parameterType="com.qdhualing.qrcodetracker.bean.WLTKParam">
         UPDATE M_WLTempS
-        SET SHL = SHL - #{tkShL}
+        SET
+        PCZL = PCZL - #{dwzl}*#{tkShL},
+        SHL = SHL - #{tkShL}
         WHERE QRCode_ID = #{qrCodeId};
     </update>
 
@@ -2473,7 +2477,9 @@ SmlPk45		= #{smlPk45},
 
     <update id="updateWLSByTk" parameterType="com.qdhualing.qrcodetracker.bean.WLTKParam">
         UPDATE M_WLS
-        SET SHL = SHL + #{tkShL}
+        SET
+        PCZL = PCZL + #{dwzl}*#{tkShL},
+        SHL = SHL + #{tkShL}
         WHERE QRCode_ID = #{qrCodeId};
     </update>
 
@@ -2602,6 +2608,7 @@ SmlPk45		= #{smlPk45},
         UPDATE M_WLTempS
         SET
         LL_Time = #{time},
+        PCZL = PCZL + #{dwzl}*#{ckShL},
         SHL = SHL + #{ckShL}
         WHERE QRCode_ID = #{qrCodeId};
     </update>
@@ -2617,6 +2624,7 @@ SmlPk45		= #{smlPk45},
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="qrCodeId!=null">QRCode_ID,</if>
             <if test="productName!=null">ProductName,</if>
+            PCZL,
             DWZL,
             <if test="sortId!=null">SortID,</if>
             <if test="wlCode!=null">WL_Code,</if>
@@ -2631,6 +2639,7 @@ SmlPk45		= #{smlPk45},
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="qrCodeId!=null">#{qrCodeId},</if>
             <if test="productName!=null">#{productName},</if>
+            #{dwzl}*#{ckShL},
             #{dwzl},
             <if test="sortId!=null">#{sortId},</if>
             <if test="wlCode!=null">#{wlCode},</if>
@@ -2653,6 +2662,7 @@ SmlPk45		= #{smlPk45},
 
         UPDATE M_WLS
         SET
+        PCZL = PCZL-#{dwzl}*#{ckShL},
         SHL = SHL-#{ckShL}
         WHERE QRCode_ID = #{qrCodeId};
 
