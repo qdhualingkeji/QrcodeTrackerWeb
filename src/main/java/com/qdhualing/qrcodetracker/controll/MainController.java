@@ -80,6 +80,7 @@ public class MainController {
 //                int a = mainService.createWLIN_M(wlinParam);
                 float shl = wlinParam.getShl();
                 int a = mainService.updateWLIN_M(wlinParam);
+                float shl1 = a;
                 if (a <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "扫描产品不存在");
                 } else {
@@ -89,12 +90,12 @@ public class MainController {
                      */
                     int count=a;
                     a = mainService.queryWLS(wlinParam.getqRCodeID());
-                    wlinParam.setShl(shl);
+                    wlinParam.setShl(shl1);
                     if (a <= 0) {
                         a = mainService.insertWLS(wlinParam);
                         String errorTipMsg="库存表插入记录成功";
-                        if(count<wlinParam.getShl())
-                            errorTipMsg+=("已经录入"+count+"条，还有"+((int)wlinParam.getShl()-count)+"条没有录入");
+                        if(count<shl)
+                            errorTipMsg+=("已经录入"+count+"条，还有"+((int)shl-count)+"条没有录入");
                         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
                     } else if (a > 1) {
                         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "库存表中出现了二维码id相同的多条记录");

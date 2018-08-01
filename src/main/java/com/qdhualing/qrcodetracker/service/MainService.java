@@ -741,7 +741,8 @@ public class MainService {
 				wlinParam.setqRCodeID(i+"");//批量录入时，设置下一个二维码编号
 			}
 			wlinParam.setShl(1);
-			count+=mainDao.updateWLIN_M(wlinParam);
+			if (mainDao.updateWLIN_M(wlinParam)>0)
+				count++;
 		}
 		return count;
 	}
