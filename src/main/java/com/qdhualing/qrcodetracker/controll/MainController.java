@@ -78,6 +78,7 @@ public class MainController {
         if (wlinParam != null && wlinParam.getInDh() != null) {
             try {
 //                int a = mainService.createWLIN_M(wlinParam);
+                float shl = wlinParam.getShl();
                 int a = mainService.updateWLIN_M(wlinParam);
                 if (a <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "扫描产品不存在");
@@ -88,6 +89,7 @@ public class MainController {
                      */
                     int count=a;
                     a = mainService.queryWLS(wlinParam.getqRCodeID());
+                    wlinParam.setShl(shl);
                     if (a <= 0) {
                         a = mainService.insertWLS(wlinParam);
                         String errorTipMsg="库存表插入记录成功";
