@@ -759,7 +759,18 @@ public class MainService {
 	}
 
 	public int updateBcpIn(BCPINParam bcpInParam) {
-		return mainDao.updateBcpIn(bcpInParam);
+		int count=0;
+		Long qrCodeID = Long.valueOf(bcpInParam.getQrCodeId());
+		Long shl = (long)bcpInParam.getShl();
+		for(long i=qrCodeID;i<qrCodeID + shl;i++){
+			if(i!=qrCodeID){
+				bcpInParam.setQrCodeId(i+"");//批量录入时，设置下一个二维码编号
+			}
+			bcpInParam.setShl(1);
+			if (mainDao.updateBcpIn(bcpInParam)>0)
+				count++;
+		}
+		return count;
 	}
 
 	public List<WlRkdBean> getWlRkCanModifyData(String realName) {
@@ -787,7 +798,19 @@ public class MainService {
 	}
 
 	public int updateCPIn(SmallCPINParam inParam) {
-		return mainDao.updateCPIn(inParam);
+		int count=0;
+		Long qrCodeID = Long.valueOf(inParam.getQrCodeId());
+		Long shl = (long)inParam.getShl();
+		for(long i=qrCodeID;i<qrCodeID + shl;i++){
+			if(i!=qrCodeID){
+				inParam.setQrCodeId(i+"");//批量录入时，设置下一个二维码编号
+			}
+			inParam.setShl(1);
+			if (mainDao.updateCPIn(inParam)>0)
+				count++;
+		}
+
+		return count;
 	}
 
 	public int updateCPIn2ByParam(BigCPINParam inParam) {

@@ -666,17 +666,27 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         try {
 //            int b = mainService.insertBCPIn(bcpInParam);
+            float shl = bcpInParam.getShl();
             int b = mainService.updateBcpIn(bcpInParam);
+            float shl1 = b;
             if (b <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "插入BCPIn失败");
             }
+            int count=b;
             //查询临时库存表中是否有数据
             b = mainService.findBCPTempS(bcpInParam.getQrCodeId());
+            bcpInParam.setShl(shl1);
             if (b <= 0) {
                 //插入临时库存表（车间）
                 b = mainService.insertBCPTempS(bcpInParam);
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "插入BCPTempS失败");
+                }
+                else{
+                    String errorTipMsg="插入BCPTempS成功";
+                    if(count<shl)
+                        errorTipMsg+=("已经录入"+count+"条，还有"+((int)shl-count)+"条没有录入");
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
                 }
             } else {
                 b = mainService.updateBCPTempS(bcpInParam);
@@ -1060,13 +1070,15 @@ public class MainController {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "该成品早已入库，换一个吧");
             }
 //            b = mainService.insertCPIn(inParam);
+            float shl = inParam.getShl();
             b = mainService.updateCPIn(inParam);
             if (b <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "录入CPIn失败");
             }
             String startQrCodeId = inParam.getQrCodeId();
             Long nextQrCodeId = Long.parseLong(startQrCodeId);
-            int size = (int) inParam.getShl();
+            //int size = (int) inParam.getShl();
+            int size = b;
             BigCpBean bigCpBean = null;
             int nowIndex = 0;
             if (!TextUtils.isEmpty(inParam.getcPS2QRCode())) {
@@ -1090,7 +1102,10 @@ public class MainController {
                 inParam.setQrCodeId(String.valueOf(nextQrCodeId));
             }
 
-            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成品小包装入库成功");
+            String errorTipMsg="成品小包装入库成功";
+            if(size<shl)
+                errorTipMsg+=("已经录入"+size+"条，还有"+((int)shl-size)+"条没有录入");
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
         } catch (Exception e) {
             e.printStackTrace();
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
