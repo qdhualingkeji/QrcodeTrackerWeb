@@ -780,16 +780,15 @@ public class MainService {
 		String qRCodeID = wlinParam.getqRCodeID();
 		String typeNum = qRCodeID.substring(0, 9);
 		int num = Integer.valueOf(qRCodeID.substring(9));
-		float shl = wlinParam.getShl();
-		for(long i=num;i<num + shl;i++){
+		float ts = wlinParam.gettS();
+		for(long i=num;i<num + ts;i++){
 			if(i!=num){
 				wlinParam.setqRCodeID(typeNum+i);//批量录入时，设置下一个二维码编号
 			}
-			wlinParam.setShl(1);
 			if (mainDao.updateWLIN_M(wlinParam)>0)
 				count++;
 			else{//如果没有更新记录成功，说明没有二维码了，但前面已经把二维码编号加1了，这里就得复原
-				wlinParam.setqRCodeID(typeNum+count);
+				wlinParam.setqRCodeID(typeNum+(num+count-1));
 				break;
 			}
 		}

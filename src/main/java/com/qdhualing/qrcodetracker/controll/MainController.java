@@ -79,9 +79,9 @@ public class MainController {
         if (wlinParam != null && wlinParam.getInDh() != null) {
             try {
 //                int a = mainService.createWLIN_M(wlinParam);
-                float shl = wlinParam.getShl();
+                float ts = wlinParam.gettS();
                 int a = mainService.updateWLIN_M(wlinParam);
-                float shl1 = a;
+                float ts1 = a;
                 if (a <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "扫描产品不存在");
                 } else {
@@ -96,8 +96,8 @@ public class MainController {
                     String typeNum = qRCodeID.substring(0, 9);
                     int num = Integer.valueOf(qRCodeID.substring(9));
                     num++;
-                    num-=shl1;
-                    for (int i=0;i<shl1;i++){
+                    num-=ts1;
+                    for (int i=0;i<ts1;i++){
                         wlinParam.setqRCodeID(typeNum+num);//批量录入时，设置下一个二维码编号
                         num++;
                         a = mainService.queryWLS(wlinParam.getqRCodeID());
@@ -108,10 +108,10 @@ public class MainController {
                             existQrCodeID+=","+wlinParam.getqRCodeID();
                         }
                     }
-                    if(insertCount==shl1){
+                    if(insertCount==ts1){
                         String errorTipMsg="库存表插入记录成功";
-                        if(count<shl)
-                            errorTipMsg+=(",已经录入"+count+"条，还有"+((int)shl-count)+"条没有录入");
+                        if(count<ts)
+                            errorTipMsg+=(",已经录入"+count+"条，还有"+((int)ts-count)+"条没有录入");
                         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
                     }
                     else{
