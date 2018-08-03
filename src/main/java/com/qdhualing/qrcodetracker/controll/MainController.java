@@ -629,21 +629,26 @@ public class MainController {
                 if (b <= 0) {
                     //生成物料投料记录
                     b = mainService.insertWLTl(wlTLParam);
-                } else if (b > 1) {
+                }
+                else if (b > 1) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "物料投料表数据不唯一");
-                } else {
+                }
+                /*
+                else {
                     //更新物料投料记录
                     b = mainService.updateWLTl(wlTLParam);
                 }
+                */
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成物料投料记录失败");
                 } else {
-                    //临时库存表中数据减去或者删除
-                    if (wlTLParam.getTlShl() >= wlTempSBean.getSHL()) {
+                    //if (wlTLParam.getTlShl() >= wlTempSBean.getSHL()) {
                         b = mainService.deleteFromWLTempS(wlTLParam.getQrcodeId());
+                    /*
                     } else {
                         b = mainService.updateWLTempSByTl(wlTLParam);
                     }
+                    */
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 }
             } catch (Exception e) {
