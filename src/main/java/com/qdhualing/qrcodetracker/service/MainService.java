@@ -217,11 +217,33 @@ public class MainService {
 	}
 
 	public int insertWLBk(WLTKParam wlTKParam) {
-		return mainDao.insertWLBk(wlTKParam);
+		int count=0;
+		String qRCodeID = wlTKParam.getQrCodeId();
+		String typeNum = qRCodeID.substring(0, 9);
+		int num = Integer.valueOf(qRCodeID.substring(9));
+		float shl = wlTKParam.getTkShL();
+
+		for(long i=num;i<num + shl;i++){
+			if(i!=num){
+				wlTKParam.setQrCodeId(typeNum+i);//批量录入时，设置下一个二维码编号
+			}
+			wlTKParam.setTkShL(1);
+			if (mainDao.insertWLBk(wlTKParam)>0)
+				count++;
+			else{//如果没有更新记录成功，说明没有二维码了，但前面已经把二维码编号加1了，这里就得复原
+				wlTKParam.setQrCodeId(typeNum+count);
+				break;
+			}
+		}
+		return count;
 	}
 
 	public int updateWLSByTk(WLTKParam wlTKParam) {
 		return mainDao.updateWLSByTk(wlTKParam);
+	}
+
+	public int insertWLSByTempS(WLTempSBean wlTempSBean) {
+		return mainDao.insertWLSByTempS(wlTempSBean);
 	}
 
 	public int deleteFromWLTempS(String qrCodeId) {

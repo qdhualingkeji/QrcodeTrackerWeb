@@ -2769,6 +2769,39 @@ SmlPk45		= #{smlPk45},
         </trim>
     </insert>
 
+    <insert id="insertWLSByTempS" parameterType="com.qdhualing.qrcodetracker.bean.WLTempSBean">
+        insert into M_WLS
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="QRCodeID!=null">QRCode_ID,</if>
+            <if test="ProductName!=null">ProductName,</if>
+            <if test="DWZL!=null">DWZL,</if>
+            <if test="PCZL!=null">PCZL,</if>
+            <if test="DW!=null">DW,</if>
+            <if test="WLCode!=null">WL_Code,</if>
+            <if test="YLPC!=null">YLPC,</if>
+            <if test="GG!=null">GG,</if>
+            <if test="CHD!=null">CHD,</if>
+            SHL,
+            <if test="CZY!=null">CZY,</if>
+            <if test="LLTime!=null">LL_Time</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="QRCodeID!=null">#{QRCodeID},</if>
+            <if test="ProductName!=null">#{ProductName},</if>
+            <if test="DWZL!=null">#{DWZL},</if>
+            <if test="PCZL!=null">#{PCZL},</if>
+            <if test="DW!=null">#{DW},</if>
+            <if test="WLCode!=null">#{WLCode},</if>
+            <if test="YLPC!=null">#{YLPC},</if>
+            <if test="GG!=null">#{GG},</if>
+            <if test="CHD!=null">#{CHD},</if>
+            #{SHL},
+            <if test="CZY!=null">#{CZY},</if>
+            <if test="LLTime!=null">#{LLTime}</if>
+        </trim>
+    </insert>
+
     <select id="queryWLS" resultType="java.lang.Integer">
 		SELECT count(0)
 		FROM M_WLS

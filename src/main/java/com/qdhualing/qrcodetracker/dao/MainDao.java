@@ -81,6 +81,8 @@ public interface MainDao {
     int insertWLBk(WLTKParam wlTKParam);
     //根据退库参数更新物料库存表
     int updateWLSByTk(WLTKParam wlTKParam);
+    //根据临时库存参数插入物料库存表
+    int insertWLSByTempS(WLTempSBean wlTempSBean);
     //删除物料临时库存表数据
     int deleteFromWLTempS(String qrCodeId);
     //根据退库参数更新物料临时库存表数据
@@ -347,4 +349,5 @@ public interface MainDao {
     int updateCPIn(SmallCPINParam inParam);
 
     int updateCPIn2ByParam(BigCPINParam inParam);
+
 }
