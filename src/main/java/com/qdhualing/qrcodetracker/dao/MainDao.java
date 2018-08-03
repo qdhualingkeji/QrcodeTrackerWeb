@@ -57,6 +57,8 @@ public interface MainDao {
     int insertWLOUT(WLOutParam wlOutParam);
     //物料出库修改库存表记录（数量减）
     int outUpdateWLS(WLOutParam wlOutParam);
+    //物料出库删除库存表记录
+    int outDeleteWLS(String qrCodeId);
     //查找出库单数据
     CKDWLBean findWL_CKD(String outDh);
     //获取部门数据

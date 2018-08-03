@@ -2668,6 +2668,10 @@ SmlPk45		= #{smlPk45},
 
     </update>
 
+    <delete id="outDeleteWLS">
+        DELETE FROM M_WLS WHERE QRCode_ID = #{0}
+    </delete>
+
     <insert id="insertWLOUT" parameterType="com.qdhualing.qrcodetracker.bean.WLOutParam">
         insert into M_WLOUT
         <trim prefix="(" suffix=")" suffixOverrides=",">

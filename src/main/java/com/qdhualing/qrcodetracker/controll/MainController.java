@@ -296,24 +296,67 @@ public class MainController {
                 wlOutParam.setSortId(wlsBean.getSortID());
                 wlOutParam.setYlpc(wlsBean.getYLPC());
                 wlOutParam.setChd(wlsBean.getCHD());
+                float shl = wlOutParam.getCkShL();
                 int b = mainService.insertWLOUT(wlOutParam);
+                float shl1 = b;
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成出库记录失败");
                 } else {
                     //更新仓库库存表数量
+                    int delCount=0;
+                    String noQrCodeID="";
+                    String qRCodeID = wlOutParam.getQrCodeId();
+                    String typeNum = qRCodeID.substring(0, 9);
+                    int num = Integer.valueOf(qRCodeID.substring(9));
+                    num++;
+                    num-=shl1;
+
+                    for (int i=0;i<shl1;i++){
+                        wlOutParam.setQrCodeId(typeNum+num);//批量录入时，设置下一个二维码编号
+                        num++;
+                        b = mainService.queryWLS(wlOutParam.getQrCodeId());
+                        if (b > 0) {
+                            delCount+=mainService.outDeleteWLS(wlOutParam.getQrCodeId());
+                        }
+                        else{
+                            noQrCodeID+=","+wlOutParam.getQrCodeId();
+                        }
+                    }
+
+                    String errorTipMsg=null;
+                    if(delCount==shl1){
+                        errorTipMsg="出库成功";
+                        if(delCount<shl)
+                            errorTipMsg+=(",已经录入"+delCount+"条，还有"+((int)shl-delCount)+"条没有录入");
+                    }
+                    else{
+                        noQrCodeID=noQrCodeID.substring(1);
+                        errorTipMsg="库存表中二维码id"+noQrCodeID+"记录不存在，其他记录出库成功";
+                    }
+                    /*
                     b = mainService.outUpdateWLS(wlOutParam);
                     if (b <= 0) {
                         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
                     }
+                    */
+
                     //查询临时库存表中是否有数据
-                    b = mainService.findWLTempS(wlOutParam.getQrCodeId());
-                    if (b <= 0) {
+                    qRCodeID = wlOutParam.getQrCodeId();
+                    typeNum = qRCodeID.substring(0, 9);
+                    num = Integer.valueOf(qRCodeID.substring(9));
+                    num++;
+                    num-=shl1;
+
+                    for (int i=0;i<shl1;i++){
+                        wlOutParam.setQrCodeId(typeNum+num);//批量录入时，设置下一个二维码编号
+                        num++;
+                        //b = mainService.findWLTempS(wlOutParam.getQrCodeId());
+                        //if (b <= 0) {
                         //插入临时库存表（车间）
                         b = mainService.insertWLTempS(wlOutParam);
-                    } else {
-                        b = mainService.updateWLTempS(wlOutParam);
+                        //}
                     }
-                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

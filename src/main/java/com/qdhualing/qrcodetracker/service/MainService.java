@@ -143,13 +143,34 @@ public class MainService {
 	}
 
 	public int insertWLOUT(WLOutParam wlOutParam) {
-    	wlOutParam.setBz(1);
-		int a=mainDao.insertWLOUT(wlOutParam);
-		return a;
+    	int count=0;
+		String qRCodeID = wlOutParam.getQrCodeId();
+		String typeNum = qRCodeID.substring(0, 9);
+		int num = Integer.valueOf(qRCodeID.substring(9));
+		float shl = wlOutParam.getCkShL();
+
+		for(long i=num;i<num + shl;i++){
+			if(i!=num){
+				wlOutParam.setQrCodeId(typeNum+i);//批量录入时，设置下一个二维码编号
+			}
+			wlOutParam.setCkShL(1);
+			wlOutParam.setBz(1);
+			if (mainDao.insertWLOUT(wlOutParam)>0)
+				count++;
+			else{//如果没有更新记录成功，说明没有二维码了，但前面已经把二维码编号加1了，这里就得复原
+				wlOutParam.setQrCodeId(typeNum+count);
+				break;
+			}
+		}
+		return count;
 	}
 
 	public int outUpdateWLS(WLOutParam wlOutParam) {
 		return mainDao.outUpdateWLS(wlOutParam);
+	}
+
+	public int outDeleteWLS(String qrCodeId) {
+		return mainDao.outDeleteWLS(qrCodeId);
 	}
 
 	public CKDWLBean findWL_CKD(String outDh) {
@@ -822,4 +843,5 @@ public class MainService {
 	public int updateCPIn2ByParam(BigCPINParam inParam) {
 		return mainDao.updateCPIn2ByParam(inParam);
 	}
+
 }
