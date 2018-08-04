@@ -10,6 +10,8 @@ package com.qdhualing.qrcodetracker.bean;
  */
 
 public class BigCPINParam {
+    //本批次录入条数
+    private  int tS;
     private String qrCodeId;
     private String productName;
     private int sortID;
@@ -26,6 +28,14 @@ public class BigCPINParam {
     private int bz;
     private String dw ;
     private String indh ;
+
+    public int gettS() {
+        return tS;
+    }
+
+    public void settS(int tS) {
+        this.tS = tS;
+    }
 
     public String getQrCodeId() {
         return qrCodeId;

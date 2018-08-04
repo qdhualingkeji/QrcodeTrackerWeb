@@ -7,6 +7,7 @@ import com.qdhualing.qrcodetracker.model.NotificationType;
 import com.qdhualing.qrcodetracker.service.MainService;
 import com.qdhualing.qrcodetracker.service.UserService;
 import com.qdhualing.qrcodetracker.utils.*;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -1031,22 +1032,44 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         try {
             //查询大包装库存表中是否有数据
-            int b = mainService.findCPS2(inParam.getQrCodeId());
-            if (b <= 0) {
-                //插入大包装库存表（车间）
-                b = mainService.insertCPS2(inParam);
-                if (b <= 0) {
-                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "插入CPS2失败");
+            int insertCount=0;
+            String existQrCodeID="";
+            String qRCodeID = inParam.getQrCodeId();
+            String typeNum = qRCodeID.substring(0, 9);
+            int num = Integer.valueOf(qRCodeID.substring(9));
+            int ts = inParam.gettS();
+            for (int i=num;i<num + ts;i++){
+                if(i!=num){
+                    inParam.setQrCodeId(typeNum+i);//批量录入时，设置下一个二维码编号
                 }
-            } else {
-                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "此大包装已存在");
+                int b = mainService.updateCPIn2ByParam(inParam);
+                if (b > 0) {
+                    insertCount+=b;
+                }
+                else{//如果没有更新记录成功，说明没有二维码了，但前面已经把二维码编号加1了，这里就得复原
+                    inParam.setQrCodeId(typeNum+(num+insertCount-1));
+                    break;
+                }
+
+                b = mainService.findCPS2(inParam.getQrCodeId());
+                if (b <= 0){
+                    //插入大包装库存表（车间）
+                    b = mainService.insertCPS2(inParam);
+                } else {
+                    existQrCodeID+=","+inParam.getQrCodeId();
+                }
             }
-//            b = mainService.insertCPIn2(inParam);
-            b = mainService.updateCPIn2ByParam(inParam);
-            if (b <= 0) {
-                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "插入CPIn2失败");
+            String errorTipMsg="";
+            if(insertCount<ts){
+                errorTipMsg+=("已经录入"+insertCount+"条，还有"+(ts-insertCount)+"条没有录入");
+                if(!StringUtils.isEmpty(existQrCodeID))
+                    errorTipMsg+=",二维码id"+existQrCodeID.substring(1)+"记录已存在";
+                errorTipMsg+="，其他成品大包装入库成功";
+                //return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
             }
-            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成品大包装入库成功");
+            else
+                errorTipMsg+="成品大包装入库成功";
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
         } catch (Exception e) {
             e.printStackTrace();
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
