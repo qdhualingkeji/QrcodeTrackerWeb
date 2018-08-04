@@ -738,7 +738,7 @@ public class MainService {
 		String typeNum = qRCodeID.substring(0, 9);
 		int num = Integer.valueOf(qRCodeID.substring(9));
 		float ts = wlinParam.gettS();
-		for(long i=num;i<num + ts;i++){
+		for(int i=num;i<num + ts;i++){
 			if(i!=num){
 				wlinParam.setqRCodeID(typeNum+i);//批量录入时，设置下一个二维码编号
 			}
@@ -765,15 +765,20 @@ public class MainService {
 
 	public int updateBcpIn(BCPINParam bcpInParam) {
 		int count=0;
-		Long qrCodeID = Long.valueOf(bcpInParam.getQrCodeId());
-		Long shl = (long)bcpInParam.getShl();
-		for(long i=qrCodeID;i<qrCodeID + shl;i++){
-			if(i!=qrCodeID){
-				bcpInParam.setQrCodeId(i+"");//批量录入时，设置下一个二维码编号
+		String qRCodeID = bcpInParam.getQrCodeId();
+		String typeNum = qRCodeID.substring(0, 9);
+		int num = Integer.valueOf(qRCodeID.substring(9));
+		int ts = bcpInParam.gettS();
+		for(int i=num;i<num + ts;i++){
+			if(i!=num){
+				bcpInParam.setQrCodeId(typeNum+i);//批量录入时，设置下一个二维码编号
 			}
-			bcpInParam.setShl(1);
 			if (mainDao.updateBcpIn(bcpInParam)>0)
 				count++;
+			else{//如果没有更新记录成功，说明没有二维码了，但前面已经把二维码编号加1了，这里就得复原
+				bcpInParam.setQrCodeId(typeNum+(num+count-1));
+				break;
+			}
 		}
 		return count;
 	}

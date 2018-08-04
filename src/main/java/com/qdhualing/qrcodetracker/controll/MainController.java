@@ -681,35 +681,42 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         try {
 //            int b = mainService.insertBCPIn(bcpInParam);
-            float shl = bcpInParam.getShl();
+            float ts = bcpInParam.gettS();
             int b = mainService.updateBcpIn(bcpInParam);
-            float shl1 = b;
+            float ts1 = b;
             if (b <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "插入BCPIn失败");
             }
-            int count=b;
             //查询临时库存表中是否有数据
-            b = mainService.findBCPTempS(bcpInParam.getQrCodeId());
-            bcpInParam.setShl(shl1);
-            if (b <= 0) {
-                //插入临时库存表（车间）
-                b = mainService.insertBCPTempS(bcpInParam);
+            int count=b;
+            int insertCount=0;
+            String existQrCodeID="";
+            String qRCodeID = bcpInParam.getQrCodeId();
+            String typeNum = qRCodeID.substring(0, 9);
+            int num = Integer.valueOf(qRCodeID.substring(9));
+            num++;
+            num-=ts1;
+            for (int i=0;i<ts1;i++){
+                bcpInParam.setQrCodeId(typeNum+num);//批量录入时，设置下一个二维码编号
+                num++;
+                b = mainService.findBCPTempS(bcpInParam.getQrCodeId());
                 if (b <= 0) {
-                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "插入BCPTempS失败");
+                    insertCount+=mainService.insertBCPTempS(bcpInParam);
                 }
-                else{
-                    String errorTipMsg="插入BCPTempS成功";
-                    if(count<shl)
-                        errorTipMsg+=("已经录入"+count+"条，还有"+((int)shl-count)+"条没有录入");
-                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
-                }
-            } else {
-                b = mainService.updateBCPTempS(bcpInParam);
-                if (b <= 0) {
-                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "更新BCPTempS失败");
+                else if (b >= 1){
+                    existQrCodeID+=","+bcpInParam.getQrCodeId();
                 }
             }
-            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "半成品入库成功");
+            if(insertCount==ts1){
+                String errorTipMsg="半成品入库成功";
+                if(count<ts)
+                    errorTipMsg+=(",已经录入"+count+"条，还有"+((int)ts-count)+"条没有录入");
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
+            }
+            else{
+                existQrCodeID=existQrCodeID.substring(1);
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "BCPTempS表中二维码id"+existQrCodeID+"记录已存在，其他记录插入成功");
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
