@@ -1115,11 +1115,22 @@ public class MainController {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "该成品早已入库，换一个吧");
             }
 //            b = mainService.insertCPIn(inParam);
-            float shl = inParam.getShl();
+            int ts = inParam.gettS();
             b = mainService.updateCPIn(inParam);
+            int ts1=b;
             if (b <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "录入CPIn失败");
             }
+
+            //根据录入数量把最后一个二维码编号还原为第一个二维码编号
+            String qRCodeID = inParam.getQrCodeId();
+            String typeNum = qRCodeID.substring(0, 9);
+            int num = Integer.valueOf(qRCodeID.substring(9));
+            num++;
+            num-=ts1;
+            inParam.setQrCodeId(typeNum+num);
+            //
+
             String startQrCodeId = inParam.getQrCodeId();
             Long nextQrCodeId = Long.parseLong(startQrCodeId);
             //int size = (int) inParam.getShl();
@@ -1148,8 +1159,8 @@ public class MainController {
             }
 
             String errorTipMsg="成品小包装入库成功";
-            if(size<shl)
-                errorTipMsg+=("已经录入"+size+"条，还有"+((int)shl-size)+"条没有录入");
+            if(size<ts)
+                errorTipMsg+=(",已经录入"+size+"条，还有"+(ts-size)+"条没有录入");
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
         } catch (Exception e) {
             e.printStackTrace();

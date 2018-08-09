@@ -809,15 +809,20 @@ public class MainService {
 
 	public int updateCPIn(SmallCPINParam inParam) {
 		int count=0;
-		Long qrCodeID = Long.valueOf(inParam.getQrCodeId());
-		Long shl = (long)inParam.getShl();
-		for(long i=qrCodeID;i<qrCodeID + shl;i++){
-			if(i!=qrCodeID){
-				inParam.setQrCodeId(i+"");//批量录入时，设置下一个二维码编号
+		String qRCodeID = inParam.getQrCodeId();
+		String typeNum = qRCodeID.substring(0, 9);
+		int num = Integer.valueOf(qRCodeID.substring(9));
+		int ts = inParam.gettS();
+		for(int i=num;i<num + ts;i++){
+			if(i!=num){
+				inParam.setQrCodeId(typeNum+i);//批量录入时，设置下一个二维码编号
 			}
-			inParam.setShl(1);
 			if (mainDao.updateCPIn(inParam)>0)
 				count++;
+			else{//如果没有更新记录成功，说明没有二维码了，但前面已经把二维码编号加1了，这里就得复原
+				inParam.setQrCodeId(typeNum+(num+count-1));
+				break;
+			}
 		}
 
 		return count;

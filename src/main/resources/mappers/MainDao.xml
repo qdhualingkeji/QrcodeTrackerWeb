@@ -5,32 +5,50 @@
     <select id="getBcpTkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
         SELECT *
         FROM Tkd_Bcp
+        <!--
         WHERE ThR = #{0} AND Check_State = 0
+        -->
+        WHERE ThR = #{0} AND (FzrStatus = 0 OR ZjyStatus = 0)
     </select>
     <select id="getBcpCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         SELECT *
         FROM Ckd_Bcp
+        <!--
         WHERE FhR = #{0} AND Check_State = 0
+        -->
+        WHERE FhR = #{0} AND FzrStatus = 0
     </select>
     <select id="getBcpRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
         SELECT *
         FROM Rkd_Bcp
+        <!--
         WHERE JhR = #{0} AND Check_State = 0
+        -->
+        WHERE JhR = #{0} AND (FzrStatus = 0 OR ZjyStatus = 0)
     </select>
     <select id="getWlTkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlTkdBean">
         SELECT *
         FROM Tkd_Wl
+        <!--
         WHERE ThR = #{0} AND Check_State = 0
+        -->
+        WHERE ThR = #{0} AND (FzrStatus = 0 OR ZjyStatus = 0)
     </select>
     <select id="getWlCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
         SELECT *
         FROM Ckd_Wl
+        <!--
         WHERE LhR = #{0} AND Check_State = 0
+        -->
+        WHERE LhR = #{0} AND FzrStatus = 0
     </select>
     <select id="getWlRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
         SELECT *
         FROM Rkd_Wl
+        <!--
         WHERE ShR = #{0} AND Check_State = 0
+        -->
+        WHERE ShR = #{0} AND (FzrStatus = 0 OR ZjyStatus = 0)
     </select>
 
     <select id="getAllPerson" resultType="com.qdhualing.qrcodetracker.bean.PersonBean">
