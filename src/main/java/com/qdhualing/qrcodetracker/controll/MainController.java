@@ -80,45 +80,16 @@ public class MainController {
         if (wlinParam != null && wlinParam.getInDh() != null) {
             try {
 //                int a = mainService.createWLIN_M(wlinParam);
-                float ts = wlinParam.gettS();
+                int ts = wlinParam.gettS();
                 int a = mainService.updateWLIN_M(wlinParam);
-                float ts1 = a;
                 if (a <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "扫描产品不存在");
                 } else {
-                    /**
-                     * @author 马鹏昊
-                     * @desc 插入到库存表
-                     */
-                    int count=a;
-                    int insertCount=0;
-                    String existQrCodeID="";
-                    String qRCodeID = wlinParam.getqRCodeID();
-                    String typeNum = qRCodeID.substring(0, 9);
-                    int num = Integer.valueOf(qRCodeID.substring(9));
-                    num++;
-                    num-=ts1;
-                    for (int i=0;i<ts1;i++){
-                        wlinParam.setqRCodeID(typeNum+num);//批量录入时，设置下一个二维码编号
-                        num++;
-                        a = mainService.queryWLS(wlinParam.getqRCodeID());
-                        if (a <= 0) {
-                            insertCount+=mainService.insertWLS(wlinParam);
-                        }
-                        else if (a >= 1){
-                            existQrCodeID+=","+wlinParam.getqRCodeID();
-                        }
+                    String errorTipMsg="入库记录表插入记录成功,已经录入"+a+"条";
+                    if(a<ts){
+                        errorTipMsg+=("，二维码数量不足");
                     }
-                    if(insertCount==ts1){
-                        String errorTipMsg="库存表插入记录成功";
-                        if(count<ts)
-                            errorTipMsg+=(",已经录入"+count+"条，还有"+((int)ts-count)+"条没有录入");
-                        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
-                    }
-                    else{
-                        existQrCodeID=existQrCodeID.substring(1);
-                        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "库存表中二维码id"+existQrCodeID+"记录已存在，其他记录插入成功");
-                    }
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -294,26 +265,13 @@ public class MainController {
                 wlOutParam.setDw(wlsBean.getDW());
                 wlOutParam.setDwzl(wlsBean.getDWZL());
                 wlOutParam.setGg(wlsBean.getGG());
-                wlOutParam.setSortId(wlsBean.getSortID());
+                //wlOutParam.setSortId(wlsBean.getSortID());
                 wlOutParam.setYlpc(wlsBean.getYLPC());
                 wlOutParam.setChd(wlsBean.getCHD());
                 int b = mainService.insertWLOUT(wlOutParam);
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成出库记录失败");
                 } else {
-                    //更新仓库库存表数量
-                    b = mainService.outUpdateWLS(wlOutParam);
-                    if (b <= 0) {
-                        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
-                    }
-                    //查询临时库存表中是否有数据
-                    b = mainService.findWLTempS(wlOutParam.getQrCodeId());
-                    if (b <= 0) {
-                        //插入临时库存表（车间）
-                        b = mainService.insertWLTempS(wlOutParam);
-                    } else {
-                        b = mainService.updateWLTempS(wlOutParam);
-                    }
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 }
             } catch (Exception e) {
@@ -451,17 +409,6 @@ public class MainController {
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成退库记录失败");
                 } else {
-                    //更新仓库库存表数量（退库的数量加上）
-                    b = mainService.updateWLSByTk(wlTKParam);
-                    if (b <= 0) {
-                        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
-                    }
-                    //临时库存表中数据减去或者删除
-                    if (wlTKParam.getTkShL() >= wlTempSBean.getSHL()) {
-                        b = mainService.deleteFromWLTempS(wlTKParam.getQrCodeId());
-                    } else {
-                        b = mainService.updateWLTempSByTk(wlTKParam);
-                    }
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 }
             } catch (Exception e) {
@@ -1771,7 +1718,7 @@ public class MainController {
                 dataResult.setThRq(tkdBean.getThRq());
                 dataResult.setBackDh(tkdBean.getBackDh());
                 dataResult.setRemark(tkdBean.getRemark());
-                List<WLTkShowBean> wlinDataList = mainService.getWLTkShowBeanListByInDh(param.getDh());
+                List<WLTkShowBean> wlinDataList = mainService.getWLTkShowBeanListByOutDh(param.getDh());
                 dataResult.setBeans(wlinDataList);
                 result.setResult(dataResult);
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
@@ -1917,6 +1864,35 @@ public class MainController {
                 wlrkd.setZjyStatus(zjyStatus);
                 int a = mainService.agreeWlIn(wlrkd);
                 if (a == 1) {
+                    CreateWLRKDParam wlRKD = mainService.getRkdWlByInDh(param.getDh());
+                    if(wlRKD.getFzrStatus()==1&&wlRKD.getZjyStatus()==1){
+                        /**
+                         * @author 马鹏昊
+                         * @desc 插入到库存表
+                         */
+                        List<WLINParam> wlinList = mainService.getWLINParamListByInDh(param.getDh());
+                        int count=a;
+                        int insertCount=0;
+                        String existQrCodeID="";
+                        int size = wlinList.size();
+                        for (int i=0;i<size;i++){
+                            WLINParam wlinParam = wlinList.get(i);
+                            a = mainService.queryWLS(wlinParam.getqRCodeID());
+                            if (a <= 0) {
+                                insertCount+=mainService.insertWLS(wlinParam);
+                            }
+                            else if (a >= 1){
+                                existQrCodeID+=","+wlinParam.getqRCodeID();
+                            }
+                        }
+                        if(insertCount==size){
+                            //return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "库存表插入记录成功");
+                        }
+                        else{
+                            existQrCodeID=existQrCodeID.substring(1);
+                            //return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "库存表中二维码id"+existQrCodeID+"记录已存在，其他记录插入成功");
+                        }
+                    }
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 } else {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "审核失败");
@@ -1988,6 +1964,22 @@ public class MainController {
 
                 int a = mainService.agreeWlOut(wlckd);
                 if (a == 1) {
+                    List<WLOutParam> wlOutList = mainService.getWLOutParamListByInDh(param.getDh());
+                    WLOutParam wlOutParam = wlOutList.get(0);
+                    //更新仓库库存表数量
+                    a = mainService.outUpdateWLS(wlOutParam);
+                    if (a <= 0) {
+                        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
+                    }
+                    //查询临时库存表中是否有数据
+                    a = mainService.findWLTempS(wlOutParam.getQrCodeId());
+                    if (a <= 0) {
+                        //插入临时库存表（车间）
+                        a = mainService.insertWLTempS(wlOutParam);
+                    } else {
+                        a = mainService.updateWLTempS(wlOutParam);
+                    }
+
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 } else {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "审核失败");
@@ -2060,6 +2052,25 @@ public class MainController {
 
                 int a = mainService.agreeWlTk(wltkd);
                 if (a == 1) {
+
+                    WlTkdBean wlTKD = mainService.getWlTkdBean(param.getDh());
+                    if(wlTKD.getFzrStatus()==1&&wlTKD.getZjyStatus()==1){
+                        //更新仓库库存表数量（退库的数量加上）
+                        List<WLTKParam> wlTKList = mainService.getWLTKParamListByOutDh(param.getDh());
+                        WLTKParam wlTKParam = wlTKList.get(0);
+                        a = mainService.updateWLSByTk(wlTKParam);
+                        if (a <= 0) {
+                            //return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
+                        }
+                        //临时库存表中数据减去或者删除
+                        WLTempSBean wlTempSBean = mainService.getWLTempS(wlTKParam.getQrCodeId());
+                        if (wlTKParam.getTkShL() >= wlTempSBean.getSHL()) {
+                            a = mainService.deleteFromWLTempS(wlTKParam.getQrCodeId());
+                        } else {
+                            a = mainService.updateWLTempSByTk(wlTKParam);
+                        }
+                    }
+
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 } else {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "审核失败");

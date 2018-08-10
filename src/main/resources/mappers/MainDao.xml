@@ -359,8 +359,14 @@
         WHERE InDh = #{0}
     </select>
 
-    <select id="getWLTkShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.WLTkShowBean">
+    <select id="getWLTkShowBeanListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.WLTkShowBean">
         SELECT *
+        FROM M_WLBk
+        WHERE OutDh = #{0}
+    </select>
+
+    <select id="getWLTKParamListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.WLTKParam">
+        SELECT *,SHL AS tkShL
         FROM M_WLBk
         WHERE OutDh = #{0}
     </select>
@@ -373,6 +379,12 @@
 
     <select id="getWLOutShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.WLOutShowBean">
         SELECT *
+        FROM M_WLOUT
+        WHERE OutDh = #{0}
+    </select>
+
+    <select id="getWLOutParamListByInDh" resultType="com.qdhualing.qrcodetracker.bean.WLOutParam">
+        SELECT *,SHL AS ckShL
         FROM M_WLOUT
         WHERE OutDh = #{0}
     </select>
@@ -3080,7 +3092,7 @@ SmlPk45		= #{smlPk45},
 	</select>
 
     <select id="getWLINParamListByInDh" resultType="com.qdhualing.qrcodetracker.bean.WLINParam">
-		select * from
+		select *,Unit AS dW from
 		M_WLIn where InDh=#{inDh}
 	</select>
 

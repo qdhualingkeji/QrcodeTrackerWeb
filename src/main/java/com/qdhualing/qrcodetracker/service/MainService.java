@@ -538,8 +538,8 @@ public class MainService {
 		return mainDao.getWlTkdBean(dh);
 	}
 
-	public List<WLTkShowBean> getWLTkShowBeanListByInDh(String dh) {
-		List<WLTkShowBean> list=mainDao.getWLTkShowBeanListByInDh(dh);
+	public List<WLTkShowBean> getWLTkShowBeanListByOutDh(String dh) {
+		List<WLTkShowBean> list=mainDao.getWLTkShowBeanListByOutDh(dh);
 		return list;
 	}
 
@@ -832,4 +832,18 @@ public class MainService {
 		return mainDao.updateCPIn2ByParam(inParam);
 	}
 
+	/**
+	 *根据入库单号查询入库单信息
+	 * */
+	public CreateWLRKDParam getRkdWlByInDh(String dh) {
+		return mainDao.getCreateRKDParamByInDh(dh);
+	}
+
+	public List<WLOutParam> getWLOutParamListByInDh(String dh) {
+		return mainDao.getWLOutParamListByInDh(dh);
+	}
+
+	public List<WLTKParam> getWLTKParamListByOutDh(String dh) {
+		return mainDao.getWLTKParamListByOutDh(dh);
+	}
 }

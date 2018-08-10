@@ -226,9 +226,13 @@ public interface MainDao {
 
     List<WLOutShowBean> getWLOutShowBeanListByInDh(String dh);
 
+    List<WLOutParam> getWLOutParamListByInDh(String dh);
+
     WlTkdBean getWlTkdBean(String dh);
 
-    List<WLTkShowBean> getWLTkShowBeanListByInDh(String dh);
+    List<WLTkShowBean> getWLTkShowBeanListByOutDh(String dh);
+
+    List<WLTKParam> getWLTKParamListByOutDh(String dh);
 
     BcpRkdBean getBcpRkdBean(String dh);
 
@@ -345,5 +349,4 @@ public interface MainDao {
     int updateCPIn(SmallCPINParam inParam);
 
     int updateCPIn2ByParam(BigCPINParam inParam);
-
 }
