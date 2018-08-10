@@ -87,7 +87,7 @@ public class MainController {
                 } else {
                     String errorTipMsg="入库记录表插入记录成功,已经录入"+a+"条";
                     if(a<ts){
-                        errorTipMsg+=("，二维码数量不足");
+                        errorTipMsg+="，二维码数量不足";
                     }
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
                 }
@@ -979,44 +979,18 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         try {
             //查询大包装库存表中是否有数据
-            int insertCount=0;
-            String existQrCodeID="";
-            String qRCodeID = inParam.getQrCodeId();
-            String typeNum = qRCodeID.substring(0, 9);
-            int num = Integer.valueOf(qRCodeID.substring(9));
             int ts = inParam.gettS();
-            for (int i=num;i<num + ts;i++){
-                if(i!=num){
-                    inParam.setQrCodeId(typeNum+i);//批量录入时，设置下一个二维码编号
-                }
-                int b = mainService.updateCPIn2ByParam(inParam);
-                if (b > 0) {
-                    insertCount+=b;
-                }
-                else{//如果没有更新记录成功，说明没有二维码了，但前面已经把二维码编号加1了，这里就得复原
-                    inParam.setQrCodeId(typeNum+(num+insertCount-1));
-                    break;
-                }
-
-                b = mainService.findCPS2(inParam.getQrCodeId());
-                if (b <= 0){
-                    //插入大包装库存表（车间）
-                    b = mainService.insertCPS2(inParam);
-                } else {
-                    existQrCodeID+=","+inParam.getQrCodeId();
-                }
+            int b = mainService.updateCPIn2ByParam(inParam);
+            if(b<=0){
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "扫描产品不存在");
             }
-            String errorTipMsg="";
-            if(insertCount<ts){
-                errorTipMsg+=("已经录入"+insertCount+"条，还有"+(ts-insertCount)+"条没有录入");
-                if(!StringUtils.isEmpty(existQrCodeID))
-                    errorTipMsg+=",二维码id"+existQrCodeID.substring(1)+"记录已存在";
-                errorTipMsg+="，其他成品大包装入库成功";
-                //return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
+            else{
+                String errorTipMsg="成品大包装入库成功,已经录入"+b+"条";
+                if(b<ts){
+                    errorTipMsg+="，二维码数量不足";
+                }
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
             }
-            else
-                errorTipMsg+="成品大包装入库成功";
-            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
         } catch (Exception e) {
             e.printStackTrace();
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
@@ -2147,6 +2121,25 @@ public class MainController {
 
                 int a = mainService.agreeBcpIn(bcpRkd);
                 if (a == 1) {
+
+                    BcpRkdBean bcpRkdBean = mainService.getBcpRkdBean(param.getDh());
+                    if(bcpRkdBean.getFzrStatus()==1&&bcpRkdBean.getZjyStatus()==1){
+                        int count=a;
+                        String existQrCodeID="";
+                        List<BigCPINParam> bigCPINList = mainService.getBigCPINParamListByInDh(param.getDh());
+                        int size = bigCPINList.size();
+                        for (int i=0;i<size;i++){
+                            BigCPINParam inParam = bigCPINList.get(i);
+                            a = mainService.findCPS2(inParam.getQrCodeId());
+                            if (a <= 0){
+                                //插入大包装库存表（车间）
+                                a = mainService.insertCPS2(inParam);
+                            } else {
+                                existQrCodeID+=","+inParam.getQrCodeId();
+                            }
+                        }
+                    }
+
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 } else {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "审核失败");
