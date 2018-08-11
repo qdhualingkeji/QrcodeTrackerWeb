@@ -1119,6 +1119,7 @@ public class MainController {
             if (b <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "出库记录生成失败");
             }
+            /*
             b = mainService.deleteCPS2ByQrId(param.getQrCodeId());
             if (b <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除大包装记录失败");
@@ -1127,6 +1128,7 @@ public class MainController {
 //            if (b <= 0) {
 //                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除大包装关联的小包装记录失败");
 //            }
+*/
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "大包装出库成功");
         } catch (Exception e) {
             e.printStackTrace();
@@ -1186,10 +1188,12 @@ public class MainController {
             if (b <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "出库记录生成失败");
             }
+            /*
             b = mainService.deleteCPSByQrId(param.getQrCodeId());
             if (b <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除小包装记录失败");
             }
+            */
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "小包装出库成功");
         } catch (Exception e) {
             e.printStackTrace();
@@ -1728,10 +1732,10 @@ public class MainController {
                 dataResult.setInDh(bean.getInDh());
                 dataResult.setRemark(bean.getRemark());
                 List<BcpInShowBean> wlinDataList = mainService.getBcpInShowBeanListByInDh(param.getDh());
-                if (wlinDataList == null || wlinDataList.size() < 0) {
+                if (wlinDataList == null || wlinDataList.size() <= 0) {
                     wlinDataList = mainService.getCpInShowBeanListByInDh(param.getDh());
                 }
-                if (wlinDataList == null || wlinDataList.size() < 0) {
+                if (wlinDataList == null || wlinDataList.size() <= 0) {
                     wlinDataList = mainService.getBigCpInShowBeanListByInDh(param.getDh());
                     //大包装入库记录是没有数量的，所以会是null，但App接收的时候是用float接收的，会出错，所以设置成-1
                     for (int i = 0; i < wlinDataList.size(); i++) {
@@ -2244,6 +2248,24 @@ public class MainController {
                     fzrStatus=1;
                 int a = mainService.agreeBcpOut(param.getDh(),fzrStatus);
                 if (a == 1) {
+
+                    List<BigCpOutParam> cpOutList = mainService.getBigCpOutParamListByOutDh(param.getDh());
+                    BigCpOutParam cpOutParam = cpOutList.get(0);
+                    BigCpBean bigCpBean = mainService.getCPS2(cpOutParam.getQrCodeId());
+                    if(bigCpBean!=null) {
+                        a = mainService.deleteCPS2ByQrId(cpOutParam.getQrCodeId());
+                        if (a <= 0) {
+                            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除大包装记录失败");
+                        }
+                        a = mainService.deleteCPSByCps2QrId(cpOutParam.getQrCodeId());
+                    }
+                    else{
+                        a = mainService.deleteCPSByQrId(cpOutParam.getQrCodeId());
+                        if (a <= 0) {
+                            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除小包装记录失败");
+                        }
+                    }
+
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 } else {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "审核失败");

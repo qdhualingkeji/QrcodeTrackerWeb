@@ -353,4 +353,6 @@ public interface MainDao {
     List<BigCPINParam> getBigCPINParamListByInDh(String dh);
 
     List<SmallCPINParam> getSmallCPINParamListByInDh(String dh);
+
+    List<BigCpOutParam> getBigCpOutParamListByOutDh(String dh);
 }

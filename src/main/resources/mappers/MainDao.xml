@@ -322,10 +322,15 @@
         FROM Tkd_Bcp
         WHERE BackDh = #{0}
     </select>
+
     <select id="getCpOutShowBeanListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.CpOutShowBean">
         SELECT *
         FROM M_CPOut
         WHERE OutDh = #{0}
+    </select>
+
+    <select id="getBigCpOutParamListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.BigCpOutParam">
+        SELECT * FROM M_CPOut WHERE OutDh = #{0}
     </select>
 
     <select id="getBcpCkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
@@ -353,7 +358,7 @@
     </select>
 
     <select id="getSmallCPINParamListByInDh" resultType="com.qdhualing.qrcodetracker.bean.SmallCPINParam">
-        SELECT * FROM M_CPIn WHERE InDh = #{0}
+        SELECT *,CP_Name AS productName FROM M_CPIn WHERE InDh = #{0}
     </select>
 
     <select id="getBcpInShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.BcpInShowBean">

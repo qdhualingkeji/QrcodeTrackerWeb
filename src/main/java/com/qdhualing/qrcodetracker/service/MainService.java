@@ -870,4 +870,8 @@ public class MainService {
 	public List<SmallCPINParam> getSmallCPINParamListByInDh(String dh) {
 		return mainDao.getSmallCPINParamListByInDh(dh);
 	}
+
+	public List<BigCpOutParam> getBigCpOutParamListByOutDh(String dh) {
+		return mainDao.getBigCpOutParamListByOutDh(dh);
+	}
 }
