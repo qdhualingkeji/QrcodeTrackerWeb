@@ -351,4 +351,6 @@ public interface MainDao {
     int updateCPIn2ByParam(BigCPINParam inParam);
 
     List<BigCPINParam> getBigCPINParamListByInDh(String dh);
+
+    List<SmallCPINParam> getSmallCPINParamListByInDh(String dh);
 }

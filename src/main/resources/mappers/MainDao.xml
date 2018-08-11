@@ -351,6 +351,11 @@
         FROM M_CPIn
         WHERE InDh = #{0}
     </select>
+
+    <select id="getSmallCPINParamListByInDh" resultType="com.qdhualing.qrcodetracker.bean.SmallCPINParam">
+        SELECT * FROM M_CPIn WHERE InDh = #{0}
+    </select>
+
     <select id="getBcpInShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.BcpInShowBean">
         SELECT QRCode_ID as qRCodeID, BCP_Code as wLCode, ProductName as productName, GG as gG, SortID as sortID,
         YLPC as yLPC, SC_Time as time, InDh as inDh, DW as dW, DWZL as dWZL,SHL as shl

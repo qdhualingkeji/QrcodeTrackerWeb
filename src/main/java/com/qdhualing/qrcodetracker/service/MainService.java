@@ -866,4 +866,8 @@ public class MainService {
 	public List<BigCPINParam> getBigCPINParamListByInDh(String dh) {
 		return mainDao.getBigCPINParamListByInDh(dh);
 	}
+
+	public List<SmallCPINParam> getSmallCPINParamListByInDh(String dh) {
+		return mainDao.getSmallCPINParamListByInDh(dh);
+	}
 }
