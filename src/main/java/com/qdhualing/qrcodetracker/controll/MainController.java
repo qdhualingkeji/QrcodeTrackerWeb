@@ -4,6 +4,7 @@ import cn.jiguang.common.resp.APIConnectionException;
 import cn.jiguang.common.resp.APIRequestException;
 import com.qdhualing.qrcodetracker.bean.*;
 import com.qdhualing.qrcodetracker.model.NotificationType;
+import com.qdhualing.qrcodetracker.model.User;
 import com.qdhualing.qrcodetracker.service.MainService;
 import com.qdhualing.qrcodetracker.service.UserService;
 import com.qdhualing.qrcodetracker.utils.*;
@@ -2710,10 +2711,12 @@ public class MainController {
      */
     @RequestMapping(value = "/getAllPerson", method = RequestMethod.POST)
     @ResponseBody
-    public ActionResult getAllPerson() {
+    public ActionResult getAllPerson(String json) {
+        User param = ParamsUtils.handleParams(json, User.class);
+
         ActionResult<PersonResult> result = new ActionResult<PersonResult>();
         try {
-            PersonResult personResult = mainService.getAllPerson();
+            PersonResult personResult = mainService.getAllPerson(param.getCheckQXGroup());
             if (personResult.getPersonBeans() == null || personResult.getPersonBeans().size() <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "无人员信息");
             }

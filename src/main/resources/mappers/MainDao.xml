@@ -51,9 +51,13 @@
         WHERE ShR = #{0} AND (FzrStatus = 0 OR ZjyStatus = 0)
     </select>
 
-    <select id="getAllPerson" resultType="com.qdhualing.qrcodetracker.bean.PersonBean">
+    <select id="getAllPerson" resultType="com.qdhualing.qrcodetracker.bean.PersonBean" parameterType="string">
 		SELECT *
-		FROM Hl_User
+        FROM Hl_User where 1=1
+        <if test="checkQX!=null">
+            <bind name="pattern" value="'%'+checkQX+'%'"/>
+            AND CheckQXGroup LIKE #{pattern}
+        </if>
 	</select>
 
     <update id="updateCpCkdData" parameterType="com.qdhualing.qrcodetracker.bean.CpOutVerifyResult">
@@ -560,7 +564,7 @@
     <select id="getWlInData" resultType="com.qdhualing.qrcodetracker.bean.WlTrackResult">
         SELECT M_WLIn.ProductName , M_WLIn.YLPC , M_WLIn.PCZL ,M_WLIn.WL_Code,
         M_WLIn.LL_Time , M_WLIn.GG , Pdt_Sort2.Sort_Name ,M_WLIn.DWZL,
-        M_WLIn.CHD , M_WLIn.CZY ,M_WLIn.Unit
+        M_WLIn.CHD , M_WLIn.CZY ,M_WLIn.Unit,M_WLIn.Unit dw
         FROM M_WLIn LEFT JOIN Pdt_Sort2 on M_WLIn.SortID = Pdt_Sort2.ID
         WHERE M_WLIn.QRCode_ID = #{0}
     </select>

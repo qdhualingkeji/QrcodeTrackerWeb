@@ -18,7 +18,7 @@ public class User {
     private String Mobile;
     private String Email;
     private String QQ;
-    private String CheckQXGroup;//审核权限组，有19的话就是领导（负责人），反之是质检员
+    private String CheckQXGroup;//审核权限组，有ld的话就是领导（负责人），反之是质检员
     private Timestamp RegTime;
     private Timestamp LastLoginTime;
 

@@ -330,7 +330,7 @@ public interface MainDao {
 
     int createWL_RKD_New(CreateWLRKDParam rkdpParams);
 
-    List<PersonBean> getAllPerson();
+    List<PersonBean> getAllPerson(@Param("checkQX") String checkQXGroup);
 
     int updateBcpIn(BCPINParam bcpInParam);
 

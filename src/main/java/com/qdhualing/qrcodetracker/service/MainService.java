@@ -756,8 +756,8 @@ public class MainService {
 		return mainDao.createWL_RKD_New(rkdpParams);
 	}
 
-	public PersonResult getAllPerson() {
-		List<PersonBean> beans =  mainDao.getAllPerson();
+	public PersonResult getAllPerson(String checkQXGroup) {
+		List<PersonBean> beans =  mainDao.getAllPerson(checkQXGroup);
 		PersonResult personResult = new PersonResult();
 		personResult.setPersonBeans(beans);
 		return personResult;
