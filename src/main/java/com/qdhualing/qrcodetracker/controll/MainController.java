@@ -2453,16 +2453,16 @@ public class MainController {
                         List<BigCpTrackResult> list4 = mainService.getBigCpIn2ShowData(param.getQrCodeId());
                         if (list4 != null && list4.size() > 0) {
                             BigCpTrackResult b1 = list4.get(0);
-                            data.setCpCode(b1.getCpCode());
-                            data.setCpCzy(b1.getCzy());
-                            data.setCpDw(b1.getDw());
-                            data.setCpDwzl(b1.getDwzl());
-                            data.setCpGg(b1.getGg());
-                            data.setCpName(b1.getCpName());
-                            data.setCpScpc(b1.getScpc());
-                            data.setCpScTime(b1.getScTime());
-                            data.setCpsortName(b1.getSortName());
-                            data.setCpYlpc(b1.getYlpc());
+                            data.setBigCpCode(b1.getCpCode());
+                            data.setBigCpCzy(b1.getCzy());
+                            data.setBigCpDw(b1.getDw());
+                            data.setBigCpDwzl(b1.getDwzl());
+                            data.setBigCpGg(b1.getGg());
+                            data.setBigCpName(b1.getCpName());
+                            data.setBigCpScpc(b1.getScpc());
+                            data.setBigCpScTime(b1.getScTime());
+                            data.setBigCpSortName(b1.getSortName());
+                            data.setBigCpYlpc(b1.getYlpc());
                         }
                         break;
                 }
