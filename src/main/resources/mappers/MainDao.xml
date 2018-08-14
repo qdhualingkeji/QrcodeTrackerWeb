@@ -431,17 +431,17 @@
         FROM Tkd_Bcp
         WHERE 1=1
         <if test="fzrID!=null">
-            and FzrID=#{fzrID}
+            and FzrID=#{fzrID} and FzrStatus=0 and ZjyStatus=1
         </if>
         <if test="zjyID!=null">
-            and ZjyID=#{zjyID}
+            and ZjyID=#{zjyID} and FzrStatus=0 and ZjyStatus=0
         </if>
     </select>
 
     <select id="getBcpCkNonCheckData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         SELECT *
         FROM Ckd_Bcp
-        WHERE FzrID = #{0}
+        WHERE FzrID = #{0} and FzrStatus=0
     </select>
 
     <select id="getBcpRkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.BcpRkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
@@ -449,10 +449,10 @@
         FROM Rkd_Bcp
         WHERE 1=1
         <if test="fzrID!=null">
-            and FzrID=#{fzrID}
+            and FzrID=#{fzrID} and FzrStatus=0 and ZjyStatus=1
         </if>
         <if test="zjyID!=null">
-            and ZjyID=#{zjyID}
+            and ZjyID=#{zjyID} and FzrStatus=0 and ZjyStatus=0
         </if>
     </select>
 
@@ -461,17 +461,17 @@
         FROM Tkd_Wl
         WHERE 1=1
         <if test="fzrID!=null">
-            and FzrID=#{fzrID}
+            and FzrID=#{fzrID} and FzrStatus=0 and ZjyStatus=1
         </if>
         <if test="zjyID!=null">
-            and ZjyID=#{zjyID}
+            and ZjyID=#{zjyID} and FzrStatus=0 and ZjyStatus=0
         </if>
     </select>
 
     <select id="getWlCkNonCheckData" resultType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
         SELECT *
         FROM Ckd_Wl
-        WHERE FzrID = #{0}
+        WHERE FzrID = #{0} and FzrStatus=0
     </select>
 
     <select id="getWlRkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.WlRkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
@@ -480,9 +480,12 @@
         WHERE 1=1
         <if test="fzrID!=null">
             and FzrID=#{fzrID}
+            <!--
+            and FzrStatus=0 and ZjyStatus=1
+            -->
         </if>
         <if test="zjyID!=null">
-            and ZjyID=#{zjyID}
+            and ZjyID=#{zjyID} and FzrStatus=0 and ZjyStatus=0
         </if>
     </select>
 
