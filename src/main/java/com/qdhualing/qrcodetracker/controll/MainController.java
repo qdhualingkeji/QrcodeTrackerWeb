@@ -1713,6 +1713,39 @@ public class MainController {
 
     /**
      * @return
+     * @author 逄坤
+     * @desc 获取物料退库质检信息（包括退库单详情和关联的每一条记录的信息）
+     */
+    @RequestMapping(value = "/getWlTkQualityCheckData", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult getWlTkQualityCheckData(String json) {
+        VerifyParam param = ParamsUtils.handleParams(json, VerifyParam.class);
+        ActionResult<WlTkQualityCheckResult> result = new ActionResult<WlTkQualityCheckResult>();
+        if (param != null) {
+            try {
+                WlTkQualityCheckResult dataResult = new WlTkQualityCheckResult();
+                WlTkdBean tkdBean = mainService.getWlTkdBean(param.getDh());
+                dataResult.setThDw(tkdBean.getThDw());
+                dataResult.setThFzr(tkdBean.getThFzr());
+                dataResult.setThR(tkdBean.getThR());
+                dataResult.setShFzr(tkdBean.getShFzr());
+                dataResult.setThRq(tkdBean.getThRq());
+                dataResult.setBackDh(tkdBean.getBackDh());
+                dataResult.setRemark(tkdBean.getRemark());
+                List<WLTkShowBean> wlinDataList = mainService.getWLTkShowBeanListByOutDh(param.getDh());
+                dataResult.setBeans(wlinDataList);
+                result.setResult(dataResult);
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+            }
+        }
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
+    }
+
+    /**
+     * @return
      * @author 马鹏昊
      * @desc 获取半成品入库审核信息（包括入库单详情和关联的每一条记录的信息）
      */
