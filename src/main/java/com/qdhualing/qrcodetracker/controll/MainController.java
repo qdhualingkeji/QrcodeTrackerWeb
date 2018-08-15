@@ -1789,6 +1789,49 @@ public class MainController {
 
     /**
      * @return
+     * @author 逄坤
+     * @desc 获取半成品入库质检信息（包括入库单详情和关联的每一条记录的信息）
+     */
+    @RequestMapping(value = "/getBcpInQualityCheckData", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult getBcpInQualityCheckData(String json) {
+        VerifyParam param = ParamsUtils.handleParams(json, VerifyParam.class);
+        ActionResult<BcpInQualityCheckResult> result = new ActionResult<BcpInQualityCheckResult>();
+        if (param != null) {
+            try {
+                BcpInQualityCheckResult dataResult = new BcpInQualityCheckResult();
+                BcpRkdBean bean = mainService.getBcpRkdBean(param.getDh());
+                dataResult.setJhDw(bean.getJhDw());
+                dataResult.setShFzr(bean.getShFzr());
+                dataResult.setJhR(bean.getJhR());
+                dataResult.setJhFzr(bean.getJhFzr());
+                dataResult.setShRq(bean.getShrq());
+                dataResult.setInDh(bean.getInDh());
+                dataResult.setRemark(bean.getRemark());
+                List<BcpInShowBean> wlinDataList = mainService.getBcpInShowBeanListByInDh(param.getDh());
+                if (wlinDataList == null || wlinDataList.size() <= 0) {
+                    wlinDataList = mainService.getCpInShowBeanListByInDh(param.getDh());
+                }
+                if (wlinDataList == null || wlinDataList.size() <= 0) {
+                    wlinDataList = mainService.getBigCpInShowBeanListByInDh(param.getDh());
+                    //大包装入库记录是没有数量的，所以会是null，但App接收的时候是用float接收的，会出错，所以设置成-1
+                    for (int i = 0; i < wlinDataList.size(); i++) {
+                        wlinDataList.get(i).setShl(-1);
+                    }
+                }
+                dataResult.setBeans(wlinDataList);
+                result.setResult(dataResult);
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+            }
+        }
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
+    }
+
+    /**
+     * @return
      * @author 马鹏昊
      * @desc 获取半成品出库审核信息（包括出库单详情和关联的每一条记录的信息）
      */

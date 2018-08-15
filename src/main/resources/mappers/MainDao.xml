@@ -367,7 +367,7 @@
 
     <select id="getBcpInShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.BcpInShowBean">
         SELECT QRCode_ID as qRCodeID, BCP_Code as wLCode, ProductName as productName, GG as gG, SortID as sortID,
-        YLPC as yLPC, SC_Time as time, InDh as inDh, DW as dW, DWZL as dWZL,SHL as shl
+        YLPC as yLPC, SCPC as sCPC, SC_Time as time, CheJian as cheJian, GX as gx, CZY as czy, InDh as inDh, DW as dW, DWZL as dWZL,SHL as shl
         FROM M_BCPIn
         WHERE InDh = #{0}
     </select>
