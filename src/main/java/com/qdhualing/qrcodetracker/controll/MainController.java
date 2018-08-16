@@ -1898,6 +1898,39 @@ public class MainController {
 
     /**
      * @return
+     * @author 逄坤
+     * @desc 获取半成品退库质检信息（包括退库单详情和关联的每一条记录的信息）
+     */
+    @RequestMapping(value = "/getBcpTkQualityCheckData", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult getBcpTkQualityCheckData(String json) {
+        VerifyParam param = ParamsUtils.handleParams(json, VerifyParam.class);
+        ActionResult<BcpTkQualityCheckResult> result = new ActionResult<BcpTkQualityCheckResult>();
+        if (param != null) {
+            try {
+                BcpTkQualityCheckResult dataResult = new BcpTkQualityCheckResult();
+                BcpTkdBean bean = mainService.getBcpTkdBean(param.getDh());
+                dataResult.setThDw(bean.getThDw());
+                dataResult.setBackDh(bean.getBackDh());
+                dataResult.setRemark(bean.getRemark());
+                dataResult.setShFzr(bean.getShFzr());
+                dataResult.setThFzr(bean.getThFzr());
+                dataResult.setThR(bean.getThR());
+                dataResult.setThRq(bean.getThRq());
+                List<BcpTkShowBean> wlinDataList = mainService.getBcpTkShowBeanListByBackDh(param.getDh());
+                dataResult.setBeans(wlinDataList);
+                result.setResult(dataResult);
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+            }
+        }
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
+    }
+
+    /**
+     * @return
      * @author 马鹏昊
      * @desc 修改物料入库单审核标志为已审核
      */
