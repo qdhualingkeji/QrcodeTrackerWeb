@@ -403,9 +403,9 @@
     </select>
 
     <select id="getWLOutParamListByInDh" resultType="com.qdhualing.qrcodetracker.bean.WLOutParam">
-        SELECT *,SHL AS ckShL
-        FROM M_WLOUT
-        WHERE OutDh = #{0}
+        SELECT o.*,o.SHL AS ckShL,s.CHD
+        FROM M_WLOUT o,M_WLS s
+        WHERE o.QRCode_ID=s.QRCode_ID AND o.OutDh = #{0}
     </select>
 
     <select id="getWlCkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
@@ -479,10 +479,7 @@
         FROM Rkd_Wl
         WHERE 1=1
         <if test="fzrID!=null">
-            and FzrID=#{fzrID}
-            <!--
-            and FzrStatus=0 and ZjyStatus=1
-            -->
+            and FzrID=#{fzrID} and FzrStatus=0 and ZjyStatus=1
         </if>
         <if test="zjyID!=null">
             and ZjyID=#{zjyID} and FzrStatus=0 and ZjyStatus=0
@@ -2686,6 +2683,7 @@ SmlPk45		= #{smlPk45},
             <if test="llr!=null">CZY,</if>
             <if test="chd!=null">CHD,</if>
             <if test="time!=null">LL_Time,</if>
+            <if test="dw!=null">DW</if>
         </trim>
         values
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -2701,6 +2699,7 @@ SmlPk45		= #{smlPk45},
             <if test="llr!=null">#{llr},</if>
             <if test="chd!=null">#{chd},</if>
             <if test="time!=null">#{time},</if>
+            <if test="dw!=null">#{dw}</if>
         </trim>
     </insert>
 

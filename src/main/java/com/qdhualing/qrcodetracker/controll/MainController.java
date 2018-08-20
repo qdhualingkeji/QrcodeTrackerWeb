@@ -2055,19 +2055,20 @@ public class MainController {
                 int a = mainService.agreeWlOut(wlckd);
                 if (a == 1) {
                     List<WLOutParam> wlOutList = mainService.getWLOutParamListByInDh(param.getDh());
-                    WLOutParam wlOutParam = wlOutList.get(0);
-                    //更新仓库库存表数量
-                    a = mainService.outUpdateWLS(wlOutParam);
-                    if (a <= 0) {
-                        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
-                    }
-                    //查询临时库存表中是否有数据
-                    a = mainService.findWLTempS(wlOutParam.getQrCodeId());
-                    if (a <= 0) {
-                        //插入临时库存表（车间）
-                        a = mainService.insertWLTempS(wlOutParam);
-                    } else {
-                        a = mainService.updateWLTempS(wlOutParam);
+                    for (WLOutParam wlOutParam : wlOutList) {
+                        //更新仓库库存表数量
+                        a = mainService.outUpdateWLS(wlOutParam);
+                        if (a <= 0) {
+                            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
+                        }
+                        //查询临时库存表中是否有数据
+                        a = mainService.findWLTempS(wlOutParam.getQrCodeId());
+                        if (a <= 0) {
+                            //插入临时库存表（车间）
+                            a = mainService.insertWLTempS(wlOutParam);
+                        } else {
+                            a = mainService.updateWLTempS(wlOutParam);
+                        }
                     }
 
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
@@ -2147,17 +2148,18 @@ public class MainController {
                     if(wlTKD.getFzrStatus()==1&&wlTKD.getZjyStatus()==1){
                         //更新仓库库存表数量（退库的数量加上）
                         List<WLTKParam> wlTKList = mainService.getWLTKParamListByOutDh(param.getDh());
-                        WLTKParam wlTKParam = wlTKList.get(0);
-                        a = mainService.updateWLSByTk(wlTKParam);
-                        if (a <= 0) {
-                            //return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
-                        }
-                        //临时库存表中数据减去或者删除
-                        WLTempSBean wlTempSBean = mainService.getWLTempS(wlTKParam.getQrCodeId());
-                        if (wlTKParam.getTkShL() >= wlTempSBean.getSHL()) {
-                            a = mainService.deleteFromWLTempS(wlTKParam.getQrCodeId());
-                        } else {
-                            a = mainService.updateWLTempSByTk(wlTKParam);
+                        for(WLTKParam wlTKParam : wlTKList) {
+                            a = mainService.updateWLSByTk(wlTKParam);
+                            if (a <= 0) {
+                                //return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
+                            }
+                            //临时库存表中数据减去或者删除
+                            WLTempSBean wlTempSBean = mainService.getWLTempS(wlTKParam.getQrCodeId());
+                            if (wlTKParam.getTkShL() >= wlTempSBean.getSHL()) {
+                                a = mainService.deleteFromWLTempS(wlTKParam.getQrCodeId());
+                            } else {
+                                a = mainService.updateWLTempSByTk(wlTKParam);
+                            }
                         }
                     }
 
