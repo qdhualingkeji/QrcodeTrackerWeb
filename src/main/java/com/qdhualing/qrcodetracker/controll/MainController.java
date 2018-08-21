@@ -2239,56 +2239,58 @@ public class MainController {
 
                 int a = mainService.agreeBcpIn(bcpRkd);
                 if (a == 1) {
-
                     BcpRkdBean bcpRkdBean = mainService.getBcpRkdBean(param.getDh());
-                    if(bcpRkdBean.getFzrStatus()==1&&bcpRkdBean.getZjyStatus()==1){
-                        int count=a;
-                        String existQrCodeID="";
-                        List<BigCPINParam> bigCPINList = mainService.getBigCPINParamListByInDh(param.getDh());
-                        int size = bigCPINList.size();
-                        if(size>0) {
-                            for (int i = 0; i < size; i++) {
-                                BigCPINParam inParam = bigCPINList.get(i);
-                                a = mainService.findCPS2(inParam.getQrCodeId());
-                                if (a <= 0) {
-                                    //插入大包装库存表（车间）
-                                    a = mainService.insertCPS2(inParam);
-                                } else {
-                                    existQrCodeID += "," + inParam.getQrCodeId();
+                    if (bcpRkdBean.getFzrStatus() == 1 && bcpRkdBean.getZjyStatus() == 1) {
+                        //因为入库单表里可能是半成品或成品，所以这里要先验证下半成品入库记录里有无数据，没有的话说明是成品
+                        List<BcpInShowBean> bcpInDataList = mainService.getBcpInShowBeanListByInDh(param.getDh());
+                        if (bcpInDataList == null || bcpInDataList.size() <= 0) {
+                            int count = a;
+                            String existQrCodeID = "";
+                            List<BigCPINParam> bigCPINList = mainService.getBigCPINParamListByInDh(param.getDh());
+                            int size = bigCPINList.size();
+                            if (size > 0) {
+                                for (int i = 0; i < size; i++) {
+                                    BigCPINParam inParam = bigCPINList.get(i);
+                                    a = mainService.findCPS2(inParam.getQrCodeId());
+                                    if (a <= 0) {
+                                        //插入大包装库存表（车间）
+                                        a = mainService.insertCPS2(inParam);
+                                    } else {
+                                        existQrCodeID += "," + inParam.getQrCodeId();
+                                    }
                                 }
-                            }
-                        }
-                        else{
-                            List<SmallCPINParam> smallCPINList = mainService.getSmallCPINParamListByInDh(param.getDh());
-                            SmallCPINParam inParam = smallCPINList.get(0);
-                            String startQrCodeId = inParam.getQrCodeId();
-                            Long nextQrCodeId = Long.parseLong(startQrCodeId);
-                            size = smallCPINList.size();
-                            BigCpBean bigCpBean = null;
-                            int nowIndex = 0;
-                            if (!TextUtils.isEmpty(inParam.getcPS2QRCode())) {
-                                bigCpBean = mainService.getCPS2(inParam.getcPS2QRCode());
-                                nowIndex = bigCpBean.getNowNum();
-                            }
-                            for (int i = 0; i < size; i++) {
-                                //插入小包装库存表（车间）
-                                a = mainService.insertCPS(inParam);
-                                if (a <= 0) {
-                                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "录入CPS失败");
-                                }
-                                //如果是需要关联大包装的小包装则需要以下操作
+                            } else {
+                                List<SmallCPINParam> smallCPINList = mainService.getSmallCPINParamListByInDh(param.getDh());
+                                SmallCPINParam inParam = smallCPINList.get(0);
+                                String startQrCodeId = inParam.getQrCodeId();
+                                Long nextQrCodeId = Long.parseLong(startQrCodeId);
+                                size = smallCPINList.size();
+                                BigCpBean bigCpBean = null;
+                                int nowIndex = 0;
                                 if (!TextUtils.isEmpty(inParam.getcPS2QRCode())) {
-                                    bigCpBean = ProjectUtil.getUpdateCPS2Data(bigCpBean, nowIndex + 1, nextQrCodeId);
-                                    a = mainService.updateCPS2(bigCpBean);
-                                    a = mainService.updateCPIn2(bigCpBean);
+                                    bigCpBean = mainService.getCPS2(inParam.getcPS2QRCode());
+                                    nowIndex = bigCpBean.getNowNum();
                                 }
+                                for (int i = 0; i < size; i++) {
+                                    //插入小包装库存表（车间）
+                                    a = mainService.insertCPS(inParam);
+                                    if (a <= 0) {
+                                        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "录入CPS失败");
+                                    }
+                                    //如果是需要关联大包装的小包装则需要以下操作
+                                    if (!TextUtils.isEmpty(inParam.getcPS2QRCode())) {
+                                        bigCpBean = ProjectUtil.getUpdateCPS2Data(bigCpBean, nowIndex + 1, nextQrCodeId);
+                                        a = mainService.updateCPS2(bigCpBean);
+                                        a = mainService.updateCPIn2(bigCpBean);
+                                    }
 
-                                String typeNum = nextQrCodeId.toString().substring(0, 9);
-                                int num = Integer.valueOf(nextQrCodeId.toString().substring(9));
-                                num++;
-                                nextQrCodeId = Long.parseLong(typeNum+num);
-                                nowIndex++;
-                                inParam.setQrCodeId(String.valueOf(nextQrCodeId));
+                                    String typeNum = nextQrCodeId.toString().substring(0, 9);
+                                    int num = Integer.valueOf(nextQrCodeId.toString().substring(9));
+                                    num++;
+                                    nextQrCodeId = Long.parseLong(typeNum + num);
+                                    nowIndex++;
+                                    inParam.setQrCodeId(String.valueOf(nextQrCodeId));
+                                }
                             }
                         }
                     }
@@ -2362,19 +2364,19 @@ public class MainController {
                 if (a == 1) {
 
                     List<BigCpOutParam> cpOutList = mainService.getBigCpOutParamListByOutDh(param.getDh());
-                    BigCpOutParam cpOutParam = cpOutList.get(0);
-                    BigCpBean bigCpBean = mainService.getCPS2(cpOutParam.getQrCodeId());
-                    if(bigCpBean!=null) {
-                        a = mainService.deleteCPS2ByQrId(cpOutParam.getQrCodeId());
-                        if (a <= 0) {
-                            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除大包装记录失败");
-                        }
-                        a = mainService.deleteCPSByCps2QrId(cpOutParam.getQrCodeId());
-                    }
-                    else{
-                        a = mainService.deleteCPSByQrId(cpOutParam.getQrCodeId());
-                        if (a <= 0) {
-                            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除小包装记录失败");
+                    for (BigCpOutParam cpOutParam : cpOutList) {
+                        BigCpBean bigCpBean = mainService.getCPS2(cpOutParam.getQrCodeId());
+                        if (bigCpBean != null) {
+                            a = mainService.deleteCPS2ByQrId(cpOutParam.getQrCodeId());
+                            if (a <= 0) {
+                                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除大包装记录失败");
+                            }
+                            a = mainService.deleteCPSByCps2QrId(cpOutParam.getQrCodeId());
+                        } else {
+                            a = mainService.deleteCPSByQrId(cpOutParam.getQrCodeId());
+                            if (a <= 0) {
+                                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除小包装记录失败");
+                            }
                         }
                     }
 
