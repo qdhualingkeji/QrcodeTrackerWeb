@@ -415,9 +415,9 @@
     </select>
 
     <select id="getWLINShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.WLINShowBean">
-        SELECT *
-        FROM M_WLIn
-        WHERE InDh = #{0}
+        SELECT w.*,s.SortName
+        FROM M_WLIn w,Hl_Sort s
+        WHERE w.SortID = s.SortID AND w.InDh = #{0}
     </select>
 
     <select id="getWlRkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
@@ -2934,6 +2934,11 @@ SmlPk45		= #{smlPk45},
 		FROM Hl_Sort
 	</select>
 
+    <select id="getHlProduct" resultType="com.qdhualing.qrcodetracker.bean.HlProductBean">
+        SELECT *
+		FROM Hl_Product WHERE SortID=#{0}
+    </select>
+
     <select id="getPdtSort" resultType="com.qdhualing.qrcodetracker.bean.PdtSortBean">
 		SELECT *
 		FROM Pdt_Sort2
@@ -3113,7 +3118,7 @@ SmlPk45		= #{smlPk45},
 	</select>
 
     <select id="getWLINParamListByInDh" resultType="com.qdhualing.qrcodetracker.bean.WLINParam">
-		select *,Unit AS dW from
+		select *,SortID AS lb,Unit AS dW from
 		M_WLIn where InDh=#{inDh}
 	</select>
 

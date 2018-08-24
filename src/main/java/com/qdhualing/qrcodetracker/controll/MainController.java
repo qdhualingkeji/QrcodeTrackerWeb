@@ -169,6 +169,28 @@ public class MainController {
     }
 
     /**
+     * 逄坤
+     * 获取产品信息
+     * */
+    @RequestMapping(value = "/getHlProduct", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult getHlProduct(String json) {
+        HlProductParam hlProductParam = ParamsUtils.handleParams(json, HlProductParam.class);
+        ActionResult<HlProductResult> result = new ActionResult<HlProductResult>();
+        try {
+            HlProductResult hlProductResult = mainService.getHlProduct(hlProductParam.getSortID());
+            if (hlProductResult.getHlProductBeans() == null || hlProductResult.getHlProductBeans().size() <= 0) {
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "无产品数据");
+            }
+            result.setResult(hlProductResult);
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "获取产品数据成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+        }
+    }
+
+    /**
      * @return
      * @author 马鹏昊
      * @desc 生成物料出库单

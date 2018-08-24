@@ -107,6 +107,13 @@ public class MainService {
 		return hlSortResult;
 	}
 
+	public HlProductResult getHlProduct(int sortID) {
+		List<HlProductBean> beans =  mainDao.getHlProduct(sortID);
+		HlProductResult hlProductResult = new HlProductResult();
+		hlProductResult.setHlProductBeans(beans);
+		return hlProductResult;
+	}
+
 	public int createWL_CKD(CreateWLCKDParam ckdParam) {
 		int a=mainDao.createWL_CKD(ckdParam);
 		return a;
@@ -874,4 +881,5 @@ public class MainService {
 	public List<BigCpOutParam> getBigCpOutParamListByOutDh(String dh) {
 		return mainDao.getBigCpOutParamListByOutDh(dh);
 	}
+
 }

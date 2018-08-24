@@ -39,6 +39,8 @@ public interface MainDao {
     List<PdtSortBean> getPdtSort();
     //获取物料分类数据
     List<HlSortBean> getHlSort();
+    //获取产品数据
+    List<HlProductBean> getHlProduct(int sortID);
     //创建物料出库单
     int createWL_CKD(CreateWLCKDParam ckdParam);
     //插入物料委托表记录
@@ -355,4 +357,5 @@ public interface MainDao {
     List<SmallCPINParam> getSmallCPINParamListByInDh(String dh);
 
     List<BigCpOutParam> getBigCpOutParamListByOutDh(String dh);
+
 }
