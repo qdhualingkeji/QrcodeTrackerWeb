@@ -186,7 +186,7 @@ public interface MainDao {
     //查询半成品入库记录表
     List<BCPINParam> getBcpInData(String qrCodeId);
     //根据ID获取分类名字
-    String getPdtSortBySortId(String id);
+    String getHlSortBySortId(String id);
     //获取组成成分(半成品)
     List<ComponentBean> getComponentBeansFromBcp(List<String> ylList);
     //获取组成成分(物料)
@@ -198,9 +198,9 @@ public interface MainDao {
 
     String getShrFromWlRkd(String dh);
 
-    String getFhrFromWlCkd(String dh);
+    String getFhFzrFromWlCkd(String dh);
 
-    String getShrFromWlTkd(String dh);
+    String getShFzrFromWlTkd(String dh);
 
     String getShrFromBcpRkd(String dh);
 

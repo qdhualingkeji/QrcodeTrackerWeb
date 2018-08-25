@@ -379,9 +379,9 @@
     </select>
 
     <select id="getWLTkShowBeanListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.WLTkShowBean">
-        SELECT *
-        FROM M_WLBk
-        WHERE OutDh = #{0}
+        SELECT w.*,s.SortName
+        FROM M_WLBk w,Hl_Sort s
+        WHERE w.SortID = s.SortID AND OutDh = #{0}
     </select>
 
     <select id="getWLTKParamListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.WLTKParam">
@@ -397,9 +397,9 @@
     </select>
 
     <select id="getWLOutShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.WLOutShowBean">
-        SELECT *
-        FROM M_WLOUT
-        WHERE OutDh = #{0}
+        SELECT w.*,s.SortName
+        FROM M_WLOUT w,Hl_Sort s
+        WHERE w.SortID = s.SortID AND OutDh = #{0}
     </select>
 
     <select id="getWLOutParamListByInDh" resultType="com.qdhualing.qrcodetracker.bean.WLOutParam">
@@ -504,14 +504,14 @@
         WHERE InDh = #{0}
     </select>
 
-    <select id="getShrFromWlTkd" resultType="java.lang.String">
-        SELECT ShR
+    <select id="getShFzrFromWlTkd" resultType="java.lang.String">
+        SELECT ShFzr
         FROM Tkd_Wl
         WHERE BackDh = #{0}
     </select>
 
-    <select id="getFhrFromWlCkd" resultType="java.lang.String">
-        SELECT FhR
+    <select id="getFhFzrFromWlCkd" resultType="java.lang.String">
+        SELECT FhFzr
         FROM Ckd_Wl
         WHERE OutDh = #{0}
     </select>
@@ -549,10 +549,10 @@
             #{qrCodeId}
         </foreach>
     </select>
-    <select id="getPdtSortBySortId" resultType="java.lang.String">
-        SELECT Sort_Name
-        FROM Pdt_Sort2
-        WHERE ID = #{0}
+    <select id="getHlSortBySortId" resultType="java.lang.String">
+        SELECT SortName
+        FROM Hl_Sort
+        WHERE SortID = #{0}
     </select>
 
     <select id="getBcpInData" resultType="com.qdhualing.qrcodetracker.bean.BCPINParam">
@@ -563,9 +563,9 @@
 
     <select id="getWlInData" resultType="com.qdhualing.qrcodetracker.bean.WlTrackResult">
         SELECT M_WLIn.ProductName , M_WLIn.YLPC , M_WLIn.PCZL ,M_WLIn.WL_Code,
-        M_WLIn.LL_Time , M_WLIn.GG , Pdt_Sort2.Sort_Name ,M_WLIn.DWZL,
+        M_WLIn.LL_Time , M_WLIn.GG , Hl_Sort.SortName ,M_WLIn.DWZL,
         M_WLIn.CHD , M_WLIn.CZY ,M_WLIn.Unit,M_WLIn.Unit dw
-        FROM M_WLIn LEFT JOIN Pdt_Sort2 on M_WLIn.SortID = Pdt_Sort2.ID
+        FROM M_WLIn LEFT JOIN Hl_Sort on M_WLIn.SortID = Hl_Sort.SortID
         WHERE M_WLIn.QRCode_ID = #{0}
     </select>
 
@@ -2823,8 +2823,13 @@ SmlPk45		= #{smlPk45},
 	</select>
 
     <select id="getWLSData" resultType="com.qdhualing.qrcodetracker.bean.WLOutShowDataResult">
+        <!--
 		SELECT M_WLS.ProductName, M_WLS.PCZL , M_WLS.DWZL, M_WLS.SHL, M_WLS.CHD, M_WLS.GG, M_WLS.DW, Pdt_Sort2.Sort_Name
 		FROM M_WLS left JOIN Pdt_Sort2 on M_WLS.SortID = Pdt_Sort2.ID
+		where M_WLS.QRCode_ID = #{qrcodeId}
+		-->
+		SELECT M_WLS.ProductName, M_WLS.PCZL , M_WLS.DWZL, M_WLS.SHL, M_WLS.CHD, M_WLS.GG, M_WLS.DW, Hl_Sort.SortName
+		FROM M_WLS left JOIN Hl_Sort on M_WLS.SortID = Hl_Sort.SortID
 		where M_WLS.QRCode_ID = #{qrcodeId}
 	</select>
 

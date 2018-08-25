@@ -436,8 +436,8 @@ public class MainService {
 		return mainDao.getBcpInData(qrCodeId);
 	}
 
-	public String getPdtSortBySortId(String sortID) {
-		return mainDao.getPdtSortBySortId(sortID);
+	public String getHlSortBySortId(String sortID) {
+		return mainDao.getHlSortBySortId(sortID);
 	}
 
 	public List<ComponentBean> getComponentBeansFromBcp(List<String> ylList) {
@@ -460,13 +460,13 @@ public class MainService {
 		return mainDao.getShrFromWlRkd(dh);
 	}
 
-	public String getFhrFromWlCkd(String dh) {
-		return mainDao.getFhrFromWlCkd(dh);
+	public String getFhFzrFromWlCkd(String dh) {
+		return mainDao.getFhFzrFromWlCkd(dh);
 	}
 
 
-	public String getShrFromWlTkd(String dh) {
-		return mainDao.getShrFromWlTkd(dh);
+	public String getShFzrFromWlTkd(String dh) {
+		return mainDao.getShFzrFromWlTkd(dh);
 	}
 
 	public String getShrFromBcpRkd(String dh) {

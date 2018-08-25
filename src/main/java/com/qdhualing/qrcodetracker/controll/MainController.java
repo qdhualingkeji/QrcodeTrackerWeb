@@ -1307,7 +1307,7 @@ public class MainController {
                     singleData.setJyzt(bb.getJyzt());
                     singleData.setScpc(bb.getScpc());
                     singleData.setScTime(bb.getScTime());
-                    String sortName = mainService.getPdtSortBySortId(bb.getSortID() + "");
+                    String sortName = mainService.getHlSortBySortId(bb.getSortID() + "");
                     singleData.setSortName(sortName);
                     singleData.setYlpc(bb.getYlpc());
                     singleData.setZjy(bb.getZjy());
@@ -1377,7 +1377,7 @@ public class MainController {
                     singleData.setJyzt(bb.getJyzt());
                     singleData.setScpc(bb.getScpc());
                     singleData.setScTime(bb.getScTime());
-                    String sortName = mainService.getPdtSortBySortId(bb.getSortID() + "");
+                    String sortName = mainService.getHlSortBySortId(bb.getSortID() + "");
                     singleData.setSortName(sortName);
                     singleData.setYlpc(bb.getYlpc());
                     singleData.setZjy(bb.getZjy());
@@ -1448,7 +1448,7 @@ public class MainController {
                     singleData.setScpc(bb.getScpc());
                     singleData.setScTime(bb.getScTime());
                     singleData.setSmlPk1(bb.getSmlPk1());
-                    String sortName = mainService.getPdtSortBySortId(bb.getSortID() + "");
+                    String sortName = mainService.getHlSortBySortId(bb.getSortID() + "");
                     singleData.setSortName(sortName);
                     singleData.setYlpc(bb.getYlpc());
                     singleData.setZjy(bb.getZjy());
@@ -1484,11 +1484,11 @@ public class MainController {
                     alertMsg = "您有一条物料入库单需要审核";
                     break;
                 case NotificationType.WL_CKD:
-                    desPerson = mainService.getFhrFromWlCkd(param.getDh());
+                    desPerson = mainService.getFhFzrFromWlCkd(param.getDh());
                     alertMsg = "您有一条物料出库单需要审核";
                     break;
                 case NotificationType.WL_TKD:
-                    desPerson = mainService.getShrFromWlTkd(param.getDh());
+                    desPerson = mainService.getShFzrFromWlTkd(param.getDh());
                     alertMsg = "您有一条物料退库单需要审核";
                     break;
                 case NotificationType.BCP_RKD:
