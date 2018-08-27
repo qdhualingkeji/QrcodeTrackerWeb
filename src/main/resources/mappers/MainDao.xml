@@ -145,9 +145,9 @@
 
     <select id="getBigCpIn2ShowData" resultType="com.qdhualing.qrcodetracker.bean.BigCpTrackResult">
         SELECT M_CPIn2.CP_Name , M_CPIn2.YLPC , M_CPIn2.SCPC ,M_CPIn2.CP_Code,
-        M_CPIn2.SC_Time , M_CPIn2.GG , Pdt_Sort2.Sort_Name ,M_CPIn2.DWZL,
+        M_CPIn2.SC_Time , M_CPIn2.GG , Hl_Sort.Sort_Name ,M_CPIn2.DWZL,
         M_CPIn2.CZY ,M_CPIn2.DW
-        FROM M_CPIn2 LEFT JOIN Pdt_Sort2 on M_CPIn2.SortID = Pdt_Sort2.ID
+        FROM M_CPIn2 LEFT JOIN Hl_Sort on M_CPIn2.SortID = Hl_Sort.SortID
         WHERE M_CPIn2.QRCode_ID = #{0}
     </select>
     <select id="getSmallCpInShowData" resultType="com.qdhualing.qrcodetracker.bean.SmallCpTrackResult">
