@@ -8,7 +8,7 @@
         <!--
         WHERE ThR = #{0} AND Check_State = 0
         -->
-        WHERE ThR = #{0} AND (FzrStatus = 0 OR ZjyStatus = 0)
+        WHERE ThR = #{0} AND FzrStatus != 1 AND ZjyStatus != 1
     </select>
     <select id="getBcpCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         SELECT *
@@ -16,7 +16,7 @@
         <!--
         WHERE FhR = #{0} AND Check_State = 0
         -->
-        WHERE FhR = #{0} AND FzrStatus = 0
+        WHERE FhR = #{0} AND FzrStatus != 1
     </select>
     <select id="getBcpRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
         SELECT *
@@ -24,7 +24,7 @@
         <!--
         WHERE JhR = #{0} AND Check_State = 0
         -->
-        WHERE JhR = #{0} AND (FzrStatus = 0 OR ZjyStatus = 0)
+        WHERE JhR = #{0} AND FzrStatus != 1 OR ZjyStatus != 1
     </select>
     <select id="getWlTkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlTkdBean">
         SELECT *
@@ -32,7 +32,7 @@
         <!--
         WHERE ThR = #{0} AND Check_State = 0
         -->
-        WHERE ThR = #{0} AND (FzrStatus = 0 OR ZjyStatus = 0)
+        WHERE ThR = #{0} AND FzrStatus != 1 AND ZjyStatus != 1
     </select>
     <select id="getWlCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
         SELECT *
@@ -40,7 +40,7 @@
         <!--
         WHERE LhR = #{0} AND Check_State = 0
         -->
-        WHERE LhR = #{0} AND FzrStatus = 0
+        WHERE LhR = #{0} AND FzrStatus != 1
     </select>
     <select id="getWlRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
         SELECT *
@@ -48,7 +48,7 @@
         <!--
         WHERE ShR = #{0} AND Check_State = 0
         -->
-        WHERE ShR = #{0} AND (FzrStatus = 0 OR ZjyStatus = 0)
+        WHERE ShR = #{0} AND FzrStatus != 1 AND ZjyStatus != 1
     </select>
 
     <select id="getAllPerson" resultType="com.qdhualing.qrcodetracker.bean.PersonBean" parameterType="string">
