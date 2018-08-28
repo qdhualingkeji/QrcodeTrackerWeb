@@ -456,29 +456,44 @@ public class MainService {
 		return mainDao.getBigCpIn2(qrCodeId);
 	}
 
-	public String getShrFromWlRkd(String dh) {
-		return mainDao.getShrFromWlRkd(dh);
+	public String getPersonFromWlRkd(NotificationParam param) {
+		String str=null;
+		if(param.getPersonFlag()==NotificationParam.FZR)
+			str=mainDao.getFzrFromWlRkd(param.getDh());
+		else if(param.getPersonFlag()==NotificationParam.ZJY)
+			str=mainDao.getZjyFromWlRkd(param.getDh());
+		return str;
 	}
 
-	public String getFhFzrFromWlCkd(String dh) {
-		return mainDao.getFhFzrFromWlCkd(dh);
+	public String getFzrFromWlCkd(String dh) {
+		return mainDao.getFzrFromWlCkd(dh);
 	}
 
 
-	public String getShFzrFromWlTkd(String dh) {
-		return mainDao.getShFzrFromWlTkd(dh);
+	public String getPersonFromWlTkd(NotificationParam param) {
+		String str=null;
+		if(param.getPersonFlag()==NotificationParam.FZR)
+			str=mainDao.getFzrFromWlTkd(param.getDh());
+		else if(param.getPersonFlag()==NotificationParam.ZJY)
+			str=mainDao.getZjyFromWlTkd(param.getDh());
+		return str;
 	}
 
-	public String getShrFromBcpRkd(String dh) {
-		return mainDao.getShrFromBcpRkd(dh);
+	public String getPersonFromBcpRkd(NotificationParam param) {
+		String str=null;
+		if(param.getPersonFlag()==NotificationParam.FZR)
+			str=mainDao.getFzrFromBcpRkd(param.getDh());
+		else if(param.getPersonFlag()==NotificationParam.ZJY)
+			str=mainDao.getZjyFromBcpRkd(param.getDh());
+		return str;
 	}
 
 	public String getShrFromBcpTkd(String dh) {
 		return mainDao.getShrFromBcpTkd(dh);
 	}
 
-	public String getFhrFromBcpCkd(String dh) {
-		return mainDao.getFhrFromBcpCkd(dh);
+	public String getFzrFromBcpCkd(String dh) {
+		return mainDao.getFzrFromBcpCkd(dh);
 	}
 
 	public List<WlRkdBean> getWlRkNonCheckData(Integer fzrID,Integer zjyID) {

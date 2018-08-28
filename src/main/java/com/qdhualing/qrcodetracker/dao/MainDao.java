@@ -196,17 +196,23 @@ public interface MainDao {
     //获取大包装记录信息
     List<BigCpBean> getBigCpIn2(String qrCodeId);
 
-    String getShrFromWlRkd(String dh);
+    String getFzrFromWlRkd(String dh);
 
-    String getFhFzrFromWlCkd(String dh);
+    String getZjyFromWlRkd(String dh);
 
-    String getShFzrFromWlTkd(String dh);
+    String getFzrFromWlCkd(String dh);
 
-    String getShrFromBcpRkd(String dh);
+    String getFzrFromWlTkd(String dh);
+
+    String getZjyFromWlTkd(String dh);
+
+    String getFzrFromBcpRkd(String dh);
+
+    String getZjyFromBcpRkd(String dh);
 
     String getShrFromBcpTkd(String dh);
 
-    String getFhrFromBcpCkd(String dh);
+    String getFzrFromBcpCkd(String dh);
 
     List<WlRkdBean> getWlRkNonCheckData(WlRkdBean wlrkd);
 

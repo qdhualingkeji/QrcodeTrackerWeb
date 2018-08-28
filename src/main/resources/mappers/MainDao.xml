@@ -486,8 +486,8 @@
         </if>
     </select>
 
-    <select id="getFhrFromBcpCkd" resultType="java.lang.String">
-        SELECT FhR
+    <select id="getFzrFromBcpCkd" resultType="java.lang.String">
+        SELECT FzrID
         FROM Ckd_Bcp
         WHERE OutDh = #{0}
     </select>
@@ -498,26 +498,44 @@
         WHERE BackDh = #{0}
     </select>
 
-    <select id="getShrFromBcpRkd" resultType="java.lang.String">
-        SELECT ShR
+    <select id="getFzrFromBcpRkd" resultType="java.lang.String">
+        SELECT FzrID
         FROM Rkd_Bcp
         WHERE InDh = #{0}
     </select>
 
-    <select id="getShFzrFromWlTkd" resultType="java.lang.String">
-        SELECT ShFzr
+    <select id="getZjyFromBcpRkd" resultType="java.lang.String">
+        SELECT ZjyID
+        FROM Rkd_Bcp
+        WHERE InDh = #{0}
+    </select>
+
+    <select id="getFzrFromWlTkd" resultType="java.lang.String">
+        SELECT FzrID
         FROM Tkd_Wl
         WHERE BackDh = #{0}
     </select>
 
-    <select id="getFhFzrFromWlCkd" resultType="java.lang.String">
-        SELECT FhFzr
+    <select id="getZjyFromWlTkd" resultType="java.lang.String">
+        SELECT ZjyID
+        FROM Tkd_Wl
+        WHERE BackDh = #{0}
+    </select>
+
+    <select id="getFzrFromWlCkd" resultType="java.lang.String">
+        SELECT FzrID
         FROM Ckd_Wl
         WHERE OutDh = #{0}
     </select>
 
-    <select id="getShrFromWlRkd" resultType="java.lang.String">
-        SELECT ShR
+    <select id="getFzrFromWlRkd" resultType="java.lang.String">
+        SELECT FzrID
+        FROM Rkd_Wl
+        WHERE InDh = #{0}
+    </select>
+
+    <select id="getZjyFromWlRkd" resultType="java.lang.String">
+        SELECT ZjyID
         FROM Rkd_Wl
         WHERE InDh = #{0}
     </select>

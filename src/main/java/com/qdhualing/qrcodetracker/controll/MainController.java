@@ -1480,19 +1480,19 @@ public class MainController {
             String alertMsg = null;
             switch (param.getStyle()) {
                 case NotificationType.WL_RKD:
-                    desPerson = mainService.getShrFromWlRkd(param.getDh());
-                    alertMsg = "您有一条物料入库单需要审核";
+                    desPerson = mainService.getPersonFromWlRkd(param);
+                    alertMsg = "您有一条物料入库单需要"+(param.getPersonFlag()==NotificationParam.FZR?"审核":"质检");
                     break;
                 case NotificationType.WL_CKD:
-                    desPerson = mainService.getFhFzrFromWlCkd(param.getDh());
+                    desPerson = mainService.getFzrFromWlCkd(param.getDh());
                     alertMsg = "您有一条物料出库单需要审核";
                     break;
                 case NotificationType.WL_TKD:
-                    desPerson = mainService.getShFzrFromWlTkd(param.getDh());
-                    alertMsg = "您有一条物料退库单需要审核";
+                    desPerson = mainService.getPersonFromWlTkd(param);
+                    alertMsg = "您有一条物料退库单需要"+(param.getPersonFlag()==NotificationParam.FZR?"审核":"质检");
                     break;
                 case NotificationType.BCP_RKD:
-                    desPerson = mainService.getShrFromBcpRkd(param.getDh());
+                    desPerson = mainService.getPersonFromBcpRkd(param);
                     alertMsg = "您有一条半成品入库单需要审核";
                     break;
                 case NotificationType.BCP_TKD:
@@ -1500,11 +1500,11 @@ public class MainController {
                     alertMsg = "您有一条半成品退库单需要审核";
                     break;
                 case NotificationType.CP_RKD:
-                    desPerson = mainService.getShrFromBcpRkd(param.getDh());
-                    alertMsg = "您有一条成品入库单需要审核";
+                    desPerson = mainService.getPersonFromBcpRkd(param);
+                    alertMsg = "您有一条成品入库单需要"+(param.getPersonFlag()==NotificationParam.FZR?"审核":"质检");
                     break;
                 case NotificationType.CP_CKD:
-                    desPerson = mainService.getFhrFromBcpCkd(param.getDh());
+                    desPerson = mainService.getFzrFromBcpCkd(param.getDh());
                     alertMsg = "您有一条成品出库单需要审核";
                     break;
             }
