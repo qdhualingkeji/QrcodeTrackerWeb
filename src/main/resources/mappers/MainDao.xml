@@ -328,8 +328,8 @@
     </select>
 
     <select id="getCpOutShowBeanListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.CpOutShowBean">
-        SELECT *
-        FROM M_CPOut
+        SELECT c.*,s.SortName
+        FROM M_CPOut c LEFT JOIN Hl_Sort s ON c.SortID = s.SortID
         WHERE OutDh = #{0}
     </select>
 
@@ -355,9 +355,9 @@
     </select>
 
     <select id="getCpInShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.BcpInShowBean">
-        SELECT  QRCode_ID as qRCodeID, CP_Code as wLCode, CP_Name as productName, GG as gG, SortID as sortID,
+        SELECT  QRCode_ID as qRCodeID, CP_Code as wLCode, CP_Name as productName, GG as gG, c.SortID as sortID, s.SortName,
         YLPC as yLPC, SCPC as sCPC, SC_Time as time, InDh as inDh, DW as dW, DWZL as dWZL, CZY as cZY,SHL as shl
-        FROM M_CPIn
+        FROM M_CPIn c LEFT JOIN Hl_Sort s ON c.SortID = s.SortID
         WHERE InDh = #{0}
     </select>
 

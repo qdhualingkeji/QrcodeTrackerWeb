@@ -8,7 +8,11 @@
 
 
     <select id="getMainData" resultType="UserAuthority">
-        SELECT rr.Group_2 ,Hl_UserGroup.GroupName ,Hl_UserGroup.Auth_Mobile
+        SELECT rr.Group_2 ,Hl_UserGroup.GroupName ,
+        <!--
+        Hl_UserGroup.Auth_Mobile
+        -->
+        rr.CheckQXGroup AS Auth_Mobile
         FROM (SELECT * FROM Hl_User WHERE UserID = #{0}) AS rr LEFT JOIN Hl_UserGroup
         ON rr.GroupID = Hl_UserGroup.GroupID
     </select>

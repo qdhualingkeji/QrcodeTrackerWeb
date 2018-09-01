@@ -42,7 +42,8 @@ public class UserService implements Serializable{
         UserAuthority userAuthority = userDao.getMainData(params.getUserId());
         MainResult mainResult = new MainResult();
         mainResult.setDepartmentName(userAuthority.getGroupName());
-        List<Integer> authList = AuthorityParseUtil.parseToFunctionList(userAuthority.getAuthMobile(),userAuthority.getGroup2());
+        //List<Integer> authList = AuthorityParseUtil.parseToFunctionList(userAuthority.getAuthMobile(),userAuthority.getGroup2());
+        List<Integer> authList = AuthorityParseUtil.parseToFunctionList(userAuthority.getAuthMobile());
 
         List<Module2> authNameList = new ArrayList<>();
         if (authList == null||authList.size()<=0) {
