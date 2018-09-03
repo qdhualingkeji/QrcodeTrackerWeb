@@ -288,7 +288,7 @@ public class MainController {
                 wlOutParam.setDw(wlsBean.getDW());
                 wlOutParam.setDwzl(wlsBean.getDWZL());
                 wlOutParam.setGg(wlsBean.getGG());
-                //wlOutParam.setSortId(wlsBean.getSortID());
+                wlOutParam.setSortId(wlsBean.getSortID());
                 wlOutParam.setYlpc(wlsBean.getYLPC());
                 wlOutParam.setChd(wlsBean.getCHD());
                 int b = mainService.insertWLOUT(wlOutParam);
@@ -1655,6 +1655,9 @@ public class MainController {
                 dataResult.setRemark(rkdBean.getRemark());
                 dataResult.setShFzr(rkdBean.getShFzr());
                 dataResult.setShRq(rkdBean.getShrq());
+                dataResult.setFzrID(rkdBean.getFzrID());
+                dataResult.setZjyID(rkdBean.getZjyID());
+                dataResult.setZjyName(rkdBean.getZjyName());
                 List<WLINShowBean> wlinDataList = mainService.getWLINShowBeanListByInDh(param.getDh());
                 dataResult.setBeans(wlinDataList);
                 result.setResult(dataResult);

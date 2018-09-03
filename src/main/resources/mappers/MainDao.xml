@@ -108,17 +108,18 @@
         WHERE QRCode_ID = #{qRCodeID}
     </update>
     <update id="updateWlCkdData" parameterType="com.qdhualing.qrcodetracker.bean.WlOutVerifyResult">
-        UPDATE Ckd_Wl SET LhDw = #{lhDw}, LhFzr=#{lhFzr}, FhR=#{lhR}, FhFzr=#{fhFzr}, Remark=#{remark}
+        UPDATE Ckd_Wl SET LhDw = #{lhDw}, LhFzr=#{lhFzr}, FhR=#{lhR}, FhFzr=#{fhFzr}, Remark=#{remark}, FzrStatus=#{fzrStatus}
         WHERE OutDh = #{outDh}
     </update>
 
     <update id="updateWlInData" parameterType="com.qdhualing.qrcodetracker.bean.WLINShowBean">
         UPDATE M_WLIn SET WL_Code = #{wLCode}, ProductName=#{productName}, SortID=#{sortID}, YLPC=#{yLPC}, PCZL=#{pCZL},
-        DWZL=#{dWZL}, SHL=#{shl}, CHD=#{cHD}, GG=#{gG}, Unit=#{dW}, remark=#{remark}
+        DWZL=#{dWZL}, SHL=#{shl}, CHD=#{cHD}, GG=#{gG}, Unit=#{unit}, remark=#{remark}
         WHERE QRCode_ID = #{qRCodeID}
     </update>
     <update id="updateWlRkdData" parameterType="com.qdhualing.qrcodetracker.bean.WlInVerifyResult">
-        UPDATE Rkd_Wl SET JhDw = #{fhDw}, ShRq=#{shRq}, ShFzr=#{shFzr}, JhR=#{fhR}, JhFzr=#{jhFzr}, Remark=#{remark}
+        UPDATE Rkd_Wl SET JhDw = #{fhDw}, ShRq=#{shRq}, ShFzr=#{shFzr}, JhR=#{fhR}, JhFzr=#{jhFzr}, Remark=#{remark},
+        FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}
         WHERE InDh = #{inDh}
     </update>
 
@@ -421,8 +422,8 @@
     </select>
 
     <select id="getWlRkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
-        SELECT *
-        FROM Rkd_Wl
+        SELECT r.*,u.TrueName zjyName
+        FROM Rkd_Wl r LEFT JOIN Hl_User u on r.ZjyID = u.UserID
         WHERE InDh = #{0}
     </select>
 
