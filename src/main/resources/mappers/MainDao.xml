@@ -319,8 +319,8 @@
         WHERE InDh = #{inDh}
     </update>
     <select id="getBcpTkShowBeanListByBackDh" resultType="com.qdhualing.qrcodetracker.bean.BcpTkShowBean">
-        SELECT *
-        FROM M_BCPBk
+        SELECT b.*,s.SortName
+        FROM M_BCPBk b LEFT JOIN Hl_Sort s ON b.SortID = s.SortID
         WHERE BackDh = #{0}
     </select>
 
