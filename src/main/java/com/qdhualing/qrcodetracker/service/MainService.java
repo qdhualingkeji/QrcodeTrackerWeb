@@ -488,8 +488,13 @@ public class MainService {
 		return str;
 	}
 
-	public String getShrFromBcpTkd(String dh) {
-		return mainDao.getShrFromBcpTkd(dh);
+	public String getPersonFromBcpTkd(NotificationParam param) {
+		String str=null;
+		if(param.getPersonFlag()==NotificationParam.FZR)
+			str=mainDao.getFzrFromBcpTkd(param.getDh());
+		else if(param.getPersonFlag()==NotificationParam.ZJY)
+			str=mainDao.getZjyFromBcpTkd(param.getDh());
+		return str;
 	}
 
 	public String getFzrFromBcpCkd(String dh) {
@@ -834,8 +839,8 @@ public class MainService {
 		String qRCodeID = inParam.getQrCodeId();
 		String typeNum = qRCodeID.substring(0, 9);
 		int num = Integer.valueOf(qRCodeID.substring(9));
-		int ts = inParam.gettS();
-		for(int i=num;i<num + ts;i++){
+		float shl = inParam.getShl();
+		for(int i=num;i<num + shl;i++){
 			if(i!=num){
 				inParam.setQrCodeId(typeNum+i);//批量录入时，设置下一个二维码编号
 			}

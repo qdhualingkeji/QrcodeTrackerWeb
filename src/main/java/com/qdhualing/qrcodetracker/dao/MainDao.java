@@ -210,7 +210,9 @@ public interface MainDao {
 
     String getZjyFromBcpRkd(String dh);
 
-    String getShrFromBcpTkd(String dh);
+    String getFzrFromBcpTkd(String dh);
+
+    String getZjyFromBcpTkd(String dh);
 
     String getFzrFromBcpCkd(String dh);
 

@@ -70,7 +70,8 @@
         WHERE QRCode_ID = #{qRCodeID}
     </update>
     <update id="updateBcpTkdData" parameterType="com.qdhualing.qrcodetracker.bean.BcpTkVerifyResult">
-        UPDATE Tkd_Bcp SET ThDw = #{thDw}, ThFzr=#{thFzr}, ShR=#{thR}, ShFzr=#{shFzr}, Remark=#{remark}
+        UPDATE Tkd_Bcp SET ThDw = #{thDw}, ThFzr=#{thFzr}, ShR=#{thR}, ShFzr=#{shFzr}, Remark=#{remark},
+        FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}
         WHERE BackDh = #{backDh}
     </update>
 
@@ -324,8 +325,8 @@
     </select>
 
     <select id="getBcpTkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
-        SELECT *
-        FROM Tkd_Bcp
+        SELECT t.*,u.TrueName AS zjyName
+        FROM Tkd_Bcp t LEFT JOIN Hl_User u ON t.ZjyID = u.UserID
         WHERE BackDh = #{0}
     </select>
 
@@ -494,8 +495,14 @@
         WHERE OutDh = #{0}
     </select>
 
-    <select id="getShrFromBcpTkd" resultType="java.lang.String">
-        SELECT ShR
+    <select id="getFzrFromBcpTkd" resultType="java.lang.String">
+        SELECT FzrID
+        FROM Tkd_Bcp
+        WHERE BackDh = #{0}
+    </select>
+
+    <select id="getZjyFromBcpTkd" resultType="java.lang.String">
+        SELECT ZjyID
         FROM Tkd_Bcp
         WHERE BackDh = #{0}
     </select>

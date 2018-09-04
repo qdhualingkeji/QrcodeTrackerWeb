@@ -1059,9 +1059,9 @@ public class MainController {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "该成品早已入库，换一个吧");
             }
 //            b = mainService.insertCPIn(inParam);
-            int ts = inParam.gettS();
+            float shl = inParam.getShl();
             b = mainService.updateCPIn(inParam);
-            int ts1=b;
+            //int ts1=b;
             if (b <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "录入CPIn失败");
             }
@@ -1105,7 +1105,7 @@ public class MainController {
             */
 
             String errorTipMsg="成品小包装入库成功,已经录入"+b+"条";
-            if(b<ts)
+            if(b<shl)
                 errorTipMsg+=("，二维码数量不足");
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
         } catch (Exception e) {
@@ -1493,11 +1493,11 @@ public class MainController {
                     break;
                 case NotificationType.BCP_RKD:
                     desPerson = mainService.getPersonFromBcpRkd(param);
-                    alertMsg = "您有一条半成品入库单需要审核";
+                    alertMsg = "您有一条半成品入库单需要"+(param.getPersonFlag()==NotificationParam.FZR?"审核":"质检");
                     break;
                 case NotificationType.BCP_TKD:
-                    desPerson = mainService.getShrFromBcpTkd(param.getDh());
-                    alertMsg = "您有一条半成品退库单需要审核";
+                    desPerson = mainService.getPersonFromBcpTkd(param);
+                    alertMsg = "您有一条半成品退库单需要"+(param.getPersonFlag()==NotificationParam.FZR?"审核":"质检");
                     break;
                 case NotificationType.CP_RKD:
                     desPerson = mainService.getPersonFromBcpRkd(param);
@@ -1912,6 +1912,11 @@ public class MainController {
                 dataResult.setThFzr(bean.getThFzr());
                 dataResult.setThR(bean.getThR());
                 dataResult.setThRq(bean.getThRq());
+                dataResult.setFzrID(bean.getFzrID());
+                dataResult.setFzrStatus(bean.getFzrStatus());
+                dataResult.setZjyID(bean.getZjyID());
+                dataResult.setZjyStatus(bean.getZjyStatus());
+                dataResult.setZjyName(bean.getZjyName());
                 List<BcpTkShowBean> wlinDataList = mainService.getBcpTkShowBeanListByBackDh(param.getDh());
                 dataResult.setBeans(wlinDataList);
                 result.setResult(dataResult);
