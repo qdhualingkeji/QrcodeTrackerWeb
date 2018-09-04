@@ -90,7 +90,8 @@
         WHERE QRCode_ID = #{qRCodeID}
     </update>
     <update id="updateBcpRkdData" parameterType="com.qdhualing.qrcodetracker.bean.BcpInVerifyResult">
-        UPDATE Rkd_Bcp SET JhDw = #{jhDw}, JhFzr=#{jhFzr}, ShR=#{jhR}, ShFzr=#{shFzr}, Remark=#{remark}
+        UPDATE Rkd_Bcp SET JhDw = #{jhDw}, JhFzr=#{jhFzr}, ShR=#{jhR}, ShFzr=#{shFzr}, Remark=#{remark},
+        FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}
         WHERE InDh = #{inDh}
     </update>
 
@@ -367,15 +368,15 @@
     </select>
 
     <select id="getBcpInShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.BcpInShowBean">
-        SELECT QRCode_ID as qRCodeID, BCP_Code as wLCode, ProductName as productName, GG as gG, SortID as sortID,
+        SELECT QRCode_ID as qRCodeID, BCP_Code as wLCode, ProductName as productName, GG as gG, b.SortID as sortID, s.SortName as sortName,
         YLPC as yLPC, SCPC as sCPC, SC_Time as time, CheJian as cheJian, GX as gx, CZY as czy, InDh as inDh, DW as dW, DWZL as dWZL,SHL as shl
-        FROM M_BCPIn
-        WHERE InDh = #{0}
+        FROM M_BCPIn b LEFT JOIN Hl_Sort s ON b.SortID = s.SortID
+        WHERE b.InDh = #{0}
     </select>
 
     <select id="getBcpRkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
-        SELECT *
-        FROM Rkd_Bcp
+        SELECT r.*,u.TrueName zjyName
+        FROM Rkd_Bcp r LEFT JOIN Hl_User u on r.ZjyID = u.UserID
         WHERE InDh = #{0}
     </select>
 

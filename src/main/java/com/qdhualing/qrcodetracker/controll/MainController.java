@@ -1790,6 +1790,9 @@ public class MainController {
                 dataResult.setShRq(bean.getShrq());
                 dataResult.setInDh(bean.getInDh());
                 dataResult.setRemark(bean.getRemark());
+                dataResult.setFzrID(bean.getFzrID());
+                dataResult.setZjyID(bean.getZjyID());
+                dataResult.setZjyName(bean.getZjyName());
                 List<BcpInShowBean> wlinDataList = mainService.getBcpInShowBeanListByInDh(param.getDh());
                 if (wlinDataList == null || wlinDataList.size() <= 0) {
                     wlinDataList = mainService.getCpInShowBeanListByInDh(param.getDh());
