@@ -101,7 +101,8 @@
         WHERE QRCode_ID = #{qRCodeID}
     </update>
     <update id="updateWlTkdData" parameterType="com.qdhualing.qrcodetracker.bean.WlTkVerifyResult">
-        UPDATE Tkd_Wl SET ThDw = #{thDw}, ThFzr=#{thFzr}, ShR=#{thR}, ShFzr=#{shFzr}, Remark=#{remark}
+        UPDATE Tkd_Wl SET ThDw = #{thDw}, ThFzr=#{thFzr}, ShR=#{thR}, ShFzr=#{shFzr}, Remark=#{remark},
+        FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}
         WHERE BackDh = #{backDh}
     </update>
 
@@ -394,8 +395,8 @@
     </select>
 
     <select id="getWlTkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlTkdBean">
-        SELECT *
-        FROM Tkd_Wl
+        SELECT t.*,u.TrueName zjyName
+        FROM Tkd_Wl t LEFT JOIN Hl_User u ON t.ZjyID = u.UserID
         WHERE BackDh = #{0}
     </select>
 

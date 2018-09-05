@@ -19,6 +19,7 @@ public class WlTkdBean {
     private Integer fzrStatus;
     private Integer zjyID;
     private Integer zjyStatus;
+    private String zjyName;
     private String remark;
     private int checkState;
 
@@ -116,6 +117,14 @@ public class WlTkdBean {
 
     public void setZjyStatus(Integer zjyStatus) {
         this.zjyStatus = zjyStatus;
+    }
+
+    public String getZjyName() {
+        return zjyName;
+    }
+
+    public void setZjyName(String zjyName) {
+        this.zjyName = zjyName;
     }
 
     public String getRemark() {

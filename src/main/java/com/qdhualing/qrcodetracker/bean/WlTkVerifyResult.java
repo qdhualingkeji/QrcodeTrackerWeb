@@ -20,6 +20,11 @@ public class WlTkVerifyResult {
     private String thFzr;
     private String shFzr;
     private String remark;
+    private Integer fzrID;
+    private Integer fzrStatus;
+    private Integer zjyID;
+    private Integer zjyStatus;
+    private String zjyName;
 
     private List<WLTkShowBean> beans;
 
@@ -77,6 +82,46 @@ public class WlTkVerifyResult {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public Integer getFzrID() {
+        return fzrID;
+    }
+
+    public void setFzrID(Integer fzrID) {
+        this.fzrID = fzrID;
+    }
+
+    public Integer getFzrStatus() {
+        return fzrStatus;
+    }
+
+    public void setFzrStatus(Integer fzrStatus) {
+        this.fzrStatus = fzrStatus;
+    }
+
+    public Integer getZjyID() {
+        return zjyID;
+    }
+
+    public void setZjyID(Integer zjyID) {
+        this.zjyID = zjyID;
+    }
+
+    public Integer getZjyStatus() {
+        return zjyStatus;
+    }
+
+    public void setZjyStatus(Integer zjyStatus) {
+        this.zjyStatus = zjyStatus;
+    }
+
+    public String getZjyName() {
+        return zjyName;
+    }
+
+    public void setZjyName(String zjyName) {
+        this.zjyName = zjyName;
     }
 
     public List<WLTkShowBean> getBeans() {

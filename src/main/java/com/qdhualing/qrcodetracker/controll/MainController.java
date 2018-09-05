@@ -1724,6 +1724,11 @@ public class MainController {
                 dataResult.setThRq(tkdBean.getThRq());
                 dataResult.setBackDh(tkdBean.getBackDh());
                 dataResult.setRemark(tkdBean.getRemark());
+                dataResult.setFzrID(tkdBean.getFzrID());
+                dataResult.setFzrStatus(tkdBean.getFzrStatus());
+                dataResult.setZjyID(tkdBean.getZjyID());
+                dataResult.setZjyStatus(tkdBean.getZjyStatus());
+                dataResult.setZjyName(tkdBean.getZjyName());
                 List<WLTkShowBean> wlinDataList = mainService.getWLTkShowBeanListByOutDh(param.getDh());
                 dataResult.setBeans(wlinDataList);
                 result.setResult(dataResult);
