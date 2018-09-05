@@ -48,7 +48,7 @@
         <!--
         WHERE ShR = #{0} AND Check_State = 0
         -->
-        WHERE ShR = #{0} AND FzrStatus != 1 AND ZjyStatus != 1
+        WHERE ShR = #{0} AND FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0
     </select>
 
     <select id="getAllPerson" resultType="com.qdhualing.qrcodetracker.bean.PersonBean" parameterType="string">
