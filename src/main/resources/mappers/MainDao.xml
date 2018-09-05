@@ -8,7 +8,7 @@
         <!--
         WHERE ThR = #{0} AND Check_State = 0
         -->
-        WHERE ThR = #{0} AND FzrStatus != 1 AND ZjyStatus != 1
+        WHERE ThR = #{0} AND FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0
     </select>
     <select id="getBcpCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         SELECT *
@@ -32,7 +32,7 @@
         <!--
         WHERE ThR = #{0} AND Check_State = 0
         -->
-        WHERE ThR = #{0} AND FzrStatus != 1 AND ZjyStatus != 1
+        WHERE ThR = #{0} AND FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0
     </select>
     <select id="getWlCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
         SELECT *
