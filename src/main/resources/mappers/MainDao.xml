@@ -61,7 +61,7 @@
 	</select>
 
     <update id="updateCpCkdData" parameterType="com.qdhualing.qrcodetracker.bean.CpOutVerifyResult">
-        UPDATE Ckd_Bcp SET LhDw = #{lhDw}, FhFzr=#{fhFzr}, FhR=#{lhR}, LhFzr=#{lhFzr}, Remark=#{remark}
+        UPDATE Ckd_Bcp SET LhDw = #{lhDw}, FhFzr=#{fhFzr}, FhR=#{lhR}, LhFzr=#{lhFzr}, Remark=#{remark}, FzrStatus=#{fzrStatus}
         WHERE OutDh = #{outDh}
     </update>
 
@@ -348,9 +348,9 @@
     </select>
 
     <select id="getBigCpInShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.BcpInShowBean">
-        SELECT QRCode_ID as qRCodeID, CP_Code as wLCode, CP_Name as productName, GG as gG, SortID as sortID,
-        YLPC as yLPC, SC_Time as time, Indh as inDh, DW as dW, DWZL as dWZL
-        FROM M_CPIn2
+        SELECT QRCode_ID as qRCodeID, CP_Code as wLCode, CP_Name as productName, GG as gG, c.SortID as sortID, s.SortName,
+        YLPC as yLPC, SCPC as sCPC, SC_Time as time, Indh as inDh, DW as dW, DWZL as dWZL, CZY as cZY
+        FROM M_CPIn2 c LEFT JOIN Hl_Sort s ON c.SortID = s.SortID
         WHERE Indh = #{0}
     </select>
 
@@ -445,7 +445,7 @@
     <select id="getBcpCkNonCheckData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         SELECT *
         FROM Ckd_Bcp
-        WHERE FzrID = #{0} and FzrStatus=0
+        WHERE FzrID = #{0} and FzrStatus!=1
     </select>
 
     <select id="getBcpRkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.BcpRkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
@@ -598,9 +598,9 @@
     </select>
 
     <select id="getSmallCpOutData" resultType="com.qdhualing.qrcodetracker.bean.SmallCpOutGetDataResult">
-        SELECT M_CPS.CP_Name , M_CPS.YLPC , M_CPS.SCPC , M_CPS.SC_Time as scDate , M_CPS.GG , Pdt_Sort2.Sort_Name
-        FROM M_CPS LEFT JOIN Pdt_Sort2 on M_CPS.SortID = Pdt_Sort2.ID
-        WHERE M_CPS.QRCode_ID = #{0}
+        SELECT m.CP_Name , m.YLPC , m.SCPC , m.SC_Time as scDate , m.GG , s.SortName
+        FROM M_CPS m LEFT JOIN Hl_Sort s on m.SortID = s.SortID
+        WHERE m.QRCode_ID = #{0}
     </select>
 
     <select id="getCPS" resultType="com.qdhualing.qrcodetracker.bean.SmallCpBean">
@@ -682,9 +682,9 @@
     </delete>
 
     <select id="getCP2ShowData" resultType="com.qdhualing.qrcodetracker.bean.BigCpOutGetDataResult">
-         SELECT M_CPS2.CP_Name , M_CPS2.YLPC , M_CPS2.SCPC , M_CPS2.SC_Time as scDate , M_CPS2.GG , Pdt_Sort2.Sort_Name
-        FROM M_CPS2 LEFT JOIN Pdt_Sort2 on M_CPS2.SortID = Pdt_Sort2.ID
-        WHERE M_CPS2.QRCode_ID = #{0}
+         SELECT m.CP_Name , m.YLPC , m.SCPC , m.SC_Time as scDate , m.GG , s.SortName
+        FROM M_CPS2 m LEFT JOIN Hl_Sort s on m.SortID = s.SortID
+        WHERE m.QRCode_ID = #{0}
     </select>
 
     <delete id="deleteCPSByCps2QrId">

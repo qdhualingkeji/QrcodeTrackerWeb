@@ -1804,9 +1804,9 @@ public class MainController {
                 }
                 if (wlinDataList == null || wlinDataList.size() <= 0) {
                     wlinDataList = mainService.getBigCpInShowBeanListByInDh(param.getDh());
-                    //大包装入库记录是没有数量的，所以会是null，但App接收的时候是用float接收的，会出错，所以设置成-1
+                    //大包装入库记录是没有数量的，所以会是null，但App接收的时候是用float接收的，会出错，所以设置成0
                     for (int i = 0; i < wlinDataList.size(); i++) {
-                        wlinDataList.get(i).setShl(-1);
+                        wlinDataList.get(i).setShl(0);
                     }
                 }
                 dataResult.setBeans(wlinDataList);
