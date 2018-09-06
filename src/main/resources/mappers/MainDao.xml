@@ -24,7 +24,7 @@
         <!--
         WHERE JhR = #{0} AND Check_State = 0
         -->
-        WHERE JhR = #{0} AND FzrStatus != 1 OR ZjyStatus != 1
+        WHERE JhR = #{0} AND FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0
     </select>
     <select id="getWlTkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlTkdBean">
         SELECT *
