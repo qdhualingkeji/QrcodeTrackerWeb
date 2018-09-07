@@ -431,9 +431,9 @@
     </select>
 
     <select id="getBcpTkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.BcpTkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
-        SELECT *
-        FROM Tkd_Bcp
-        WHERE 1=1
+        SELECT distinct t.*
+        FROM Tkd_Bcp t,M_BCPBk m
+        WHERE t.BackDh=m.BackDh
         <if test="fzrID!=null">
             and FzrID=#{fzrID} and FzrStatus=0 and ZjyStatus=1
         </if>
@@ -449,9 +449,9 @@
     </select>
 
     <select id="getBcpRkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.BcpRkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
-        SELECT *
-        FROM Rkd_Bcp
-        WHERE 1=1
+        SELECT distinct r.*
+        FROM Rkd_Bcp r,M_BCPIn m
+        WHERE r.InDh=m.InDh
         <if test="fzrID!=null">
             and FzrID=#{fzrID} and FzrStatus=0 and ZjyStatus=1
         </if>
@@ -461,9 +461,9 @@
     </select>
 
     <select id="getWlTkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.WlTkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlTkdBean">
-        SELECT *
-        FROM Tkd_Wl
-        WHERE 1=1
+        SELECT distinct t.*
+        FROM Tkd_Wl t,M_WLBk m
+        WHERE t.BackDh=m.OutDh
         <if test="fzrID!=null">
             and FzrID=#{fzrID} and FzrStatus=0 and ZjyStatus=1
         </if>
@@ -473,15 +473,15 @@
     </select>
 
     <select id="getWlCkNonCheckData" resultType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
-        SELECT *
-        FROM Ckd_Wl
-        WHERE FzrID = #{0} and FzrStatus=0
+        SELECT distinct c.*
+        FROM Ckd_Wl c,M_WLOUT m
+        WHERE c.OutDh=m.OutDh and FzrID = #{0} and FzrStatus=0
     </select>
 
     <select id="getWlRkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.WlRkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
-        SELECT *
-        FROM Rkd_Wl
-        WHERE 1=1
+        SELECT distinct r.*
+        FROM Rkd_Wl r,M_WLIn m
+        WHERE 1=1 and r.InDh=m.InDh
         <if test="fzrID!=null">
             and FzrID=#{fzrID} and FzrStatus=0 and ZjyStatus=1
         </if>
