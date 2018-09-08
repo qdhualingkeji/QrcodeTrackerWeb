@@ -3,52 +3,52 @@
 <mapper namespace="com.qdhualing.qrcodetracker.dao.MainDao">
 
     <select id="getBcpTkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
-        SELECT *
-        FROM Tkd_Bcp
+        SELECT distinct t.*
+        FROM Tkd_Bcp t,M_BCPBk m
         <!--
         WHERE ThR = #{0} AND Check_State = 0
         -->
-        WHERE ThR = #{0} AND FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0
+        WHERE t.ThR = #{0} AND t.BackDh=m.BackDh AND (FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
     </select>
     <select id="getBcpCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
-        SELECT *
-        FROM Ckd_Bcp
+        SELECT distinct c.*
+        FROM Ckd_Bcp c,M_CPOut m
         <!--
         WHERE FhR = #{0} AND Check_State = 0
         -->
-        WHERE FhR = #{0} AND FzrStatus != 1
+        WHERE c.FhR = #{0} AND c.OutDh=m.OutDh AND FzrStatus != 1
     </select>
     <select id="getBcpRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
-        SELECT *
-        FROM Rkd_Bcp
+        SELECT distinct r.*
+        FROM Rkd_Bcp r,M_BCPIn m
         <!--
         WHERE JhR = #{0} AND Check_State = 0
         -->
-        WHERE JhR = #{0} AND FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0
+        WHERE JhR = #{0} AND r.InDh=m.InDh AND (FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
     </select>
     <select id="getWlTkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlTkdBean">
-        SELECT *
-        FROM Tkd_Wl
+        SELECT distinct t.*
+        FROM Tkd_Wl t,M_WLBk m
         <!--
         WHERE ThR = #{0} AND Check_State = 0
         -->
-        WHERE ThR = #{0} AND FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0
+        WHERE ThR = #{0} AND t.BackDh=m.OutDh AND (FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
     </select>
     <select id="getWlCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
-        SELECT *
-        FROM Ckd_Wl
+        SELECT distinct c.*
+        FROM Ckd_Wl c,M_WLOUT m
         <!--
         WHERE LhR = #{0} AND Check_State = 0
         -->
-        WHERE LhR = #{0} AND FzrStatus != 1
+        WHERE LhR = #{0} AND c.OutDh=m.OutDh AND FzrStatus != 1
     </select>
     <select id="getWlRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
-        SELECT *
-        FROM Rkd_Wl
+        SELECT distinct r.*
+        FROM Rkd_Wl r,M_WLIn m
         <!--
         WHERE ShR = #{0} AND Check_State = 0
         -->
-        WHERE ShR = #{0} AND FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0
+        WHERE ShR = #{0} AND r.InDh=m.InDh AND (FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
     </select>
 
     <select id="getAllPerson" resultType="com.qdhualing.qrcodetracker.bean.PersonBean" parameterType="string">
@@ -443,9 +443,9 @@
     </select>
 
     <select id="getBcpCkNonCheckData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
-        SELECT *
-        FROM Ckd_Bcp
-        WHERE FzrID = #{0} and FzrStatus!=1
+        SELECT distinct c.*
+        FROM Ckd_Bcp c,M_CPOut m
+        WHERE FzrID = #{0} and c.OutDh=m.OutDh and FzrStatus!=1
     </select>
 
     <select id="getBcpRkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.BcpRkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
