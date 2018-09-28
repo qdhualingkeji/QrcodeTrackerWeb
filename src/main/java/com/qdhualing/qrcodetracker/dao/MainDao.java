@@ -3,6 +3,7 @@ package com.qdhualing.qrcodetracker.dao;
 import java.util.List;
 
 import com.qdhualing.qrcodetracker.bean.*;
+import com.qdhualing.qrcodetracker.model.User;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -340,7 +341,7 @@ public interface MainDao {
 
     int createWL_RKD_New(CreateWLRKDParam rkdpParams);
 
-    List<PersonBean> getAllPerson(@Param("checkQX") String checkQXGroup);
+    List<PersonBean> getAllPerson(User param);
 
     int updateBcpIn(BCPINParam bcpInParam);
 

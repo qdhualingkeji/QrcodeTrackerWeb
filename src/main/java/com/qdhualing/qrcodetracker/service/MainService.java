@@ -3,6 +3,7 @@ package com.qdhualing.qrcodetracker.service;
 import com.qdhualing.qrcodetracker.bean.*;
 import com.qdhualing.qrcodetracker.bean.CreateWLRKDParam;
 import com.qdhualing.qrcodetracker.dao.MainDao;
+import com.qdhualing.qrcodetracker.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -783,8 +784,8 @@ public class MainService {
 		return mainDao.createWL_RKD_New(rkdpParams);
 	}
 
-	public PersonResult getAllPerson(String checkQXGroup) {
-		List<PersonBean> beans =  mainDao.getAllPerson(checkQXGroup);
+	public PersonResult getAllPerson(User param) {
+		List<PersonBean> beans =  mainDao.getAllPerson(param);
 		PersonResult personResult = new PersonResult();
 		personResult.setPersonBeans(beans);
 		return personResult;

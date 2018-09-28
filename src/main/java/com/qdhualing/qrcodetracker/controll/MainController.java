@@ -286,7 +286,7 @@ public class MainController {
                 wlOutParam.setProductName(wlsBean.getProductName());
                 wlOutParam.setWlCode(wlsBean.getWLCode());
                 wlOutParam.setDw(wlsBean.getDW());
-                wlOutParam.setDwzl(wlsBean.getDWZL());
+                //wlOutParam.setDwzl(wlsBean.getDWZL());
                 wlOutParam.setGg(wlsBean.getGG());
                 wlOutParam.setSortId(wlsBean.getSortID());
                 wlOutParam.setYlpc(wlsBean.getYLPC());
@@ -422,7 +422,7 @@ public class MainController {
                 wlTKParam.setProductName(wlTempSBean.getProductName());
                 wlTKParam.setWlCode(wlTempSBean.getWLCode());
                 wlTKParam.setDw(wlTempSBean.getDW());
-                wlTKParam.setDwzl(wlTempSBean.getDWZL());
+                //wlTKParam.setDwzl(wlTempSBean.getDWZL());
                 wlTKParam.setGg(wlTempSBean.getGG());
                 wlTKParam.setSortId(wlTempSBean.getSortID());
                 wlTKParam.setYlpc(wlTempSBean.getYLPC());
@@ -501,7 +501,7 @@ public class MainController {
                 wlTLParam.setProductName(wlTempSBean.getProductName());
                 wlTLParam.setWlCode(wlTempSBean.getWLCode());
                 wlTLParam.setDw(wlTempSBean.getDW());
-                wlTLParam.setDwzl(wlTempSBean.getDWZL());
+                //wlTLParam.setDwzl(wlTempSBean.getDWZL());
                 wlTLParam.setGg(wlTempSBean.getGG());
                 wlTLParam.setSortId(wlTempSBean.getSortID());
                 wlTLParam.setYlpc(wlTempSBean.getYLPC());
@@ -744,7 +744,7 @@ public class MainController {
                 bcpTLParam.setProductName(bcpTempSBean.getProductName());
                 bcpTLParam.setBcpCode(bcpTempSBean.getBcpCode());
                 bcpTLParam.setDw(bcpTempSBean.getDw());
-                bcpTLParam.setDwzl(bcpTempSBean.getDwzl());
+                //bcpTLParam.setDwzl(bcpTempSBean.getDwzl());
                 bcpTLParam.setGg(bcpTempSBean.getGg());
                 bcpTLParam.setSortId(bcpTempSBean.getSortID());
                 bcpTLParam.setYlpc(bcpTempSBean.getYlpc());
@@ -870,7 +870,7 @@ public class MainController {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "没找到该物料，请先出库");
                 param.setProductName(bcpTempSBean.getProductName());
                 param.setBcpCode(bcpTempSBean.getBcpCode());
-                param.setDwzl(bcpTempSBean.getDwzl());
+                //param.setDwzl(bcpTempSBean.getDwzl());
                 param.setSortID(bcpTempSBean.getSortID());
                 param.setYlpc(bcpTempSBean.getYlpc());
                 param.setScpc(bcpTempSBean.getScpc());
@@ -2900,7 +2900,7 @@ public class MainController {
 
         ActionResult<PersonResult> result = new ActionResult<PersonResult>();
         try {
-            PersonResult personResult = mainService.getAllPerson(param.getCheckQXGroup());
+            PersonResult personResult = mainService.getAllPerson(param);
             if (personResult.getPersonBeans() == null || personResult.getPersonBeans().size() <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "无人员信息");
             }

@@ -25,6 +25,7 @@ public class PersonBean {
     private int groupCode;
     private int group1;
     private int group2;
+    private String checkQXGroup;
 
     public int getUserId() {
         return userId;
@@ -152,5 +153,13 @@ public class PersonBean {
 
     public void setGroup2(int group2) {
         this.group2 = group2;
+    }
+
+    public String getCheckQXGroup() {
+        return checkQXGroup;
+    }
+
+    public void setCheckQXGroup(String checkQXGroup) {
+        this.checkQXGroup = checkQXGroup;
     }
 }

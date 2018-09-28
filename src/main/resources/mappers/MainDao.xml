@@ -51,11 +51,11 @@
         WHERE ShR = #{0} AND r.InDh=m.InDh AND (FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
     </select>
 
-    <select id="getAllPerson" resultType="com.qdhualing.qrcodetracker.bean.PersonBean" parameterType="string">
+    <select id="getAllPerson" resultType="com.qdhualing.qrcodetracker.bean.PersonBean" parameterType="com.qdhualing.qrcodetracker.model.User">
 		SELECT *
-        FROM Hl_User where 1=1
-        <if test="checkQX!=null">
-            <bind name="pattern" value="'%'+checkQX+'%'"/>
+        FROM Hl_User where GroupID=#{GroupID}
+        <if test="CheckQXGroup!=null">
+            <bind name="pattern" value="'%'+CheckQXGroup+'%'"/>
             AND CheckQXGroup LIKE #{pattern}
         </if>
 	</select>
@@ -1388,13 +1388,17 @@ SmlPk45		= #{smlPk45},
 
     <update id="updateBCPTempSByBCPTk" parameterType="com.qdhualing.qrcodetracker.bean.BCPTKParam">
         UPDATE M_BCPTempS
-        SET SHL = SHL - #{shl}
+        SET
+        DWZL = DWZL - #{dwzl},
+        SHL = SHL - #{shl}
         WHERE QRCode_ID = #{qrCodeId};
     </update>
 
     <update id="updateBCPSByTk" parameterType="com.qdhualing.qrcodetracker.bean.BCPTKParam">
         UPDATE M_BCPS
-        SET SHL = SHL + #{shl}
+        SET
+        DWZL = DWZL + #{dwzl},
+        SHL = SHL + #{shl}
         WHERE QRCode_ID = #{qrCodeId}
     </update>
 
@@ -1773,7 +1777,9 @@ SmlPk45		= #{smlPk45},
 
     <update id="updateBcpTempSByTl" parameterType="com.qdhualing.qrcodetracker.bean.BcpThrowParam">
         UPDATE M_BCPTempS
-        SET SHL = SHL - #{tlShl}
+        SET
+        DWZL = DWZL - #{dwzl},
+        SHL = SHL - #{tlShl}
         WHERE QRCode_ID = #{qrcodeId};
     </update>
 
@@ -1784,7 +1790,9 @@ SmlPk45		= #{smlPk45},
 
     <update id="updateBcpTl" parameterType="com.qdhualing.qrcodetracker.bean.BcpThrowParam">
         UPDATE M_BCPTl
-        SET SHL = SHL + #{tlShl}
+        SET
+        DWZL = DWZL + #{dwzl},
+        SHL = SHL + #{tlShl}
         WHERE QRCode_ID = #{qrcodeId};
     </update>
 
@@ -2389,7 +2397,9 @@ SmlPk45		= #{smlPk45},
 
     <update id="updateWLTl" parameterType="com.qdhualing.qrcodetracker.bean.WLThrowParam">
         UPDATE M_WLTl
-        SET SHL = SHL + #{tlShl}
+        SET
+        DWZL = DWZL + #{dwzl},
+        SHL = SHL + #{tlShl}
         WHERE QRCode_ID = #{qrcodeId};
     </update>
 
@@ -2493,7 +2503,8 @@ SmlPk45		= #{smlPk45},
     <update id="updateWLTempSByTl" parameterType="com.qdhualing.qrcodetracker.bean.WLThrowParam">
         UPDATE M_WLTempS
         SET
-        PCZL = PCZL - #{dwzl}*#{tlShl},
+        PCZL = PCZL - #{dwzl},
+        DWZL = DWZL - #{dwzl},
         SHL = SHL - #{tlShl}
         WHERE QRCode_ID = #{qrcodeId};
     </update>
@@ -2542,7 +2553,8 @@ SmlPk45		= #{smlPk45},
     <update id="updateWLTempSByTk" parameterType="com.qdhualing.qrcodetracker.bean.WLTKParam">
         UPDATE M_WLTempS
         SET
-        PCZL = PCZL - #{dwzl}*#{tkShL},
+        PCZL = PCZL - #{dwzl},
+        DWZL = DWZL - #{dwzl},
         SHL = SHL - #{tkShL}
         WHERE QRCode_ID = #{qrCodeId};
     </update>
@@ -2555,7 +2567,8 @@ SmlPk45		= #{smlPk45},
     <update id="updateWLSByTk" parameterType="com.qdhualing.qrcodetracker.bean.WLTKParam">
         UPDATE M_WLS
         SET
-        PCZL = PCZL + #{dwzl}*#{tkShL},
+        PCZL = PCZL + #{dwzl},
+        DWZL = DWZL + #{dwzl},
         SHL = SHL + #{tkShL}
         WHERE QRCode_ID = #{qrCodeId};
     </update>
@@ -2685,7 +2698,8 @@ SmlPk45		= #{smlPk45},
         UPDATE M_WLTempS
         SET
         LL_Time = #{time},
-        PCZL = PCZL + #{dwzl}*#{ckShL},
+        PCZL = PCZL + #{dwzl},
+        DWZL = DWZL + #{dwzl},
         SHL = SHL + #{ckShL}
         WHERE QRCode_ID = #{qrCodeId};
     </update>
@@ -2717,7 +2731,7 @@ SmlPk45		= #{smlPk45},
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="qrCodeId!=null">#{qrCodeId},</if>
             <if test="productName!=null">#{productName},</if>
-            #{dwzl}*#{ckShL},
+            #{dwzl},
             #{dwzl},
             <if test="sortId!=null">#{sortId},</if>
             <if test="wlCode!=null">#{wlCode},</if>
@@ -2741,7 +2755,8 @@ SmlPk45		= #{smlPk45},
 
         UPDATE M_WLS
         SET
-        PCZL = PCZL-#{dwzl}*#{ckShL},
+        PCZL = PCZL-#{dwzl},
+        DWZL = DWZL-#{dwzl},
         SHL = SHL-#{ckShL}
         WHERE QRCode_ID = #{qrCodeId};
 
