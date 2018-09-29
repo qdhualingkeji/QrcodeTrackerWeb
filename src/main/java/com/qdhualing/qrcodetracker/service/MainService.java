@@ -458,12 +458,7 @@ public class MainService {
 	}
 
 	public String getPersonFromWlRkd(NotificationParam param) {
-		String str=null;
-		if(param.getPersonFlag()==NotificationParam.FZR)
-			str=mainDao.getFzrFromWlRkd(param.getDh());
-		else if(param.getPersonFlag()==NotificationParam.ZJY)
-			str=mainDao.getZjyFromWlRkd(param.getDh());
-		return str;
+		return mainDao.getPersonFromWlRkd(param.getDh(),param.getPersonFlag());
 	}
 
 	public String getFzrFromWlCkd(String dh) {
@@ -502,10 +497,12 @@ public class MainService {
 		return mainDao.getFzrFromBcpCkd(dh);
 	}
 
-	public List<WlRkdBean> getWlRkNonCheckData(Integer fzrID,Integer zjyID) {
+	public List<WlRkdBean> getWlRkNonCheckData(Integer bzID,Integer fzrID,Integer zjyID,Integer zjldID) {
 		WlRkdBean wlrkd=new WlRkdBean();
+		wlrkd.setBzID(bzID);
 		wlrkd.setFzrID(fzrID);
 		wlrkd.setZjyID(zjyID);
+		wlrkd.setZjldID(zjldID);
 
 		return mainDao.getWlRkNonCheckData(wlrkd);
 	}

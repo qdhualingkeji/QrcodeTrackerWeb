@@ -197,9 +197,7 @@ public interface MainDao {
     //获取大包装记录信息
     List<BigCpBean> getBigCpIn2(String qrCodeId);
 
-    String getFzrFromWlRkd(String dh);
-
-    String getZjyFromWlRkd(String dh);
+    String getPersonFromWlRkd(String dh,@Param("personFlag") int personFlag);
 
     String getFzrFromWlCkd(String dh);
 

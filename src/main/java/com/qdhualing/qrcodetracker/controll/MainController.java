@@ -1478,37 +1478,44 @@ public class MainController {
             String desPerson = null;
             //推送消息
             String alertMsg = null;
+            String alertMsgStr1 = null;
+            String alertMsgStr2 = null;
+            if(param.getPersonFlag()==NotificationParam.BZ||param.getPersonFlag()==NotificationParam.FZR)
+                alertMsgStr2="审核";
+            else if(param.getPersonFlag()==NotificationParam.ZJY||param.getPersonFlag()==NotificationParam.ZJLD)
+                alertMsgStr2="质检";
             switch (param.getStyle()) {
                 case NotificationType.WL_RKD:
                     desPerson = mainService.getPersonFromWlRkd(param);
-                    alertMsg = "您有一条物料入库单需要"+(param.getPersonFlag()==NotificationParam.FZR?"审核":"质检");
+                    alertMsgStr1="物料入库单";
                     break;
                 case NotificationType.WL_CKD:
                     desPerson = mainService.getFzrFromWlCkd(param.getDh());
-                    alertMsg = "您有一条物料出库单需要审核";
+                    alertMsgStr1="物料出库单";
                     break;
                 case NotificationType.WL_TKD:
                     desPerson = mainService.getPersonFromWlTkd(param);
-                    alertMsg = "您有一条物料退库单需要"+(param.getPersonFlag()==NotificationParam.FZR?"审核":"质检");
+                    alertMsgStr1="物料退库单";
                     break;
                 case NotificationType.BCP_RKD:
                     desPerson = mainService.getPersonFromBcpRkd(param);
-                    alertMsg = "您有一条半成品入库单需要"+(param.getPersonFlag()==NotificationParam.FZR?"审核":"质检");
+                    alertMsgStr1="半成品入库单";
                     break;
                 case NotificationType.BCP_TKD:
                     desPerson = mainService.getPersonFromBcpTkd(param);
-                    alertMsg = "您有一条半成品退库单需要"+(param.getPersonFlag()==NotificationParam.FZR?"审核":"质检");
+                    alertMsgStr1="半成品退库单";
                     break;
                 case NotificationType.CP_RKD:
                     desPerson = mainService.getPersonFromBcpRkd(param);
-                    alertMsg = "您有一条成品入库单需要"+(param.getPersonFlag()==NotificationParam.FZR?"审核":"质检");
+                    alertMsgStr1="成品入库单";
                     break;
                 case NotificationType.CP_CKD:
                     desPerson = mainService.getFzrFromBcpCkd(param.getDh());
-                    alertMsg = "您有一条成品出库单需要审核";
+                    alertMsgStr1="成品出库单";
                     break;
             }
             try {
+                alertMsg = "您有一条"+alertMsgStr1+"需要"+alertMsgStr2;
                 JPushUtils.sendNotification(alertMsg, desPerson);
             } catch (APIConnectionException e) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "推送失败");
@@ -1542,15 +1549,21 @@ public class MainController {
                 NonCheckResult dataResult = new NonCheckResult();
                 List<NonCheckBean> allBeans = new ArrayList<NonCheckBean>();
 
+                Integer bzID=null;
                 Integer fzrID=null;
                 Integer zjyID=null;
+                Integer zjldID=null;
                 Integer userId = Integer.valueOf(param.getUserId());
-                if(param.getCheckQXFlag()==MainParams.FZR)
+                if(param.getCheckQXFlag()==MainParams.BZ)
+                    bzID=userId;
+                else if(param.getCheckQXFlag()==MainParams.FZR)
                     fzrID=userId;
                 else if(param.getCheckQXFlag()==MainParams.ZJY)
                     zjyID=userId;
+                else if(param.getCheckQXFlag()==MainParams.ZJLD)
+                    zjldID=userId;
 
-                List<WlRkdBean> wlRkNonCheckData = mainService.getWlRkNonCheckData(fzrID,zjyID);
+                List<WlRkdBean> wlRkNonCheckData = mainService.getWlRkNonCheckData(bzID,fzrID,zjyID,zjldID);
                 for (int i = 0; i < wlRkNonCheckData.size(); i++) {
                     NonCheckBean bean = new NonCheckBean();
                     WlRkdBean single = wlRkNonCheckData.get(i);
@@ -1981,19 +1994,27 @@ public class MainController {
             try {
                 Integer fzrStatus=0;
                 Integer zjyStatus=0;
+                Integer bzStatus=0;
+                Integer zjldStatus=0;
                 if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=1;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJY)
                     zjyStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.BZ)
+                    bzStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.ZJLD)
+                    zjldStatus=1;
 
                 WlRkdBean wlrkd=new WlRkdBean();
                 wlrkd.setInDh(param.getDh());
+                wlrkd.setBzStatus(bzStatus);
                 wlrkd.setFzrStatus(fzrStatus);
                 wlrkd.setZjyStatus(zjyStatus);
+                wlrkd.setZjldStatus(zjldStatus);
                 int a = mainService.agreeWlIn(wlrkd);
                 if (a == 1) {
                     CreateWLRKDParam wlRKD = mainService.getRkdWlByInDh(param.getDh());
-                    if(wlRKD.getFzrStatus()==1&&wlRKD.getZjyStatus()==1){
+                    if(wlRKD.getBzStatus()==1&&wlRKD.getFzrStatus()==1&&wlRKD.getZjyStatus()==1&&wlRKD.getZjldStatus()==1){
                         /**
                          * @author 马鹏昊
                          * @desc 插入到库存表
@@ -2045,17 +2066,25 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
+                Integer bzStatus=0;
                 Integer fzrStatus=0;
                 Integer zjyStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.FZR)
+                Integer zjldStatus=0;
+                if(param.getCheckQXFlag()==VerifyParam.BZ)
+                    bzStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=2;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJY)
                     zjyStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.ZJLD)
+                    zjldStatus=2;
 
                 WlRkdBean wlrkd=new WlRkdBean();
                 wlrkd.setInDh(param.getDh());
+                wlrkd.setBzStatus(bzStatus);
                 wlrkd.setFzrStatus(fzrStatus);
                 wlrkd.setZjyStatus(zjyStatus);
+                wlrkd.setZjldStatus(zjldStatus);
                 int a = mainService.refuseWlIn(wlrkd);
                 if (a == 1) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");

@@ -297,11 +297,17 @@
         WHERE InDh = #{0}
         -->
         UPDATE Rkd_Wl SET
+        <if test="bzStatus!=0">
+            bzStatus=#{bzStatus}
+        </if>
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
         </if>
         <if test="zjyStatus!=0">
             zjyStatus=#{zjyStatus}
+        </if>
+        <if test="zjldStatus!=0">
+            zjldStatus=#{zjldStatus}
         </if>
         WHERE InDh = #{inDh}
     </update>
@@ -311,11 +317,17 @@
         WHERE InDh = #{0}
         -->
         UPDATE Rkd_Wl SET
-        <if test="fzrStatus!=0">
-            fzrStatus=#{fzrStatus}
+        <if test="bzStatus==1">
+            bzStatus=${bzStatus}
         </if>
-        <if test="zjyStatus!=0">
-            zjyStatus=#{zjyStatus}
+        <if test="fzrStatus==1">
+            fzrStatus=${fzrStatus}
+        </if>
+        <if test="zjyStatus==1">
+            zjyStatus=${zjyStatus}
+        </if>
+        <if test="zjldStatus==1">
+            zjldStatus=${zjldStatus}
         </if>
         WHERE InDh = #{inDh}
     </update>
@@ -482,11 +494,17 @@
         SELECT distinct r.*
         FROM Rkd_Wl r,M_WLIn m
         WHERE 1=1 and r.InDh=m.InDh
+        <if test="bzID!=null">
+            and BzID=#{bzID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
+        </if>
         <if test="fzrID!=null">
-            and FzrID=#{fzrID} and FzrStatus=0 and ZjyStatus=1
+            and FzrID=#{fzrID} and BzStatus=1 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
         </if>
         <if test="zjyID!=null">
-            and ZjyID=#{zjyID} and FzrStatus=0 and ZjyStatus=0
+            and ZjyID=#{zjyID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0
+        </if>
+        <if test="zjldID!=null">
+            and ZjldID=#{zjldID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=0
         </if>
     </select>
 
@@ -538,14 +556,20 @@
         WHERE OutDh = #{0}
     </select>
 
-    <select id="getFzrFromWlRkd" resultType="java.lang.String">
-        SELECT FzrID
-        FROM Rkd_Wl
-        WHERE InDh = #{0}
-    </select>
-
-    <select id="getZjyFromWlRkd" resultType="java.lang.String">
-        SELECT ZjyID
+    <select id="getPersonFromWlRkd" resultType="java.lang.String">
+        SELECT
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@BZ">
+          BzID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@FZR">
+          FzrID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@ZJY">
+          ZjyID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@ZJLD">
+          ZjldID
+        </if>
         FROM Rkd_Wl
         WHERE InDh = #{0}
     </select>
@@ -555,6 +579,7 @@
         FROM M_CPIn2
         WHERE QRCode_ID = #{0}
     </select>
+
     <select id="getSmallCpInData" resultType="com.qdhualing.qrcodetracker.bean.CPINParam">
         SELECT *
         FROM M_CPIn
@@ -3063,10 +3088,14 @@ SmlPk45		= #{smlPk45},
             <if test="FhDw!=null">
                 JhDw,
             </if>
+            BzID,
+            BzStatus,
             FzrID,
             FzrStatus,
             ZjyID,
-            ZjyStatus
+            ZjyStatus,
+            ZjldID,
+            ZjldStatus
         </trim>
         values
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -3091,10 +3120,14 @@ SmlPk45		= #{smlPk45},
             <if test="FhDw!=null">
                 #{FhDw},
             </if>
+            #{BzID},
+            #{BzStatus},
             #{FzrID},
             #{FzrStatus},
             #{ZjyID},
-            #{ZjyStatus}
+            #{ZjyStatus},
+            #{ZjldID},
+            #{ZjldStatus}
         </trim>
     </insert>
 
