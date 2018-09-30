@@ -1583,7 +1583,7 @@ public class MainController {
                     bean.setState(single.getCheckState());
                     allBeans.add(bean);
                 }
-                List<WlTkdBean> wlTkNonCheckData = mainService.getWlTkNonCheckData(fzrID,zjyID);
+                List<WlTkdBean> wlTkNonCheckData = mainService.getWlTkNonCheckData(bzID,fzrID,zjyID,zjldID);
                 for (int i = 0; i < wlTkNonCheckData.size(); i++) {
                     NonCheckBean bean = new NonCheckBean();
                     WlTkdBean single = wlTkNonCheckData.get(i);
@@ -1741,11 +1741,17 @@ public class MainController {
                 dataResult.setThRq(tkdBean.getThRq());
                 dataResult.setBackDh(tkdBean.getBackDh());
                 dataResult.setRemark(tkdBean.getRemark());
+                dataResult.setBzID(tkdBean.getBzID());
+                dataResult.setBzStatus(tkdBean.getBzStatus());
+                dataResult.setBzName(tkdBean.getBzName());
                 dataResult.setFzrID(tkdBean.getFzrID());
                 dataResult.setFzrStatus(tkdBean.getFzrStatus());
                 dataResult.setZjyID(tkdBean.getZjyID());
                 dataResult.setZjyStatus(tkdBean.getZjyStatus());
                 dataResult.setZjyName(tkdBean.getZjyName());
+                dataResult.setZjldID(tkdBean.getZjldID());
+                dataResult.setZjldStatus(tkdBean.getZjldStatus());
+                dataResult.setZjldName(tkdBean.getZjldName());
                 List<WLTkShowBean> wlinDataList = mainService.getWLTkShowBeanListByOutDh(param.getDh());
                 dataResult.setBeans(wlinDataList);
                 result.setResult(dataResult);
@@ -2268,17 +2274,25 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
+                Integer bzStatus=0;
                 Integer fzrStatus=0;
                 Integer zjyStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.FZR)
+                Integer zjldStatus=0;
+                if(param.getCheckQXFlag()==VerifyParam.BZ)
+                    bzStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=2;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJY)
                     zjyStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.ZJLD)
+                    zjldStatus=2;
 
                 WlTkdBean wltkd=new WlTkdBean();
                 wltkd.setBackDh(param.getDh());
+                wltkd.setBzStatus(bzStatus);
                 wltkd.setFzrStatus(fzrStatus);
                 wltkd.setZjyStatus(zjyStatus);
+                wltkd.setZjldStatus(zjldStatus);
 
                 int a = mainService.refuseWlTk(wltkd);
                 if (a == 1) {

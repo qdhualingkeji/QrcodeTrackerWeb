@@ -32,7 +32,7 @@
         <!--
         WHERE ThR = #{0} AND Check_State = 0
         -->
-        WHERE ThR = #{0} AND t.BackDh=m.OutDh AND (FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
+        WHERE ThR = #{0} AND t.BackDh=m.OutDh AND (BzStatus = 2 OR FzrStatus = 2 OR ZjyStatus = 2 OR ZjldStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
     </select>
     <select id="getWlCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
         SELECT distinct c.*
@@ -236,16 +236,18 @@
         WHERE InDh = #{inDh}
     </update>
     <update id="refuseWlTk" parameterType="com.qdhualing.qrcodetracker.bean.WlTkdBean">
-        <!--
-        UPDATE Tkd_Wl SET Check_State = 0
-        WHERE BackDh = #{0}
-        -->
         UPDATE Tkd_Wl SET
+        <if test="bzStatus!=0">
+            bzStatus=#{bzStatus}
+        </if>
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
         </if>
         <if test="zjyStatus!=0">
             zjyStatus=#{zjyStatus}
+        </if>
+        <if test="zjldStatus!=0">
+            zjldStatus=#{zjldStatus}
         </if>
         WHERE BackDh = #{backDh}
     </update>
@@ -391,8 +393,8 @@
     </select>
 
     <select id="getWlTkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlTkdBean">
-        SELECT t.*,u.TrueName zjyName
-        FROM Tkd_Wl t LEFT JOIN Hl_User u ON t.ZjyID = u.UserID
+        SELECT t.*,u1.TrueName bzName,u.TrueName zjyName,u2.TrueName zjldName
+        FROM Tkd_Wl t LEFT JOIN Hl_User u on t.ZjyID = u.UserID LEFT JOIN Hl_User u1 on t.BzID = u1.UserID LEFT JOIN Hl_User u2 on t.ZjldID = u2.UserID
         WHERE BackDh = #{0}
     </select>
 
@@ -460,11 +462,17 @@
         SELECT distinct t.*
         FROM Tkd_Wl t,M_WLBk m
         WHERE t.BackDh=m.OutDh
+        <if test="bzID!=null">
+            and BzID=#{bzID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
+        </if>
         <if test="fzrID!=null">
-            and FzrID=#{fzrID} and FzrStatus=0 and ZjyStatus=1
+            and FzrID=#{fzrID} and BzStatus=1 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
         </if>
         <if test="zjyID!=null">
-            and ZjyID=#{zjyID} and FzrStatus=0 and ZjyStatus=0
+            and ZjyID=#{zjyID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0
+        </if>
+        <if test="zjldID!=null">
+            and ZjldID=#{zjldID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=0
         </if>
     </select>
 
@@ -528,14 +536,20 @@
         WHERE InDh = #{0}
     </select>
 
-    <select id="getFzrFromWlTkd" resultType="java.lang.String">
-        SELECT FzrID
-        FROM Tkd_Wl
-        WHERE BackDh = #{0}
-    </select>
-
-    <select id="getZjyFromWlTkd" resultType="java.lang.String">
-        SELECT ZjyID
+    <select id="getPersonFromWlTkd" resultType="java.lang.String">
+        SELECT
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@BZ">
+            BzID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@FZR">
+            FzrID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@ZJY">
+            ZjyID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@ZJLD">
+            ZjldID
+        </if>
         FROM Tkd_Wl
         WHERE BackDh = #{0}
     </select>
@@ -2674,10 +2688,14 @@ SmlPk45		= #{smlPk45},
             <if test="thFzr!=null">
                 ThFzr,
             </if>
+                BzID,
+                BzStatus,
                 FzrID,
                 FzrStatus,
                 ZjyID,
                 ZjyStatus,
+                ZjldID,
+                ZjldStatus,
             <if test="remark!=null">
                 Remark,
             </if>
@@ -2705,10 +2723,14 @@ SmlPk45		= #{smlPk45},
             <if test="thFzr!=null">
                 #{thFzr},
             </if>
+                #{bzID},
+                #{bzStatus},
                 #{fzrID},
                 #{fzrStatus},
                 #{zjyID},
                 #{zjyStatus},
+                #{zjldID},
+                #{zjldStatus},
             <if test="remark!=null">
                 #{remark},
             </if>
