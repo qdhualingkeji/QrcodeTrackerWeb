@@ -1490,7 +1490,7 @@ public class MainController {
                     alertMsgStr1="物料入库单";
                     break;
                 case NotificationType.WL_CKD:
-                    desPerson = mainService.getFzrFromWlCkd(param.getDh());
+                    desPerson = mainService.getPersonFromWlCkd(param);
                     alertMsgStr1="物料出库单";
                     break;
                 case NotificationType.WL_TKD:
@@ -1573,7 +1573,7 @@ public class MainController {
                     bean.setState(single.getCheckState());
                     allBeans.add(bean);
                 }
-                List<WlCkdBean> wlCkNonCheckData = mainService.getWlCkNonCheckData(fzrID);
+                List<WlCkdBean> wlCkNonCheckData = mainService.getWlCkNonCheckData(bzID,fzrID);
                 for (int i = 0; i < wlCkNonCheckData.size(); i++) {
                     NonCheckBean bean = new NonCheckBean();
                     WlCkdBean single = wlCkNonCheckData.get(i);
@@ -2115,33 +2115,39 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
+                Integer bzStatus=0;
                 Integer fzrStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.FZR)
+                if(param.getCheckQXFlag()==VerifyParam.BZ)
+                    bzStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=1;
 
                 WlCkdBean wlckd=new WlCkdBean();
                 wlckd.setOutDh(param.getDh());
+                wlckd.setBzStatus(bzStatus);
                 wlckd.setFzrStatus(fzrStatus);
 
                 int a = mainService.agreeWlOut(wlckd);
                 if (a == 1) {
-                    List<WLOutParam> wlOutList = mainService.getWLOutParamListByInDh(param.getDh());
-                    for (WLOutParam wlOutParam : wlOutList) {
-                        //更新仓库库存表数量
-                        a = mainService.outUpdateWLS(wlOutParam);
-                        if (a <= 0) {
-                            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
-                        }
-                        //查询临时库存表中是否有数据
-                        a = mainService.findWLTempS(wlOutParam.getQrCodeId());
-                        if (a <= 0) {
-                            //插入临时库存表（车间）
-                            a = mainService.insertWLTempS(wlOutParam);
-                        } else {
-                            a = mainService.updateWLTempS(wlOutParam);
+                    WlCkdBean wlCkd = mainService.getWlCkdBean(param.getDh());
+                    if(wlCkd.getBzStatus()==1&&wlCkd.getFzrStatus()==1) {
+                        List<WLOutParam> wlOutList = mainService.getWLOutParamListByInDh(param.getDh());
+                        for (WLOutParam wlOutParam : wlOutList) {
+                            //更新仓库库存表数量
+                            a = mainService.outUpdateWLS(wlOutParam);
+                            if (a <= 0) {
+                                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
+                            }
+                            //查询临时库存表中是否有数据
+                            a = mainService.findWLTempS(wlOutParam.getQrCodeId());
+                            if (a <= 0) {
+                                //插入临时库存表（车间）
+                                a = mainService.insertWLTempS(wlOutParam);
+                            } else {
+                                a = mainService.updateWLTempS(wlOutParam);
+                            }
                         }
                     }
-
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 } else {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "审核失败");
@@ -2166,12 +2172,16 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
+                Integer bzStatus=0;
                 Integer fzrStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.FZR)
+                if(param.getCheckQXFlag()==VerifyParam.BZ)
+                    bzStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=2;
 
                 WlCkdBean wlckd=new WlCkdBean();
                 wlckd.setOutDh(param.getDh());
+                wlckd.setBzStatus(bzStatus);
                 wlckd.setFzrStatus(fzrStatus);
 
                 int a = mainService.refuseWlOut(wlckd);

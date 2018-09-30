@@ -15,6 +15,8 @@ public class WlCkdBean {
     private String fhFzr;
     private String lhR;
     private String lhFzr;
+    private Integer bzID;
+    private Integer bzStatus;
     private Integer fzrID;
     private Integer fzrStatus;
     private String remark;
@@ -82,6 +84,22 @@ public class WlCkdBean {
 
     public void setLhFzr(String lhFzr) {
         this.lhFzr = lhFzr;
+    }
+
+    public Integer getBzID() {
+        return bzID;
+    }
+
+    public void setBzID(Integer bzID) {
+        this.bzID = bzID;
+    }
+
+    public Integer getBzStatus() {
+        return bzStatus;
+    }
+
+    public void setBzStatus(Integer bzStatus) {
+        this.bzStatus = bzStatus;
     }
 
     public Integer getFzrID() {

@@ -37,10 +37,7 @@
     <select id="getWlCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
         SELECT distinct c.*
         FROM Ckd_Wl c,M_WLOUT m
-        <!--
-        WHERE LhR = #{0} AND Check_State = 0
-        -->
-        WHERE LhR = #{0} AND c.OutDh=m.OutDh AND FzrStatus != 1
+        WHERE LhR = #{0} AND c.OutDh=m.OutDh AND (BzStatus = 2 OR FzrStatus = 2 OR FzrStatus = 0 AND BzStatus = 0)
     </select>
     <select id="getWlRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
         SELECT distinct r.*
@@ -108,7 +105,7 @@
         WHERE QRCode_ID = #{qRCodeID}
     </update>
     <update id="updateWlCkdData" parameterType="com.qdhualing.qrcodetracker.bean.WlOutVerifyResult">
-        UPDATE Ckd_Wl SET LhDw = #{lhDw}, LhFzr=#{lhFzr}, FhR=#{lhR}, FhFzr=#{fhFzr}, Remark=#{remark}, FzrStatus=#{fzrStatus}
+        UPDATE Ckd_Wl SET LhDw = #{lhDw}, LhFzr=#{lhFzr}, FhR=#{lhR}, FhFzr=#{fhFzr}, Remark=#{remark}, BzStatus=#{bzStatus}, FzrStatus=#{fzrStatus}
         WHERE OutDh = #{outDh}
     </update>
 
@@ -267,32 +264,26 @@
         WHERE BackDh = #{backDh}
     </update>
     <update id="refuseWlOut" parameterType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
-        <!--
-        UPDATE Ckd_Wl SET Check_State = 0
-        WHERE OutDh = #{0}
-        -->
         UPDATE Ckd_Wl SET
+        <if test="bzStatus!=0">
+            bzStatus=#{bzStatus}
+        </if>
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
         </if>
         WHERE OutDh = #{outDh}
     </update>
     <update id="agreeWlOut" parameterType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
-        <!--
-        UPDATE Ckd_Wl SET Check_State = 1
-        WHERE OutDh = #{0}
-        -->
         UPDATE Ckd_Wl SET
+        <if test="bzStatus!=0">
+            bzStatus=#{bzStatus}
+        </if>
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
         </if>
         WHERE OutDh = #{outDh}
     </update>
     <update id="refuseWlIn" parameterType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
-        <!--
-        UPDATE Rkd_Wl SET Check_State = 0
-        WHERE InDh = #{0}
-        -->
         UPDATE Rkd_Wl SET
         <if test="bzStatus!=0">
             bzStatus=#{bzStatus}
@@ -309,10 +300,6 @@
         WHERE InDh = #{inDh}
     </update>
     <update id="agreeWlIn" parameterType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
-        <!--
-        UPDATE Rkd_Wl SET Check_State = 1
-        WHERE InDh = #{0}
-        -->
         UPDATE Rkd_Wl SET
         <if test="bzStatus==1">
             bzStatus=${bzStatus}
@@ -484,13 +471,19 @@
     <select id="getWlCkNonCheckData" resultType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
         SELECT distinct c.*
         FROM Ckd_Wl c,M_WLOUT m
-        WHERE c.OutDh=m.OutDh and FzrID = #{0} and FzrStatus=0
+        WHERE c.OutDh=m.OutDh
+        <if test="bzID!=null">
+            and BzID = #{bzID} and BzStatus=0 and FzrStatus=0
+        </if>
+        <if test="fzrID!=null">
+            and FzrID = #{fzrID} and BzStatus=1 and FzrStatus=0
+        </if>
     </select>
 
     <select id="getWlRkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.WlRkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
         SELECT distinct r.*
         FROM Rkd_Wl r,M_WLIn m
-        WHERE 1=1 and r.InDh=m.InDh
+        WHERE r.InDh=m.InDh
         <if test="bzID!=null">
             and BzID=#{bzID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
         </if>
@@ -547,8 +540,14 @@
         WHERE BackDh = #{0}
     </select>
 
-    <select id="getFzrFromWlCkd" resultType="java.lang.String">
-        SELECT FzrID
+    <select id="getPersonFromWlCkd" resultType="java.lang.String">
+        SELECT
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@BZ">
+            BzID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@FZR">
+            FzrID
+        </if>
         FROM Ckd_Wl
         WHERE OutDh = #{0}
     </select>
@@ -2962,6 +2961,8 @@ SmlPk45		= #{smlPk45},
             <if test="lhFzr!=null">
                 LhFzr,
             </if>
+                BzID,
+                BzStatus,
                 FzrID,
                 FzrStatus,
             <if test="remark!=null">
@@ -2991,8 +2992,10 @@ SmlPk45		= #{smlPk45},
             <if test="lhFzr!=null">
                 #{lhFzr},
             </if>
-                #{FzrID},
-                #{FzrStatus},
+                #{bzID},
+                #{bzStatus},
+                #{fzrID},
+                #{fzrStatus},
             <if test="remark!=null">
                 #{remark},
             </if>

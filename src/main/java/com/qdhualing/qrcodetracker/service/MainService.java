@@ -461,8 +461,8 @@ public class MainService {
 		return mainDao.getPersonFromWlRkd(param.getDh(),param.getPersonFlag());
 	}
 
-	public String getFzrFromWlCkd(String dh) {
-		return mainDao.getFzrFromWlCkd(dh);
+	public String getPersonFromWlCkd(NotificationParam param) {
+		return mainDao.getPersonFromWlCkd(param.getDh(),param.getPersonFlag());
 	}
 
 
@@ -507,9 +507,12 @@ public class MainService {
 		return mainDao.getWlRkNonCheckData(wlrkd);
 	}
 
-	public List<WlCkdBean> getWlCkNonCheckData(Integer fzrID) {
+	public List<WlCkdBean> getWlCkNonCheckData(Integer bzID,Integer fzrID) {
+		WlCkdBean wlCkd=new WlCkdBean();
+		wlCkd.setBzID(bzID);
+		wlCkd.setFzrID(fzrID);
 
-		return mainDao.getWlCkNonCheckData(fzrID);
+		return mainDao.getWlCkNonCheckData(wlCkd);
 	}
 
 	public List<WlTkdBean> getWlTkNonCheckData(Integer fzrID, Integer zjyID) {

@@ -199,7 +199,7 @@ public interface MainDao {
 
     String getPersonFromWlRkd(String dh,@Param("personFlag") int personFlag);
 
-    String getFzrFromWlCkd(String dh);
+    String getPersonFromWlCkd(String dh,@Param("personFlag") int personFlag);
 
     String getFzrFromWlTkd(String dh);
 
@@ -217,7 +217,7 @@ public interface MainDao {
 
     List<WlRkdBean> getWlRkNonCheckData(WlRkdBean wlrkd);
 
-    List<WlCkdBean> getWlCkNonCheckData(Integer fzrID);
+    List<WlCkdBean> getWlCkNonCheckData(WlCkdBean wlCkd);
 
     List<WlTkdBean> getWlTkNonCheckData(WlTkdBean wltkd);
 
