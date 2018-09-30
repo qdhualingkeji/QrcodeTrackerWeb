@@ -45,10 +45,7 @@
     <select id="getWlRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
         SELECT distinct r.*
         FROM Rkd_Wl r,M_WLIn m
-        <!--
-        WHERE ShR = #{0} AND Check_State = 0
-        -->
-        WHERE ShR = #{0} AND r.InDh=m.InDh AND (FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
+        WHERE ShR = #{0} AND r.InDh=m.InDh AND (BzStatus = 2 OR FzrStatus = 2 OR ZjyStatus = 2 OR ZjldStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
     </select>
 
     <select id="getAllPerson" resultType="com.qdhualing.qrcodetracker.bean.PersonBean" parameterType="com.qdhualing.qrcodetracker.model.User">
@@ -122,7 +119,7 @@
     </update>
     <update id="updateWlRkdData" parameterType="com.qdhualing.qrcodetracker.bean.WlInVerifyResult">
         UPDATE Rkd_Wl SET JhDw = #{fhDw}, ShRq=#{shRq}, ShFzr=#{shFzr}, JhR=#{fhR}, JhFzr=#{jhFzr}, Remark=#{remark},
-        FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}
+        BzID=#{bzID}, BzStatus=#{bzStatus}, FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}, ZjldID=#{zjldID}, ZjldStatus=#{zjldStatus}
         WHERE InDh = #{inDh}
     </update>
 
@@ -437,8 +434,8 @@
     </select>
 
     <select id="getWlRkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
-        SELECT r.*,u.TrueName zjyName
-        FROM Rkd_Wl r LEFT JOIN Hl_User u on r.ZjyID = u.UserID
+        SELECT r.*,u1.TrueName bzName,u.TrueName zjyName,u2.TrueName zjldName
+        FROM Rkd_Wl r LEFT JOIN Hl_User u on r.ZjyID = u.UserID LEFT JOIN Hl_User u1 on r.BzID = u1.UserID LEFT JOIN Hl_User u2 on r.ZjldID = u2.UserID
         WHERE InDh = #{0}
     </select>
 

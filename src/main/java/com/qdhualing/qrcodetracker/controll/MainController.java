@@ -1668,9 +1668,13 @@ public class MainController {
                 dataResult.setRemark(rkdBean.getRemark());
                 dataResult.setShFzr(rkdBean.getShFzr());
                 dataResult.setShRq(rkdBean.getShrq());
+                dataResult.setBzID(rkdBean.getBzID());
+                dataResult.setBzName(rkdBean.getBzName());
                 dataResult.setFzrID(rkdBean.getFzrID());
                 dataResult.setZjyID(rkdBean.getZjyID());
                 dataResult.setZjyName(rkdBean.getZjyName());
+                dataResult.setZjldID(rkdBean.getZjldID());
+                dataResult.setZjldName(rkdBean.getZjldName());
                 List<WLINShowBean> wlinDataList = mainService.getWLINShowBeanListByInDh(param.getDh());
                 dataResult.setBeans(wlinDataList);
                 result.setResult(dataResult);
