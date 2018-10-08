@@ -1818,9 +1818,13 @@ public class MainController {
                 dataResult.setShRq(bean.getShrq());
                 dataResult.setInDh(bean.getInDh());
                 dataResult.setRemark(bean.getRemark());
+                dataResult.setBzID(bean.getBzID());
+                dataResult.setBzName(bean.getBzName());
                 dataResult.setFzrID(bean.getFzrID());
                 dataResult.setZjyID(bean.getZjyID());
                 dataResult.setZjyName(bean.getZjyName());
+                dataResult.setZjldID(bean.getZjldID());
+                dataResult.setZjldName(bean.getZjldName());
                 List<BcpInShowBean> wlinDataList = mainService.getBcpInShowBeanListByInDh(param.getDh());
                 if (wlinDataList == null || wlinDataList.size() <= 0) {
                     wlinDataList = mainService.getCpInShowBeanListByInDh(param.getDh());
@@ -2320,22 +2324,30 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
+                Integer bzStatus=0;
                 Integer fzrStatus=0;
                 Integer zjyStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.FZR)
+                Integer zjldStatus=0;
+                if(param.getCheckQXFlag()==VerifyParam.BZ)
+                    bzStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=1;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJY)
                     zjyStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.ZJLD)
+                    zjldStatus=1;
 
                 BcpRkdBean bcpRkd=new BcpRkdBean();
                 bcpRkd.setInDh(param.getDh());
+                bcpRkd.setBzStatus(bzStatus);
                 bcpRkd.setFzrStatus(fzrStatus);
                 bcpRkd.setZjyStatus(zjyStatus);
+                bcpRkd.setZjldStatus(zjldStatus);
 
                 int a = mainService.agreeBcpIn(bcpRkd);
                 if (a == 1) {
                     BcpRkdBean bcpRkdBean = mainService.getBcpRkdBean(param.getDh());
-                    if (bcpRkdBean.getFzrStatus() == 1 && bcpRkdBean.getZjyStatus() == 1) {
+                    if (bcpRkdBean.getBzStatus() == 1 && bcpRkdBean.getFzrStatus() == 1 && bcpRkdBean.getZjyStatus() == 1 && bcpRkdBean.getZjldStatus() == 1) {
                         //因为入库单表里可能是半成品或成品，所以这里要先验证下半成品入库记录里有无数据，没有的话说明是成品
                         List<BcpInShowBean> bcpInDataList = mainService.getBcpInShowBeanListByInDh(param.getDh());
                         if (bcpInDataList == null || bcpInDataList.size() <= 0) {
@@ -2414,17 +2426,25 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
+                Integer bzStatus=0;
                 Integer fzrStatus=0;
                 Integer zjyStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.FZR)
+                Integer zjldStatus=0;
+                if(param.getCheckQXFlag()==VerifyParam.BZ)
+                    bzStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=2;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJY)
                     zjyStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.ZJLD)
+                    zjldStatus=2;
 
                 BcpRkdBean bcpRkd=new BcpRkdBean();
                 bcpRkd.setInDh(param.getDh());
+                bcpRkd.setBzStatus(bzStatus);
                 bcpRkd.setFzrStatus(fzrStatus);
                 bcpRkd.setZjyStatus(zjyStatus);
+                bcpRkd.setZjldStatus(zjldStatus);
 
                 int a = mainService.refuseBcpIn(bcpRkd);
                 if (a == 1) {

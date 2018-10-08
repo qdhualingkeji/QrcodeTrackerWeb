@@ -21,17 +21,11 @@
     <select id="getBcpRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
         SELECT distinct r.*
         FROM Rkd_Bcp r,M_BCPIn m
-        <!--
-        WHERE JhR = #{0} AND Check_State = 0
-        -->
-        WHERE JhR = #{0} AND r.InDh=m.InDh AND (FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
+        WHERE JhR = #{0} AND r.InDh=m.InDh AND (BzStatus = 2 OR FzrStatus = 2 OR ZjyStatus = 2 OR ZjldStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
     </select>
     <select id="getWlTkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlTkdBean">
         SELECT distinct t.*
         FROM Tkd_Wl t,M_WLBk m
-        <!--
-        WHERE ThR = #{0} AND Check_State = 0
-        -->
         WHERE ThR = #{0} AND t.BackDh=m.OutDh AND (BzStatus = 2 OR FzrStatus = 2 OR ZjyStatus = 2 OR ZjldStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
     </select>
     <select id="getWlCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
@@ -86,7 +80,7 @@
     </update>
     <update id="updateBcpRkdData" parameterType="com.qdhualing.qrcodetracker.bean.BcpInVerifyResult">
         UPDATE Rkd_Bcp SET JhDw = #{jhDw}, JhFzr=#{jhFzr}, ShR=#{jhR}, ShFzr=#{shFzr}, Remark=#{remark},
-        FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}
+        BzID=#{bzID}, BzStatus=#{bzStatus}, FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}, ZjldID=#{zjldID}, ZjldStatus=#{zjldStatus}
         WHERE InDh = #{inDh}
     </update>
 
@@ -208,30 +202,34 @@
         WHERE OutDh = #{0}
     </update>
     <update id="refuseBcpIn" parameterType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
-        <!--
-        UPDATE Rkd_Bcp SET Check_State = 0
-        WHERE InDh = #{0}
-        -->
         UPDATE Rkd_Bcp SET
+        <if test="bzStatus!=0">
+            bzStatus=#{bzStatus}
+        </if>
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
         </if>
         <if test="zjyStatus!=0">
             zjyStatus=#{zjyStatus}
+        </if>
+        <if test="zjldStatus!=0">
+            zjldStatus=#{zjldStatus}
         </if>
         WHERE InDh = #{inDh}
     </update>
     <update id="agreeBcpIn" parameterType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
-        <!--
-        UPDATE Rkd_Bcp SET Check_State = 1
-        WHERE InDh = #{0}
-        -->
         UPDATE Rkd_Bcp SET
+        <if test="bzStatus!=0">
+            bzStatus=#{bzStatus}
+        </if>
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
         </if>
         <if test="zjyStatus!=0">
             zjyStatus=#{zjyStatus}
+        </if>
+        <if test="zjldStatus!=0">
+            zjldStatus=#{zjldStatus}
         </if>
         WHERE InDh = #{inDh}
     </update>
@@ -375,8 +373,8 @@
     </select>
 
     <select id="getBcpRkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
-        SELECT r.*,u.TrueName zjyName
-        FROM Rkd_Bcp r LEFT JOIN Hl_User u on r.ZjyID = u.UserID
+        SELECT r.*,u1.TrueName bzName,u.TrueName zjyName,u2.TrueName zjldName
+        FROM Rkd_Bcp r LEFT JOIN Hl_User u on r.ZjyID = u.UserID LEFT JOIN Hl_User u1 on r.BzID = u1.UserID LEFT JOIN Hl_User u2 on r.ZjldID = u2.UserID
         WHERE InDh = #{0}
     </select>
 
@@ -2480,10 +2478,14 @@ SmlPk45		= #{smlPk45},
             <if test="JhFzr!=null">
                 JhFzr,
             </if>
+                BzID,
+                BzStatus,
                 FzrID,
                 FzrStatus,
                 ZjyID,
                 ZjyStatus,
+                ZjldID,
+                ZjldStatus,
             <if test="remark!=null">
                 Remark,
             </if>
@@ -2511,10 +2513,14 @@ SmlPk45		= #{smlPk45},
             <if test="JhFzr!=null">
                 #{JhFzr},
             </if>
+                #{BzID},
+                #{BzStatus},
                 #{FzrID},
                 #{FzrStatus},
                 #{ZjyID},
                 #{ZjyStatus},
+                #{ZjldID},
+                #{ZjldStatus},
             <if test="remark!=null">
                 #{remark},
             </if>
