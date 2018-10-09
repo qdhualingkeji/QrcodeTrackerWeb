@@ -5,10 +5,7 @@
     <select id="getBcpTkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
         SELECT distinct t.*
         FROM Tkd_Bcp t,M_BCPBk m
-        <!--
-        WHERE ThR = #{0} AND Check_State = 0
-        -->
-        WHERE t.ThR = #{0} AND t.BackDh=m.BackDh AND (FzrStatus = 2 OR ZjyStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
+        WHERE t.ThR = #{0} AND t.BackDh=m.BackDh AND (BzStatus = 2 OR FzrStatus = 2 OR ZjyStatus = 2 OR ZjldStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
     </select>
     <select id="getBcpCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         SELECT distinct c.*
@@ -59,7 +56,7 @@
     </update>
     <update id="updateBcpTkdData" parameterType="com.qdhualing.qrcodetracker.bean.BcpTkVerifyResult">
         UPDATE Tkd_Bcp SET ThDw = #{thDw}, ThFzr=#{thFzr}, ShR=#{thR}, ShFzr=#{shFzr}, Remark=#{remark},
-        FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}
+        BzID=#{bzID}, BzStatus=#{bzStatus}, FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}, ZjldID=#{zjldID}, ZjldStatus=#{zjldStatus}
         WHERE BackDh = #{backDh}
     </update>
 
@@ -158,30 +155,34 @@
     </select>
 
     <update id="refuseBcpTk" parameterType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
-        <!--
-        UPDATE Tkd_Bcp SET Check_State = 0
-        WHERE BackDh = #{0}
-        -->
         UPDATE Tkd_Bcp SET
+        <if test="bzStatus!=0">
+            bzStatus=#{bzStatus}
+        </if>
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
         </if>
         <if test="zjyStatus!=0">
             zjyStatus=#{zjyStatus}
+        </if>
+        <if test="zjldStatus!=0">
+            zjldStatus=#{zjldStatus}
         </if>
         WHERE BackDh = #{backDh}
     </update>
     <update id="agreeBcpTk" parameterType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
-        <!--
-        UPDATE Tkd_Bcp SET Check_State = 1
-        WHERE BackDh = #{0}
-        -->
         UPDATE Tkd_Bcp SET
+        <if test="bzStatus!=0">
+            bzStatus=#{bzStatus}
+        </if>
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
         </if>
         <if test="zjyStatus!=0">
             zjyStatus=#{zjyStatus}
+        </if>
+        <if test="zjldStatus!=0">
+            zjldStatus=#{zjldStatus}
         </if>
         WHERE BackDh = #{backDh}
     </update>
@@ -322,8 +323,8 @@
     </select>
 
     <select id="getBcpTkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
-        SELECT t.*,u.TrueName AS zjyName
-        FROM Tkd_Bcp t LEFT JOIN Hl_User u ON t.ZjyID = u.UserID
+        SELECT t.*,u1.TrueName bzName,u.TrueName AS zjyName,u2.TrueName zjldName
+        FROM Tkd_Bcp t LEFT JOIN Hl_User u ON t.ZjyID = u.UserID LEFT JOIN Hl_User u1 on t.BzID = u1.UserID LEFT JOIN Hl_User u2 on t.ZjldID = u2.UserID
         WHERE BackDh = #{0}
     </select>
 
@@ -430,29 +431,47 @@
         SELECT distinct t.*
         FROM Tkd_Bcp t,M_BCPBk m
         WHERE t.BackDh=m.BackDh
+        <if test="bzID!=null">
+            and BzID=#{bzID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
+        </if>
         <if test="fzrID!=null">
-            and FzrID=#{fzrID} and FzrStatus=0 and ZjyStatus=1
+            and FzrID=#{fzrID} and BzStatus=1 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
         </if>
         <if test="zjyID!=null">
-            and ZjyID=#{zjyID} and FzrStatus=0 and ZjyStatus=0
+            and ZjyID=#{zjyID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0
+        </if>
+        <if test="zjldID!=null">
+            and ZjldID=#{zjldID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=0
         </if>
     </select>
 
     <select id="getBcpCkNonCheckData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         SELECT distinct c.*
         FROM Ckd_Bcp c,M_CPOut m
-        WHERE FzrID = #{0} and c.OutDh=m.OutDh and FzrStatus!=1
+        WHERE c.OutDh=m.OutDh
+        <if test="bzID!=null">
+            and BzID = #{bzID} and BzStatus=0 and FzrStatus=0
+        </if>
+        <if test="fzrID!=null">
+            and FzrID = #{fzrID} and BzStatus=1 and FzrStatus=0
+        </if>
     </select>
 
     <select id="getBcpRkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.BcpRkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
         SELECT distinct r.*
         FROM Rkd_Bcp r,M_BCPIn m
         WHERE r.InDh=m.InDh
+        <if test="bzID!=null">
+            and BzID=#{bzID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
+        </if>
         <if test="fzrID!=null">
-            and FzrID=#{fzrID} and FzrStatus=0 and ZjyStatus=1
+            and FzrID=#{fzrID} and BzStatus=1 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
         </if>
         <if test="zjyID!=null">
-            and ZjyID=#{zjyID} and FzrStatus=0 and ZjyStatus=0
+            and ZjyID=#{zjyID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0
+        </if>
+        <if test="zjldID!=null">
+            and ZjldID=#{zjldID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=0
         </if>
     </select>
 
@@ -1767,10 +1786,14 @@ SmlPk45		= #{smlPk45},
             <if test="thFzr!=null">
                 ThFzr,
             </if>
+                BzID,
+                BzStatus,
                 FzrID,
                 FzrStatus,
                 ZjyID,
                 ZjyStatus,
+                ZjldID,
+                ZjldStatus,
             <if test="remark!=null">
                 Remark,
             </if>
@@ -1798,10 +1821,14 @@ SmlPk45		= #{smlPk45},
             <if test="thFzr!=null">
                 #{thFzr},
             </if>
+                #{bzID},
+                #{bzStatus},
                 #{fzrID},
                 #{fzrStatus},
                 #{zjyID},
                 #{zjyStatus},
+                #{zjldID},
+                #{zjldStatus},
             <if test="remark!=null">
                 #{remark},
             </if>

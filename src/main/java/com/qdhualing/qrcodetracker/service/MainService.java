@@ -520,23 +520,30 @@ public class MainService {
 		return mainDao.getWlTkNonCheckData(wltkd);
 	}
 
-	public List<BcpRkdBean> getBcpRkNonCheckData(Integer  fzrID, Integer  zjyID) {
+	public List<BcpRkdBean> getBcpRkNonCheckData(Integer bzID,Integer fzrID,Integer zjyID,Integer zjldID) {
 		BcpRkdBean bcprkd=new BcpRkdBean();
+		bcprkd.setBzID(bzID);
 		bcprkd.setFzrID(fzrID);
 		bcprkd.setZjyID(zjyID);
+		bcprkd.setZjldID(zjldID);
 
 		return mainDao.getBcpRkNonCheckData(bcprkd);
 	}
 
-	public List<BcpCkdBean> getBcpCkNonCheckData(Integer fzrID) {
+	public List<BcpCkdBean> getBcpCkNonCheckData(Integer bzID,Integer fzrID) {
+		BcpCkdBean bcpCkdBean=new BcpCkdBean();
+		bcpCkdBean.setBzID(bzID);
+		bcpCkdBean.setFzrID(fzrID);
 
 		return mainDao.getBcpCkNonCheckData(fzrID);
 	}
 
-	public List<BcpTkdBean> getBcpTkNonCheckData(Integer fzrID, Integer zjyID) {
+	public List<BcpTkdBean> getBcpTkNonCheckData(Integer bzID,Integer fzrID,Integer zjyID,Integer zjldID) {
 		BcpTkdBean bcptkd=new BcpTkdBean();
+		bcptkd.setBzID(bzID);
 		bcptkd.setFzrID(fzrID);
 		bcptkd.setZjyID(zjyID);
+		bcptkd.setZjldID(zjldID);
 
 		return mainDao.getBcpTkNonCheckData(bcptkd);
 	}

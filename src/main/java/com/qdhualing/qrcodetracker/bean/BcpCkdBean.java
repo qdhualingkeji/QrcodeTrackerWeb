@@ -18,6 +18,11 @@ public class BcpCkdBean {
     private String remark;
     private String jhDw;
     private int checkState;
+    private Integer bzID;
+    private Integer bzStatus;
+    private String bzName;
+    private Integer fzrID;
+    private Integer fzrStatus;
 
     public int getiD() {
         return iD;
@@ -105,5 +110,45 @@ public class BcpCkdBean {
 
     public void setCheckState(int checkState) {
         this.checkState = checkState;
+    }
+
+    public Integer getBzID() {
+        return bzID;
+    }
+
+    public void setBzID(Integer bzID) {
+        this.bzID = bzID;
+    }
+
+    public Integer getBzStatus() {
+        return bzStatus;
+    }
+
+    public void setBzStatus(Integer bzStatus) {
+        this.bzStatus = bzStatus;
+    }
+
+    public String getBzName() {
+        return bzName;
+    }
+
+    public void setBzName(String bzName) {
+        this.bzName = bzName;
+    }
+
+    public Integer getFzrID() {
+        return fzrID;
+    }
+
+    public void setFzrID(Integer fzrID) {
+        this.fzrID = fzrID;
+    }
+
+    public Integer getFzrStatus() {
+        return fzrStatus;
+    }
+
+    public void setFzrStatus(Integer fzrStatus) {
+        this.fzrStatus = fzrStatus;
     }
 }
