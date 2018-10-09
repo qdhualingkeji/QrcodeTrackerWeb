@@ -535,7 +535,7 @@ public class MainService {
 		bcpCkdBean.setBzID(bzID);
 		bcpCkdBean.setFzrID(fzrID);
 
-		return mainDao.getBcpCkNonCheckData(fzrID);
+		return mainDao.getBcpCkNonCheckData(bcpCkdBean);
 	}
 
 	public List<BcpTkdBean> getBcpTkNonCheckData(Integer bzID,Integer fzrID,Integer zjyID,Integer zjldID) {
@@ -644,12 +644,12 @@ public class MainService {
 		return mainDao.refuseBcpIn(bcpRkd);
 	}
 
-	public int agreeBcpOut(String dh, Integer fzrStatus) {
-		return mainDao.agreeBcpOut(dh,fzrStatus);
+	public int agreeBcpOut(BcpCkdBean bcpckd) {
+		return mainDao.agreeBcpOut(bcpckd);
 	}
 
-	public int refuseBcpOut(String dh, Integer fzrStatus) {
-		return mainDao.refuseBcpOut(dh,fzrStatus);
+	public int refuseBcpOut(BcpCkdBean bcpCkd) {
+		return mainDao.refuseBcpOut(bcpCkd);
 	}
 
 	public int agreeBcpTk(BcpTkdBean bcpTkd) {

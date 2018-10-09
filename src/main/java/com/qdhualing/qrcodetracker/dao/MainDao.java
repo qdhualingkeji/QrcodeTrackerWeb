@@ -221,7 +221,7 @@ public interface MainDao {
 
     List<BcpRkdBean> getBcpRkNonCheckData(BcpRkdBean bcprkd);
 
-    List<BcpCkdBean> getBcpCkNonCheckData(Integer fzrID);
+    List<BcpCkdBean> getBcpCkNonCheckData(BcpCkdBean bcpCkdBean);
 
     List<BcpTkdBean> getBcpTkNonCheckData(BcpTkdBean bcptkd);
 
@@ -273,9 +273,9 @@ public interface MainDao {
 
     int refuseBcpIn(BcpRkdBean bcpRkd);
 
-    int agreeBcpOut(String dh, Integer fzrStatus);
+    int agreeBcpOut(BcpCkdBean bcpckd);
 
-    int refuseBcpOut(String dh, Integer fzrStatus);
+    int refuseBcpOut(BcpCkdBean bcpCkd);
 
     int agreeBcpTk(BcpTkdBean bcpTkd);
 

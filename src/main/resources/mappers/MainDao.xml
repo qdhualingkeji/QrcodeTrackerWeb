@@ -10,10 +10,7 @@
     <select id="getBcpCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         SELECT distinct c.*
         FROM Ckd_Bcp c,M_CPOut m
-        <!--
-        WHERE FhR = #{0} AND Check_State = 0
-        -->
-        WHERE c.FhR = #{0} AND c.OutDh=m.OutDh AND FzrStatus != 1
+        WHERE c.FhR = #{0} AND c.OutDh=m.OutDh AND (BzStatus = 2 OR FzrStatus = 2 OR FzrStatus = 0 AND BzStatus = 0)
     </select>
     <select id="getBcpRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
         SELECT distinct r.*
@@ -46,7 +43,7 @@
 	</select>
 
     <update id="updateCpCkdData" parameterType="com.qdhualing.qrcodetracker.bean.CpOutVerifyResult">
-        UPDATE Ckd_Bcp SET LhDw = #{lhDw}, FhFzr=#{fhFzr}, FhR=#{lhR}, LhFzr=#{lhFzr}, Remark=#{remark}, FzrStatus=#{fzrStatus}
+        UPDATE Ckd_Bcp SET LhDw = #{lhDw}, FhFzr=#{fhFzr}, LhR=#{lhR}, LhFzr=#{lhFzr}, Remark=#{remark}, BzStatus=#{bzStatus}, FzrStatus=#{fzrStatus}
         WHERE OutDh = #{outDh}
     </update>
 
@@ -186,21 +183,25 @@
         </if>
         WHERE BackDh = #{backDh}
     </update>
-    <update id="refuseBcpOut">
-        <!--
-        UPDATE Ckd_Bcp SET Check_State = 0
-        WHERE OutDh = #{0}
-        -->
-        UPDATE Ckd_Bcp SET FzrStatus = #{1}
-        WHERE OutDh = #{0}
+    <update id="refuseBcpOut" parameterType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
+        UPDATE Ckd_Bcp SET
+        <if test="bzStatus!=0">
+            bzStatus=#{bzStatus}
+        </if>
+        <if test="fzrStatus!=0">
+            fzrStatus=#{fzrStatus}
+        </if>
+        WHERE OutDh = #{outDh}
     </update>
-    <update id="agreeBcpOut">
-        <!--
-        UPDATE Ckd_Bcp SET Check_State = 1
-        WHERE OutDh = #{0}
-        -->
-        UPDATE Ckd_Bcp SET FzrStatus = #{1}
-        WHERE OutDh = #{0}
+    <update id="agreeBcpOut" parameterType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
+        UPDATE Ckd_Bcp SET
+        <if test="bzStatus!=0">
+            bzStatus=#{bzStatus}
+        </if>
+        <if test="fzrStatus!=0">
+            fzrStatus=#{fzrStatus}
+        </if>
+        WHERE OutDh = #{outDh}
     </update>
     <update id="refuseBcpIn" parameterType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
         UPDATE Rkd_Bcp SET
@@ -460,6 +461,22 @@
     <select id="getBcpRkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.BcpRkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
         SELECT distinct r.*
         FROM Rkd_Bcp r,M_BCPIn m
+        WHERE r.InDh=m.InDh
+        <if test="bzID!=null">
+            and BzID=#{bzID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
+        </if>
+        <if test="fzrID!=null">
+            and FzrID=#{fzrID} and BzStatus=1 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
+        </if>
+        <if test="zjyID!=null">
+            and ZjyID=#{zjyID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0
+        </if>
+        <if test="zjldID!=null">
+            and ZjldID=#{zjldID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=0
+        </if>
+        union
+        SELECT distinct r.*
+        FROM Rkd_Bcp r,M_CPIn2 m
         WHERE r.InDh=m.InDh
         <if test="bzID!=null">
             and BzID=#{bzID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
@@ -1395,6 +1412,8 @@ SmlPk45		= #{smlPk45},
             <if test="lhFzr!=null">
                 LhFzr,
             </if>
+                BzID,
+                BzStatus,
                 FzrID,
                 FzrStatus,
             <if test="remark!=null">
@@ -1427,6 +1446,8 @@ SmlPk45		= #{smlPk45},
             <if test="lhFzr!=null">
                 #{lhFzr},
             </if>
+                #{bzID},
+                #{bzStatus},
                 #{fzrID},
                 #{fzrStatus},
             <if test="remark!=null">

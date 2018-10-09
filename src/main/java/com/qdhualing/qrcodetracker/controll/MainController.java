@@ -2478,25 +2478,35 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
+                Integer bzStatus=0;
                 Integer fzrStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.FZR)
+                if(param.getCheckQXFlag()==VerifyParam.BZ)
+                    bzStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=1;
-                int a = mainService.agreeBcpOut(param.getDh(),fzrStatus);
-                if (a == 1) {
 
-                    List<BigCpOutParam> cpOutList = mainService.getBigCpOutParamListByOutDh(param.getDh());
-                    for (BigCpOutParam cpOutParam : cpOutList) {
-                        BigCpBean bigCpBean = mainService.getCPS2(cpOutParam.getQrCodeId());
-                        if (bigCpBean != null) {
-                            a = mainService.deleteCPS2ByQrId(cpOutParam.getQrCodeId());
-                            if (a <= 0) {
-                                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除大包装记录失败");
-                            }
-                            a = mainService.deleteCPSByCps2QrId(cpOutParam.getQrCodeId());
-                        } else {
-                            a = mainService.deleteCPSByQrId(cpOutParam.getQrCodeId());
-                            if (a <= 0) {
-                                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除小包装记录失败");
+                BcpCkdBean bcpckd=new BcpCkdBean();
+                bcpckd.setOutDh(param.getDh());
+                bcpckd.setBzStatus(bzStatus);
+                bcpckd.setFzrStatus(fzrStatus);
+                int a = mainService.agreeBcpOut(bcpckd);
+                if (a == 1) {
+                    BcpCkdBean bcpCkd = mainService.getBcpCkdBean(param.getDh());
+                    if(bcpCkd.getBzStatus()==1&&bcpCkd.getFzrStatus()==1) {
+                        List<BigCpOutParam> cpOutList = mainService.getBigCpOutParamListByOutDh(param.getDh());
+                        for (BigCpOutParam cpOutParam : cpOutList) {
+                            BigCpBean bigCpBean = mainService.getCPS2(cpOutParam.getQrCodeId());
+                            if (bigCpBean != null) {
+                                a = mainService.deleteCPS2ByQrId(cpOutParam.getQrCodeId());
+                                if (a <= 0) {
+                                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除大包装记录失败");
+                                }
+                                a = mainService.deleteCPSByCps2QrId(cpOutParam.getQrCodeId());
+                            } else {
+                                a = mainService.deleteCPSByQrId(cpOutParam.getQrCodeId());
+                                if (a <= 0) {
+                                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除小包装记录失败");
+                                }
                             }
                         }
                     }
@@ -2525,10 +2535,19 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
+                Integer bzStatus=0;
                 Integer fzrStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.FZR)
+                if(param.getCheckQXFlag()==VerifyParam.BZ)
+                    bzStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=2;
-                int a = mainService.refuseBcpOut(param.getDh(),fzrStatus);
+
+                BcpCkdBean bcpCkd=new BcpCkdBean();
+                bcpCkd.setOutDh(param.getDh());
+                bcpCkd.setBzStatus(bzStatus);
+                bcpCkd.setFzrStatus(fzrStatus);
+
+                int a = mainService.refuseBcpOut(bcpCkd);
                 if (a == 1) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 } else {
