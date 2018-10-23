@@ -363,4 +363,7 @@ public interface MainDao {
 
     List<BigCpOutParam> getBigCpOutParamListByOutDh(String dh);
 
+    List<SmallCPINParam> getSmallCPINParamListByCPS2QRCode(String qrCodeId);
+
+    int updateBcpRkdStatusByQRCodeID(String qrCodeId);
 }

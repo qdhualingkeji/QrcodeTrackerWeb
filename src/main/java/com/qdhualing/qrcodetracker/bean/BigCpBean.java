@@ -30,6 +30,7 @@ public class BigCpBean {
     private String gg;
     private String dw;
     private int nowNum;
+    private int ifFull;
     private String smlPk1;
     private String smlPk2;
     private String smlPk3;
@@ -257,6 +258,14 @@ public class BigCpBean {
 
     public void setNowNum(int nowNum) {
         this.nowNum = nowNum;
+    }
+
+    public int getIfFull() {
+        return ifFull;
+    }
+
+    public void setIfFull(int ifFull) {
+        this.ifFull = ifFull;
     }
 
     public String getSmlPk1() {

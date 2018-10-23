@@ -1065,6 +1065,10 @@ public class MainController {
             if (b <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "录入CPIn失败");
             }
+            else{
+                //根据小包装二维码还原相关大包装入库单状态
+                mainService.updateBcpRkdStatusByQRCodeID(inParam.getQrCodeId());
+            }
 
             /*
             //根据录入数量把最后一个二维码编号还原为第一个二维码编号
@@ -2358,21 +2362,54 @@ public class MainController {
                         List<BcpInShowBean> bcpInDataList = mainService.getBcpInShowBeanListByInDh(param.getDh());
                         if (bcpInDataList == null || bcpInDataList.size() <= 0) {
                             int count = a;
-                            String existQrCodeID = "";
                             List<BigCPINParam> bigCPINList = mainService.getBigCPINParamListByInDh(param.getDh());
                             int size = bigCPINList.size();
                             if (size > 0) {
                                 for (int i = 0; i < size; i++) {
-                                    BigCPINParam inParam = bigCPINList.get(i);
-                                    a = mainService.findCPS2(inParam.getQrCodeId());
+                                    BigCPINParam bigCPINParam = bigCPINList.get(i);
+                                    a = mainService.findCPS2(bigCPINParam.getQrCodeId());
                                     if (a <= 0) {
                                         //插入大包装库存表（车间）
-                                        a = mainService.insertCPS2(inParam);
-                                    } else {
-                                        existQrCodeID += "," + inParam.getQrCodeId();
+                                        a = mainService.insertCPS2(bigCPINParam);
+
+                                    }
+
+                                    //以下代码是根据大包装关联需要入库的小包装
+                                    List<SmallCPINParam> smallCPINList = mainService.getSmallCPINParamListByCPS2QRCode(bigCPINParam.getQrCodeId());
+                                    SmallCPINParam smallCPINParam = smallCPINList.get(0);
+                                    String startQrCodeId = smallCPINParam.getQrCodeId();
+                                    Long nextQrCodeId = Long.parseLong(startQrCodeId);
+                                    int size1 = smallCPINList.size();
+                                    BigCpBean bigCpBean = null;
+                                    int nowIndex = 0;
+                                    if (!TextUtils.isEmpty(smallCPINParam.getcPS2QRCode())) {
+                                        bigCpBean = mainService.getCPS2(smallCPINParam.getcPS2QRCode());
+                                        nowIndex = bigCpBean.getNowNum();
+                                    }
+                                    for (int j = 0; j < size1; j++) {
+                                        //插入小包装库存表（车间）
+                                        a = mainService.insertCPS(smallCPINParam);
+                                        if (a <= 0) {
+                                            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "录入CPS失败");
+                                        }
+                                        //如果是需要关联大包装的小包装则需要以下操作
+                                        if (!TextUtils.isEmpty(smallCPINParam.getcPS2QRCode())) {
+                                            bigCpBean = ProjectUtil.getUpdateCPS2Data(bigCpBean, nowIndex + 1, nextQrCodeId);
+                                            a = mainService.updateCPS2(bigCpBean);
+                                            a = mainService.updateCPIn2(bigCpBean);
+                                        }
+
+                                        String typeNum = nextQrCodeId.toString().substring(0, 9);
+                                        int num = Integer.valueOf(nextQrCodeId.toString().substring(9));
+                                        num++;
+                                        nextQrCodeId = Long.parseLong(typeNum + num);
+                                        nowIndex++;
+                                        smallCPINParam.setQrCodeId(String.valueOf(nextQrCodeId));
                                     }
                                 }
-                            } else {
+                            }
+                            /*
+                            else {
                                 List<SmallCPINParam> smallCPINList = mainService.getSmallCPINParamListByInDh(param.getDh());
                                 SmallCPINParam inParam = smallCPINList.get(0);
                                 String startQrCodeId = inParam.getQrCodeId();
@@ -2405,6 +2442,7 @@ public class MainController {
                                     inParam.setQrCodeId(String.valueOf(nextQrCodeId));
                                 }
                             }
+                            */
                         }
                     }
 

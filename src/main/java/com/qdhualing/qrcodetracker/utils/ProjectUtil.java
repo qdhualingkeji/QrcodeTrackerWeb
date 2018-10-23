@@ -161,6 +161,7 @@ public class ProjectUtil {
                 break;
             case 50:
                 bigCpBean.setSmlPk50(""+nextQrCodeId);
+                bigCpBean.setIfFull(1);
                 break;
         }
         bigCpBean.setNowNum(index);

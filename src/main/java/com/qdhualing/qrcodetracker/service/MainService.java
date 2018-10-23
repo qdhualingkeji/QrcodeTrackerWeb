@@ -907,4 +907,14 @@ public class MainService {
 		return mainDao.getBigCpOutParamListByOutDh(dh);
 	}
 
+	public List<SmallCPINParam> getSmallCPINParamListByCPS2QRCode(String qrCodeId) {
+		return mainDao.getSmallCPINParamListByCPS2QRCode(qrCodeId);
+	}
+
+	/**
+	 * 根据小包装二维码还原相关大包装入库单状态
+	 * */
+	public int updateBcpRkdStatusByQRCodeID(String qrCodeId) {
+		return mainDao.updateBcpRkdStatusByQRCodeID(qrCodeId);
+	}
 }

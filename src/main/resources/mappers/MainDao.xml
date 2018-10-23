@@ -367,6 +367,10 @@
         SELECT *,CP_Name AS productName FROM M_CPIn WHERE InDh = #{0}
     </select>
 
+    <select id="getSmallCPINParamListByCPS2QRCode" resultType="com.qdhualing.qrcodetracker.bean.SmallCPINParam">
+        SELECT *,CP_Name AS productName FROM M_CPIn WHERE CPS2_QRCode = #{0} and QRCode_ID not in (SELECT QRCode_ID FROM M_CPS)
+    </select>
+
     <select id="getBcpInShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.BcpInShowBean">
         SELECT QRCode_ID as qRCodeID, BCP_Code as wLCode, ProductName as productName, GG as gG, b.SortID as sortID, s.SortName as sortName,
         YLPC as yLPC, SCPC as sCPC, SC_Time as time, CheJian as cheJian, GX as gx, CZY as czy, InDh as inDh, DW as dW, DWZL as dWZL,SHL as shl
@@ -836,6 +840,8 @@
     <update id="updateCPIn2" parameterType="com.qdhualing.qrcodetracker.bean.BigCpBean">
         UPDATE M_CPIn2
         SET
+        Now_Num = #{nowNum},
+        IfFull = #{ifFull},
         SmlPk1	= #{smlPk1},
         SmlPk2	= #{smlPk2},
         SmlPk3	= #{smlPk3},
@@ -893,6 +899,7 @@
       UPDATE M_CPS2
       SET
         Now_Num = #{nowNum},
+        IfFull = #{ifFull},
         SmlPk1	= #{smlPk1},
         SmlPk2	= #{smlPk2},
         SmlPk3	= #{smlPk3},
@@ -1200,7 +1207,8 @@ SmlPk45		= #{smlPk45},
     </select>
     <select id="getBigCpData" resultType="com.qdhualing.qrcodetracker.bean.BigCpBean">
         SELECT *
-        FROM M_CPS2
+        FROM M_CPIn2
+        WHERE IfFull=0
     </select>
 
     <insert id="insertCPS2" parameterType="com.qdhualing.qrcodetracker.bean.BigCPINParam">
@@ -2287,6 +2295,11 @@ SmlPk45		= #{smlPk45},
                 Yl_9=#{yl9},
                 Yl_10=#{yl10}
     where QRCode_ID=#{qrCodeId}
+    </update>
+
+    <update id="updateBcpRkdStatusByQRCodeID">
+        UPDATE Rkd_Bcp SET BzStatus=0,FzrStatus=0,ZjyStatus=0,ZjldStatus=0
+        WHERE InDh in (select m2.InDh from M_CPIn m1,M_CPIn2 m2 where m1.CPS2_QRCode=m2.QRCode_ID and m1.QRCode_ID=#{0})
     </update>
 
     <insert id="insertBCPIn" parameterType="com.qdhualing.qrcodetracker.bean.BCPINParam">
