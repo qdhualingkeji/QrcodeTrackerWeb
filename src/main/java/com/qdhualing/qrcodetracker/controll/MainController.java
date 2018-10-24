@@ -1852,6 +1852,24 @@ public class MainController {
     }
 
     /**
+     * 逄坤
+     * 根据大包装二维码获取成品小包装入库审核信息
+     * @param json
+     * @return
+     */
+    @RequestMapping(value = "/getSmallCPInVerifyData", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult getSmallCPInVerifyData(String json) {
+        BcpInShowBean param = ParamsUtils.handleParams(json, BcpInShowBean.class);
+        ActionResult<BcpInVerifyResult> result = new ActionResult<BcpInVerifyResult>();
+        BcpInVerifyResult dataResult = new BcpInVerifyResult();
+        List<BcpInShowBean> bcpInDataList = mainService.getCpInShowBeanListByCPS2QRCode(param.getqRCodeID());
+        dataResult.setBeans(bcpInDataList);
+        result.setResult(dataResult);
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
+    }
+
+    /**
      * @return
      * @author 逄坤
      * @desc 获取半成品入库质检信息（包括入库单详情和关联的每一条记录的信息）
