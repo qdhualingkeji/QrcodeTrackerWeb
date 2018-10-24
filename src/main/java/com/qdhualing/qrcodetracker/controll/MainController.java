@@ -1829,12 +1829,12 @@ public class MainController {
                 dataResult.setZjyName(bean.getZjyName());
                 dataResult.setZjldID(bean.getZjldID());
                 dataResult.setZjldName(bean.getZjldName());
-                List<BcpInShowBean> wlinDataList = mainService.getBcpInShowBeanListByInDh(param.getDh());
+                List<BcpInShowBean> wlinDataList = mainService.getBcpInShowBeanListByInDh(param.getDh());//先查询是不是半成品
                 if (wlinDataList == null || wlinDataList.size() <= 0) {
-                    wlinDataList = mainService.getCpInShowBeanListByInDh(param.getDh());
+                    wlinDataList = mainService.getCpInShowBeanListByInDh(param.getDh());//如果半成品没有记录的话，再查成品小包装
                 }
                 if (wlinDataList == null || wlinDataList.size() <= 0) {
-                    wlinDataList = mainService.getBigCpInShowBeanListByInDh(param.getDh());
+                    wlinDataList = mainService.getBigCpInShowBeanListByInDh(param.getDh());//如果成品小包装也没有记录的话，说明就是成品大包装
                     //大包装入库记录是没有数量的，所以会是null，但App接收的时候是用float接收的，会出错，所以设置成0
                     for (int i = 0; i < wlinDataList.size(); i++) {
                         wlinDataList.get(i).setShl(0);
@@ -1892,6 +1892,24 @@ public class MainController {
             }
         }
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
+    }
+
+    /**
+     * 逄坤
+     * 根据大包装二维码获取成品小包装入库质检信息
+     * @param json
+     * @return
+     */
+    @RequestMapping(value = "/getSmallCPInQualityCheckData", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult getSmallCPInQualityCheckData(String json){
+        BcpInShowBean param = ParamsUtils.handleParams(json, BcpInShowBean.class);
+        ActionResult<BcpInQualityCheckResult> result = new ActionResult<BcpInQualityCheckResult>();
+        BcpInQualityCheckResult dataResult = new BcpInQualityCheckResult();
+        List<BcpInShowBean> bcpInDataList = mainService.getCpInShowBeanListByCPS2QRCode(param.getqRCodeID());
+        dataResult.setBeans(bcpInDataList);
+        result.setResult(dataResult);
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
     }
 
     /**

@@ -363,6 +363,13 @@
         WHERE InDh = #{0}
     </select>
 
+    <select id="getCpInShowBeanListByCPS2QRCode" resultType="com.qdhualing.qrcodetracker.bean.BcpInShowBean">
+        SELECT  QRCode_ID as qRCodeID, CP_Code as wLCode, CP_Name as productName, GG as gG, c.SortID as sortID, s.SortName,
+        YLPC as yLPC, SCPC as sCPC, SC_Time as time, InDh as inDh, DW as dW, DWZL as dWZL, CZY as cZY,SHL as shl
+        FROM M_CPIn c LEFT JOIN Hl_Sort s ON c.SortID = s.SortID
+        WHERE CPS2_QRCode = #{0}
+    </select>
+
     <select id="getSmallCPINParamListByInDh" resultType="com.qdhualing.qrcodetracker.bean.SmallCPINParam">
         SELECT *,CP_Name AS productName FROM M_CPIn WHERE InDh = #{0}
     </select>

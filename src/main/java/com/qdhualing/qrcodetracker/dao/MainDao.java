@@ -247,6 +247,8 @@ public interface MainDao {
 
     List<BcpInShowBean> getCpInShowBeanListByInDh(String dh);
 
+    List<BcpInShowBean> getCpInShowBeanListByCPS2QRCode(String cPS2QRCode);
+
     List<BcpInShowBean> getBigCpInShowBeanListByInDh(String dh);
 
     BcpCkdBean getBcpCkdBean(String dh);
@@ -366,4 +368,5 @@ public interface MainDao {
     List<SmallCPINParam> getSmallCPINParamListByCPS2QRCode(String qrCodeId);
 
     int updateBcpRkdStatusByQRCodeID(String qrCodeId);
+
 }

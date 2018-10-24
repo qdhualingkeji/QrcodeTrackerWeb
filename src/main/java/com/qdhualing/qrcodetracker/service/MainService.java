@@ -584,6 +584,10 @@ public class MainService {
 		return list;
 	}
 
+	public List<BcpInShowBean> getCpInShowBeanListByCPS2QRCode(String cPS2QRCode) {
+    	return mainDao.getCpInShowBeanListByCPS2QRCode(cPS2QRCode);
+	}
+
 	public List<BcpInShowBean> getCpInShowBeanListByInDh(String dh) {
 		List<BcpInShowBean> list=mainDao.getCpInShowBeanListByInDh(dh);
 		return list;
@@ -917,4 +921,5 @@ public class MainService {
 	public int updateBcpRkdStatusByQRCodeID(String qrCodeId) {
 		return mainDao.updateBcpRkdStatusByQRCodeID(qrCodeId);
 	}
+
 }
