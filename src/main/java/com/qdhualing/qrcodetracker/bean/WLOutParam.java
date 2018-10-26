@@ -18,6 +18,8 @@ public class WLOutParam {
     private String ylpc;
     private String gg;
     private float dwzl;
+    //批次总量
+    private float pczl;
     private String time;
     private String flr;
     private String llr;
@@ -91,6 +93,14 @@ public class WLOutParam {
 
     public void setDwzl(float dwzl) {
         this.dwzl = dwzl;
+    }
+
+    public float getPczl() {
+        return pczl;
+    }
+
+    public void setPczl(float pczl) {
+        this.pczl = pczl;
     }
 
     public String getTime() {

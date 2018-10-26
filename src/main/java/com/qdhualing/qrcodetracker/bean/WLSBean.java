@@ -21,7 +21,7 @@ public class WLSBean {
     private float SHL ;
     //单位重量
     private float DWZL;
-    //批次重量
+    //批次总量
     private float PCZL;
     //单位
     private String DW ;

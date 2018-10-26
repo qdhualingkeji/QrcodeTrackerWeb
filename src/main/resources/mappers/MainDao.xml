@@ -257,11 +257,17 @@
         WHERE BackDh = #{0}
         -->
         UPDATE Tkd_Wl SET
+        <if test="bzStatus!=0">
+            bzStatus=#{bzStatus}
+        </if>
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
         </if>
         <if test="zjyStatus!=0">
             zjyStatus=#{zjyStatus}
+        </if>
+        <if test="zjldStatus!=0">
+            zjldStatus=#{zjldStatus}
         </if>
         WHERE BackDh = #{backDh}
     </update>
@@ -2662,9 +2668,8 @@ SmlPk45		= #{smlPk45},
     <update id="updateWLTempSByTk" parameterType="com.qdhualing.qrcodetracker.bean.WLTKParam">
         UPDATE M_WLTempS
         SET
-        PCZL = PCZL - #{dwzl},
         DWZL = DWZL - #{dwzl},
-        SHL = SHL - #{tkShL}
+        SHL = (DWZL - #{dwzl})/PCZL
         WHERE QRCode_ID = #{qrCodeId};
     </update>
 
@@ -2676,9 +2681,8 @@ SmlPk45		= #{smlPk45},
     <update id="updateWLSByTk" parameterType="com.qdhualing.qrcodetracker.bean.WLTKParam">
         UPDATE M_WLS
         SET
-        PCZL = PCZL + #{dwzl},
         DWZL = DWZL + #{dwzl},
-        SHL = SHL + #{tkShL}
+        SHL = (DWZL + #{dwzl})/PCZL
         WHERE QRCode_ID = #{qrCodeId};
     </update>
 
@@ -2732,7 +2736,7 @@ SmlPk45		= #{smlPk45},
     </select>
 
     <select id="getWLTempSData" resultType="com.qdhualing.qrcodetracker.bean.WLTKShowDataResult">
-        SELECT M_WLTempS.ProductName , M_WLTempS.DWZL , M_WLTempS.SHL , M_WLTempS.CHD , M_WLTempS.GG , M_WLTempS.DW , Pdt_Sort2.Sort_Name
+        SELECT M_WLTempS.ProductName ,M_WLTempS.PCZL,  M_WLTempS.DWZL , M_WLTempS.SHL , M_WLTempS.CHD , M_WLTempS.GG , M_WLTempS.DW , Pdt_Sort2.Sort_Name
         FROM M_WLTempS LEFT JOIN Pdt_Sort2 on M_WLTempS.SortID = Pdt_Sort2.ID
         WHERE M_WLTempS.QRCode_ID = #{0}
     </select>
@@ -2815,9 +2819,8 @@ SmlPk45		= #{smlPk45},
         UPDATE M_WLTempS
         SET
         LL_Time = #{time},
-        PCZL = PCZL + #{dwzl},
         DWZL = DWZL + #{dwzl},
-        SHL = SHL + #{ckShL}
+        SHL = (DWZL+#{dwzl})/PCZL
         WHERE QRCode_ID = #{qrCodeId};
     </update>
 
@@ -2848,7 +2851,7 @@ SmlPk45		= #{smlPk45},
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="qrCodeId!=null">#{qrCodeId},</if>
             <if test="productName!=null">#{productName},</if>
-            #{dwzl},
+            #{pczl},
             #{dwzl},
             <if test="sortId!=null">#{sortId},</if>
             <if test="wlCode!=null">#{wlCode},</if>
@@ -2872,9 +2875,8 @@ SmlPk45		= #{smlPk45},
 
         UPDATE M_WLS
         SET
-        PCZL = PCZL-#{dwzl},
         DWZL = DWZL-#{dwzl},
-        SHL = SHL-#{ckShL}
+        SHL = (DWZL-#{dwzl})/PCZL
         WHERE QRCode_ID = #{qrCodeId};
 
     </update>
@@ -2885,6 +2887,7 @@ SmlPk45		= #{smlPk45},
             <if test="qrCodeId!=null">QRCode_ID,</if>
             <if test="productName!=null">ProductName,</if>
             DWZL,
+            PCZL,
             <if test="dw!=null">DW,</if>
             <if test="bz!=null">Bz,</if>
             <if test="sortId!=null">SortID,</if>
@@ -2903,6 +2906,7 @@ SmlPk45		= #{smlPk45},
             <if test="qrCodeId!=null">#{qrCodeId},</if>
             <if test="productName!=null">#{productName},</if>
             #{dwzl},
+            #{pczl},
             <if test="dw!=null">#{dw},</if>
             <if test="bz!=null">#{bz},</if>
             <if test="sortId!=null">#{sortId},</if>

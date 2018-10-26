@@ -242,7 +242,7 @@ public class MainController {
                 if (showDataResult == null) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "获取基本信息失败,请重新扫码");
                 }
-                else if(showDataResult.getShl()==0){
+                else if(showDataResult.getShl()==0&&showDataResult.getDwzl()==0){
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "已经没有库存了,请重新扫码");
                 }
                 else{
@@ -286,7 +286,7 @@ public class MainController {
                 wlOutParam.setProductName(wlsBean.getProductName());
                 wlOutParam.setWlCode(wlsBean.getWLCode());
                 wlOutParam.setDw(wlsBean.getDW());
-                //wlOutParam.setDwzl(wlsBean.getDWZL());
+                wlOutParam.setPczl(wlsBean.getPCZL());
                 wlOutParam.setGg(wlsBean.getGG());
                 wlOutParam.setSortId(wlsBean.getSortID());
                 wlOutParam.setYlpc(wlsBean.getYLPC());
@@ -2266,17 +2266,25 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
+                Integer bzStatus=0;
                 Integer fzrStatus=0;
                 Integer zjyStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.FZR)
+                Integer zjldStatus=0;
+                if(param.getCheckQXFlag()==VerifyParam.BZ)
+                    bzStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=1;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJY)
                     zjyStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.ZJLD)
+                    zjldStatus=1;
 
                 WlTkdBean wltkd=new WlTkdBean();
                 wltkd.setBackDh(param.getDh());
+                wltkd.setBzStatus(bzStatus);
                 wltkd.setFzrStatus(fzrStatus);
                 wltkd.setZjyStatus(zjyStatus);
+                wltkd.setZjldStatus(zjldStatus);
 
                 int a = mainService.agreeWlTk(wltkd);
                 if (a == 1) {
@@ -2292,7 +2300,7 @@ public class MainController {
                             }
                             //临时库存表中数据减去或者删除
                             WLTempSBean wlTempSBean = mainService.getWLTempS(wlTKParam.getQrCodeId());
-                            if (wlTKParam.getTkShL() >= wlTempSBean.getSHL()) {
+                            if (wlTKParam.getTkShL() >= wlTempSBean.getSHL()&&wlTKParam.getDwzl() >= wlTempSBean.getDWZL()) {
                                 a = mainService.deleteFromWLTempS(wlTKParam.getQrCodeId());
                             } else {
                                 a = mainService.updateWLTempSByTk(wlTKParam);
