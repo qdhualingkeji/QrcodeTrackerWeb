@@ -16,6 +16,10 @@
         SELECT distinct r.*
         FROM Rkd_Bcp r,M_BCPIn m
         WHERE JhR = #{0} AND r.InDh=m.InDh AND (BzStatus = 2 OR FzrStatus = 2 OR ZjyStatus = 2 OR ZjldStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
+        UNION
+        SELECT distinct r.*
+        FROM Rkd_Bcp r,M_CPIn2 m
+        WHERE JhR = #{0} AND r.InDh=m.InDh AND (BzStatus = 2 OR FzrStatus = 2 OR ZjyStatus = 2 OR ZjldStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
     </select>
     <select id="getWlTkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlTkdBean">
         SELECT distinct t.*
@@ -1484,7 +1488,7 @@ SmlPk45		= #{smlPk45},
         UPDATE M_BCPTempS
         SET
         DWZL = DWZL - #{dwzl},
-        SHL = SHL - #{shl}
+        SHL = (DWZL - #{dwzl})/RKZL
         WHERE QRCode_ID = #{qrCodeId};
     </update>
 
@@ -1492,7 +1496,7 @@ SmlPk45		= #{smlPk45},
         UPDATE M_BCPS
         SET
         DWZL = DWZL + #{dwzl},
-        SHL = SHL + #{shl}
+        SHL = (DWZL + #{dwzl})/RKZL
         WHERE QRCode_ID = #{qrCodeId}
     </update>
 
@@ -1521,6 +1525,7 @@ SmlPk45		= #{smlPk45},
             <if test="scTime!=null">
                 SC_Time,
             </if>
+            RKZL,
             DWZL,
             <if test="ksTime!=null">
                 KS_Time,
@@ -1598,6 +1603,7 @@ SmlPk45		= #{smlPk45},
             <if test="scTime!=null">
                 #{scTime},
             </if>
+            #{rkzl},
             #{dwzl},
             <if test="ksTime!=null">
                 #{ksTime},
@@ -1881,7 +1887,7 @@ SmlPk45		= #{smlPk45},
         UPDATE M_BCPTempS
         SET
         DWZL = DWZL - #{dwzl},
-        SHL = SHL - #{tlShl}
+        SHL = (DWZL - #{dwzl})/RKZL
         WHERE QRCode_ID = #{qrcodeId};
     </update>
 
@@ -1894,7 +1900,7 @@ SmlPk45		= #{smlPk45},
         UPDATE M_BCPTl
         SET
         DWZL = DWZL + #{dwzl},
-        SHL = SHL + #{tlShl}
+        SHL = (DWZL + #{dwzl})/RKZL
         WHERE QRCode_ID = #{qrcodeId};
     </update>
 
@@ -1926,6 +1932,7 @@ SmlPk45		= #{smlPk45},
             <if test="scTime!=null">
                 SC_Time,
             </if>
+            RKZL,
             DWZL,
             <if test="ksTime!=null">
                 KS_Time,
@@ -1985,6 +1992,7 @@ SmlPk45		= #{smlPk45},
             <if test="scTime!=null">
                 #{scTime},
             </if>
+            #{rkzl},
             #{dwzl},
             <if test="ksTime!=null">
                 #{ksTime},
@@ -2071,6 +2079,7 @@ SmlPk45		= #{smlPk45},
             <if test="scTime!=null">
                 SC_Time,
             </if>
+            RKZL,
             DWZL,
             <if test="ksTime!=null">
                 KS_Time,
@@ -2157,6 +2166,7 @@ SmlPk45		= #{smlPk45},
             <if test="scTime!=null">
                 #{scTime},
             </if>
+            #{dwzl},
             #{dwzl},
             <if test="ksTime!=null">
                 #{ksTime},
@@ -2506,7 +2516,7 @@ SmlPk45		= #{smlPk45},
         UPDATE M_WLTl
         SET
         DWZL = DWZL + #{dwzl},
-        SHL = SHL + #{tlShl}
+        SHL = (DWZL + #{dwzl})/PCZL
         WHERE QRCode_ID = #{qrcodeId};
     </update>
 
@@ -2618,9 +2628,8 @@ SmlPk45		= #{smlPk45},
     <update id="updateWLTempSByTl" parameterType="com.qdhualing.qrcodetracker.bean.WLThrowParam">
         UPDATE M_WLTempS
         SET
-        PCZL = PCZL - #{dwzl},
         DWZL = DWZL - #{dwzl},
-        SHL = SHL - #{tlShl}
+        SHL = (DWZL - #{dwzl})/PCZL
         WHERE QRCode_ID = #{qrcodeId};
     </update>
 
@@ -2629,6 +2638,7 @@ SmlPk45		= #{smlPk45},
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="qrcodeId!=null">QRCode_ID,</if>
             <if test="productName!=null">ProductName,</if>
+            PCZL,
             DWZL,
             <if test="sortId!=null">SortID,</if>
             <if test="wlCode!=null">WL_Code,</if>
@@ -2648,6 +2658,7 @@ SmlPk45		= #{smlPk45},
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="qrcodeId!=null">#{qrcodeId},</if>
             <if test="productName!=null">#{productName},</if>
+            #{pczl},
             #{dwzl},
             <if test="sortId!=null">#{sortId},</if>
             <if test="wlCode!=null">#{wlCode},</if>

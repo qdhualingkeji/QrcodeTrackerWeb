@@ -501,7 +501,7 @@ public class MainController {
                 wlTLParam.setProductName(wlTempSBean.getProductName());
                 wlTLParam.setWlCode(wlTempSBean.getWLCode());
                 wlTLParam.setDw(wlTempSBean.getDW());
-                //wlTLParam.setDwzl(wlTempSBean.getDWZL());
+                wlTLParam.setPczl(wlTempSBean.getPCZL());
                 wlTLParam.setGg(wlTempSBean.getGG());
                 wlTLParam.setSortId(wlTempSBean.getSortID());
                 wlTLParam.setYlpc(wlTempSBean.getYLPC());
@@ -519,7 +519,7 @@ public class MainController {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成物料投料记录失败");
                 } else {
                     //临时库存表中数据减去或者删除
-                    if (wlTLParam.getTlShl() >= wlTempSBean.getSHL()) {
+                    if (wlTLParam.getTlShl() >= wlTempSBean.getSHL()&&wlTLParam.getDwzl() >= wlTempSBean.getDWZL()) {
                         b = mainService.deleteFromWLTempS(wlTLParam.getQrcodeId());
                     } else {
                         b = mainService.updateWLTempSByTl(wlTLParam);
@@ -744,7 +744,7 @@ public class MainController {
                 bcpTLParam.setProductName(bcpTempSBean.getProductName());
                 bcpTLParam.setBcpCode(bcpTempSBean.getBcpCode());
                 bcpTLParam.setDw(bcpTempSBean.getDw());
-                //bcpTLParam.setDwzl(bcpTempSBean.getDwzl());
+                bcpTLParam.setRkzl(bcpTempSBean.getRkzl());
                 bcpTLParam.setGg(bcpTempSBean.getGg());
                 bcpTLParam.setSortId(bcpTempSBean.getSortID());
                 bcpTLParam.setYlpc(bcpTempSBean.getYlpc());
@@ -762,7 +762,7 @@ public class MainController {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成半成品投料记录失败");
                 } else {
                     //临时库存表中数据减去或者删除
-                    if (bcpTLParam.getTlShl() >= bcpTempSBean.getShl()) {
+                    if (bcpTLParam.getTlShl() >= bcpTempSBean.getShl()&&bcpTLParam.getDwzl() >= bcpTempSBean.getDwzl()) {
                         b = mainService.deleteFromBcpTempS(bcpTLParam.getQrcodeId());
                     } else {
                         b = mainService.updateBcpTempSByTl(bcpTLParam);
@@ -870,7 +870,7 @@ public class MainController {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "没找到该物料，请先出库");
                 param.setProductName(bcpTempSBean.getProductName());
                 param.setBcpCode(bcpTempSBean.getBcpCode());
-                //param.setDwzl(bcpTempSBean.getDwzl());
+                param.setRkzl(bcpTempSBean.getRkzl());
                 param.setSortID(bcpTempSBean.getSortID());
                 param.setYlpc(bcpTempSBean.getYlpc());
                 param.setScpc(bcpTempSBean.getScpc());
@@ -912,7 +912,7 @@ public class MainController {
                         }
                     }
                     //临时库存表中数据减去或者删除
-                    if (param.getShl() >= bcpTempSBean.getShl()) {
+                    if (param.getShl() >= bcpTempSBean.getShl()&&param.getDwzl() >= bcpTempSBean.getDwzl()) {
                         b = mainService.deleteFromBcpTempS(param.getQrCodeId());
                         if (b <= 0) {
                             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "删除半成品临时库存表数据失败");

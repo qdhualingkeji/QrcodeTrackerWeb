@@ -42,6 +42,7 @@ public class WLThrowParam {
     private String wlCode;
     private String ylpc;
     private String gg;
+    private float pczl;
     private float dwzl;
     private String czy;
     private String dw;
@@ -125,6 +126,14 @@ public class WLThrowParam {
 
     public void setGg(String gg) {
         this.gg = gg;
+    }
+
+    public float getPczl() {
+        return pczl;
+    }
+
+    public void setPczl(float pczl) {
+        this.pczl = pczl;
     }
 
     public float getDwzl() {
