@@ -369,4 +369,7 @@ public interface MainDao {
 
     int updateBcpRkdStatusByQRCodeID(String qrCodeId);
 
+    List<Module2Bean> getXZQXData();
+
+    int registerUser(PersonParam personParam);
 }

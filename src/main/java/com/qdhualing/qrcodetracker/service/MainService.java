@@ -922,4 +922,14 @@ public class MainService {
 		return mainDao.updateBcpRkdStatusByQRCodeID(qrCodeId);
 	}
 
+    public Module2Result getXZQXData() {
+		Module2Result result=new Module2Result();
+		List<Module2Bean> beans=mainDao.getXZQXData();
+		result.setBeans(beans);
+		return result;
+    }
+
+	public int registerUser(PersonParam personParam) {
+		return mainDao.registerUser(personParam);
+	}
 }

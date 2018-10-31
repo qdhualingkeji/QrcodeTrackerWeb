@@ -3323,4 +3323,59 @@ SmlPk45		= #{smlPk45},
 		update M_WLS set PCZL=#{0}
 		where QRCode_ID=#{1}
 	</update>
+
+    <select id="getXZQXData" resultType="com.qdhualing.qrcodetracker.bean.Module2Bean">
+        SELECT ID,M_name name FROM M_Module2
+    </select>
+
+    <insert id="registerUser" parameterType="com.qdhualing.qrcodetracker.bean.PersonParam">
+        INSERT INTO Hl_User
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="groupID!=0">
+                GroupID,
+            </if>
+            <if test="loginName!=null">
+                LoginName,
+            </if>
+            <if test="password!=null">
+                Password,
+            </if>
+            <if test="userStatus!=null">
+                UserStatus,
+            </if>
+            <if test="regTime!=null">
+                RegTime,
+            </if>
+            <if test="trueName!=null">
+                TrueName,
+            </if>
+            <if test="checkQXGroup!=null">
+                CheckQXGroup,
+            </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="groupID!=0">
+                #{groupID},
+            </if>
+            <if test="loginName!=null">
+                #{loginName},
+            </if>
+            <if test="password!=null">
+                #{password},
+            </if>
+            <if test="userStatus!=null">
+                #{userStatus},
+            </if>
+            <if test="regTime!=null">
+                #{regTime},
+            </if>
+            <if test="trueName!=null">
+                #{trueName},
+            </if>
+            <if test="checkQXGroup!=null">
+                #{checkQXGroup},
+            </if>
+        </trim>
+    </insert>
 </mapper>

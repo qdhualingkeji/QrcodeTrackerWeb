@@ -100,6 +100,33 @@ public class MainController {
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "入库数据不正确");
     }
 
+    /**
+     * 用户注册
+     * @param json
+     * @return
+     */
+    @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult registerUser(String json){
+        PersonParam personParam = ParamsUtils.handleParams(json, PersonParam.class);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        personParam.setRegTime(df.format(System.currentTimeMillis()));
+        ActionResult<DataResult> result = new ActionResult<DataResult>();
+        if(personParam!=null) {
+            try {
+                int a = mainService.registerUser(personParam);
+                if(a>0)
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "员工注册成功");
+                else
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "员工注册失败");
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+            }
+        }
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "员工数据不正确");
+    }
+
     @RequestMapping(value = "/delWLIN_M", method = RequestMethod.POST)
     @ResponseBody
     public ActionResult delWLWTAndWLINAndWLAndWLS(String json) {
@@ -634,6 +661,29 @@ public class MainController {
             }
             result.setResult(sxylResult);
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "获取工序数据成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+        }
+    }
+
+    /**
+     * 逄坤
+     * 获取所有权限
+     * @param json
+     * @return
+     */
+    @RequestMapping(value = "/getXZQX", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult getXZQX(String json) {
+        ActionResult<Module2Result> result = new ActionResult<Module2Result>();
+        try {
+            Module2Result module2Result = mainService.getXZQXData();
+            if (module2Result.getBeans() == null || module2Result.getBeans().size() <= 0) {
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "无数据,请先添加权限");
+            }
+            result.setResult(module2Result);
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "获取权限数据成功");
         } catch (Exception e) {
             e.printStackTrace();
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
