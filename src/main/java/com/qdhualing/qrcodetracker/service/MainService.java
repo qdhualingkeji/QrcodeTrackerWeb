@@ -799,6 +799,13 @@ public class MainService {
 		return personResult;
 	}
 
+	public PersonResult searchAllPerson() {
+		List<PersonBean> beans =  mainDao.searchAllPerson();
+		PersonResult personResult = new PersonResult();
+		personResult.setPersonBeans(beans);
+		return personResult;
+	}
+
 	public int updateBcpIn(BCPINParam bcpInParam) {
 		int count=0;
 		String qRCodeID = bcpInParam.getQrCodeId();
@@ -932,4 +939,5 @@ public class MainService {
 	public int registerUser(PersonParam personParam) {
 		return mainDao.registerUser(personParam);
 	}
+
 }

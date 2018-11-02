@@ -3163,6 +3163,28 @@ public class MainController {
     }
 
     /**
+     * 逄坤
+     * 获取所有人员信息（无筛选条件）
+     * @return
+     */
+    @RequestMapping(value = "/searchAllPerson", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult searchAllPerson() {
+        ActionResult<PersonResult> result = new ActionResult<PersonResult>();
+        try {
+            PersonResult personResult = mainService.searchAllPerson();
+            if (personResult.getPersonBeans() == null || personResult.getPersonBeans().size() <= 0) {
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "无人员信息");
+            }
+            result.setResult(personResult);
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "获取人员信息成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+        }
+    }
+
+    /**
      * @return
      * @author 马鹏昊
      * @desc 获取可修改库单数据

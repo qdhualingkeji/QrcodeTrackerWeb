@@ -341,6 +341,8 @@ public interface MainDao {
 
     List<PersonBean> getAllPerson(User param);
 
+    List<PersonBean> searchAllPerson();
+
     int updateBcpIn(BCPINParam bcpInParam);
 
     List<WlRkdBean> getWlRkCanModifyData(String realName);
@@ -372,4 +374,5 @@ public interface MainDao {
     List<Module2Bean> getXZQXData();
 
     int registerUser(PersonParam personParam);
+
 }
