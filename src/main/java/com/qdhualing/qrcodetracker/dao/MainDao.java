@@ -375,4 +375,5 @@ public interface MainDao {
 
     int registerUser(PersonParam personParam);
 
+    PersonBean getPersonById(int userID);
 }

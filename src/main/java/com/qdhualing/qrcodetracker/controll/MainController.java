@@ -3185,6 +3185,40 @@ public class MainController {
     }
 
     /**
+     * 逄坤
+     * 根据员工Id查询员工信息
+     * @param json
+     * @return
+     */
+    @RequestMapping(value = "/getPersonById", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult getPersonById(String json){
+        User param = ParamsUtils.handleParams(json, User.class);
+
+        ActionResult<PersonBean> result = new ActionResult<PersonBean>();
+        try {
+            PersonBean personBean = mainService.getPersonById(param.getUserID());
+            if (personBean == null) {
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "无人员信息");
+            }
+            String qxGroup = personBean.getCheckQXGroup()+",";
+            List<Module2Bean> qxList = mainService.getXZQXData().getBeans();
+            String qxNames="";
+            for(Module2Bean qx : qxList){
+                if(qxGroup.contains(qx.getId()+",")){
+                    qxNames+=qx.getName()+",";
+                }
+            }
+            personBean.setQxNameGroup(qxNames.substring(0,qxNames.length()-1));
+            result.setResult(personBean);
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "获取人员信息成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+        }
+    }
+
+    /**
      * @return
      * @author 马鹏昊
      * @desc 获取可修改库单数据

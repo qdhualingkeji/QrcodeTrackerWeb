@@ -940,4 +940,7 @@ public class MainService {
 		return mainDao.registerUser(personParam);
 	}
 
+	public PersonBean getPersonById(int userID) {
+		return mainDao.getPersonById(userID);
+	}
 }

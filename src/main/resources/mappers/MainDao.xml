@@ -50,6 +50,10 @@
         SELECT UserID,LoginName,TrueName,GroupName,RegTime FROM Hl_User u LEFT JOIN Hl_UserGroup ug ON u.GroupID=ug.GroupID
     </select>
 
+    <select id="getPersonById" resultType="com.qdhualing.qrcodetracker.bean.PersonBean">
+        SELECT UserID,TrueName,LoginName,RegTime,GroupName,CheckQXGroup FROM Hl_User u LEFT JOIN Hl_UserGroup ug ON u.GroupID=ug.GroupID WHERE UserID=#{0}
+    </select>
+
     <update id="updateCpCkdData" parameterType="com.qdhualing.qrcodetracker.bean.CpOutVerifyResult">
         UPDATE Ckd_Bcp SET LhDw = #{lhDw}, FhFzr=#{fhFzr}, LhR=#{lhR}, LhFzr=#{lhFzr}, Remark=#{remark}, BzStatus=#{bzStatus}, FzrStatus=#{fzrStatus}
         WHERE OutDh = #{outDh}
