@@ -127,6 +127,31 @@ public class MainController {
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "员工数据不正确");
     }
 
+    /**
+     * 用户信息修改
+     * @param json
+     * @return
+     */
+    @RequestMapping(value = "/updateUserData", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult updateUserData(String json){
+        PersonResult personResult = ParamsUtils.handleParams(json, PersonResult.class);
+        ActionResult<DataResult> result = new ActionResult<DataResult>();
+        if(personResult!=null){
+            try {
+                int a = mainService.updateUserData(personResult);
+                if(a>0)
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "员工修改成功");
+                else
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "员工修改失败");
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+            }
+        }
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "员工数据不正确");
+    }
+
     @RequestMapping(value = "/delWLIN_M", method = RequestMethod.POST)
     @ResponseBody
     public ActionResult delWLWTAndWLINAndWLAndWLS(String json) {
@@ -3195,13 +3220,13 @@ public class MainController {
     public ActionResult getPersonById(String json){
         User param = ParamsUtils.handleParams(json, User.class);
 
-        ActionResult<PersonBean> result = new ActionResult<PersonBean>();
+        ActionResult<PersonResult> result = new ActionResult<PersonResult>();
         try {
-            PersonBean personBean = mainService.getPersonById(param.getUserID());
-            if (personBean == null) {
+            PersonResult personResult = mainService.getPersonById(param.getUserID());
+            if (personResult == null) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "无人员信息");
             }
-            String qxGroup = personBean.getCheckQXGroup()+",";
+            String qxGroup = personResult.getCheckQXGroup()+",";
             List<Module2Bean> qxList = mainService.getXZQXData().getBeans();
             String qxNames="";
             for(Module2Bean qx : qxList){
@@ -3209,8 +3234,8 @@ public class MainController {
                     qxNames+=qx.getName()+",";
                 }
             }
-            personBean.setQxNameGroup(qxNames.substring(0,qxNames.length()-1));
-            result.setResult(personBean);
+            personResult.setQxNameGroup(qxNames.substring(0,qxNames.length()-1));
+            result.setResult(personResult);
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "获取人员信息成功");
         } catch (Exception e) {
             e.printStackTrace();

@@ -375,5 +375,7 @@ public interface MainDao {
 
     int registerUser(PersonParam personParam);
 
-    PersonBean getPersonById(int userID);
+    PersonResult getPersonById(int userID);
+
+    int updateUserData(PersonResult personResult);
 }

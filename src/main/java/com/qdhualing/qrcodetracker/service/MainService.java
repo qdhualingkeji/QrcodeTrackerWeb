@@ -940,7 +940,11 @@ public class MainService {
 		return mainDao.registerUser(personParam);
 	}
 
-	public PersonBean getPersonById(int userID) {
+	public PersonResult getPersonById(int userID) {
 		return mainDao.getPersonById(userID);
+	}
+
+	public int updateUserData(PersonResult personResult) {
+		return mainDao.updateUserData(personResult);
 	}
 }

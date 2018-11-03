@@ -47,11 +47,11 @@
 	</select>
 
     <select id="searchAllPerson" resultType="com.qdhualing.qrcodetracker.bean.PersonBean">
-        SELECT UserID,LoginName,TrueName,GroupName,RegTime FROM Hl_User u LEFT JOIN Hl_UserGroup ug ON u.GroupID=ug.GroupID
+        SELECT UserID,LoginName,TrueName,GroupName,RegTime FROM Hl_User u LEFT JOIN Hl_UserGroup ug ON u.GroupID=ug.GroupID ORDER BY RegTime DESC
     </select>
 
-    <select id="getPersonById" resultType="com.qdhualing.qrcodetracker.bean.PersonBean">
-        SELECT UserID,TrueName,LoginName,RegTime,GroupName,CheckQXGroup FROM Hl_User u LEFT JOIN Hl_UserGroup ug ON u.GroupID=ug.GroupID WHERE UserID=#{0}
+    <select id="getPersonById" resultType="com.qdhualing.qrcodetracker.bean.PersonResult">
+        SELECT UserID,TrueName,LoginName,RegTime,u.GroupID,GroupName,CheckQXGroup FROM Hl_User u LEFT JOIN Hl_UserGroup ug ON u.GroupID=ug.GroupID WHERE UserID=#{0}
     </select>
 
     <update id="updateCpCkdData" parameterType="com.qdhualing.qrcodetracker.bean.CpOutVerifyResult">
@@ -3386,4 +3386,14 @@ SmlPk45		= #{smlPk45},
             </if>
         </trim>
     </insert>
+
+    <update id="updateUserData" parameterType="com.qdhualing.qrcodetracker.bean.PersonResult">
+        UPDATE Hl_User SET GroupID=#{groupID},LoginName=#{loginName},
+        <if test="password!=null">
+            Password=#{password},
+        </if>
+        TrueName=#{trueName},
+        CheckQXGroup=#{checkQXGroup}
+        WHERE UserID=#{userId}
+    </update>
 </mapper>
