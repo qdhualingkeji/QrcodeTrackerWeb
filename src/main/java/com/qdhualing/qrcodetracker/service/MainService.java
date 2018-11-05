@@ -937,7 +937,13 @@ public class MainService {
     }
 
 	public int registerUser(PersonParam personParam) {
-		return mainDao.registerUser(personParam);
+		int count=0;
+		count = mainDao.checkLoginName(personParam);
+		if(count==0)
+			count = mainDao.registerUser(personParam);
+		else
+			count=0;
+		return count;
 	}
 
 	public PersonResult getPersonById(int userID) {
@@ -945,6 +951,19 @@ public class MainService {
 	}
 
 	public int updateUserData(PersonResult personResult) {
-		return mainDao.updateUserData(personResult);
+		int count=0;
+		PersonParam personParam = new PersonParam();
+		personParam.setUserId(personResult.getUserId());//这里是修改用户时验证账号，要加用户Id，排除除了自己之外还有无重复的账号
+		personParam.setLoginName(personResult.getLoginName());
+		count = mainDao.checkLoginName(personParam);
+		if(count==0)
+			count = mainDao.updateUserData(personResult);
+		else
+			count=0;
+		return count;
 	}
+
+    public int deleteUser(int userId) {
+		return mainDao.deleteUser(userId);
+    }
 }

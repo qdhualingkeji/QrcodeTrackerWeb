@@ -118,7 +118,7 @@ public class MainController {
                 if(a>0)
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "员工注册成功");
                 else
-                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "员工注册失败");
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "账号已存在");
             } catch (Exception e) {
                 e.printStackTrace();
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
@@ -143,13 +143,38 @@ public class MainController {
                 if(a>0)
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "员工修改成功");
                 else
-                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "员工修改失败");
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "员工账号已存在");
             } catch (Exception e) {
                 e.printStackTrace();
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
             }
         }
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "员工数据不正确");
+    }
+
+    /**
+     * 删除员工
+     * @param json
+     * @return
+     */
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult deleteUser(String json){
+        PersonParam personParam = ParamsUtils.handleParams(json, PersonParam.class);
+        ActionResult<DataResult> result = new ActionResult<DataResult>();
+        if(personParam!=null) {
+            try {
+                int a = mainService.deleteUser(personParam.getUserId());
+                if(a>0)
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "员工删除成功");
+                else
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "员工删除失败");
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+            }
+        }
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "员工删除失败");
     }
 
     @RequestMapping(value = "/delWLIN_M", method = RequestMethod.POST)

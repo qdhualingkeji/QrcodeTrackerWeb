@@ -378,4 +378,13 @@ public interface MainDao {
     PersonResult getPersonById(int userID);
 
     int updateUserData(PersonResult personResult);
+
+    /**
+     * 验证账号是否存在，用于注册和修改用户时验证
+     * @param personParam
+     * @return
+     */
+    int checkLoginName(PersonParam personParam);
+
+    int deleteUser(int userId);
 }

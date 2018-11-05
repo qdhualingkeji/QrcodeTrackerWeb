@@ -3396,4 +3396,15 @@ SmlPk45		= #{smlPk45},
         CheckQXGroup=#{checkQXGroup}
         WHERE UserID=#{userId}
     </update>
+
+    <select id="checkLoginName" resultType="java.lang.Integer" parameterType="com.qdhualing.qrcodetracker.bean.PersonBean">
+        SELECT count(*) FROM Hl_User WHERE LoginName=#{loginName}
+        <if test="userId!=0">
+            AND UserID!=#{userId}
+        </if>
+    </select>
+
+    <delete id="deleteUser">
+        DELETE FROM Hl_User WHERE UserID=#{0}
+    </delete>
 </mapper>
