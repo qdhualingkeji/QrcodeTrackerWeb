@@ -3336,6 +3336,19 @@ SmlPk45		= #{smlPk45},
         SELECT ID,M_name name FROM M_Module2
     </select>
 
+    <select id="getXZQXDataByShenFen" parameterType="com.qdhualing.qrcodetracker.bean.PersonParam" resultType="com.qdhualing.qrcodetracker.bean.Module2Bean">
+        SELECT ID,M_name name FROM M_Module2 WHERE 1=1
+        <if test="shenFen=='zjy'||shenFen=='zjld'">
+            AND M_name='质检'
+        </if>
+        <if test="shenFen=='bz'||shenFen=='fzr'">
+            AND M_name='审核'
+        </if>
+        <if test="shenFen=='ptyg'">
+            AND M_name!='质检' AND M_name!='审核'
+        </if>
+    </select>
+
     <insert id="registerUser" parameterType="com.qdhualing.qrcodetracker.bean.PersonParam">
         INSERT INTO Hl_User
         <trim prefix="(" suffix=")" suffixOverrides=",">

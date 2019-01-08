@@ -726,9 +726,10 @@ public class MainController {
     @RequestMapping(value = "/getXZQX", method = RequestMethod.POST)
     @ResponseBody
     public ActionResult getXZQX(String json) {
+        PersonParam param = ParamsUtils.handleParams(json, PersonParam.class);
         ActionResult<Module2Result> result = new ActionResult<Module2Result>();
         try {
-            Module2Result module2Result = mainService.getXZQXData();
+            Module2Result module2Result = mainService.getXZQXDataByShenFen(param);
             if (module2Result.getBeans() == null || module2Result.getBeans().size() <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "无数据,请先添加权限");
             }

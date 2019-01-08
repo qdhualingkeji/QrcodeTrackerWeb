@@ -936,6 +936,13 @@ public class MainService {
 		return result;
     }
 
+    public Module2Result getXZQXDataByShenFen(PersonParam param) {
+		Module2Result result=new Module2Result();
+		List<Module2Bean> beans=mainDao.getXZQXDataByShenFen(param);
+		result.setBeans(beans);
+		return result;
+    }
+
 	public int registerUser(PersonParam personParam) {
 		int count=0;
 		count = mainDao.checkLoginName(personParam);

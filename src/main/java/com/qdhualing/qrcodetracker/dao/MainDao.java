@@ -373,6 +373,8 @@ public interface MainDao {
 
     List<Module2Bean> getXZQXData();
 
+    List<Module2Bean> getXZQXDataByShenFen(PersonParam param);
+
     int registerUser(PersonParam personParam);
 
     PersonResult getPersonById(int userID);
