@@ -240,7 +240,7 @@
             fzrStatus=#{fzrStatus}
         </if>
         <if test="zjyStatus!=0">
-            zjyStatus=#{zjyStatus}
+            zjyStatus=#{zjyStatus},zjldStatus=0,bzStatus=0,fzrStatus=0
         </if>
         <if test="zjldStatus!=0">
             zjldStatus=#{zjldStatus}
@@ -276,7 +276,7 @@
             fzrStatus=#{fzrStatus}
         </if>
         <if test="zjyStatus!=0">
-            zjyStatus=#{zjyStatus}
+            zjyStatus=#{zjyStatus},zjldStatus=0,bzStatus=0,fzrStatus=0
         </if>
         <if test="zjldStatus!=0">
             zjldStatus=#{zjldStatus}
@@ -328,7 +328,7 @@
             fzrStatus=${fzrStatus}
         </if>
         <if test="zjyStatus==1">
-            zjyStatus=${zjyStatus}
+            zjyStatus=${zjyStatus},zjldStatus=0,bzStatus=0,fzrStatus=0
         </if>
         <if test="zjldStatus==1">
             zjldStatus=${zjldStatus}
@@ -468,7 +468,11 @@
             and FzrID=#{fzrID} and BzStatus=1 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
         </if>
         <if test="zjyID!=null">
-            and ZjyID=#{zjyID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0
+            and (ZjyID=#{zjyID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0)
+            or (ZjyID=#{zjyID} and ZjyStatus=2)
+            or (ZjyID=#{zjyID} and ZjldStatus=2)
+            or (ZjyID=#{zjyID} and BzStatus=2)
+            or (ZjyID=#{zjyID} and FzrStatus=2)
         </if>
         <if test="zjldID!=null">
             and ZjldID=#{zjldID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=0
@@ -498,7 +502,11 @@
             and FzrID=#{fzrID} and BzStatus=1 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
         </if>
         <if test="zjyID!=null">
-            and ZjyID=#{zjyID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0
+            and (ZjyID=#{zjyID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0)
+            or (ZjyID=#{zjyID} and ZjyStatus=2)
+            or (ZjyID=#{zjyID} and ZjldStatus=2)
+            or (ZjyID=#{zjyID} and BzStatus=2)
+            or (ZjyID=#{zjyID} and FzrStatus=2)
         </if>
         <if test="zjldID!=null">
             and ZjldID=#{zjldID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=0
@@ -532,7 +540,11 @@
             and FzrID=#{fzrID} and BzStatus=1 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
         </if>
         <if test="zjyID!=null">
-            and ZjyID=#{zjyID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0
+            and (ZjyID=#{zjyID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0)
+            or (ZjyID=#{zjyID} and ZjyStatus=2)
+            or (ZjyID=#{zjyID} and ZjldStatus=2)
+            or (ZjyID=#{zjyID} and BzStatus=2)
+            or (ZjyID=#{zjyID} and FzrStatus=2)
         </if>
         <if test="zjldID!=null">
             and ZjldID=#{zjldID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=0

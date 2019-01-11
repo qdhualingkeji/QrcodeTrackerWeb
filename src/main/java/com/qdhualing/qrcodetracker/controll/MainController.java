@@ -1449,13 +1449,16 @@ public class MainController {
                         ylList.add(bb.getYl9());
                     if (!TextUtils.isEmpty(bb.getYl10()))
                         ylList.add(bb.getYl10());
-                    List<ComponentBean> wlComponentBeans = mainService.getComponentBeansFromWl(ylList);
-                    List<ComponentBean> bcpComponentBeans = mainService.getComponentBeansFromBcp(ylList);
-                    List<ComponentBean> allComponentBeans = new ArrayList<ComponentBean>();
-                    allComponentBeans.clear();
-                    allComponentBeans.addAll(wlComponentBeans);
-                    allComponentBeans.addAll(bcpComponentBeans);
-                    singleData.setComponentBeans(allComponentBeans);
+
+                    if(ylList.size()>0) {
+                        List<ComponentBean> wlComponentBeans = mainService.getComponentBeansFromWl(ylList);
+                        List<ComponentBean> bcpComponentBeans = mainService.getComponentBeansFromBcp(ylList);
+                        List<ComponentBean> allComponentBeans = new ArrayList<ComponentBean>();
+                        allComponentBeans.clear();
+                        allComponentBeans.addAll(wlComponentBeans);
+                        allComponentBeans.addAll(bcpComponentBeans);
+                        singleData.setComponentBeans(allComponentBeans);
+                    }
                     result.setResult(singleData);
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 }
@@ -1519,13 +1522,16 @@ public class MainController {
                         ylList.add(bb.getYl9());
                     if (!TextUtils.isEmpty(bb.getYl10()))
                         ylList.add(bb.getYl10());
-                    List<ComponentBean> wlComponentBeans = mainService.getComponentBeansFromWl(ylList);
-                    List<ComponentBean> bcpComponentBeans = mainService.getComponentBeansFromBcp(ylList);
-                    List<ComponentBean> allComponentBeans = new ArrayList<ComponentBean>();
-                    allComponentBeans.clear();
-                    allComponentBeans.addAll(wlComponentBeans);
-                    allComponentBeans.addAll(bcpComponentBeans);
-                    singleData.setComponentBeans(allComponentBeans);
+
+                    if(ylList.size()>0) {
+                        List<ComponentBean> wlComponentBeans = mainService.getComponentBeansFromWl(ylList);
+                        List<ComponentBean> bcpComponentBeans = mainService.getComponentBeansFromBcp(ylList);
+                        List<ComponentBean> allComponentBeans = new ArrayList<ComponentBean>();
+                        allComponentBeans.clear();
+                        allComponentBeans.addAll(wlComponentBeans);
+                        allComponentBeans.addAll(bcpComponentBeans);
+                        singleData.setComponentBeans(allComponentBeans);
+                    }
                     result.setResult(singleData);
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 }
