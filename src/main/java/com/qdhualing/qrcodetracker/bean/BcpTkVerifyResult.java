@@ -23,10 +23,10 @@ public class BcpTkVerifyResult {
     private Integer bzID;
     private Integer bzStatus;
     private String bzName;
-    private int fzrID;
-    private int fzrStatus;
-    private int zjyID;
-    private int zjyStatus;
+    private Integer fzrID;
+    private Integer fzrStatus;
+    private Integer zjyID;
+    private Integer zjyStatus;
     private String zjyName;
     private Integer zjldID;
     private Integer zjldStatus;
