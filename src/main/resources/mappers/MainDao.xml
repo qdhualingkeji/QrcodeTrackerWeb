@@ -662,15 +662,23 @@
     </select>
 
     <select id="getBigCpIn2" resultType="com.qdhualing.qrcodetracker.bean.BigCpBean">
-        SELECT *
-        FROM M_CPIn2
-        WHERE QRCode_ID = #{0}
+        SELECT c.*,u.TrueName zjy,
+        case when r.ZjyStatus=1 and r.ZjldStatus=1 and r.BzStatus=1 and r.FzrStatus=1
+        then '合格'
+        else '不合格'
+        end jyzt
+        FROM M_CPIn2 c,Rkd_Bcp r,Hl_User u
+        WHERE c.Indh=r.InDh and r.ZjyID=u.UserID and QRCode_ID = #{0}
     </select>
 
     <select id="getSmallCpInData" resultType="com.qdhualing.qrcodetracker.bean.CPINParam">
-        SELECT *
-        FROM M_CPIn
-        WHERE QRCode_ID = #{0}
+        SELECT c.*,u.TrueName zjy,
+        case when r.ZjyStatus=1 and r.ZjldStatus=1 and r.BzStatus=1 and r.FzrStatus=1
+		then '合格'
+		else '不合格'
+		end jyzt
+        FROM M_CPIn c,M_CPIn2 c2,Rkd_Bcp r,Hl_User u
+        WHERE c.CPS2_QRCode=c2.QRCode_ID and c2.Indh=r.InDh and r.ZjyID=u.UserID and c.QRCode_ID = #{0}
     </select>
 
     <select id="getComponentBeansFromBcp" resultType="com.qdhualing.qrcodetracker.bean.ComponentBean">
@@ -696,9 +704,13 @@
     </select>
 
     <select id="getBcpInData" resultType="com.qdhualing.qrcodetracker.bean.BCPINParam">
-        SELECT *
-        FROM M_BCPIn
-        WHERE QRCode_ID = #{0}
+        SELECT b.*,u.TrueName zjy,
+        case when r.ZjyStatus=1 and r.ZjldStatus=1 and r.BzStatus=1 and r.FzrStatus=1
+        then '合格'
+        else '不合格'
+        end jyzt
+        FROM M_BCPIn b,Rkd_Bcp r,Hl_User u
+        WHERE b.Indh=r.InDh and r.ZjyID=u.UserID and QRCode_ID = #{0}
     </select>
 
     <select id="getWlInData" resultType="com.qdhualing.qrcodetracker.bean.WlTrackResult">
