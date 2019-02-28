@@ -121,17 +121,17 @@
     </update>
 
     <update id="changeBIG_CPInPassCheckFlag">
-        UPDATE M_CPIn2 SET ZJZT = 1, ZJY=#{1}
+        UPDATE M_CPIn2 SET ZJZT = #{2}, ZJY=#{1}
         WHERE QRCode_ID = #{0}
     </update>
 
     <update id="changeSMALL_CPInPassCheckFlag">
-        UPDATE M_CPIn SET ZJZT = 1, ZJY=#{1}
+        UPDATE M_CPIn SET ZJZT = #{2}, ZJY=#{1}
         WHERE QRCode_ID = #{0}
     </update>
 
     <update id="changeBCPInPassCheckFlag">
-        UPDATE M_BCPIn SET ZJZT = 1, ZJY=#{1}
+        UPDATE M_BCPIn SET ZJZT = #{2}, ZJY=#{1}
         WHERE QRCode_ID = #{0}
     </update>
 

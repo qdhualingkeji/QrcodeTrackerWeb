@@ -2525,6 +2525,15 @@ public class MainController {
 
                 int a = mainService.agreeBcpIn(bcpRkd);
                 if (a == 1) {
+                    if(zjyStatus==1){
+                        //List<BcpInShowBean> bcpInShowList = mainService.getBigCpInShowBeanListByInDh(param.getDh());
+                        /*
+                        List<BcpInShowBean> bcpInShowList = param.getBcpInShowList();
+                        for (BcpInShowBean bcpInShow : bcpInShowList) {
+                            mainService.changeBIG_CPInPassCheckFlag(bcpInShow.getqRCodeID(),bcpInShow.getZjy(),bcpInShow.getZjzt());
+                        }
+                        */
+                    }
                     BcpRkdBean bcpRkdBean = mainService.getBcpRkdBean(param.getDh());
                     if (bcpRkdBean.getBzStatus() == 1 && bcpRkdBean.getFzrStatus() == 1 && bcpRkdBean.getZjyStatus() == 1 && bcpRkdBean.getZjldStatus() == 1) {
                         //因为入库单表里可能是半成品或成品，所以这里要先验证下半成品入库记录里有无数据，没有的话说明是成品
@@ -2532,10 +2541,11 @@ public class MainController {
                         if (bcpInDataList == null || bcpInDataList.size() <= 0) {
                             int count = a;
                             List<BigCPINParam> bigCPINList = mainService.getBigCPINParamListByInDh(param.getDh());
+                            BigCPINParam bigCPINParam = null;
                             int size = bigCPINList.size();
                             if (size > 0) {
                                 for (int i = 0; i < size; i++) {
-                                    BigCPINParam bigCPINParam = bigCPINList.get(i);
+                                    bigCPINParam = bigCPINList.get(i);
                                     a = mainService.findCPS2(bigCPINParam.getQrCodeId());
                                     if (a <= 0) {
                                         //插入大包装库存表（车间）
@@ -2545,15 +2555,19 @@ public class MainController {
 
                                     //以下代码是根据大包装关联需要入库的小包装
                                     List<SmallCPINParam> smallCPINList = mainService.getSmallCPINParamListByCPS2QRCode(bigCPINParam.getQrCodeId());
-                                    SmallCPINParam smallCPINParam = smallCPINList.get(0);
-                                    String startQrCodeId = smallCPINParam.getQrCodeId();
-                                    Long nextQrCodeId = Long.parseLong(startQrCodeId);
-                                    int size1 = smallCPINList.size();
+                                    SmallCPINParam smallCPINParam = null;
                                     BigCpBean bigCpBean = null;
                                     int nowIndex = 0;
-                                    if (!TextUtils.isEmpty(smallCPINParam.getcPS2QRCode())) {
-                                        bigCpBean = mainService.getCPS2(smallCPINParam.getcPS2QRCode());
-                                        nowIndex = bigCpBean.getNowNum();
+                                    Long nextQrCodeId = null;
+                                    int size1 = smallCPINList.size();
+                                    if(size1>0) {
+                                        smallCPINParam = smallCPINList.get(0);
+                                        String startQrCodeId = smallCPINParam.getQrCodeId();
+                                        nextQrCodeId = Long.parseLong(startQrCodeId);
+                                        if (!TextUtils.isEmpty(smallCPINParam.getcPS2QRCode())) {
+                                            bigCpBean = mainService.getCPS2(smallCPINParam.getcPS2QRCode());
+                                            nowIndex = bigCpBean.getNowNum();
+                                        }
                                     }
                                     for (int j = 0; j < size1; j++) {
                                         //插入小包装库存表（车间）
@@ -3008,7 +3022,7 @@ public class MainController {
                         b = mainService.changeSMALL_CPInPassCheckFlag(param.getQrCodeId(),param.getZjy());
                         break;
                     case TrackType.BIG_CP:
-                        b = mainService.changeBIG_CPInPassCheckFlag(param.getQrCodeId(),param.getZjy());
+                        //b = mainService.changeBIG_CPInPassCheckFlag(param.getQrCodeId(),param.getZjy());
                         break;
                 }
                 if (b<0){

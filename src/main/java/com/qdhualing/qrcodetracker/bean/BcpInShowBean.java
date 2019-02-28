@@ -1,5 +1,7 @@
 package com.qdhualing.qrcodetracker.bean;
 
+import java.io.Serializable;
+
 /**
  * @author 马鹏昊
  * @date {date}
@@ -9,7 +11,7 @@ package com.qdhualing.qrcodetracker.bean;
  * @updateDes
  */
 
-public class BcpInShowBean {
+public class BcpInShowBean implements Serializable {
 
     //二维码编号
     private String qRCodeID;
@@ -31,6 +33,8 @@ public class BcpInShowBean {
     private String gx;
     //操作员
     private String czy	;
+    //质检员
+    private String zjy	;
     //数量
     private float shl ;
     //单位重量
@@ -43,6 +47,16 @@ public class BcpInShowBean {
     private String inDh;
     //来料时间（入库时间）
     private String time;
+    //质检状态
+    private int zjzt;
+
+    public int getZjzt() {
+        return zjzt;
+    }
+
+    public void setZjzt(int zjzt) {
+        this.zjzt = zjzt;
+    }
 
     public String getqRCodeID() {
         return qRCodeID;
@@ -118,6 +132,14 @@ public class BcpInShowBean {
 
     public void setCzy(String czy) {
         this.czy = czy;
+    }
+
+    public String getZjy() {
+        return zjy;
+    }
+
+    public void setZjy(String zjy) {
+        this.zjy = zjy;
     }
 
     public void setsCPC(String sCPC) {

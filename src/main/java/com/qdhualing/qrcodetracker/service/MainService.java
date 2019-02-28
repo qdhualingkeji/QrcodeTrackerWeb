@@ -688,8 +688,8 @@ public class MainService {
 		return mainDao.changeSMALL_CPInPassCheckFlag(qrCodeId,zjy);
 	}
 
-	public int changeBIG_CPInPassCheckFlag(String qrCodeId, String zjy) {
-		return mainDao.changeBIG_CPInPassCheckFlag(qrCodeId,zjy);
+	public int changeBIG_CPInPassCheckFlag(String qrCodeId, String zjy, Integer zjzt) {
+		return mainDao.changeBIG_CPInPassCheckFlag(qrCodeId,zjy,zjzt);
 	}
 
 	public List<WlRkdBean> getWlRkNonPassCheckDataByCzy(String realName) {

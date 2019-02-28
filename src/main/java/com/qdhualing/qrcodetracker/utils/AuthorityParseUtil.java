@@ -41,7 +41,7 @@ public class AuthorityParseUtil {
     	}
         String[] strs = authorityStr.split(",");
         for (String s : strs) {
-            if("bz".equals(s)||"ld".equals(s)||"zjy".equals(s)||"zjld".equals(s))//这里是不同身份的字符串标识（班长、领导、质检员、质检领导等），不能与Integer兼容，不能往集合里加
+            if("bz".equals(s)||"fzr".equals(s)||"zjy".equals(s)||"zjld".equals(s))//这里是不同身份的字符串标识（班长、领导、质检员、质检领导等），不能与Integer兼容，不能往集合里加
                 continue;
             result.add(Integer.parseInt(s));
         }

@@ -295,7 +295,7 @@ public interface MainDao {
 
     int changeSMALL_CPInPassCheckFlag(String qrCodeId, String zjy);
 
-    int changeBIG_CPInPassCheckFlag(String qrCodeId, String zjy);
+    int changeBIG_CPInPassCheckFlag(String qrCodeId, String zjy, Integer zjzt);
 
     List<WlRkdBean> getWlRkNonPassCheckDataByCzy(String realName);
 
