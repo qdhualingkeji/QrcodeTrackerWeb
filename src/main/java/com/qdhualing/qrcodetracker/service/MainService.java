@@ -680,8 +680,8 @@ public class MainService {
 		return mainDao.changeWLInPassCheckFlag(qrCodeId,zjy);
 	}
 
-	public int changeBCPInPassCheckFlag(String qrCodeId, String zjy) {
-		return mainDao.changeBCPInPassCheckFlag(qrCodeId,zjy);
+	public int changeBCPInPassCheckFlag(String qrCodeId, String zjy, Integer zjzt) {
+		return mainDao.changeBCPInPassCheckFlag(qrCodeId,zjy,zjzt);
 	}
 
 	public int changeSMALL_CPInPassCheckFlag(String qrCodeId, String zjy) {

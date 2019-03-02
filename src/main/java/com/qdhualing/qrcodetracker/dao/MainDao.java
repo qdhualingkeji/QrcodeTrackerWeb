@@ -291,7 +291,7 @@ public interface MainDao {
 
     int changeWLInPassCheckFlag(String qrCodeId, String zjy);
 
-    int changeBCPInPassCheckFlag(String qrCodeId, String zjy);
+    int changeBCPInPassCheckFlag(String qrCodeId, String zjy, Integer zjzt);
 
     int changeSMALL_CPInPassCheckFlag(String qrCodeId, String zjy);
 

@@ -8,6 +8,8 @@ import com.qdhualing.qrcodetracker.model.User;
 import com.qdhualing.qrcodetracker.service.MainService;
 import com.qdhualing.qrcodetracker.service.UserService;
 import com.qdhualing.qrcodetracker.utils.*;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -2526,12 +2528,18 @@ public class MainController {
                 if (a == 1) {
                     if(zjyStatus==1){
                         //List<BcpInShowBean> bcpInShowList = mainService.getBigCpInShowBeanListByInDh(param.getDh());
-                        /*
-                        List<BcpInShowBean> bcpInShowList = param.getBcpInShowJAStr();
-                        for (BcpInShowBean bcpInShow : bcpInShowList) {
-                            mainService.changeBIG_CPInPassCheckFlag(bcpInShow.getqRCodeID(),bcpInShow.getZjy(),bcpInShow.getZjzt());
+                        //List<BcpInShowBean> bcpInShowList = param.getBcpInShowJAStr();
+                        JSONArray bcpInShowJA = JSONArray.fromObject(param.getBcpInShowJAStr());
+                        for (int i=0;i<bcpInShowJA.size();i++) {
+                            JSONObject bcpInShowJO = (JSONObject)bcpInShowJA.get(i);
+                            String qRCodeID = bcpInShowJO.getString("qRCodeID");
+                            String zjy = bcpInShowJO.getString("zjy");
+                            int zjzt = bcpInShowJO.getInt("zjzt");
+                            if("2".equals(qRCodeID.substring(8,9)))
+                                mainService.changeBCPInPassCheckFlag(qRCodeID,zjy,zjzt);
+                            else if("4".equals(qRCodeID.substring(8,9)))
+                                mainService.changeBIG_CPInPassCheckFlag(qRCodeID,zjy,zjzt);
                         }
-                        */
                     }
                     BcpRkdBean bcpRkdBean = mainService.getBcpRkdBean(param.getDh());
                     if (bcpRkdBean.getBzStatus() == 1 && bcpRkdBean.getFzrStatus() == 1 && bcpRkdBean.getZjyStatus() == 1 && bcpRkdBean.getZjldStatus() == 1) {
@@ -3015,7 +3023,7 @@ public class MainController {
                         b = mainService.changeWLInPassCheckFlag(param.getQrCodeId(),param.getZjy());
                         break;
                     case TrackType.BCP:
-                        b = mainService.changeBCPInPassCheckFlag(param.getQrCodeId(),param.getZjy());
+                        //b = mainService.changeBCPInPassCheckFlag(param.getQrCodeId(),param.getZjy());
                         break;
                     case TrackType.SMALL_CP:
                         b = mainService.changeSMALL_CPInPassCheckFlag(param.getQrCodeId(),param.getZjy());

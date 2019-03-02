@@ -662,13 +662,9 @@
     </select>
 
     <select id="getBigCpIn2" resultType="com.qdhualing.qrcodetracker.bean.BigCpBean">
-        SELECT c.*,u.TrueName zjy,
-        case when r.ZjyStatus=1 and r.ZjldStatus=1 and r.BzStatus=1 and r.FzrStatus=1
-        then '合格'
-        else '不合格'
-        end jyzt
-        FROM M_CPIn2 c,Rkd_Bcp r,Hl_User u
-        WHERE c.Indh=r.InDh and r.ZjyID=u.UserID and QRCode_ID = #{0}
+        SELECT *,ZJZT jyzt
+        FROM M_CPIn2
+        WHERE QRCode_ID = #{0}
     </select>
 
     <select id="getSmallCpInData" resultType="com.qdhualing.qrcodetracker.bean.CPINParam">
@@ -2080,8 +2076,8 @@ SmlPk45		= #{smlPk45},
     </select>
 
     <select id="getBcpTempSData" resultType="com.qdhualing.qrcodetracker.bean.BcpThrowShowDataResult">
-        SELECT M_BCPTempS.ProductName, M_BCPTempS.SortID, M_BCPTempS.DWZL , M_BCPTempS.SHL , M_BCPTempS.YLPC , M_BCPTempS.SCPC , M_BCPTempS.SC_Time , M_BCPTempS.CheJian, M_BCPTempS.GX,M_BCPTempS.CZY, M_BCPTempS.GG , M_BCPTempS.DW , Pdt_Sort2.Sort_Name
-        FROM M_BCPTempS LEFT JOIN Pdt_Sort2 on M_BCPTempS.SortID = Pdt_Sort2.ID
+        SELECT M_BCPTempS.ProductName, M_BCPTempS.SortID, M_BCPTempS.DWZL , M_BCPTempS.SHL , M_BCPTempS.YLPC , M_BCPTempS.SCPC , M_BCPTempS.SC_Time , M_BCPTempS.CheJian, M_BCPTempS.GX,M_BCPTempS.CZY, M_BCPIn.ZJY, M_BCPIn.ZJZT jyzt, M_BCPTempS.GG , M_BCPTempS.DW , Pdt_Sort2.Sort_Name
+        FROM M_BCPTempS LEFT JOIN M_BCPIn on M_BCPTempS.QRCode_ID=M_BCPIn.QRCode_ID LEFT JOIN Pdt_Sort2 on M_BCPTempS.SortID = Pdt_Sort2.ID
         WHERE M_BCPTempS.QRCode_ID = #{0}
     </select>
 
