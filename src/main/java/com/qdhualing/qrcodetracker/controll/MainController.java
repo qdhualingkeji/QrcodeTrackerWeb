@@ -1380,11 +1380,11 @@ public class MainController {
         ActionResult<WlTrackResult> result = new ActionResult<WlTrackResult>();
         if (param != null) {
             try {
-                List<WlTrackResult> dataResults = mainService.getWlInData(param.getQrCodeId());
-                if (dataResults == null || dataResults.size() < 1) {
+                WlTrackResult dataResult = mainService.getWlInData(param.getQrCodeId());
+                if (dataResult == null) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "查无此料");
                 } else {
-                    result.setResult(dataResults.get(0));
+                    result.setResult(dataResult);
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 }
             } catch (Exception e) {
@@ -1407,48 +1407,47 @@ public class MainController {
         ActionResult<BcpTrackResult> result = new ActionResult<BcpTrackResult>();
         if (param != null) {
             try {
-                List<BCPINParam> dataResults = mainService.getBcpInData(param.getQrCodeId());
-                if (dataResults == null || dataResults.size() < 1) {
+                BcpThrowShowDataResult dataResult = mainService.getBcpTempSData(param.getQrCodeId());
+                if (dataResult == null) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "查无此料");
                 } else {
                     BcpTrackResult singleData = new BcpTrackResult();
-                    BCPINParam bb = dataResults.get(0);
-                    singleData.setProductName(bb.getProductName());
-                    singleData.setBcpCode(bb.getBcpCode());
-                    singleData.setCheJian(bb.getCheJian());
-                    singleData.setCzy(bb.getCzy());
-                    singleData.setDw(bb.getDw());
-                    singleData.setDwzl(bb.getDwzl());
-                    singleData.setGg(bb.getGg());
-                    singleData.setGx(bb.getGx());
-                    singleData.setJyzt(bb.getJyzt());
-                    singleData.setScpc(bb.getScpc());
-                    singleData.setScTime(bb.getScTime());
-                    String sortName = mainService.getHlSortBySortId(bb.getSortID() + "");
+                    singleData.setProductName(dataResult.getProductName());
+                    //singleData.setBcpCode(dataResult.getBcpCode());
+                    singleData.setCheJian(dataResult.getCheJian());
+                    singleData.setCzy(dataResult.getCzy());
+                    singleData.setDw(dataResult.getDw());
+                    singleData.setDwzl(dataResult.getDwzl());
+                    singleData.setGg(dataResult.getGg());
+                    singleData.setGx(dataResult.getGx());
+                    singleData.setJyzt(dataResult.getJyzt());
+                    singleData.setScpc(dataResult.getScpc());
+                    singleData.setScTime(dataResult.getScTime());
+                    String sortName = mainService.getHlSortBySortId(dataResult.getSortID() + "");
                     singleData.setSortName(sortName);
-                    singleData.setYlpc(bb.getYlpc());
-                    singleData.setZjy(bb.getZjy());
+                    singleData.setYlpc(dataResult.getYlpc());
+                    singleData.setZjy(dataResult.getZjy());
                     List<String> ylList = new ArrayList<String>();
-                    if (!TextUtils.isEmpty(bb.getYl1()))
-                        ylList.add(bb.getYl1());
-                    if (!TextUtils.isEmpty(bb.getYl2()))
-                        ylList.add(bb.getYl2());
-                    if (!TextUtils.isEmpty(bb.getYl3()))
-                        ylList.add(bb.getYl3());
-                    if (!TextUtils.isEmpty(bb.getYl4()))
-                        ylList.add(bb.getYl4());
-                    if (!TextUtils.isEmpty(bb.getYl5()))
-                        ylList.add(bb.getYl5());
-                    if (!TextUtils.isEmpty(bb.getYl6()))
-                        ylList.add(bb.getYl6());
-                    if (!TextUtils.isEmpty(bb.getYl7()))
-                        ylList.add(bb.getYl7());
-                    if (!TextUtils.isEmpty(bb.getYl8()))
-                        ylList.add(bb.getYl8());
-                    if (!TextUtils.isEmpty(bb.getYl9()))
-                        ylList.add(bb.getYl9());
-                    if (!TextUtils.isEmpty(bb.getYl10()))
-                        ylList.add(bb.getYl10());
+                    if (!TextUtils.isEmpty(dataResult.getYl1()))
+                        ylList.add(dataResult.getYl1());
+                    if (!TextUtils.isEmpty(dataResult.getYl2()))
+                        ylList.add(dataResult.getYl2());
+                    if (!TextUtils.isEmpty(dataResult.getYl3()))
+                        ylList.add(dataResult.getYl3());
+                    if (!TextUtils.isEmpty(dataResult.getYl4()))
+                        ylList.add(dataResult.getYl4());
+                    if (!TextUtils.isEmpty(dataResult.getYl5()))
+                        ylList.add(dataResult.getYl5());
+                    if (!TextUtils.isEmpty(dataResult.getYl6()))
+                        ylList.add(dataResult.getYl6());
+                    if (!TextUtils.isEmpty(dataResult.getYl7()))
+                        ylList.add(dataResult.getYl7());
+                    if (!TextUtils.isEmpty(dataResult.getYl8()))
+                        ylList.add(dataResult.getYl8());
+                    if (!TextUtils.isEmpty(dataResult.getYl9()))
+                        ylList.add(dataResult.getYl9());
+                    if (!TextUtils.isEmpty(dataResult.getYl10()))
+                        ylList.add(dataResult.getYl10());
 
                     if(ylList.size()>0) {
                         List<ComponentBean> wlComponentBeans = mainService.getComponentBeansFromWl(ylList);
@@ -2528,7 +2527,7 @@ public class MainController {
                     if(zjyStatus==1){
                         //List<BcpInShowBean> bcpInShowList = mainService.getBigCpInShowBeanListByInDh(param.getDh());
                         /*
-                        List<BcpInShowBean> bcpInShowList = param.getBcpInShowList();
+                        List<BcpInShowBean> bcpInShowList = param.getBcpInShowJAStr();
                         for (BcpInShowBean bcpInShow : bcpInShowList) {
                             mainService.changeBIG_CPInPassCheckFlag(bcpInShow.getqRCodeID(),bcpInShow.getZjy(),bcpInShow.getZjzt());
                         }
@@ -2922,9 +2921,9 @@ public class MainController {
                 QualityDataResult data = new QualityDataResult();
                 switch (param.getSort()) {
                     case TrackType.WL:
-                        List<WlTrackResult> list1 = mainService.getWlInData(param.getQrCodeId());
-                        if (list1 != null && list1.size() > 0) {
-                            WlTrackResult b1 = list1.get(0);
+                        WlTrackResult result1 = mainService.getWlInData(param.getQrCodeId());
+                        if (result1 != null) {
+                            WlTrackResult b1 = result1;
                             data.setWlCode(b1.getWlCode());
                             data.setWlProductName(b1.getProductName());
                             data.setWlChd(b1.getChd());

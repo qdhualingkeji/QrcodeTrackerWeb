@@ -429,7 +429,7 @@ public class MainService {
 		return mainDao.insertCPOutBySmallParam(param);
 	}
 
-	public List<WlTrackResult> getWlInData(String qrcodeId) {
+	public WlTrackResult getWlInData(String qrcodeId) {
 		return mainDao.getWlInData(qrcodeId);
 	}
 

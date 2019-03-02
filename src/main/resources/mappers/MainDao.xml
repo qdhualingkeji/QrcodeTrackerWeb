@@ -678,7 +678,7 @@
 		else '不合格'
 		end jyzt
         FROM M_CPIn c,M_CPIn2 c2,Rkd_Bcp r,Hl_User u
-        WHERE c.CPS2_QRCode=c2.QRCode_ID and c2.Indh=r.InDh and r.ZjyID=u.UserID and c.QRCode_ID = #{0}
+        WHERE c.CPS2_QRCode=c2.QRCode_ID and c2.Indh=r.InDh and r.ZjyID=u.UserID and c2.QRCode_ID = #{0}
     </select>
 
     <select id="getComponentBeansFromBcp" resultType="com.qdhualing.qrcodetracker.bean.ComponentBean">
@@ -715,9 +715,15 @@
 
     <select id="getWlInData" resultType="com.qdhualing.qrcodetracker.bean.WlTrackResult">
         SELECT M_WLIn.ProductName , M_WLIn.YLPC , M_WLIn.PCZL ,M_WLIn.WL_Code,
-        M_WLIn.LL_Time , M_WLIn.GG , Hl_Sort.SortName ,M_WLIn.DWZL,
+        M_WLIn.LL_Time , M_WLIn.GG , Hl_Sort.SortName ,
+        CASE
+        WHEN
+        M_WLS.DWZL IS NULL THEN M_WLIN.DWZL
+        ELSE M_WLS.DWZL
+        END
+        DWZL,
         M_WLIn.CHD , M_WLIn.CZY ,M_WLIn.Unit,M_WLIn.Unit dw
-        FROM M_WLIn LEFT JOIN Hl_Sort on M_WLIn.SortID = Hl_Sort.SortID
+        FROM M_WLIn LEFT JOIN M_WLS ON M_WLIn.QRCode_ID = M_WLS.QRCode_ID LEFT JOIN Hl_Sort on M_WLIn.SortID = Hl_Sort.SortID
         WHERE M_WLIn.QRCode_ID = #{0}
     </select>
 
@@ -2074,7 +2080,7 @@ SmlPk45		= #{smlPk45},
     </select>
 
     <select id="getBcpTempSData" resultType="com.qdhualing.qrcodetracker.bean.BcpThrowShowDataResult">
-        SELECT M_BCPTempS.ProductName , M_BCPTempS.DWZL , M_BCPTempS.SHL , M_BCPTempS.YLPC , M_BCPTempS.SCPC , M_BCPTempS.SC_Time , M_BCPTempS.GG , M_BCPTempS.DW , Pdt_Sort2.Sort_Name
+        SELECT M_BCPTempS.ProductName, M_BCPTempS.SortID, M_BCPTempS.DWZL , M_BCPTempS.SHL , M_BCPTempS.YLPC , M_BCPTempS.SCPC , M_BCPTempS.SC_Time , M_BCPTempS.CheJian, M_BCPTempS.GX,M_BCPTempS.CZY, M_BCPTempS.GG , M_BCPTempS.DW , Pdt_Sort2.Sort_Name
         FROM M_BCPTempS LEFT JOIN Pdt_Sort2 on M_BCPTempS.SortID = Pdt_Sort2.ID
         WHERE M_BCPTempS.QRCode_ID = #{0}
     </select>
@@ -3037,9 +3043,9 @@ SmlPk45		= #{smlPk45},
 		FROM M_WLS left JOIN Pdt_Sort2 on M_WLS.SortID = Pdt_Sort2.ID
 		where M_WLS.QRCode_ID = #{qrcodeId}
 		-->
-		SELECT M_WLS.ProductName, M_WLS.PCZL , M_WLS.DWZL, M_WLS.SHL, M_WLS.CHD, M_WLS.GG, M_WLS.DW, Hl_Sort.SortName
-		FROM M_WLS left JOIN Hl_Sort on M_WLS.SortID = Hl_Sort.SortID
-		where M_WLS.QRCode_ID = #{qrcodeId}
+        SELECT M_WLS.ProductName, M_WLS.PCZL , M_WLS.DWZL, M_WLS.SHL, M_WLS.CHD, M_WLS.GG, M_WLS.DW, Hl_Sort.SortName
+        FROM M_WLS left JOIN Hl_Sort on M_WLS.SortID = Hl_Sort.SortID
+        where M_WLS.QRCode_ID = #{qrcodeId}
 	</select>
 
 

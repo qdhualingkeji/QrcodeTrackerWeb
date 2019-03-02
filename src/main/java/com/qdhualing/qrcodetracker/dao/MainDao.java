@@ -183,7 +183,7 @@ public interface MainDao {
     //根据小包装出库参数插入成品入库记录
     int insertCPOutBySmallParam(SmallCpOutParam param);
     //查询物料追溯信息
-    List<WlTrackResult> getWlInData(String qrcodeId);
+    WlTrackResult getWlInData(String qrcodeId);
     //查询半成品入库记录表
     List<BCPINParam> getBcpInData(String qrCodeId);
     //根据ID获取分类名字
