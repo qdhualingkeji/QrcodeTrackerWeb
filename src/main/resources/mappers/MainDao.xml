@@ -668,13 +668,7 @@
     </select>
 
     <select id="getSmallCpInData" resultType="com.qdhualing.qrcodetracker.bean.CPINParam">
-        SELECT c.*,u.TrueName zjy,
-        case when r.ZjyStatus=1 and r.ZjldStatus=1 and r.BzStatus=1 and r.FzrStatus=1
-		then '合格'
-		else '不合格'
-		end jyzt
-        FROM M_CPIn c,M_CPIn2 c2,Rkd_Bcp r,Hl_User u
-        WHERE c.CPS2_QRCode=c2.QRCode_ID and c2.Indh=r.InDh and r.ZjyID=u.UserID and c2.QRCode_ID = #{0}
+        SELECT * FROM M_CPIn WHERE QRCode_ID = #{0}
     </select>
 
     <select id="getComponentBeansFromBcp" resultType="com.qdhualing.qrcodetracker.bean.ComponentBean">
