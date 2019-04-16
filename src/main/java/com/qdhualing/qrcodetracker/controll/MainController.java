@@ -1604,7 +1604,11 @@ public class MainController {
             String alertMsg = null;
             String alertMsgStr1 = null;
             String alertMsgStr2 = null;
-            if(param.getPersonFlag()==NotificationParam.BZ||param.getPersonFlag()==NotificationParam.FZR)
+            if(param.getPersonFlag()==NotificationParam.BZ
+                    ||param.getPersonFlag()==NotificationParam.FZR
+                    ||param.getPersonFlag()==NotificationParam.FLFZR
+                    ||param.getPersonFlag()==NotificationParam.LLFZR
+                    ||param.getPersonFlag()==NotificationParam.KG)
                 alertMsgStr2="审核";
             else if(param.getPersonFlag()==NotificationParam.ZJY||param.getPersonFlag()==NotificationParam.ZJLD)
                 alertMsgStr2="质检";
@@ -1673,12 +1677,15 @@ public class MainController {
                 NonCheckResult dataResult = new NonCheckResult();
                 List<NonCheckBean> allBeans = new ArrayList<NonCheckBean>();
 
+                Integer kgID=null;
                 Integer bzID=null;
                 Integer fzrID=null;
                 Integer zjyID=null;
                 Integer zjldID=null;
                 Integer userId = Integer.valueOf(param.getUserId());
-                if(param.getCheckQXFlag()==MainParams.BZ)
+                if(param.getCheckQXFlag()==MainParams.KG)
+                    kgID=userId;
+                else if(param.getCheckQXFlag()==MainParams.BZ)
                     bzID=userId;
                 else if(param.getCheckQXFlag()==MainParams.FZR)
                     fzrID=userId;
@@ -1687,7 +1694,7 @@ public class MainController {
                 else if(param.getCheckQXFlag()==MainParams.ZJLD)
                     zjldID=userId;
 
-                List<WlRkdBean> wlRkNonCheckData = mainService.getWlRkNonCheckData(bzID,fzrID,zjyID,zjldID);
+                List<WlRkdBean> wlRkNonCheckData = mainService.getWlRkNonCheckData(fzrID,zjyID,zjldID);
                 for (int i = 0; i < wlRkNonCheckData.size(); i++) {
                     NonCheckBean bean = new NonCheckBean();
                     WlRkdBean single = wlRkNonCheckData.get(i);
@@ -1698,14 +1705,16 @@ public class MainController {
                     allBeans.add(bean);
                 }
                 List<WlCkdBean> wlCkNonCheckData = null;
-                if(bzID!=null||fzrID!=null) {
-                    wlCkNonCheckData = mainService.getWlCkNonCheckData(bzID, fzrID);
+                if(kgID!=null||bzID!=null||fzrID!=null) {
+                    wlCkNonCheckData = mainService.getWlCkNonCheckData(kgID, bzID, fzrID);
                     for (int i = 0; i < wlCkNonCheckData.size(); i++) {
                         NonCheckBean bean = new NonCheckBean();
                         WlCkdBean single = wlCkNonCheckData.get(i);
                         bean.setDh(single.getOutDh());
                         bean.setName("物料出库单");
                         bean.setTime(single.getLhRq());
+                        bean.setFlfzrID(single.getFlfzrID());
+                        bean.setLlfzrID(single.getLlfzrID());
                         bean.setState(single.getCheckState());
                         allBeans.add(bean);
                     }
@@ -1798,8 +1807,6 @@ public class MainController {
                 dataResult.setRemark(rkdBean.getRemark());
                 dataResult.setShFzr(rkdBean.getShFzr());
                 dataResult.setShRq(rkdBean.getShrq());
-                dataResult.setBzID(rkdBean.getBzID());
-                dataResult.setBzName(rkdBean.getBzName());
                 dataResult.setFzrID(rkdBean.getFzrID());
                 dataResult.setZjyID(rkdBean.getZjyID());
                 dataResult.setZjyName(rkdBean.getZjyName());
@@ -2180,27 +2187,23 @@ public class MainController {
             try {
                 Integer fzrStatus=0;
                 Integer zjyStatus=0;
-                Integer bzStatus=0;
                 Integer zjldStatus=0;
                 if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=1;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJY)
                     zjyStatus=1;
-                else if(param.getCheckQXFlag()==VerifyParam.BZ)
-                    bzStatus=1;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJLD)
                     zjldStatus=1;
 
                 WlRkdBean wlrkd=new WlRkdBean();
                 wlrkd.setInDh(param.getDh());
-                wlrkd.setBzStatus(bzStatus);
                 wlrkd.setFzrStatus(fzrStatus);
                 wlrkd.setZjyStatus(zjyStatus);
                 wlrkd.setZjldStatus(zjldStatus);
                 int a = mainService.agreeWlIn(wlrkd);
                 if (a == 1) {
                     CreateWLRKDParam wlRKD = mainService.getRkdWlByInDh(param.getDh());
-                    if(wlRKD.getBzStatus()==1&&wlRKD.getFzrStatus()==1&&wlRKD.getZjyStatus()==1&&wlRKD.getZjldStatus()==1){
+                    if(wlRKD.getZjyStatus()==1&&wlRKD.getZjldStatus()==1&&wlRKD.getFzrStatus()==1){
                         /**
                          * @author 马鹏昊
                          * @desc 插入到库存表
@@ -2252,13 +2255,10 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
-                Integer bzStatus=0;
                 Integer fzrStatus=0;
                 Integer zjyStatus=0;
                 Integer zjldStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.BZ)
-                    bzStatus=2;
-                else if(param.getCheckQXFlag()==VerifyParam.FZR)
+                if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=2;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJY)
                     zjyStatus=2;
@@ -2267,7 +2267,6 @@ public class MainController {
 
                 WlRkdBean wlrkd=new WlRkdBean();
                 wlrkd.setInDh(param.getDh());
-                wlrkd.setBzStatus(bzStatus);
                 wlrkd.setFzrStatus(fzrStatus);
                 wlrkd.setZjyStatus(zjyStatus);
                 wlrkd.setZjldStatus(zjldStatus);
@@ -2297,22 +2296,30 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
+                Integer kgStatus=0;
+                Integer flfzrStatus=0;
                 Integer bzStatus=0;
-                Integer fzrStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.BZ)
+                Integer llfzrStatus=0;
+                if(param.getCheckQXFlag()==VerifyParam.KG)
+                    kgStatus=1;
+                if(param.getCheckQXFlag()==VerifyParam.FLFZR)
+                    flfzrStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.BZ)
                     bzStatus=1;
-                else if(param.getCheckQXFlag()==VerifyParam.FZR)
-                    fzrStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.LLFZR)
+                    llfzrStatus=1;
 
                 WlCkdBean wlckd=new WlCkdBean();
                 wlckd.setOutDh(param.getDh());
+                wlckd.setKgStatus(kgStatus);
+                wlckd.setFlfzrStatus(flfzrStatus);
                 wlckd.setBzStatus(bzStatus);
-                wlckd.setFzrStatus(fzrStatus);
+                wlckd.setLlfzrStatus(llfzrStatus);
 
                 int a = mainService.agreeWlOut(wlckd);
                 if (a == 1) {
                     WlCkdBean wlCkd = mainService.getWlCkdBean(param.getDh());
-                    if(wlCkd.getBzStatus()==1&&wlCkd.getFzrStatus()==1) {
+                    if(wlCkd.getKgStatus()==1&&wlCkd.getFlfzrStatus()==1&&wlCkd.getBzStatus()==1&&wlCkd.getLlfzrStatus()==1) {
                         List<WLOutParam> wlOutList = mainService.getWLOutParamListByInDh(param.getDh());
                         for (WLOutParam wlOutParam : wlOutList) {
                             //更新仓库库存表数量
@@ -2354,17 +2361,25 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
+                Integer kgStatus=0;
+                Integer flfzrStatus=0;
                 Integer bzStatus=0;
-                Integer fzrStatus=0;
+                Integer llfzrStatus=0;
+                if(param.getCheckQXFlag()==VerifyParam.KG)
+                    kgStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.FLFZR)
+                    flfzrStatus=2;
                 if(param.getCheckQXFlag()==VerifyParam.BZ)
                     bzStatus=2;
-                else if(param.getCheckQXFlag()==VerifyParam.FZR)
-                    fzrStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.LLFZR)
+                    llfzrStatus=2;
 
                 WlCkdBean wlckd=new WlCkdBean();
                 wlckd.setOutDh(param.getDh());
+                wlckd.setKgStatus(kgStatus);
+                wlckd.setFlfzrStatus(flfzrStatus);
                 wlckd.setBzStatus(bzStatus);
-                wlckd.setFzrStatus(fzrStatus);
+                wlckd.setLlfzrStatus(llfzrStatus);
 
                 int a = mainService.refuseWlOut(wlckd);
                 if (a == 1) {

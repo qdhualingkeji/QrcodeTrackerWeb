@@ -25,6 +25,8 @@ public class MainParams {
 
     public static final Integer ZJLD=3;//质检领导常量
 
+    public static final Integer KG=4;//仓库管理员常量
+
     public Integer getCheckQXFlag() {
         return checkQXFlag;
     }

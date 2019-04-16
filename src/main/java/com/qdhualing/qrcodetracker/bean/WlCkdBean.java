@@ -15,10 +15,15 @@ public class WlCkdBean {
     private String fhFzr;
     private String lhR;
     private String lhFzr;
+    private Integer kgID;
+    private Integer kgStatus;
+    private Integer fzrID;
+    private Integer flfzrID;
+    private Integer flfzrStatus;
     private Integer bzID;
     private Integer bzStatus;
-    private Integer fzrID;
-    private Integer fzrStatus;
+    private Integer llfzrID;
+    private Integer llfzrStatus;
     private String remark;
     private int checkState;
 
@@ -86,6 +91,46 @@ public class WlCkdBean {
         this.lhFzr = lhFzr;
     }
 
+    public Integer getKgID() {
+        return kgID;
+    }
+
+    public void setKgID(Integer kgID) {
+        this.kgID = kgID;
+    }
+
+    public Integer getKgStatus() {
+        return kgStatus;
+    }
+
+    public void setKgStatus(Integer kgStatus) {
+        this.kgStatus = kgStatus;
+    }
+
+    public Integer getFzrID() {
+        return fzrID;
+    }
+
+    public void setFzrID(Integer fzrID) {
+        this.fzrID = fzrID;
+    }
+
+    public Integer getFlfzrID() {
+        return flfzrID;
+    }
+
+    public void setFlfzrID(Integer flfzrID) {
+        this.flfzrID = flfzrID;
+    }
+
+    public Integer getFlfzrStatus() {
+        return flfzrStatus;
+    }
+
+    public void setFlfzrStatus(Integer flfzrStatus) {
+        this.flfzrStatus = flfzrStatus;
+    }
+
     public Integer getBzID() {
         return bzID;
     }
@@ -102,20 +147,20 @@ public class WlCkdBean {
         this.bzStatus = bzStatus;
     }
 
-    public Integer getFzrID() {
-        return fzrID;
+    public Integer getLlfzrID() {
+        return llfzrID;
     }
 
-    public void setFzrID(Integer fzrID) {
-        this.fzrID = fzrID;
+    public void setLlfzrID(Integer llfzrID) {
+        this.llfzrID = llfzrID;
     }
 
-    public Integer getFzrStatus() {
-        return fzrStatus;
+    public Integer getLlfzrStatus() {
+        return llfzrStatus;
     }
 
-    public void setFzrStatus(Integer fzrStatus) {
-        this.fzrStatus = fzrStatus;
+    public void setLlfzrStatus(Integer llfzrStatus) {
+        this.llfzrStatus = llfzrStatus;
     }
 
     public String getRemark() {
