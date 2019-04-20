@@ -512,12 +512,12 @@ public class MainService {
 		return mainDao.getWlCkNonCheckData(wlCkd);
 	}
 
-	public List<WlTkdBean> getWlTkNonCheckData(Integer bzID,Integer fzrID,Integer zjyID,Integer zjldID) {
+	public List<WlTkdBean> getWlTkNonCheckData(Integer bzID,Integer kgID,Integer fzrID) {
     	WlTkdBean wltkd=new WlTkdBean();
 		wltkd.setBzID(bzID);
 		wltkd.setFzrID(fzrID);
-		wltkd.setZjyID(zjyID);
-		wltkd.setZjldID(zjldID);
+		wltkd.setTlfzrID(fzrID);
+		wltkd.setSlfzrID(fzrID);
 
 		return mainDao.getWlTkNonCheckData(wltkd);
 	}

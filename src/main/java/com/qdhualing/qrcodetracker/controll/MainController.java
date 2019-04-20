@@ -1608,6 +1608,8 @@ public class MainController {
                     ||param.getPersonFlag()==NotificationParam.FZR
                     ||param.getPersonFlag()==NotificationParam.FLFZR
                     ||param.getPersonFlag()==NotificationParam.LLFZR
+                    ||param.getPersonFlag()==NotificationParam.TLFZR
+                    ||param.getPersonFlag()==NotificationParam.SLFZR
                     ||param.getPersonFlag()==NotificationParam.KG)
                 alertMsgStr2="审核";
             else if(param.getPersonFlag()==NotificationParam.ZJY||param.getPersonFlag()==NotificationParam.ZJLD)
@@ -1719,13 +1721,15 @@ public class MainController {
                         allBeans.add(bean);
                     }
                 }
-                List<WlTkdBean> wlTkNonCheckData = mainService.getWlTkNonCheckData(bzID,fzrID,zjyID,zjldID);
+                List<WlTkdBean> wlTkNonCheckData = mainService.getWlTkNonCheckData(bzID,kgID,fzrID);
                 for (int i = 0; i < wlTkNonCheckData.size(); i++) {
                     NonCheckBean bean = new NonCheckBean();
                     WlTkdBean single = wlTkNonCheckData.get(i);
                     bean.setDh(single.getBackDh());
                     bean.setName("物料退库单");
                     bean.setTime(single.getThRq());
+                    bean.setTlfzrID(single.getTlfzrID());
+                    bean.setSlfzrID(single.getSlfzrID());
                     bean.setState(single.getCheckState());
                     allBeans.add(bean);
                 }
@@ -1882,13 +1886,14 @@ public class MainController {
                 dataResult.setBzStatus(tkdBean.getBzStatus());
                 dataResult.setBzName(tkdBean.getBzName());
                 dataResult.setFzrID(tkdBean.getFzrID());
-                dataResult.setFzrStatus(tkdBean.getFzrStatus());
-                dataResult.setZjyID(tkdBean.getZjyID());
-                dataResult.setZjyStatus(tkdBean.getZjyStatus());
-                dataResult.setZjyName(tkdBean.getZjyName());
-                dataResult.setZjldID(tkdBean.getZjldID());
-                dataResult.setZjldStatus(tkdBean.getZjldStatus());
-                dataResult.setZjldName(tkdBean.getZjldName());
+                dataResult.setTlfzrID(tkdBean.getTlfzrID());
+                dataResult.setTlfzrStatus(tkdBean.getTlfzrStatus());
+                dataResult.setKgID(tkdBean.getKgID());
+                dataResult.setKgStatus(tkdBean.getKgStatus());
+                dataResult.setKgName(tkdBean.getKgName());
+                dataResult.setSlfzrID(tkdBean.getSlfzrID());
+                dataResult.setSlfzrStatus(tkdBean.getSlfzrStatus());
+                dataResult.setSlfzrName(tkdBean.getSlfzrName());
                 List<WLTkShowBean> wlinDataList = mainService.getWLTkShowBeanListByOutDh(param.getDh());
                 dataResult.setBeans(wlinDataList);
                 result.setResult(dataResult);
@@ -2408,30 +2413,30 @@ public class MainController {
         if (param != null) {
             try {
                 Integer bzStatus=0;
-                Integer fzrStatus=0;
-                Integer zjyStatus=0;
-                Integer zjldStatus=0;
+                Integer tlfzrStatus=0;
+                Integer kgStatus=0;
+                Integer slfzrStatus=0;
                 if(param.getCheckQXFlag()==VerifyParam.BZ)
                     bzStatus=1;
-                else if(param.getCheckQXFlag()==VerifyParam.FZR)
-                    fzrStatus=1;
-                else if(param.getCheckQXFlag()==VerifyParam.ZJY)
-                    zjyStatus=1;
-                else if(param.getCheckQXFlag()==VerifyParam.ZJLD)
-                    zjldStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.TLFZR)
+                    tlfzrStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.KG)
+                    kgStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.SLFZR)
+                    slfzrStatus=1;
 
                 WlTkdBean wltkd=new WlTkdBean();
                 wltkd.setBackDh(param.getDh());
                 wltkd.setBzStatus(bzStatus);
-                wltkd.setFzrStatus(fzrStatus);
-                wltkd.setZjyStatus(zjyStatus);
-                wltkd.setZjldStatus(zjldStatus);
+                wltkd.setTlfzrStatus(tlfzrStatus);
+                wltkd.setKgStatus(kgStatus);
+                wltkd.setSlfzrStatus(slfzrStatus);
 
                 int a = mainService.agreeWlTk(wltkd);
                 if (a == 1) {
 
                     WlTkdBean wlTKD = mainService.getWlTkdBean(param.getDh());
-                    if(wlTKD.getFzrStatus()==1&&wlTKD.getZjyStatus()==1){
+                    if(wlTKD.getBzStatus()==1&&wlTKD.getTlfzrStatus()==1&&wlTKD.getKgStatus()==1&&wlTKD.getSlfzrStatus()==1){
                         //更新仓库库存表数量（退库的数量加上）
                         List<WLTKParam> wlTKList = mainService.getWLTKParamListByOutDh(param.getDh());
                         for(WLTKParam wlTKParam : wlTKList) {
@@ -2474,24 +2479,24 @@ public class MainController {
         if (param != null) {
             try {
                 Integer bzStatus=0;
-                Integer fzrStatus=0;
-                Integer zjyStatus=0;
-                Integer zjldStatus=0;
+                Integer tlfzrStatus=0;
+                Integer kgStatus=0;
+                Integer slfzrStatus=0;
                 if(param.getCheckQXFlag()==VerifyParam.BZ)
                     bzStatus=2;
-                else if(param.getCheckQXFlag()==VerifyParam.FZR)
-                    fzrStatus=2;
-                else if(param.getCheckQXFlag()==VerifyParam.ZJY)
-                    zjyStatus=2;
-                else if(param.getCheckQXFlag()==VerifyParam.ZJLD)
-                    zjldStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.TLFZR)
+                    tlfzrStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.KG)
+                    kgStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.SLFZR)
+                    slfzrStatus=2;
 
                 WlTkdBean wltkd=new WlTkdBean();
                 wltkd.setBackDh(param.getDh());
                 wltkd.setBzStatus(bzStatus);
-                wltkd.setFzrStatus(fzrStatus);
-                wltkd.setZjyStatus(zjyStatus);
-                wltkd.setZjldStatus(zjldStatus);
+                wltkd.setTlfzrStatus(tlfzrStatus);
+                wltkd.setKgStatus(kgStatus);
+                wltkd.setSlfzrStatus(slfzrStatus);
 
                 int a = mainService.refuseWlTk(wltkd);
                 if (a == 1) {

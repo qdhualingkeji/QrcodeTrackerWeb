@@ -19,13 +19,14 @@ public class WlTkdBean {
     private Integer bzStatus;
     private String bzName;
     private Integer fzrID;
-    private Integer fzrStatus;
-    private Integer zjyID;
-    private Integer zjyStatus;
-    private String zjyName;
-    private Integer zjldID;
-    private Integer zjldStatus;
-    private String zjldName;
+    private Integer tlfzrID;
+    private Integer tlfzrStatus;
+    private Integer kgID;
+    private Integer kgStatus;
+    private String kgName;
+    private Integer slfzrID;
+    private Integer slfzrStatus;
+    private String slfzrName;
     private String remark;
     private int checkState;
 
@@ -35,14 +36,6 @@ public class WlTkdBean {
 
     public void setBzName(String bzName) {
         this.bzName = bzName;
-    }
-
-    public String getZjldName() {
-        return zjldName;
-    }
-
-    public void setZjldName(String zjldName) {
-        this.zjldName = zjldName;
     }
 
     public int getiD() {
@@ -117,36 +110,68 @@ public class WlTkdBean {
         this.fzrID = fzrID;
     }
 
-    public Integer getFzrStatus() {
-        return fzrStatus;
+    public Integer getTlfzrID() {
+        return tlfzrID;
     }
 
-    public void setFzrStatus(Integer fzrStatus) {
-        this.fzrStatus = fzrStatus;
+    public void setTlfzrID(Integer tlfzrID) {
+        this.tlfzrID = tlfzrID;
     }
 
-    public Integer getZjyID() {
-        return zjyID;
+    public Integer getTlfzrStatus() {
+        return tlfzrStatus;
     }
 
-    public void setZjyID(Integer zjyID) {
-        this.zjyID = zjyID;
+    public void setTlfzrStatus(Integer tlfzrStatus) {
+        this.tlfzrStatus = tlfzrStatus;
     }
 
-    public Integer getZjyStatus() {
-        return zjyStatus;
+    public Integer getKgID() {
+        return kgID;
     }
 
-    public void setZjyStatus(Integer zjyStatus) {
-        this.zjyStatus = zjyStatus;
+    public void setKgID(Integer kgID) {
+        this.kgID = kgID;
     }
 
-    public String getZjyName() {
-        return zjyName;
+    public Integer getKgStatus() {
+        return kgStatus;
     }
 
-    public void setZjyName(String zjyName) {
-        this.zjyName = zjyName;
+    public void setKgStatus(Integer kgStatus) {
+        this.kgStatus = kgStatus;
+    }
+
+    public String getKgName() {
+        return kgName;
+    }
+
+    public void setKgName(String kgName) {
+        this.kgName = kgName;
+    }
+
+    public Integer getSlfzrID() {
+        return slfzrID;
+    }
+
+    public void setSlfzrID(Integer slfzrID) {
+        this.slfzrID = slfzrID;
+    }
+
+    public Integer getSlfzrStatus() {
+        return slfzrStatus;
+    }
+
+    public void setSlfzrStatus(Integer slfzrStatus) {
+        this.slfzrStatus = slfzrStatus;
+    }
+
+    public String getSlfzrName() {
+        return slfzrName;
+    }
+
+    public void setSlfzrName(String slfzrName) {
+        this.slfzrName = slfzrName;
     }
 
     public Integer getBzID() {
@@ -163,22 +188,6 @@ public class WlTkdBean {
 
     public void setBzStatus(Integer bzStatus) {
         this.bzStatus = bzStatus;
-    }
-
-    public Integer getZjldID() {
-        return zjldID;
-    }
-
-    public void setZjldID(Integer zjldID) {
-        this.zjldID = zjldID;
-    }
-
-    public Integer getZjldStatus() {
-        return zjldStatus;
-    }
-
-    public void setZjldStatus(Integer zjldStatus) {
-        this.zjldStatus = zjldStatus;
     }
 
     public String getRemark() {

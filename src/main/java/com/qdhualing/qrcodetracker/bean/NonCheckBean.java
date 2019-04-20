@@ -14,8 +14,11 @@ public class NonCheckBean {
     private String dh;
     private String name;
     private String time;
-    private Integer flfzrID;
-    private Integer llfzrID;
+    private Integer flfzrID;//发料负责人ID
+    private Integer llfzrID;//领料负责人ID
+    private Integer tlfzrID;//退料负责人ID
+    private Integer slfzrID;//收料负责人ID
+
     private int state;
 
     public int getState() {
@@ -40,6 +43,22 @@ public class NonCheckBean {
 
     public void setLlfzrID(Integer llfzrID) {
         this.llfzrID = llfzrID;
+    }
+
+    public Integer getTlfzrID() {
+        return tlfzrID;
+    }
+
+    public void setTlfzrID(Integer tlfzrID) {
+        this.tlfzrID = tlfzrID;
+    }
+
+    public Integer getSlfzrID() {
+        return slfzrID;
+    }
+
+    public void setSlfzrID(Integer slfzrID) {
+        this.slfzrID = slfzrID;
     }
 
     public String getDh() {
