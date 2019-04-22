@@ -1629,7 +1629,7 @@ public class MainController {
                     break;
                 case NotificationType.BCP_RKD:
                     desPerson = mainService.getPersonFromBcpRkd(param);
-                    alertMsgStr1="半成品入库单";
+                    alertMsgStr1="半成品录入单";
                     break;
                 case NotificationType.BCP_TKD:
                     desPerson = mainService.getPersonFromBcpTkd(param);
@@ -1738,7 +1738,18 @@ public class MainController {
                     NonCheckBean bean = new NonCheckBean();
                     BcpRkdBean single = bcpRkNonCheckData.get(i);
                     bean.setDh(single.getInDh());
-                    bean.setName("半成品/成品入库单");
+                    //bean.setName("半成品/成品入库单");
+                    bean.setName("半成品录入单");
+                    bean.setTime(single.getShrq());
+                    bean.setState(single.getCheckState());
+                    allBeans.add(bean);
+                }
+                List<BcpRkdBean> cpRkNonCheckData = mainService.getCpRkNonCheckData(bzID,fzrID,zjyID,zjldID);
+                for (int i = 0; i < cpRkNonCheckData.size(); i++) {
+                    NonCheckBean bean = new NonCheckBean();
+                    BcpRkdBean single = cpRkNonCheckData.get(i);
+                    bean.setDh(single.getInDh());
+                    bean.setName("成品入库单");
                     bean.setTime(single.getShrq());
                     bean.setState(single.getCheckState());
                     allBeans.add(bean);

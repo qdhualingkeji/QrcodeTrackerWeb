@@ -203,9 +203,13 @@ public interface MainDao {
 
     String getPersonFromWlTkd(String dh,@Param("personFlag") int personFlag);
 
+    String getBzFromBcpRkd(String dh);
+
     String getFzrFromBcpRkd(String dh);
 
     String getZjyFromBcpRkd(String dh);
+
+    String getZjldFromBcpRkd(String dh);
 
     String getFzrFromBcpTkd(String dh);
 
@@ -220,6 +224,8 @@ public interface MainDao {
     List<WlTkdBean> getWlTkNonCheckData(WlTkdBean wltkd);
 
     List<BcpRkdBean> getBcpRkNonCheckData(BcpRkdBean bcprkd);
+
+    List<BcpRkdBean> getCpRkNonCheckData(BcpRkdBean bcprkd);
 
     List<BcpCkdBean> getBcpCkNonCheckData(BcpCkdBean bcpCkdBean);
 
@@ -389,4 +395,5 @@ public interface MainDao {
     int checkLoginName(PersonParam personParam);
 
     int deleteUser(int userId);
+
 }

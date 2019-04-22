@@ -472,10 +472,14 @@ public class MainService {
 
 	public String getPersonFromBcpRkd(NotificationParam param) {
 		String str=null;
-		if(param.getPersonFlag()==NotificationParam.FZR)
+		if(param.getPersonFlag()==NotificationParam.BZ)
+			str=mainDao.getBzFromBcpRkd(param.getDh());
+		else if(param.getPersonFlag()==NotificationParam.FZR)
 			str=mainDao.getFzrFromBcpRkd(param.getDh());
 		else if(param.getPersonFlag()==NotificationParam.ZJY)
 			str=mainDao.getZjyFromBcpRkd(param.getDh());
+		else if(param.getPersonFlag()==NotificationParam.ZJLD)
+			str=mainDao.getZjldFromBcpRkd(param.getDh());
 		return str;
 	}
 
@@ -530,6 +534,16 @@ public class MainService {
 		bcprkd.setZjldID(zjldID);
 
 		return mainDao.getBcpRkNonCheckData(bcprkd);
+	}
+
+	public List<BcpRkdBean> getCpRkNonCheckData(Integer bzID, Integer fzrID, Integer zjyID, Integer zjldID) {
+		BcpRkdBean bcprkd=new BcpRkdBean();
+		bcprkd.setBzID(bzID);
+		bcprkd.setFzrID(fzrID);
+		bcprkd.setZjyID(zjyID);
+		bcprkd.setZjldID(zjldID);
+
+		return mainDao.getCpRkNonCheckData(bcprkd);
 	}
 
 	public List<BcpCkdBean> getBcpCkNonCheckData(Integer bzID,Integer fzrID) {
@@ -975,4 +989,5 @@ public class MainService {
     public int deleteUser(int userId) {
 		return mainDao.deleteUser(userId);
     }
+
 }
