@@ -168,8 +168,8 @@
         <if test="bzStatus!=0">
             bzStatus=#{bzStatus}
         </if>
-        <if test="fzrStatus!=0">
-            fzrStatus=#{fzrStatus}
+        <if test="tlfzrStatus!=0">
+            tlfzrStatus=#{tlfzrStatus}
         </if>
         <if test="zjyStatus!=0">
             zjyStatus=#{zjyStatus}
@@ -177,21 +177,33 @@
         <if test="zjldStatus!=0">
             zjldStatus=#{zjldStatus}
         </if>
+        <if test="kgStatus!=0">
+            kgStatus=#{kgStatus}
+        </if>
+        <if test="slfzrStatus!=0">
+            slfzrStatus=#{slfzrStatus}
+        </if>
         WHERE BackDh = #{backDh}
     </update>
     <update id="agreeBcpTk" parameterType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
         UPDATE Tkd_Bcp SET
         <if test="bzStatus!=0">
-            bzStatus=#{bzStatus}
+            bzStatus=#{bzStatus},tlfzrStatus=0,zjyStatus=0,zjldStatus=0,kgStatus=0,slfzrStatus=0
         </if>
-        <if test="fzrStatus!=0">
-            fzrStatus=#{fzrStatus}
+        <if test="tlfzrStatus!=0">
+            tlfzrStatus=#{tlfzrStatus}
         </if>
         <if test="zjyStatus!=0">
-            zjyStatus=#{zjyStatus},zjldStatus=0,bzStatus=0,fzrStatus=0
+            zjyStatus=#{zjyStatus}
         </if>
         <if test="zjldStatus!=0">
             zjldStatus=#{zjldStatus}
+        </if>
+        <if test="kgStatus!=0">
+            kgStatus=#{kgStatus}
+        </if>
+        <if test="slfzrStatus!=0">
+            slfzrStatus=#{slfzrStatus}
         </if>
         WHERE BackDh = #{backDh}
     </update>
@@ -464,20 +476,26 @@
         FROM Tkd_Bcp t,M_BCPBk m
         WHERE t.BackDh=m.BackDh
         <if test="bzID!=null">
-            and BzID=#{bzID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
-        </if>
-        <if test="fzrID!=null">
-            and FzrID=#{fzrID} and BzStatus=1 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
+            and (BzID=#{bzID} and BzStatus=0 and TlfzrStatus=0 and ZjyStatus=0 and ZjldStatus=0 and KgStatus=0 and SlfzrStatus=0)
+            or (BzID=#{bzID} and BzStatus=2)
+            or (BzID=#{bzID} and TlfzrStatus=2)
+            or (BzID=#{bzID} and ZjyStatus=2)
+            or (BzID=#{bzID} and ZjldStatus=2)
+            or (BzID=#{bzID} and KgStatus=2)
+            or (BzID=#{bzID} and SlfzrStatus=2)
         </if>
         <if test="zjyID!=null">
-            and (ZjyID=#{zjyID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0)
-            or (ZjyID=#{zjyID} and ZjyStatus=2)
-            or (ZjyID=#{zjyID} and ZjldStatus=2)
-            or (ZjyID=#{zjyID} and BzStatus=2)
-            or (ZjyID=#{zjyID} and FzrStatus=2)
+            and ZjyID=#{zjyID} and BzStatus=1 and TlfzrStatus=1 and ZjyStatus=0 and ZjldStatus=0 and KgStatus=0 and SlfzrStatus=0
         </if>
         <if test="zjldID!=null">
-            and ZjldID=#{zjldID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=0
+            and ZjldID=#{zjldID} and BzStatus=1 and TlfzrStatus=1 and ZjyStatus=1 and ZjldStatus=0 and KgStatus=0 and SlfzrStatus=0
+        </if>
+        <if test="kgID!=null">
+            and KgID=#{kgID} and BzStatus=1 and TlfzrStatus=1 and ZjyStatus=1 and ZjldStatus=1 and KgStatus=0 and SlfzrStatus=0
+        </if>
+        <if test="fzrID!=null">
+            and (TlfzrStatus=#{tlfzrID} and BzStatus=1 and TlfzrStatus=0 and ZjyStatus=0 and ZjldStatus=0 and KgStatus=0 and SlfzrStatus=0)
+            OR (SlfzrID=#{slfzrID} and BzStatus=1 and TlfzrStatus=1 and ZjyStatus=1 and ZjldStatus=1 and KgStatus=1 and SlfzrStatus=0)
         </if>
     </select>
 
@@ -599,14 +617,38 @@
         WHERE OutDh = #{0}
     </select>
 
-    <select id="getFzrFromBcpTkd" resultType="java.lang.String">
-        SELECT FzrID
+    <select id="getBZFromBcpTkd" resultType="java.lang.String">
+        SELECT BzID
+        FROM Tkd_Bcp
+        WHERE BackDh = #{0}
+    </select>
+
+    <select id="getTlfzrFromBcpTkd" resultType="java.lang.String">
+        SELECT TlfzrID
         FROM Tkd_Bcp
         WHERE BackDh = #{0}
     </select>
 
     <select id="getZjyFromBcpTkd" resultType="java.lang.String">
         SELECT ZjyID
+        FROM Tkd_Bcp
+        WHERE BackDh = #{0}
+    </select>
+
+    <select id="getZjldFromBcpTkd" resultType="java.lang.String">
+        SELECT ZjldID
+        FROM Tkd_Bcp
+        WHERE BackDh = #{0}
+    </select>
+
+    <select id="getKgFromBcpTkd" resultType="java.lang.String">
+        SELECT KgID
+        FROM Tkd_Bcp
+        WHERE BackDh = #{0}
+    </select>
+
+    <select id="getSlfzrFromBcpTkd" resultType="java.lang.String">
+        SELECT SlfzrID
         FROM Tkd_Bcp
         WHERE BackDh = #{0}
     </select>
@@ -1883,23 +1925,27 @@ SmlPk45		= #{smlPk45},
             <if test="shrr!=null">
                 Shr,
             </if>
-            <if test="shFzr!=null">
-                ShFzr,
-            </if>
             <if test="thr!=null">
                 ThR,
             </if>
+                BzID,
+                BzStatus,
+                TlfzrID,
+                TlfzrStatus,
             <if test="thFzr!=null">
                 ThFzr,
             </if>
-                BzID,
-                BzStatus,
-                FzrID,
-                FzrStatus,
                 ZjyID,
                 ZjyStatus,
                 ZjldID,
                 ZjldStatus,
+                KgID,
+                KgStatus,
+                SlfzrID,
+                SlfzrStatus,
+            <if test="shFzr!=null">
+                ShFzr,
+            </if>
             <if test="remark!=null">
                 Remark,
             </if>
@@ -1918,23 +1964,27 @@ SmlPk45		= #{smlPk45},
             <if test="shrr!=null">
                 #{shrr},
             </if>
-            <if test="shFzr!=null">
-                #{shFzr},
-            </if>
             <if test="thr!=null">
                 #{thr},
             </if>
+                #{bzID},
+                #{bzStatus},
+                #{tlfzrID},
+                #{tlfzrStatus},
             <if test="thFzr!=null">
                 #{thFzr},
             </if>
-                #{bzID},
-                #{bzStatus},
-                #{fzrID},
-                #{fzrStatus},
                 #{zjyID},
                 #{zjyStatus},
                 #{zjldID},
                 #{zjldStatus},
+                #{kgID},
+                #{kgStatus},
+                #{slfzrID},
+                #{slfzrStatus},
+            <if test="shFzr!=null">
+                #{shFzr},
+            </if>
             <if test="remark!=null">
                 #{remark},
             </if>

@@ -19,13 +19,18 @@ public class BcpTkdBean {
     private Integer bzStatus;
     private String bzName;
     private Integer fzrID;
-    private Integer fzrStatus;
+    private Integer tlfzrID;
+    private Integer tlfzrStatus;
     private Integer zjyID;
     private Integer zjyStatus;
     private String zjyName;
     private Integer zjldID;
     private Integer zjldStatus;
     private String zjldName;
+    private Integer kgID;
+    private Integer kgStatus;
+    private Integer slfzrID;
+    private Integer slfzrStatus;
     private String remark;
     private int checkState;
 
@@ -93,22 +98,6 @@ public class BcpTkdBean {
         this.thFzr = thFzr;
     }
 
-    public Integer getFzrID() {
-        return fzrID;
-    }
-
-    public void setFzrID(Integer fzrID) {
-        this.fzrID = fzrID;
-    }
-
-    public Integer getFzrStatus() {
-        return fzrStatus;
-    }
-
-    public void setFzrStatus(Integer fzrStatus) {
-        this.fzrStatus = fzrStatus;
-    }
-
     public Integer getZjyID() {
         return zjyID;
     }
@@ -173,6 +162,30 @@ public class BcpTkdBean {
         this.bzName = bzName;
     }
 
+    public Integer getFzrID() {
+        return fzrID;
+    }
+
+    public void setFzrID(Integer fzrID) {
+        this.fzrID = fzrID;
+    }
+
+    public Integer getTlfzrID() {
+        return tlfzrID;
+    }
+
+    public void setTlfzrID(Integer tlfzrID) {
+        this.tlfzrID = tlfzrID;
+    }
+
+    public Integer getTlfzrStatus() {
+        return tlfzrStatus;
+    }
+
+    public void setTlfzrStatus(Integer tlfzrStatus) {
+        this.tlfzrStatus = tlfzrStatus;
+    }
+
     public Integer getZjldID() {
         return zjldID;
     }
@@ -196,4 +209,37 @@ public class BcpTkdBean {
     public void setZjldName(String zjldName) {
         this.zjldName = zjldName;
     }
+
+    public Integer getKgID() {
+        return kgID;
+    }
+
+    public void setKgID(Integer kgID) {
+        this.kgID = kgID;
+    }
+
+    public Integer getKgStatus() {
+        return kgStatus;
+    }
+
+    public void setKgStatus(Integer kgStatus) {
+        this.kgStatus = kgStatus;
+    }
+
+    public Integer getSlfzrID() {
+        return slfzrID;
+    }
+
+    public void setSlfzrID(Integer slfzrID) {
+        this.slfzrID = slfzrID;
+    }
+
+    public Integer getSlfzrStatus() {
+        return slfzrStatus;
+    }
+
+    public void setSlfzrStatus(Integer slfzrStatus) {
+        this.slfzrStatus = slfzrStatus;
+    }
+
 }

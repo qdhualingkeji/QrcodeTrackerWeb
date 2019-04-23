@@ -485,10 +485,18 @@ public class MainService {
 
 	public String getPersonFromBcpTkd(NotificationParam param) {
 		String str=null;
-		if(param.getPersonFlag()==NotificationParam.FZR)
-			str=mainDao.getFzrFromBcpTkd(param.getDh());
+		if(param.getPersonFlag()==NotificationParam.BZ)
+			str=mainDao.getBZFromBcpTkd(param.getDh());
+		else if(param.getPersonFlag()==NotificationParam.TLFZR)
+			str=mainDao.getTlfzrFromBcpTkd(param.getDh());
 		else if(param.getPersonFlag()==NotificationParam.ZJY)
 			str=mainDao.getZjyFromBcpTkd(param.getDh());
+		else if(param.getPersonFlag()==NotificationParam.ZJLD)
+			str=mainDao.getZjldFromBcpTkd(param.getDh());
+		else if(param.getPersonFlag()==NotificationParam.KG)
+			str=mainDao.getKgFromBcpTkd(param.getDh());
+		else if(param.getPersonFlag()==NotificationParam.SLFZR)
+			str=mainDao.getSlfzrFromBcpTkd(param.getDh());
 		return str;
 	}
 
@@ -554,12 +562,15 @@ public class MainService {
 		return mainDao.getBcpCkNonCheckData(bcpCkdBean);
 	}
 
-	public List<BcpTkdBean> getBcpTkNonCheckData(Integer bzID,Integer fzrID,Integer zjyID,Integer zjldID) {
+	public List<BcpTkdBean> getBcpTkNonCheckData(Integer bzID,Integer zjyID,Integer zjldID,Integer kgID,Integer fzrID) {
 		BcpTkdBean bcptkd=new BcpTkdBean();
 		bcptkd.setBzID(bzID);
-		bcptkd.setFzrID(fzrID);
 		bcptkd.setZjyID(zjyID);
 		bcptkd.setZjldID(zjldID);
+		bcptkd.setKgID(kgID);
+		bcptkd.setFzrID(fzrID);
+		bcptkd.setTlfzrID(fzrID);
+		bcptkd.setSlfzrID(fzrID);
 
 		return mainDao.getBcpTkNonCheckData(bcptkd);
 	}

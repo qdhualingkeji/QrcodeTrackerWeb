@@ -211,9 +211,17 @@ public interface MainDao {
 
     String getZjldFromBcpRkd(String dh);
 
-    String getFzrFromBcpTkd(String dh);
+    String getBZFromBcpTkd(String dh);
+
+    String getTlfzrFromBcpTkd(String dh);
 
     String getZjyFromBcpTkd(String dh);
+
+    String getKgFromBcpTkd(String dh);
+
+    String getSlfzrFromBcpTkd(String dh);
+
+    String getZjldFromBcpTkd(String dh);
 
     String getFzrFromBcpCkd(String dh);
 

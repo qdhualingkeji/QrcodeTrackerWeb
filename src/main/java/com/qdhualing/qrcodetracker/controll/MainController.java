@@ -918,7 +918,7 @@ public class MainController {
                     BCPTKDResult tkd = new BCPTKDResult();
                     tkd.setBackDh(dh);
                     result.setResult(tkd);
-                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "半成品退库单创建成功");
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "半成品入库（退库）单创建成功");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -1633,7 +1633,7 @@ public class MainController {
                     break;
                 case NotificationType.BCP_TKD:
                     desPerson = mainService.getPersonFromBcpTkd(param);
-                    alertMsgStr1="半成品退库单";
+                    alertMsgStr1="半成品入库（退库）单";
                     break;
                 case NotificationType.CP_RKD:
                     desPerson = mainService.getPersonFromBcpRkd(param);
@@ -1767,12 +1767,12 @@ public class MainController {
                         allBeans.add(bean);
                     }
                 }
-                List<BcpTkdBean> bcpTkNonCheckData = mainService.getBcpTkNonCheckData(bzID,fzrID,zjyID,zjldID);
+                List<BcpTkdBean> bcpTkNonCheckData = mainService.getBcpTkNonCheckData(bzID,zjyID,zjldID,kgID,fzrID);
                 for (int i = 0; i < bcpTkNonCheckData.size(); i++) {
                     NonCheckBean bean = new NonCheckBean();
                     BcpTkdBean single = bcpTkNonCheckData.get(i);
                     bean.setDh(single.getBackDh());
-                    bean.setName("半成品退库单");
+                    bean.setName("半成品入库（退库）单");
                     bean.setTime(single.getThRq());
                     bean.setState(single.getCheckState());
                     allBeans.add(bean);
@@ -2136,8 +2136,8 @@ public class MainController {
                 dataResult.setBzID(bean.getBzID());
                 dataResult.setBzStatus(bean.getBzStatus());
                 dataResult.setBzName(bean.getBzName());
-                dataResult.setFzrID(bean.getFzrID());
-                dataResult.setFzrStatus(bean.getFzrStatus());
+                dataResult.setFzrID(0);
+                dataResult.setFzrStatus(0);
                 dataResult.setZjyID(bean.getZjyID());
                 dataResult.setZjyStatus(bean.getZjyStatus());
                 dataResult.setZjyName(bean.getZjyName());
@@ -2833,24 +2833,32 @@ public class MainController {
         if (param != null) {
             try {
                 Integer bzStatus=0;
-                Integer fzrStatus=0;
+                Integer tlfzrStatus=0;
                 Integer zjyStatus=0;
                 Integer zjldStatus=0;
+                Integer kgStatus=0;
+                Integer slfzrStatus=0;
                 if(param.getCheckQXFlag()==VerifyParam.BZ)
                     bzStatus=1;
-                else if(param.getCheckQXFlag()==VerifyParam.FZR)
-                    fzrStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.TLFZR)
+                    tlfzrStatus=1;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJY)
                     zjyStatus=1;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJLD)
                     zjldStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.KG)
+                    kgStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.SLFZR)
+                    slfzrStatus=1;
 
                 BcpTkdBean bcpTkd=new BcpTkdBean();
                 bcpTkd.setBackDh(param.getDh());
                 bcpTkd.setBzStatus(bzStatus);
-                bcpTkd.setFzrStatus(fzrStatus);
+                bcpTkd.setTlfzrStatus(tlfzrStatus);
                 bcpTkd.setZjyStatus(zjyStatus);
                 bcpTkd.setZjldStatus(zjldStatus);
+                bcpTkd.setKgStatus(kgStatus);
+                bcpTkd.setSlfzrStatus(slfzrStatus);
 
                 int a = mainService.agreeBcpTk(bcpTkd);
                 if (a == 1) {
@@ -2879,24 +2887,32 @@ public class MainController {
         if (param != null) {
             try {
                 Integer bzStatus=0;
-                Integer fzrStatus=0;
+                Integer tlfzrStatus=0;
                 Integer zjyStatus=0;
                 Integer zjldStatus=0;
+                Integer kgStatus=0;
+                Integer slfzrStatus=0;
                 if(param.getCheckQXFlag()==VerifyParam.BZ)
                     bzStatus=2;
-                else if(param.getCheckQXFlag()==VerifyParam.FZR)
-                    fzrStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.TLFZR)
+                    tlfzrStatus=2;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJY)
                     zjyStatus=2;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJLD)
                     zjldStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.KG)
+                    kgStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.SLFZR)
+                    slfzrStatus=2;
 
                 BcpTkdBean bcpTkd=new BcpTkdBean();
                 bcpTkd.setBackDh(param.getDh());
                 bcpTkd.setBzStatus(bzStatus);
-                bcpTkd.setFzrStatus(fzrStatus);
+                bcpTkd.setTlfzrStatus(tlfzrStatus);
                 bcpTkd.setZjyStatus(zjyStatus);
                 bcpTkd.setZjldStatus(zjldStatus);
+                bcpTkd.setKgStatus(kgStatus);
+                bcpTkd.setSlfzrStatus(slfzrStatus);
 
                 int a = mainService.refuseBcpTk(bcpTkd);
                 if (a == 1) {
