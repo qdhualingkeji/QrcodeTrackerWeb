@@ -1774,6 +1774,8 @@ public class MainController {
                     bean.setDh(single.getBackDh());
                     bean.setName("半成品入库（退库）单");
                     bean.setTime(single.getThRq());
+                    bean.setTlfzrID(single.getTlfzrID());
+                    bean.setSlfzrID(single.getSlfzrID());
                     bean.setState(single.getCheckState());
                     allBeans.add(bean);
                 }
@@ -2136,8 +2138,6 @@ public class MainController {
                 dataResult.setBzID(bean.getBzID());
                 dataResult.setBzStatus(bean.getBzStatus());
                 dataResult.setBzName(bean.getBzName());
-                dataResult.setFzrID(0);
-                dataResult.setFzrStatus(0);
                 dataResult.setZjyID(bean.getZjyID());
                 dataResult.setZjyStatus(bean.getZjyStatus());
                 dataResult.setZjyName(bean.getZjyName());

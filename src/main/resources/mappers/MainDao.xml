@@ -494,7 +494,7 @@
             and KgID=#{kgID} and BzStatus=1 and TlfzrStatus=1 and ZjyStatus=1 and ZjldStatus=1 and KgStatus=0 and SlfzrStatus=0
         </if>
         <if test="fzrID!=null">
-            and (TlfzrStatus=#{tlfzrID} and BzStatus=1 and TlfzrStatus=0 and ZjyStatus=0 and ZjldStatus=0 and KgStatus=0 and SlfzrStatus=0)
+            and (TlfzrID=#{tlfzrID} and BzStatus=1 and TlfzrStatus=0 and ZjyStatus=0 and ZjldStatus=0 and KgStatus=0 and SlfzrStatus=0)
             OR (SlfzrID=#{slfzrID} and BzStatus=1 and TlfzrStatus=1 and ZjyStatus=1 and ZjldStatus=1 and KgStatus=1 and SlfzrStatus=0)
         </if>
     </select>

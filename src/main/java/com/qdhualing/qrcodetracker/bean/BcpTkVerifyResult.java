@@ -90,27 +90,27 @@ public class BcpTkVerifyResult {
         this.remark = remark;
     }
 
-    public int getFzrID() {
+    public Integer getFzrID() {
         return fzrID;
     }
 
-    public void setFzrID(int fzrID) {
+    public void setFzrID(Integer fzrID) {
         this.fzrID = fzrID;
     }
 
-    public int getFzrStatus() {
+    public Integer getFzrStatus() {
         return fzrStatus;
     }
 
-    public void setFzrStatus(int fzrStatus) {
+    public void setFzrStatus(Integer fzrStatus) {
         this.fzrStatus = fzrStatus;
     }
 
-    public int getZjyID() {
+    public Integer getZjyID() {
         return zjyID;
     }
 
-    public void setZjyID(int zjyID) {
+    public void setZjyID(Integer zjyID) {
         this.zjyID = zjyID;
     }
 
@@ -118,7 +118,7 @@ public class BcpTkVerifyResult {
         return zjyStatus;
     }
 
-    public void setZjyStatus(int zjyStatus) {
+    public void setZjyStatus(Integer zjyStatus) {
         this.zjyStatus = zjyStatus;
     }
 
