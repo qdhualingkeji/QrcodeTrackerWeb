@@ -1744,13 +1744,15 @@ public class MainController {
                     bean.setState(single.getCheckState());
                     allBeans.add(bean);
                 }
-                List<BcpRkdBean> cpRkNonCheckData = mainService.getCpRkNonCheckData(bzID,fzrID,zjyID,zjldID);
+                List<BcpRkdBean> cpRkNonCheckData = mainService.getCpRkNonCheckData(bzID,fzrID,zjyID,zjldID,kgID);
                 for (int i = 0; i < cpRkNonCheckData.size(); i++) {
                     NonCheckBean bean = new NonCheckBean();
                     BcpRkdBean single = cpRkNonCheckData.get(i);
                     bean.setDh(single.getInDh());
                     bean.setName("成品入库单");
                     bean.setTime(single.getShrq());
+                    bean.setFlfzrID(single.getFlfzrID());
+                    bean.setLlfzrID(single.getLlfzrID());
                     bean.setState(single.getCheckState());
                     allBeans.add(bean);
                 }

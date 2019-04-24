@@ -514,9 +514,11 @@
     </select>
 
     <select id="getBcpRkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.BcpRkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
+        SELECT * FROM (
         SELECT distinct r.*
         FROM Rkd_Bcp r,M_BCPIn m
         WHERE r.InDh=m.InDh
+        ) t WHERE 1=1
         <if test="bzID!=null">
             and (BzID=#{bzID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0)
             or (BzID=#{bzID} and ZjyStatus=2)
@@ -540,16 +542,26 @@
         FROM Rkd_Bcp r,M_CPIn2 m
         WHERE r.InDh=m.InDh
         <if test="bzID!=null">
-            and BzID=#{bzID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
-        </if>
-        <if test="fzrID!=null">
-            and FzrID=#{fzrID} and BzStatus=1 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=1
+            and BzID=#{bzID} and BzStatus=0 and FlfzrStatus=0 and ZjyStatus=0 and ZjldStatus=0 and KgStatus=0 and LlfzrStatus=0
+            or (BzID=#{bzID} and BzStatus=2)
+            or (BzID=#{bzID} and FlfzrStatus=2)
+            or (BzID=#{bzID} and ZjyStatus=2)
+            or (BzID=#{bzID} and ZjldStatus=2)
+            or (BzID=#{bzID} and KgStatus=2)
+            or (BzID=#{bzID} and LlfzrStatus=2)
         </if>
         <if test="zjyID!=null">
-            and ZjyID=#{zjyID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=0 and ZjldStatus=0
+            and ZjyID=#{zjyID} and BzStatus=1 and FlfzrStatus=1 and ZjyStatus=0 and ZjldStatus=0 and KgStatus=0 and LlfzrStatus=0
         </if>
         <if test="zjldID!=null">
-            and ZjldID=#{zjldID} and BzStatus=0 and FzrStatus=0 and ZjyStatus=1 and ZjldStatus=0
+            and ZjldID=#{zjldID} and BzStatus=1 and FlfzrStatus=1 and ZjyStatus=1 and ZjldStatus=0 and KgStatus=0 and LlfzrStatus=0
+        </if>
+        <if test="kgID!=null">
+            and kgID=#{kgID} and BzStatus=1 and FlfzrStatus=1 and ZjyStatus=1 and ZjldStatus=1 and KgStatus=0 and LlfzrStatus=0
+        </if>
+        <if test="fzrID!=null">
+            and FlfzrID=#{flfzrID} and BzStatus=1 and FlfzrStatus=0 and ZjyStatus=0 and ZjldStatus=0 and KgStatus=0 and LlfzrStatus=0
+            or (LlfzrID=#{llfzrID} and BzStatus=1 and FlfzrStatus=1 and ZjyStatus=1 and ZjldStatus=1 and KgStatus=1 and LlfzrStatus=0)
         </if>
     </select>
 
@@ -653,26 +665,20 @@
         WHERE BackDh = #{0}
     </select>
 
-    <select id="getBzFromBcpRkd" resultType="java.lang.String">
-        SELECT BzID
-        FROM Rkd_Bcp
-        WHERE InDh = #{0}
-    </select>
-
-    <select id="getFzrFromBcpRkd" resultType="java.lang.String">
-        SELECT FzrID
-        FROM Rkd_Bcp
-        WHERE InDh = #{0}
-    </select>
-
-    <select id="getZjyFromBcpRkd" resultType="java.lang.String">
-        SELECT ZjyID
-        FROM Rkd_Bcp
-        WHERE InDh = #{0}
-    </select>
-
-    <select id="getZjldFromBcpRkd" resultType="java.lang.String">
-        SELECT ZjldID
+    <select id="getPersonFromBcpRkd" resultType="java.lang.String">
+        SELECT
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@BZ">
+            BzID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@FzrID">
+            FzrID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@ZjyID">
+            ZjyID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@ZjldID">
+            ZjldID
+        </if>
         FROM Rkd_Bcp
         WHERE InDh = #{0}
     </select>
@@ -2666,12 +2672,40 @@ SmlPk45		= #{smlPk45},
             </if>
                 BzID,
                 BzStatus,
+            <if test="FzrID!=null">
                 FzrID,
+            </if>
+            <if test="FzrStatus!=null">
                 FzrStatus,
+            </if>
                 ZjyID,
                 ZjyStatus,
                 ZjldID,
                 ZjldStatus,
+            <if test="FlfzrID!=null">
+                FlfzrID,
+            </if>
+            <if test="FlfzrStatus!=null">
+                FlfzrStatus,
+            </if>
+            <if test="JhFzr!=null">
+                JhFzr,
+            </if>
+            <if test="KgID!=null">
+                KgID,
+            </if>
+            <if test="KgStatus!=null">
+                KgStatus,
+            </if>
+            <if test="LlfzrID!=null">
+                LlfzrID,
+            </if>
+            <if test="LlfzrStatus!=null">
+                LlfzrStatus,
+            </if>
+            <if test="ShFzr!=null">
+                ShFzr,
+            </if>
             <if test="remark!=null">
                 Remark,
             </if>
@@ -2695,12 +2729,40 @@ SmlPk45		= #{smlPk45},
             </if>
                 #{BzID},
                 #{BzStatus},
+            <if test="FzrID!=null">
                 #{FzrID},
+            </if>
+            <if test="FzrStatus!=null">
                 #{FzrStatus},
+            </if>
                 #{ZjyID},
                 #{ZjyStatus},
                 #{ZjldID},
                 #{ZjldStatus},
+            <if test="FlfzrID!=null">
+                #{FlfzrID},
+            </if>
+            <if test="FlfzrStatus!=null">
+                #{FlfzrStatus},
+            </if>
+            <if test="JhFzr!=null">
+                #{JhFzr},
+            </if>
+            <if test="KgID!=null">
+                #{KgID},
+            </if>
+            <if test="KgStatus!=null">
+                #{KgStatus},
+            </if>
+            <if test="LlfzrID!=null">
+                #{LlfzrID},
+            </if>
+            <if test="LlfzrStatus!=null">
+                #{LlfzrStatus},
+            </if>
+            <if test="ShFzr!=null">
+                #{ShFzr},
+            </if>
             <if test="remark!=null">
                 #{remark},
             </if>

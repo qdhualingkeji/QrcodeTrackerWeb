@@ -471,16 +471,7 @@ public class MainService {
 	}
 
 	public String getPersonFromBcpRkd(NotificationParam param) {
-		String str=null;
-		if(param.getPersonFlag()==NotificationParam.BZ)
-			str=mainDao.getBzFromBcpRkd(param.getDh());
-		else if(param.getPersonFlag()==NotificationParam.FZR)
-			str=mainDao.getFzrFromBcpRkd(param.getDh());
-		else if(param.getPersonFlag()==NotificationParam.ZJY)
-			str=mainDao.getZjyFromBcpRkd(param.getDh());
-		else if(param.getPersonFlag()==NotificationParam.ZJLD)
-			str=mainDao.getZjldFromBcpRkd(param.getDh());
-		return str;
+		return mainDao.getPersonFromBcpRkd(param.getDh(),param.getPersonFlag());
 	}
 
 	public String getPersonFromBcpTkd(NotificationParam param) {
@@ -544,12 +535,15 @@ public class MainService {
 		return mainDao.getBcpRkNonCheckData(bcprkd);
 	}
 
-	public List<BcpRkdBean> getCpRkNonCheckData(Integer bzID, Integer fzrID, Integer zjyID, Integer zjldID) {
+	public List<BcpRkdBean> getCpRkNonCheckData(Integer bzID, Integer fzrID, Integer zjyID, Integer zjldID, Integer kgID) {
 		BcpRkdBean bcprkd=new BcpRkdBean();
 		bcprkd.setBzID(bzID);
 		bcprkd.setFzrID(fzrID);
+		bcprkd.setFlfzrID(fzrID);
 		bcprkd.setZjyID(zjyID);
 		bcprkd.setZjldID(zjldID);
+		bcprkd.setKgID(kgID);
+		bcprkd.setLlfzrID(fzrID);
 
 		return mainDao.getCpRkNonCheckData(bcprkd);
 	}

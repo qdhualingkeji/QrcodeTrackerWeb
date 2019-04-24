@@ -18,12 +18,20 @@ public class CreateBCPRKDParam {
     private String Jhr;
     private Integer BzID;
     private Integer BzStatus;
-    private Integer FzrID;
+    private Integer FzrID;//半成品录入时的负责人
     private Integer FzrStatus;
     private Integer ZjyID;
     private Integer ZjyStatus;
     private Integer ZjldID;
     private Integer ZjldStatus;
+    private Integer FlfzrID;//成品入库时的发料负责人
+    private Integer FlfzrStatus;
+    private String JhFzr;
+    private Integer KgID;
+    private Integer KgStatus;
+    private Integer LlfzrID;//成品入库时的仓库负责人
+    private Integer LlfzrStatus;
+    private String ShFzr;
     private String remark;
 
     public String getInDh() {
@@ -137,4 +145,69 @@ public class CreateBCPRKDParam {
     public void setZjldStatus(Integer zjldStatus) {
         ZjldStatus = zjldStatus;
     }
+
+    public Integer getFlfzrID() {
+        return FlfzrID;
+    }
+
+    public void setFlfzrID(Integer flfzrID) {
+        FlfzrID = flfzrID;
+    }
+
+    public Integer getFlfzrStatus() {
+        return FlfzrStatus;
+    }
+
+    public void setFlfzrStatus(Integer flfzrStatus) {
+        FlfzrStatus = flfzrStatus;
+    }
+
+    public String getJhFzr() {
+        return JhFzr;
+    }
+
+    public void setJhFzr(String jhFzr) {
+        JhFzr = jhFzr;
+    }
+
+    public Integer getKgID() {
+        return KgID;
+    }
+
+    public void setKgID(Integer kgID) {
+        KgID = kgID;
+    }
+
+    public Integer getKgStatus() {
+        return KgStatus;
+    }
+
+    public void setKgStatus(Integer kgStatus) {
+        KgStatus = kgStatus;
+    }
+
+    public Integer getLlfzrID() {
+        return LlfzrID;
+    }
+
+    public void setLlfzrID(Integer llfzrID) {
+        LlfzrID = llfzrID;
+    }
+
+    public Integer getLlfzrStatus() {
+        return LlfzrStatus;
+    }
+
+    public void setLlfzrStatus(Integer llfzrStatus) {
+        LlfzrStatus = llfzrStatus;
+    }
+
+    public String getShFzr() {
+        return ShFzr;
+    }
+
+    public void setShFzr(String shFzr) {
+        ShFzr = shFzr;
+    }
+
 }

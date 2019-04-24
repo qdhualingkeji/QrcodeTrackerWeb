@@ -203,13 +203,7 @@ public interface MainDao {
 
     String getPersonFromWlTkd(String dh,@Param("personFlag") int personFlag);
 
-    String getBzFromBcpRkd(String dh);
-
-    String getFzrFromBcpRkd(String dh);
-
-    String getZjyFromBcpRkd(String dh);
-
-    String getZjldFromBcpRkd(String dh);
+    String getPersonFromBcpRkd(String dh,@Param("personFlag") int personFlag);
 
     String getBZFromBcpTkd(String dh);
 
