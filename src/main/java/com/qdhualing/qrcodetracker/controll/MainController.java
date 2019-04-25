@@ -2538,24 +2538,46 @@ public class MainController {
         if (param != null) {
             try {
                 Integer bzStatus=0;
+                Integer bcpBzStatus=0;
+                Integer cpBzStatus=0;
                 Integer fzrStatus=0;
                 Integer zjyStatus=0;
                 Integer zjldStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.BZ)
-                    bzStatus=1;
+                Integer flfzrStatus=0;
+                Integer kgStatus=0;
+                Integer llfzrStatus=0;
+                if(param.getCheckQXFlag()==VerifyParam.BCPBZ) {
+                    bzStatus = 1;
+                    bcpBzStatus = 1;
+                }
+                else if(param.getCheckQXFlag()==VerifyParam.CPBZ) {
+                    bzStatus = 1;
+                    cpBzStatus = 1;
+                }
                 else if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=1;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJY)
                     zjyStatus=1;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJLD)
                     zjldStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.FLFZR)
+                    flfzrStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.KG)
+                    kgStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.LLFZR)
+                    llfzrStatus=1;
 
                 BcpRkdBean bcpRkd=new BcpRkdBean();
                 bcpRkd.setInDh(param.getDh());
                 bcpRkd.setBzStatus(bzStatus);
+                bcpRkd.setBcpBzStatus(bcpBzStatus);
+                bcpRkd.setCpBzStatus(cpBzStatus);
                 bcpRkd.setFzrStatus(fzrStatus);
                 bcpRkd.setZjyStatus(zjyStatus);
                 bcpRkd.setZjldStatus(zjldStatus);
+                bcpRkd.setFlfzrStatus(flfzrStatus);
+                bcpRkd.setKgStatus(kgStatus);
+                bcpRkd.setLlfzrStatus(llfzrStatus);
 
                 int a = mainService.agreeBcpIn(bcpRkd);
                 if (a == 1) {
@@ -2697,6 +2719,9 @@ public class MainController {
                 Integer fzrStatus=0;
                 Integer zjyStatus=0;
                 Integer zjldStatus=0;
+                Integer flfzrStatus=0;
+                Integer kgStatus=0;
+                Integer llfzrStatus=0;
                 if(param.getCheckQXFlag()==VerifyParam.BZ)
                     bzStatus=2;
                 else if(param.getCheckQXFlag()==VerifyParam.FZR)
@@ -2705,6 +2730,12 @@ public class MainController {
                     zjyStatus=2;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJLD)
                     zjldStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.FLFZR)
+                    flfzrStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.KG)
+                    kgStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.LLFZR)
+                    llfzrStatus=2;
 
                 BcpRkdBean bcpRkd=new BcpRkdBean();
                 bcpRkd.setInDh(param.getDh());
@@ -2712,6 +2743,9 @@ public class MainController {
                 bcpRkd.setFzrStatus(fzrStatus);
                 bcpRkd.setZjyStatus(zjyStatus);
                 bcpRkd.setZjldStatus(zjldStatus);
+                bcpRkd.setFlfzrStatus(flfzrStatus);
+                bcpRkd.setKgStatus(kgStatus);
+                bcpRkd.setLlfzrStatus(llfzrStatus);
 
                 int a = mainService.refuseBcpIn(bcpRkd);
                 if (a == 1) {

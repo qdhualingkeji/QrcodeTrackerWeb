@@ -241,12 +241,24 @@
         <if test="zjldStatus!=0">
             zjldStatus=#{zjldStatus}
         </if>
+        <if test="flfzrStatus!=0">
+            flfzrStatus=#{flfzrStatus}
+        </if>
+        <if test="kgStatus!=0">
+            kgStatus=#{kgStatus}
+        </if>
+        <if test="llfzrStatus!=0">
+            llfzrStatus=#{llfzrStatus}
+        </if>
         WHERE InDh = #{inDh}
     </update>
     <update id="agreeBcpIn" parameterType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
         UPDATE Rkd_Bcp SET
-        <if test="bzStatus!=0">
+        <if test="bcpBzStatus!=0">
             bzStatus=#{bzStatus},fzrStatus=0,zjyStatus=0,zjldStatus=0
+        </if>
+        <if test="cpBzStatus!=0">
+            bzStatus=#{bzStatus},flfzrStatus=0,zjyStatus=0,zjldStatus=0,kgStatus=0,llfzrStatus=0
         </if>
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
@@ -256,6 +268,15 @@
         </if>
         <if test="zjldStatus!=0">
             zjldStatus=#{zjldStatus}
+        </if>
+        <if test="flfzrStatus!=0">
+            flfzrStatus=#{flfzrStatus}
+        </if>
+        <if test="kgStatus!=0">
+            kgStatus=#{kgStatus}
+        </if>
+        <if test="llfzrStatus!=0">
+            llfzrStatus=#{llfzrStatus}
         </if>
         WHERE InDh = #{inDh}
     </update>
@@ -670,14 +691,23 @@
         <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@BZ">
             BzID
         </if>
-        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@FzrID">
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@FZR">
             FzrID
         </if>
-        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@ZjyID">
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@ZJY">
             ZjyID
         </if>
-        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@ZjldID">
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@ZJLD">
             ZjldID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@FLFZR">
+            FlfzrID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@KG">
+            KgID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@LLFZR">
+            LlfzrID
         </if>
         FROM Rkd_Bcp
         WHERE InDh = #{0}
