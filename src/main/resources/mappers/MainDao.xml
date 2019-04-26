@@ -55,7 +55,7 @@
     </select>
 
     <update id="updateCpCkdData" parameterType="com.qdhualing.qrcodetracker.bean.CpOutVerifyResult">
-        UPDATE Ckd_Bcp SET LhDw = #{lhDw}, FhFzr=#{fhFzr}, LhR=#{lhR}, LhFzr=#{lhFzr}, Remark=#{remark}, BzStatus=#{bzStatus}, FzrStatus=#{fzrStatus}
+        UPDATE Ckd_Bcp SET FhFzr=#{fhFzr}, Remark=#{remark}, KgStatus=#{kgStatus}, FzrStatus=#{fzrStatus}
         WHERE OutDh = #{outDh}
     </update>
 
@@ -209,8 +209,8 @@
     </update>
     <update id="refuseBcpOut" parameterType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         UPDATE Ckd_Bcp SET
-        <if test="bzStatus!=0">
-            bzStatus=#{bzStatus}
+        <if test="kgStatus!=0">
+            kgStatus=#{kgStatus}
         </if>
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
@@ -219,8 +219,8 @@
     </update>
     <update id="agreeBcpOut" parameterType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         UPDATE Ckd_Bcp SET
-        <if test="bzStatus!=0">
-            bzStatus=#{bzStatus},fzrStatus=0
+        <if test="kgStatus!=0">
+            kgStatus=#{kgStatus},fzrStatus=0
         </if>
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
@@ -524,13 +524,13 @@
         SELECT distinct c.*
         FROM Ckd_Bcp c,M_CPOut m
         WHERE c.OutDh=m.OutDh
-        <if test="bzID!=null">
-            and (BzID = #{bzID} and BzStatus=0 and FzrStatus=0)
-            or (BzID=#{bzID} and BzStatus=2)
-            or (BzID=#{bzID} and FzrStatus=2)
+        <if test="kgID!=null">
+            and (KgID = #{kgID} and KgStatus=0 and FzrStatus=0)
+            or (KgID=#{kgID} and KgStatus=2)
+            or (KgID=#{kgID} and FzrStatus=2)
         </if>
         <if test="fzrID!=null">
-            and FzrID = #{fzrID} and BzStatus=1 and FzrStatus=0
+            and FzrID = #{fzrID} and KgStatus=1 and FzrStatus=0
         </if>
     </select>
 
@@ -1555,28 +1555,19 @@ SmlPk45		= #{smlPk45},
             <if test="outDh!=null">
                 OutDh,
             </if>
-            <if test="lhDw!=null">
-                LhDw,
-            </if>
             <if test="lhRq!=null">
                 LhRq,
             </if>
             <if test="fhr!=null">
                 FhR,
             </if>
+                KgID,
+                KgStatus,
+                FzrID,
+                FzrStatus,
             <if test="fhFzr!=null">
                 FhFzr,
             </if>
-            <if test="lhr!=null">
-                LhR,
-            </if>
-            <if test="lhFzr!=null">
-                LhFzr,
-            </if>
-                BzID,
-                BzStatus,
-                FzrID,
-                FzrStatus,
             <if test="remark!=null">
                 Remark,
             </if>
@@ -1589,28 +1580,19 @@ SmlPk45		= #{smlPk45},
             <if test="outDh!=null">
                 #{outDh},
             </if>
-            <if test="lhDw!=null">
-                #{lhDw},
-            </if>
             <if test="lhRq!=null">
                 #{lhRq},
             </if>
             <if test="fhr!=null">
                 #{fhr},
             </if>
+                #{kgID},
+                #{kgStatus},
+                #{fzrID},
+                #{fzrStatus},
             <if test="fhFzr!=null">
                 #{fhFzr},
             </if>
-            <if test="lhr!=null">
-                #{lhr},
-            </if>
-            <if test="lhFzr!=null">
-                #{lhFzr},
-            </if>
-                #{bzID},
-                #{bzStatus},
-                #{fzrID},
-                #{fzrStatus},
             <if test="remark!=null">
                 #{remark},
             </if>

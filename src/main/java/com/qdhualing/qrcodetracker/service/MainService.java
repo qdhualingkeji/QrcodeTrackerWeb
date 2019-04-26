@@ -548,9 +548,9 @@ public class MainService {
 		return mainDao.getCpRkNonCheckData(bcprkd);
 	}
 
-	public List<BcpCkdBean> getBcpCkNonCheckData(Integer bzID,Integer fzrID) {
+	public List<BcpCkdBean> getBcpCkNonCheckData(Integer kgID,Integer fzrID) {
 		BcpCkdBean bcpCkdBean=new BcpCkdBean();
-		bcpCkdBean.setBzID(bzID);
+		bcpCkdBean.setKgID(kgID);
 		bcpCkdBean.setFzrID(fzrID);
 
 		return mainDao.getBcpCkNonCheckData(bcpCkdBean);

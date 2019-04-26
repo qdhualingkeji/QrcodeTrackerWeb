@@ -9,18 +9,15 @@ public class BcpCkdBean {
 
     private int iD;
     private String outDh;
-    private String lhDw;
     private String lhRq;
     private String fhR;
     private String fhFzr;
-    private String lhR;
-    private String lhFzr;
     private String remark;
     private String jhDw;
     private int checkState;
-    private Integer bzID;
-    private Integer bzStatus;
-    private String bzName;
+    private Integer kgID;
+    private Integer kgStatus;
+    private String kgName;
     private Integer fzrID;
     private Integer fzrStatus;
 
@@ -38,14 +35,6 @@ public class BcpCkdBean {
 
     public void setOutDh(String outDh) {
         this.outDh = outDh;
-    }
-
-    public String getLhDw() {
-        return lhDw;
-    }
-
-    public void setLhDw(String lhDw) {
-        this.lhDw = lhDw;
     }
 
     public String getLhRq() {
@@ -72,22 +61,6 @@ public class BcpCkdBean {
         this.fhFzr = fhFzr;
     }
 
-    public String getLhR() {
-        return lhR;
-    }
-
-    public void setLhR(String lhR) {
-        this.lhR = lhR;
-    }
-
-    public String getLhFzr() {
-        return lhFzr;
-    }
-
-    public void setLhFzr(String lhFzr) {
-        this.lhFzr = lhFzr;
-    }
-
     public String getRemark() {
         return remark;
     }
@@ -112,28 +85,28 @@ public class BcpCkdBean {
         this.checkState = checkState;
     }
 
-    public Integer getBzID() {
-        return bzID;
+    public Integer getKgID() {
+        return kgID;
     }
 
-    public void setBzID(Integer bzID) {
-        this.bzID = bzID;
+    public void setKgID(Integer kgID) {
+        this.kgID = kgID;
     }
 
-    public Integer getBzStatus() {
-        return bzStatus;
+    public Integer getKgStatus() {
+        return kgStatus;
     }
 
-    public void setBzStatus(Integer bzStatus) {
-        this.bzStatus = bzStatus;
+    public void setKgStatus(Integer kgStatus) {
+        this.kgStatus = kgStatus;
     }
 
-    public String getBzName() {
-        return bzName;
+    public String getKgName() {
+        return kgName;
     }
 
-    public void setBzName(String bzName) {
-        this.bzName = bzName;
+    public void setKgName(String kgName) {
+        this.kgName = kgName;
     }
 
     public Integer getFzrID() {

@@ -1757,8 +1757,8 @@ public class MainController {
                     allBeans.add(bean);
                 }
                 List<BcpCkdBean> bcpCkNonCheckData = null;
-                if(bzID!=null||fzrID!=null) {
-                    bcpCkNonCheckData = mainService.getBcpCkNonCheckData(bzID,fzrID);
+                if(kgID!=null||fzrID!=null) {
+                    bcpCkNonCheckData = mainService.getBcpCkNonCheckData(kgID,fzrID);
                     for (int i = 0; i < bcpCkNonCheckData.size(); i++) {
                         NonCheckBean bean = new NonCheckBean();
                         BcpCkdBean single = bcpCkNonCheckData.get(i);
@@ -2097,10 +2097,7 @@ public class MainController {
             try {
                 CpOutVerifyResult dataResult = new CpOutVerifyResult();
                 BcpCkdBean bean = mainService.getBcpCkdBean(param.getDh());
-                dataResult.setLhDw(bean.getLhDw());
                 dataResult.setFhFzr(bean.getFhFzr());
-                dataResult.setLhFzr(bean.getLhFzr());
-                dataResult.setLhR(bean.getLhR());
                 dataResult.setLhRq(bean.getLhRq());
                 dataResult.setOutDh(bean.getOutDh());
                 dataResult.setRemark(bean.getRemark());
@@ -2601,58 +2598,7 @@ public class MainController {
                         //因为入库单表里可能是半成品或成品，所以这里要先验证下半成品入库记录里有无数据，没有的话说明是成品
                         List<BcpInShowBean> bcpInDataList = mainService.getBcpInShowBeanListByInDh(param.getDh());
                         if (bcpInDataList == null || bcpInDataList.size() <= 0) {
-                            int count = a;
-                            List<BigCPINParam> bigCPINList = mainService.getBigCPINParamListByInDh(param.getDh());
-                            BigCPINParam bigCPINParam = null;
-                            int size = bigCPINList.size();
-                            if (size > 0) {
-                                for (int i = 0; i < size; i++) {
-                                    bigCPINParam = bigCPINList.get(i);
-                                    a = mainService.findCPS2(bigCPINParam.getQrCodeId());
-                                    if (a <= 0) {
-                                        //插入大包装库存表（车间）
-                                        a = mainService.insertCPS2(bigCPINParam);
-
-                                    }
-
-                                    //以下代码是根据大包装关联需要入库的小包装
-                                    List<SmallCPINParam> smallCPINList = mainService.getSmallCPINParamListByCPS2QRCode(bigCPINParam.getQrCodeId());
-                                    SmallCPINParam smallCPINParam = null;
-                                    BigCpBean bigCpBean = null;
-                                    int nowIndex = 0;
-                                    Long nextQrCodeId = null;
-                                    int size1 = smallCPINList.size();
-                                    if(size1>0) {
-                                        smallCPINParam = smallCPINList.get(0);
-                                        String startQrCodeId = smallCPINParam.getQrCodeId();
-                                        nextQrCodeId = Long.parseLong(startQrCodeId);
-                                        if (!TextUtils.isEmpty(smallCPINParam.getcPS2QRCode())) {
-                                            bigCpBean = mainService.getCPS2(smallCPINParam.getcPS2QRCode());
-                                            nowIndex = bigCpBean.getNowNum();
-                                        }
-                                    }
-                                    for (int j = 0; j < size1; j++) {
-                                        //插入小包装库存表（车间）
-                                        a = mainService.insertCPS(smallCPINParam);
-                                        if (a <= 0) {
-                                            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "录入CPS失败");
-                                        }
-                                        //如果是需要关联大包装的小包装则需要以下操作
-                                        if (!TextUtils.isEmpty(smallCPINParam.getcPS2QRCode())) {
-                                            bigCpBean = ProjectUtil.getUpdateCPS2Data(bigCpBean, nowIndex + 1, nextQrCodeId);
-                                            a = mainService.updateCPS2(bigCpBean);
-                                            a = mainService.updateCPIn2(bigCpBean);
-                                        }
-
-                                        String typeNum = nextQrCodeId.toString().substring(0, 9);
-                                        int num = Integer.valueOf(nextQrCodeId.toString().substring(9));
-                                        num++;
-                                        nextQrCodeId = Long.parseLong(typeNum + num);
-                                        nowIndex++;
-                                        smallCPINParam.setQrCodeId(String.valueOf(nextQrCodeId));
-                                    }
-                                }
-                            }
+                            //?????????
                             /*
                             else {
                                 List<SmallCPINParam> smallCPINList = mainService.getSmallCPINParamListByInDh(param.getDh());
@@ -2688,6 +2634,61 @@ public class MainController {
                                 }
                             }
                             */
+                        }
+                    }
+                    else if(bcpRkdBean.getBzStatus() == 1 && bcpRkdBean.getFlfzrStatus() == 1 && bcpRkdBean.getZjyStatus() == 1
+                            && bcpRkdBean.getZjldStatus() == 1 && bcpRkdBean.getKgStatus() == 1 && bcpRkdBean.getLlfzrStatus() == 1){
+                        int count = a;
+                        List<BigCPINParam> bigCPINList = mainService.getBigCPINParamListByInDh(param.getDh());
+                        BigCPINParam bigCPINParam = null;
+                        int size = bigCPINList.size();
+                        if (size > 0) {
+                            for (int i = 0; i < size; i++) {
+                                bigCPINParam = bigCPINList.get(i);
+                                a = mainService.findCPS2(bigCPINParam.getQrCodeId());
+                                if (a <= 0) {
+                                    //插入大包装库存表（车间）
+                                    a = mainService.insertCPS2(bigCPINParam);
+
+                                }
+
+                                //以下代码是根据大包装关联需要入库的小包装
+                                List<SmallCPINParam> smallCPINList = mainService.getSmallCPINParamListByCPS2QRCode(bigCPINParam.getQrCodeId());
+                                SmallCPINParam smallCPINParam = null;
+                                BigCpBean bigCpBean = null;
+                                int nowIndex = 0;
+                                Long nextQrCodeId = null;
+                                int size1 = smallCPINList.size();
+                                if(size1>0) {
+                                    smallCPINParam = smallCPINList.get(0);
+                                    String startQrCodeId = smallCPINParam.getQrCodeId();
+                                    nextQrCodeId = Long.parseLong(startQrCodeId);
+                                    if (!TextUtils.isEmpty(smallCPINParam.getcPS2QRCode())) {
+                                        bigCpBean = mainService.getCPS2(smallCPINParam.getcPS2QRCode());
+                                        nowIndex = bigCpBean.getNowNum();
+                                    }
+                                }
+                                for (int j = 0; j < size1; j++) {
+                                    //插入小包装库存表（车间）
+                                    a = mainService.insertCPS(smallCPINParam);
+                                    if (a <= 0) {
+                                        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "录入CPS失败");
+                                    }
+                                    //如果是需要关联大包装的小包装则需要以下操作
+                                    if (!TextUtils.isEmpty(smallCPINParam.getcPS2QRCode())) {
+                                        bigCpBean = ProjectUtil.getUpdateCPS2Data(bigCpBean, nowIndex + 1, nextQrCodeId);
+                                        a = mainService.updateCPS2(bigCpBean);
+                                        a = mainService.updateCPIn2(bigCpBean);
+                                    }
+
+                                    String typeNum = nextQrCodeId.toString().substring(0, 9);
+                                    int num = Integer.valueOf(nextQrCodeId.toString().substring(9));
+                                    num++;
+                                    nextQrCodeId = Long.parseLong(typeNum + num);
+                                    nowIndex++;
+                                    smallCPINParam.setQrCodeId(String.valueOf(nextQrCodeId));
+                                }
+                            }
                         }
                     }
 
@@ -2773,21 +2774,21 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
-                Integer bzStatus=0;
+                Integer kgStatus=0;
                 Integer fzrStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.BZ)
-                    bzStatus=1;
+                if(param.getCheckQXFlag()==VerifyParam.KG)
+                    kgStatus=1;
                 else if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=1;
 
                 BcpCkdBean bcpckd=new BcpCkdBean();
                 bcpckd.setOutDh(param.getDh());
-                bcpckd.setBzStatus(bzStatus);
+                bcpckd.setKgStatus(kgStatus);
                 bcpckd.setFzrStatus(fzrStatus);
                 int a = mainService.agreeBcpOut(bcpckd);
                 if (a == 1) {
                     BcpCkdBean bcpCkd = mainService.getBcpCkdBean(param.getDh());
-                    if(bcpCkd.getBzStatus()==1&&bcpCkd.getFzrStatus()==1) {
+                    if(bcpCkd.getKgStatus()==1&&bcpCkd.getFzrStatus()==1) {
                         List<BigCpOutParam> cpOutList = mainService.getBigCpOutParamListByOutDh(param.getDh());
                         for (BigCpOutParam cpOutParam : cpOutList) {
                             BigCpBean bigCpBean = mainService.getCPS2(cpOutParam.getQrCodeId());
@@ -2830,16 +2831,16 @@ public class MainController {
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
             try {
-                Integer bzStatus=0;
+                Integer kgStatus=0;
                 Integer fzrStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.BZ)
-                    bzStatus=2;
+                if(param.getCheckQXFlag()==VerifyParam.KG)
+                    kgStatus=2;
                 else if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=2;
 
                 BcpCkdBean bcpCkd=new BcpCkdBean();
                 bcpCkd.setOutDh(param.getDh());
-                bcpCkd.setBzStatus(bzStatus);
+                bcpCkd.setKgStatus(kgStatus);
                 bcpCkd.setFzrStatus(fzrStatus);
 
                 int a = mainService.refuseBcpOut(bcpCkd);
