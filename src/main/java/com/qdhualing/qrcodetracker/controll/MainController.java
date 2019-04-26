@@ -3462,7 +3462,7 @@ public class MainController {
                     NonCheckBean bean = new NonCheckBean();
                     BcpTkdBean single = bcpTkNonCheckData.get(i);
                     bean.setDh(single.getBackDh());
-                    bean.setName("半成品退库单");
+                    bean.setName("半成品入库（退库）单");
                     bean.setTime(single.getThRq());
                     allBeans.add(bean);
                 }

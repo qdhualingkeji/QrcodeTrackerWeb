@@ -5,12 +5,19 @@
     <select id="getBcpTkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
         SELECT distinct t.*
         FROM Tkd_Bcp t,M_BCPBk m
-        WHERE t.ThR = #{0} AND t.BackDh=m.BackDh AND (BzStatus = 2 OR FzrStatus = 2 OR ZjyStatus = 2 OR ZjldStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
+        WHERE t.BackDh=m.BackDh
+        and (t.ThR = #{0} and BzStatus=0 and TlfzrStatus=0 and ZjyStatus=0 and ZjldStatus=0 and KgStatus=0 and SlfzrStatus=0)
+        or (t.ThR = #{0} and BzStatus=2)
+        or (t.ThR = #{0} and TlfzrStatus=2)
+        or (t.ThR = #{0} and ZjyStatus=2)
+        or (t.ThR = #{0} and ZjldStatus=2)
+        or (t.ThR = #{0} and KgStatus=2)
+        or (t.ThR = #{0} and SlfzrStatus=2)
     </select>
     <select id="getBcpCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         SELECT distinct c.*
         FROM Ckd_Bcp c,M_CPOut m
-        WHERE c.FhR = #{0} AND c.OutDh=m.OutDh AND (BzStatus = 2 OR FzrStatus = 2 OR FzrStatus = 0 AND BzStatus = 0)
+        WHERE c.FhR = #{0} AND c.OutDh=m.OutDh AND (KgStatus = 2 OR FzrStatus = 2 OR FzrStatus = 0 AND KgStatus = 0)
     </select>
     <select id="getBcpRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
         SELECT distinct r.*
@@ -116,7 +123,7 @@
     </update>
     <update id="updateWlRkdData" parameterType="com.qdhualing.qrcodetracker.bean.WlInVerifyResult">
         UPDATE Rkd_Wl SET JhDw = #{fhDw}, ShRq=#{shRq}, ShFzr=#{shFzr}, JhR=#{fhR}, JhFzr=#{jhFzr}, Remark=#{remark},
-        BzID=#{bzID}, BzStatus=#{bzStatus}, FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}, ZjldID=#{zjldID}, ZjldStatus=#{zjldStatus}
+        FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}, ZjldID=#{zjldID}, ZjldStatus=#{zjldStatus}
         WHERE InDh = #{inDh}
     </update>
 
