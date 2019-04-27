@@ -3238,22 +3238,28 @@ SmlPk45		= #{smlPk45},
             <if test="fhR!=null">
                 FhR,
             </if>
-            <if test="fhFzr!=null">
-                FhFzr,
-            </if>
             <if test="lhR!=null">
                 LhR,
             </if>
+                KgID,
+            <if test="kg!=null">
+                Kg,
+            </if>
+                KgStatus,
+                FlfzrID,
+            <if test="fhFzr!=null">
+                FhFzr,
+            </if>
+                FlfzrStatus,
+                BzID,
+            <if test="bz!=null">
+                Bz,
+            </if>
+                BzStatus,
+                LlfzrID,
             <if test="lhFzr!=null">
                 LhFzr,
             </if>
-                KgID,
-                KgStatus,
-                FlfzrID,
-                FlfzrStatus,
-                BzID,
-                BzStatus,
-                LlfzrID,
                 LlfzrStatus,
             <if test="remark!=null">
                 Remark
@@ -3273,22 +3279,28 @@ SmlPk45		= #{smlPk45},
             <if test="fhR!=null">
                 #{fhR},
             </if>
-            <if test="fhFzr!=null">
-                #{fhFzr},
-            </if>
             <if test="lhR!=null">
                 #{lhR},
             </if>
+                #{kgID},
+            <if test="kg!=null">
+                #{kg},
+            </if>
+                #{kgStatus},
+                #{flfzrID},
+            <if test="fhFzr!=null">
+                #{fhFzr},
+            </if>
+                #{flfzrStatus},
+                #{bzID},
+            <if test="bz!=null">
+                #{bz},
+            </if>
+                #{bzStatus},
+                #{llfzrID},
             <if test="lhFzr!=null">
                 #{lhFzr},
             </if>
-                #{kgID},
-                #{kgStatus},
-                #{flfzrID},
-                #{flfzrStatus},
-                #{bzID},
-                #{bzStatus},
-                #{llfzrID},
                 #{llfzrStatus},
             <if test="remark!=null">
                 #{remark},
