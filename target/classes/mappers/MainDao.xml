@@ -122,8 +122,8 @@
         WHERE QRCode_ID = #{qRCodeID}
     </update>
     <update id="updateWlRkdData" parameterType="com.qdhualing.qrcodetracker.bean.WlInVerifyResult">
-        UPDATE Rkd_Wl SET JhDw = #{fhDw}, ShRq=#{shRq}, ShFzr=#{shFzr}, JhR=#{fhR}, JhFzr=#{jhFzr}, Remark=#{remark},
-        FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}, ZjldID=#{zjldID}, ZjldStatus=#{zjldStatus}
+        UPDATE Rkd_Wl SET JhDw = #{fhDw}, ShRq=#{shRq},
+        ZjyID=#{zjyID}, Zjy=#{zjy}, ZjyStatus=#{zjyStatus}, ZjldID=#{zjldID}, Zjld=#{zjld}, ZjldStatus=#{zjldStatus},FzrID=#{fzrID}, ShFzr=#{shFzr}, FzrStatus=#{fzrStatus},  Remark=#{remark}
         WHERE InDh = #{inDh}
     </update>
 
@@ -494,9 +494,7 @@
     </select>
 
     <select id="getWlRkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlRkdBean">
-        SELECT r.*,u.TrueName zjyName,u1.TrueName zjldName
-        FROM Rkd_Wl r LEFT JOIN Hl_User u on r.ZjyID = u.UserID LEFT JOIN Hl_User u1 on r.ZjldID = u1.UserID
-        WHERE InDh = #{0}
+        SELECT * FROM Rkd_Wl WHERE InDh = #{0}
     </select>
 
     <select id="getBcpTkNonCheckData" parameterType="com.qdhualing.qrcodetracker.bean.BcpTkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
@@ -3334,10 +3332,7 @@ SmlPk45		= #{smlPk45},
                 InDh,
             </if>
             <if test="Shr!=null">
-                Shr,
-            </if>
-            <if test="Fhr!=null">
-                Fhr
+                Shr
             </if>
         </trim>
         values
@@ -3352,10 +3347,7 @@ SmlPk45		= #{smlPk45},
                 #{InDh},
             </if>
             <if test="Shr!=null">
-                #{Shr},
-            </if>
-            <if test="Fhr!=null">
-                #{Fhr}
+                #{Shr}
             </if>
         </trim>
     </insert>
@@ -3363,63 +3355,61 @@ SmlPk45		= #{smlPk45},
     <insert id="createWL_RKD" parameterType="com.qdhualing.qrcodetracker.bean.CreateWLRKDParam">
         insert into Rkd_Wl
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="ShRq!=null">
-                ShRq,
-            </if>
             <if test="InDh!=null">
                 InDh,
-            </if>
-            <if test="Shr!=null">
-                Shr,
-            </if>
-            <if test="ShFzr!=null">
-                ShFzr,
-            </if>
-            <if test="JhFzr!=null">
-                JhFzr,
-            </if>
-            <if test="Fhr!=null">
-                JhR,
             </if>
             <if test="FhDw!=null">
                 JhDw,
             </if>
-            FzrID,
-            FzrStatus,
+            <if test="ShRq!=null">
+                ShRq,
+            </if>
+            <if test="Shr!=null">
+                Shr,
+            </if>
             ZjyID,
+            Zjy,
             ZjyStatus,
             ZjldID,
-            ZjldStatus
+            Zjld,
+            ZjldStatus,
+            FzrID,
+            <if test="ShFzr!=null">
+                ShFzr,
+            </if>
+            FzrStatus,
+            <if test="Remark!=null">
+                Remark
+            </if>
         </trim>
         values
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="ShRq!=null">
-                #{ShRq},
-            </if>
             <if test="InDh!=null">
                 #{InDh},
-            </if>
-            <if test="Shr!=null">
-                #{Shr},
-            </if>
-            <if test="ShFzr!=null">
-                #{ShFzr},
-            </if>
-            <if test="JhFzr!=null">
-                #{JhFzr},
-            </if>
-            <if test="Fhr!=null">
-                #{Fhr},
             </if>
             <if test="FhDw!=null">
                 #{FhDw},
             </if>
-            #{FzrID},
-            #{FzrStatus},
+            <if test="ShRq!=null">
+                #{ShRq},
+            </if>
+            <if test="Shr!=null">
+                #{Shr},
+            </if>
             #{ZjyID},
+            #{Zjy},
             #{ZjyStatus},
             #{ZjldID},
-            #{ZjldStatus}
+            #{Zjld},
+            #{ZjldStatus},
+            #{FzrID},
+            <if test="ShFzr!=null">
+                #{ShFzr},
+            </if>
+            #{FzrStatus},
+            <if test="Remark!=null">
+                #{Remark}
+            </if>
         </trim>
     </insert>
 

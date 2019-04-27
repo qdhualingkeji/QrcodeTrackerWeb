@@ -12,27 +12,17 @@ public class WlRkdBean {
     private String jhDw;
     private String shrq;
     private String shR;
-    private String shFzr;
-    private String jhR;
-    private String jhFzr;
-    private Integer fzrID;
-    private Integer fzrStatus;
     private Integer zjyID;
+    private String zjy;
     private Integer zjyStatus;
-    private String zjyName;
     private Integer zjldID;
+    private String zjld;
     private Integer zjldStatus;
-    private String zjldName;
-    private String remark;
+    private Integer fzrID;
+    private String shFzr;
+    private Integer fzrStatus;
     private int checkState;
-
-    public String getZjldName() {
-        return zjldName;
-    }
-
-    public void setZjldName(String zjldName) {
-        this.zjldName = zjldName;
-    }
+    private String remark;
 
     public int getiD() {
         return iD;
@@ -74,52 +64,20 @@ public class WlRkdBean {
         this.shR = shR;
     }
 
-    public String getShFzr() {
-        return shFzr;
-    }
-
-    public void setShFzr(String shFzr) {
-        this.shFzr = shFzr;
-    }
-
-    public String getJhR() {
-        return jhR;
-    }
-
-    public void setJhR(String jhR) {
-        this.jhR = jhR;
-    }
-
-    public String getJhFzr() {
-        return jhFzr;
-    }
-
-    public void setJhFzr(String jhFzr) {
-        this.jhFzr = jhFzr;
-    }
-
-    public Integer getFzrID() {
-        return fzrID;
-    }
-
-    public void setFzrID(Integer fzrID) {
-        this.fzrID = fzrID;
-    }
-
-    public Integer getFzrStatus() {
-        return fzrStatus;
-    }
-
-    public void setFzrStatus(Integer fzrStatus) {
-        this.fzrStatus = fzrStatus;
-    }
-
     public Integer getZjyID() {
         return zjyID;
     }
 
     public void setZjyID(Integer zjyID) {
         this.zjyID = zjyID;
+    }
+
+    public String getZjy() {
+        return zjy;
+    }
+
+    public void setZjy(String zjy) {
+        this.zjy = zjy;
     }
 
     public Integer getZjyStatus() {
@@ -130,20 +88,52 @@ public class WlRkdBean {
         this.zjyStatus = zjyStatus;
     }
 
-    public String getZjyName() {
-        return zjyName;
+    public Integer getZjldID() {
+        return zjldID;
     }
 
-    public void setZjyName(String zjyName) {
-        this.zjyName = zjyName;
+    public void setZjldID(Integer zjldID) {
+        this.zjldID = zjldID;
     }
 
-    public String getRemark() {
-        return remark;
+    public String getZjld() {
+        return zjld;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setZjld(String zjld) {
+        this.zjld = zjld;
+    }
+
+    public Integer getZjldStatus() {
+        return zjldStatus;
+    }
+
+    public void setZjldStatus(Integer zjldStatus) {
+        this.zjldStatus = zjldStatus;
+    }
+
+    public Integer getFzrID() {
+        return fzrID;
+    }
+
+    public void setFzrID(Integer fzrID) {
+        this.fzrID = fzrID;
+    }
+
+    public String getShFzr() {
+        return shFzr;
+    }
+
+    public void setShFzr(String shFzr) {
+        this.shFzr = shFzr;
+    }
+
+    public Integer getFzrStatus() {
+        return fzrStatus;
+    }
+
+    public void setFzrStatus(Integer fzrStatus) {
+        this.fzrStatus = fzrStatus;
     }
 
     public int getCheckState() {
@@ -154,19 +144,11 @@ public class WlRkdBean {
         this.checkState = checkState;
     }
 
-    public Integer getZjldID() {
-        return zjldID;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setZjldID(Integer zjldID) {
-        this.zjldID = zjldID;
-    }
-
-    public Integer getZjldStatus() {
-        return zjldStatus;
-    }
-
-    public void setZjldStatus(Integer zjldStatus) {
-        this.zjldStatus = zjldStatus;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

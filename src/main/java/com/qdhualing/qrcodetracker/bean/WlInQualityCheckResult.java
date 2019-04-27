@@ -7,9 +7,7 @@ public class WlInQualityCheckResult {
     private String fhDw;
     private String shRq;
     private String inDh;
-    private String fhR;
     private String shFzr;
-    private String jhFzr;
     private String remark;
 
     public String getFhDw() {
@@ -36,28 +34,12 @@ public class WlInQualityCheckResult {
         this.inDh = inDh;
     }
 
-    public String getFhR() {
-        return fhR;
-    }
-
-    public void setFhR(String fhR) {
-        this.fhR = fhR;
-    }
-
     public String getShFzr() {
         return shFzr;
     }
 
     public void setShFzr(String shFzr) {
         this.shFzr = shFzr;
-    }
-
-    public String getJhFzr() {
-        return jhFzr;
-    }
-
-    public void setJhFzr(String jhFzr) {
-        this.jhFzr = jhFzr;
     }
 
     private List<WLINShowBean> beans;
