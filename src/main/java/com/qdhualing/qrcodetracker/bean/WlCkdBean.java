@@ -12,17 +12,19 @@ public class WlCkdBean {
     private String lhDw;
     private String lhRq;
     private String fhR;
-    private String fhFzr;
     private String lhR;
-    private String lhFzr;
     private Integer kgID;
+    private String kg;
     private Integer kgStatus;
     private Integer fzrID;
     private Integer flfzrID;
+    private String fhFzr;
     private Integer flfzrStatus;
     private Integer bzID;
+    private String bz;
     private Integer bzStatus;
     private Integer llfzrID;
+    private String lhFzr;
     private Integer llfzrStatus;
     private String remark;
     private int checkState;
@@ -67,14 +69,6 @@ public class WlCkdBean {
         this.fhR = fhR;
     }
 
-    public String getFhFzr() {
-        return fhFzr;
-    }
-
-    public void setFhFzr(String fhFzr) {
-        this.fhFzr = fhFzr;
-    }
-
     public String getLhR() {
         return lhR;
     }
@@ -83,20 +77,20 @@ public class WlCkdBean {
         this.lhR = lhR;
     }
 
-    public String getLhFzr() {
-        return lhFzr;
-    }
-
-    public void setLhFzr(String lhFzr) {
-        this.lhFzr = lhFzr;
-    }
-
     public Integer getKgID() {
         return kgID;
     }
 
     public void setKgID(Integer kgID) {
         this.kgID = kgID;
+    }
+
+    public String getKg() {
+        return kg;
+    }
+
+    public void setKg(String kg) {
+        this.kg = kg;
     }
 
     public Integer getKgStatus() {
@@ -123,6 +117,14 @@ public class WlCkdBean {
         this.flfzrID = flfzrID;
     }
 
+    public String getFhFzr() {
+        return fhFzr;
+    }
+
+    public void setFhFzr(String fhFzr) {
+        this.fhFzr = fhFzr;
+    }
+
     public Integer getFlfzrStatus() {
         return flfzrStatus;
     }
@@ -139,6 +141,14 @@ public class WlCkdBean {
         this.bzID = bzID;
     }
 
+    public String getBz() {
+        return bz;
+    }
+
+    public void setBz(String bz) {
+        this.bz = bz;
+    }
+
     public Integer getBzStatus() {
         return bzStatus;
     }
@@ -153,6 +163,14 @@ public class WlCkdBean {
 
     public void setLlfzrID(Integer llfzrID) {
         this.llfzrID = llfzrID;
+    }
+
+    public String getLhFzr() {
+        return lhFzr;
+    }
+
+    public void setLhFzr(String lhFzr) {
+        this.lhFzr = lhFzr;
     }
 
     public Integer getLlfzrStatus() {

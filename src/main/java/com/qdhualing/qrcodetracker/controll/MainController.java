@@ -1858,8 +1858,14 @@ public class MainController {
                 WlOutVerifyResult dataResult = new WlOutVerifyResult();
                 WlCkdBean ckdBean = mainService.getWlCkdBean(param.getDh());
                 dataResult.setLhDw(ckdBean.getLhDw());
-                dataResult.setFhFzr(ckdBean.getFhFzr());
                 dataResult.setLhR(ckdBean.getLhR());
+                dataResult.setKgID(ckdBean.getKgID());
+                dataResult.setKg(ckdBean.getKg());
+                dataResult.setFlfzrID(ckdBean.getFlfzrID());
+                dataResult.setFhFzr(ckdBean.getFhFzr());
+                dataResult.setBzID(ckdBean.getBzID());
+                dataResult.setBz(ckdBean.getBz());
+                dataResult.setLlfzrID(ckdBean.getLlfzrID());
                 dataResult.setLhFzr(ckdBean.getLhFzr());
                 dataResult.setLhRq(ckdBean.getLhRq());
                 dataResult.setOutDh(ckdBean.getOutDh());

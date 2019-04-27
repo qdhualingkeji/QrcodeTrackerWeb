@@ -27,6 +27,8 @@ public class WLOutShowBean {
     private float shl ;
     //单位重量
     private float dWZL;
+    //批次总量
+    private float pCZL;
     //单位
     private String dW ;
     //规格
@@ -100,6 +102,14 @@ public class WLOutShowBean {
 
     public void setdWZL(float dWZL) {
         this.dWZL = dWZL;
+    }
+
+    public float getpCZL() {
+        return pCZL;
+    }
+
+    public void setpCZL(float pCZL) {
+        this.pCZL = pCZL;
     }
 
     public String getdW() {

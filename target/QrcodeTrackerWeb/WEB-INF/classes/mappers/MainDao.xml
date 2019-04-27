@@ -108,11 +108,11 @@
     </update>
 
     <update id="updateWlOutData" parameterType="com.qdhualing.qrcodetracker.bean.WLINShowBean">
-        UPDATE M_WLOUT SET SHL=#{shl}
+        UPDATE M_WLOUT SET DWZL=#{dWZL},SHL=#{shl}
         WHERE QRCode_ID = #{qRCodeID}
     </update>
     <update id="updateWlCkdData" parameterType="com.qdhualing.qrcodetracker.bean.WlOutVerifyResult">
-        UPDATE Ckd_Wl SET LhDw = #{lhDw}, LhFzr=#{lhFzr}, FhR=#{lhR}, FhFzr=#{fhFzr}, Remark=#{remark}, BzStatus=#{bzStatus}, FzrStatus=#{fzrStatus}
+        UPDATE Ckd_Wl SET LhDw = #{lhDw}, KgID=#{kgID}, Kg=#{kg}, KgStatus=#{kgStatus}, FlfzrID=#{flfzrID}, FhFzr=#{fhFzr}, FlfzrStatus=#{flfzrStatus}, BzID=#{bzID}, Bz=#{bz}, BzStatus=#{bzStatus}, LlfzrID=#{llfzrID}, LhFzr=#{lhFzr}, LlfzrStatus=#{llfzrStatus}, Remark=#{remark}
         WHERE OutDh = #{outDh}
     </update>
 
