@@ -98,12 +98,12 @@
     </update>
 
     <update id="updateWlTkData" parameterType="com.qdhualing.qrcodetracker.bean.WLTkShowBean">
-        UPDATE M_WLBk SET SHL=#{shl}
+        UPDATE M_WLBk SET DWZL=#{dWZL},SHL=#{shl}
         WHERE QRCode_ID = #{qRCodeID}
     </update>
     <update id="updateWlTkdData" parameterType="com.qdhualing.qrcodetracker.bean.WlTkVerifyResult">
-        UPDATE Tkd_Wl SET ThDw = #{thDw}, ThFzr=#{thFzr}, ShR=#{thR}, ShFzr=#{shFzr}, Remark=#{remark},
-        FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}
+        UPDATE Tkd_Wl SET ThDw = #{thDw}, ThR=#{thR}, ShR=#{shR}, BzID=#{bzID}, Bz=#{bz}, BzStatus=#{bzStatus}, TlfzrID=#{tlfzrID}, ThFzr=#{thFzr},
+        TlfzrStatus=#{tlfzrStatus}, KgID=#{kgID}, Kg=#{kg}, KgStatus=#{kgStatus}, SlfzrID=#{slfzrID}, ShFzr=#{shFzr}, SlfzrStatus=#{slfzrStatus}, Remark=#{remark}
         WHERE BackDh = #{backDh}
     </update>
 
@@ -464,9 +464,7 @@
     </select>
 
     <select id="getWlTkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlTkdBean">
-        SELECT t.*,u1.TrueName bzName,u.TrueName kgName,u2.TrueName slfzrName
-        FROM Tkd_Wl t LEFT JOIN Hl_User u on t.KgID = u.UserID LEFT JOIN Hl_User u1 on t.BzID = u1.UserID LEFT JOIN Hl_User u2 on t.SlfzrID = u2.UserID
-        WHERE BackDh = #{0}
+        SELECT * FROM Tkd_Wl WHERE BackDh = #{0}
     </select>
 
     <select id="getWLOutShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.WLOutShowBean">
@@ -2943,22 +2941,28 @@ SmlPk45		= #{smlPk45},
             <if test="shrr!=null">
                 Shr,
             </if>
-            <if test="shFzr!=null">
-                ShFzr,
-            </if>
             <if test="thr!=null">
                 ThR,
             </if>
+                BzID,
+            <if test="bz!=null">
+                Bz,
+            </if>
+                BzStatus,
+                TlfzrID,
             <if test="thFzr!=null">
                 ThFzr,
             </if>
-                BzID,
-                BzStatus,
-                TlfzrID,
                 TlfzrStatus,
                 KgID,
+            <if test="kg!=null">
+                Kg,
+            </if>
                 KgStatus,
                 SlfzrID,
+            <if test="shFzr!=null">
+                ShFzr,
+            </if>
                 SlfzrStatus,
             <if test="remark!=null">
                 Remark,
@@ -2978,22 +2982,28 @@ SmlPk45		= #{smlPk45},
             <if test="shrr!=null">
                 #{shrr},
             </if>
-            <if test="shFzr!=null">
-                #{shFzr},
-            </if>
             <if test="thr!=null">
                 #{thr},
             </if>
+                #{bzID},
+            <if test="bz!=null">
+                #{bz},
+            </if>
+                #{bzStatus},
+                #{tlfzrID},
             <if test="thFzr!=null">
                 #{thFzr},
             </if>
-                #{bzID},
-                #{bzStatus},
-                #{tlfzrID},
                 #{tlfzrStatus},
                 #{kgID},
+            <if test="kg!=null">
+                #{kg},
+            </if>
                 #{kgStatus},
                 #{slfzrID},
+            <if test="shFzr!=null">
+                #{shFzr},
+            </if>
                 #{slfzrStatus},
             <if test="remark!=null">
                 #{remark},

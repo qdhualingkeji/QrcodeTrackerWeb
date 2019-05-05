@@ -12,31 +12,22 @@ public class WlTkdBean {
     private String thDw;
     private String thRq;
     private String shR;
-    private String shFzr;
     private String thR;
-    private String thFzr;
     private Integer bzID;
+    private String bz;
     private Integer bzStatus;
-    private String bzName;
     private Integer fzrID;
     private Integer tlfzrID;
+    private String thFzr;
     private Integer tlfzrStatus;
     private Integer kgID;
+    private String kg;
     private Integer kgStatus;
-    private String kgName;
     private Integer slfzrID;
+    private String shFzr;
     private Integer slfzrStatus;
-    private String slfzrName;
-    private String remark;
     private int checkState;
-
-    public String getBzName() {
-        return bzName;
-    }
-
-    public void setBzName(String bzName) {
-        this.bzName = bzName;
-    }
+    private String remark;
 
     public int getiD() {
         return iD;
@@ -78,28 +69,12 @@ public class WlTkdBean {
         this.shR = shR;
     }
 
-    public String getShFzr() {
-        return shFzr;
-    }
-
-    public void setShFzr(String shFzr) {
-        this.shFzr = shFzr;
-    }
-
     public String getThR() {
         return thR;
     }
 
     public void setThR(String thR) {
         this.thR = thR;
-    }
-
-    public String getThFzr() {
-        return thFzr;
-    }
-
-    public void setThFzr(String thFzr) {
-        this.thFzr = thFzr;
     }
 
     public Integer getFzrID() {
@@ -110,12 +85,44 @@ public class WlTkdBean {
         this.fzrID = fzrID;
     }
 
+    public Integer getBzID() {
+        return bzID;
+    }
+
+    public void setBzID(Integer bzID) {
+        this.bzID = bzID;
+    }
+
+    public String getBz() {
+        return bz;
+    }
+
+    public void setBz(String bz) {
+        this.bz = bz;
+    }
+
+    public Integer getBzStatus() {
+        return bzStatus;
+    }
+
+    public void setBzStatus(Integer bzStatus) {
+        this.bzStatus = bzStatus;
+    }
+
     public Integer getTlfzrID() {
         return tlfzrID;
     }
 
     public void setTlfzrID(Integer tlfzrID) {
         this.tlfzrID = tlfzrID;
+    }
+
+    public String getThFzr() {
+        return thFzr;
+    }
+
+    public void setThFzr(String thFzr) {
+        this.thFzr = thFzr;
     }
 
     public Integer getTlfzrStatus() {
@@ -134,20 +141,20 @@ public class WlTkdBean {
         this.kgID = kgID;
     }
 
+    public String getKg() {
+        return kg;
+    }
+
+    public void setKg(String kg) {
+        this.kg = kg;
+    }
+
     public Integer getKgStatus() {
         return kgStatus;
     }
 
     public void setKgStatus(Integer kgStatus) {
         this.kgStatus = kgStatus;
-    }
-
-    public String getKgName() {
-        return kgName;
-    }
-
-    public void setKgName(String kgName) {
-        this.kgName = kgName;
     }
 
     public Integer getSlfzrID() {
@@ -158,36 +165,20 @@ public class WlTkdBean {
         this.slfzrID = slfzrID;
     }
 
+    public String getShFzr() {
+        return shFzr;
+    }
+
+    public void setShFzr(String shFzr) {
+        this.shFzr = shFzr;
+    }
+
     public Integer getSlfzrStatus() {
         return slfzrStatus;
     }
 
     public void setSlfzrStatus(Integer slfzrStatus) {
         this.slfzrStatus = slfzrStatus;
-    }
-
-    public String getSlfzrName() {
-        return slfzrName;
-    }
-
-    public void setSlfzrName(String slfzrName) {
-        this.slfzrName = slfzrName;
-    }
-
-    public Integer getBzID() {
-        return bzID;
-    }
-
-    public void setBzID(Integer bzID) {
-        this.bzID = bzID;
-    }
-
-    public Integer getBzStatus() {
-        return bzStatus;
-    }
-
-    public void setBzStatus(Integer bzStatus) {
-        this.bzStatus = bzStatus;
     }
 
     public String getRemark() {
