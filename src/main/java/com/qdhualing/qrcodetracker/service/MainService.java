@@ -995,4 +995,7 @@ public class MainService {
 		return mainDao.deleteUser(userId);
     }
 
+	public List<BcpRkdBean> getCpRkCanModifyData(String realName) {
+		return mainDao.getCpRkCanModifyData(realName);
+	}
 }

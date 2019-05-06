@@ -12,30 +12,32 @@ public class BcpRkdBean {
     private String jhDw;
     private String shrq;
     private String shR;
-    private String shFzr;
     private String jhR;
-    private String jhFzr;
     private Integer bzID;
+    private String bz;
     private Integer bzStatus;
-    private String bzName;
     private Integer bcpBzStatus;
     private Integer cpBzStatus;
     private Integer fzrID;
+    private String fzr;
     private Integer fzrStatus;
     private Integer zjyID;
+    private String zjy;
     private Integer zjyStatus;
-    private String zjyName;
     private Integer zjldID;
+    private String zjld;
     private Integer zjldStatus;
-    private String zjldName;
     private Integer flfzrID;//成品入库时的发料负责人
+    private String jhFzr;
     private Integer flfzrStatus;
     private Integer kgID;
+    private String kg;
     private Integer kgStatus;
     private Integer llfzrID;//成品入库时的仓库负责人
+    private String shFzr;
     private Integer llfzrStatus;
-    private String remark;
     private int checkState;
+    private String remark;
 
     public int getiD() {
         return iD;
@@ -77,14 +79,6 @@ public class BcpRkdBean {
         this.shR = shR;
     }
 
-    public String getShFzr() {
-        return shFzr;
-    }
-
-    public void setShFzr(String shFzr) {
-        this.shFzr = shFzr;
-    }
-
     public String getJhR() {
         return jhR;
     }
@@ -93,20 +87,20 @@ public class BcpRkdBean {
         this.jhR = jhR;
     }
 
-    public String getJhFzr() {
-        return jhFzr;
-    }
-
-    public void setJhFzr(String jhFzr) {
-        this.jhFzr = jhFzr;
-    }
-
     public Integer getFzrID() {
         return fzrID;
     }
 
     public void setFzrID(Integer fzrID) {
         this.fzrID = fzrID;
+    }
+
+    public String getFzr() {
+        return fzr;
+    }
+
+    public void setFzr(String fzr) {
+        this.fzr = fzr;
     }
 
     public Integer getFzrStatus() {
@@ -125,36 +119,20 @@ public class BcpRkdBean {
         this.zjyID = zjyID;
     }
 
+    public String getZjy() {
+        return zjy;
+    }
+
+    public void setZjy(String zjy) {
+        this.zjy = zjy;
+    }
+
     public Integer getZjyStatus() {
         return zjyStatus;
     }
 
     public void setZjyStatus(Integer zjyStatus) {
         this.zjyStatus = zjyStatus;
-    }
-
-    public String getZjyName() {
-        return zjyName;
-    }
-
-    public void setZjyName(String zjyName) {
-        this.zjyName = zjyName;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public int getCheckState() {
-        return checkState;
-    }
-
-    public void setCheckState(int checkState) {
-        this.checkState = checkState;
     }
 
     public Integer getBzID() {
@@ -165,20 +143,20 @@ public class BcpRkdBean {
         this.bzID = bzID;
     }
 
+    public String getBz() {
+        return bz;
+    }
+
+    public void setBz(String bz) {
+        this.bz = bz;
+    }
+
     public Integer getBzStatus() {
         return bzStatus;
     }
 
     public void setBzStatus(Integer bzStatus) {
         this.bzStatus = bzStatus;
-    }
-
-    public String getBzName() {
-        return bzName;
-    }
-
-    public void setBzName(String bzName) {
-        this.bzName = bzName;
     }
 
     public Integer getBcpBzStatus() {
@@ -205,6 +183,14 @@ public class BcpRkdBean {
         this.zjldID = zjldID;
     }
 
+    public String getZjld() {
+        return zjld;
+    }
+
+    public void setZjld(String zjld) {
+        this.zjld = zjld;
+    }
+
     public Integer getZjldStatus() {
         return zjldStatus;
     }
@@ -213,20 +199,20 @@ public class BcpRkdBean {
         this.zjldStatus = zjldStatus;
     }
 
-    public String getZjldName() {
-        return zjldName;
-    }
-
-    public void setZjldName(String zjldName) {
-        this.zjldName = zjldName;
-    }
-
     public Integer getFlfzrID() {
         return flfzrID;
     }
 
     public void setFlfzrID(Integer flfzrID) {
         this.flfzrID = flfzrID;
+    }
+
+    public String getJhFzr() {
+        return jhFzr;
+    }
+
+    public void setJhFzr(String jhFzr) {
+        this.jhFzr = jhFzr;
     }
 
     public Integer getFlfzrStatus() {
@@ -245,6 +231,14 @@ public class BcpRkdBean {
         this.kgID = kgID;
     }
 
+    public String getKg() {
+        return kg;
+    }
+
+    public void setKg(String kg) {
+        this.kg = kg;
+    }
+
     public Integer getKgStatus() {
         return kgStatus;
     }
@@ -261,12 +255,36 @@ public class BcpRkdBean {
         this.llfzrID = llfzrID;
     }
 
+    public String getShFzr() {
+        return shFzr;
+    }
+
+    public void setShFzr(String shFzr) {
+        this.shFzr = shFzr;
+    }
+
     public Integer getLlfzrStatus() {
         return llfzrStatus;
     }
 
     public void setLlfzrStatus(Integer llfzrStatus) {
         this.llfzrStatus = llfzrStatus;
+    }
+
+    public int getCheckState() {
+        return checkState;
+    }
+
+    public void setCheckState(int checkState) {
+        this.checkState = checkState;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
 }

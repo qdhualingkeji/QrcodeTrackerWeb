@@ -361,6 +361,8 @@ public interface MainDao {
 
     List<BcpRkdBean> getBcpRkCanModifyData(String realName);
 
+    List<BcpRkdBean> getCpRkCanModifyData(String realName);
+
     List<BcpCkdBean> getBcpCkCanModifyData(String realName);
 
     List<BcpTkdBean> getBcpTkCanModifyData(String realName);

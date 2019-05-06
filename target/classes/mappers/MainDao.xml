@@ -20,10 +20,13 @@
         WHERE c.FhR = #{0} AND c.OutDh=m.OutDh AND (KgStatus = 2 OR FzrStatus = 2 OR FzrStatus = 0 AND KgStatus = 0)
     </select>
     <select id="getBcpRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
+        SELECT * FROM (
         SELECT distinct r.*
         FROM Rkd_Bcp r,M_BCPIn m
-        WHERE JhR = #{0} AND r.InDh=m.InDh AND (BzStatus = 2 OR FzrStatus = 2 OR ZjyStatus = 2 OR ZjldStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
-        UNION
+        WHERE r.InDh=m.InDh
+        ) t WHERE JhR = #{0} AND (BzStatus = 2 OR FzrStatus = 2 OR ZjyStatus = 2 OR ZjldStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
+    </select>
+    <select id="getCpRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
         SELECT distinct r.*
         FROM Rkd_Bcp r,M_CPIn2 m
         WHERE JhR = #{0} AND r.InDh=m.InDh AND (BzStatus = 2 OR FzrStatus = 2 OR ZjyStatus = 2 OR ZjldStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
@@ -92,8 +95,79 @@
         WHERE QRCode_ID = #{qRCodeID}
     </update>
     <update id="updateBcpRkdData" parameterType="com.qdhualing.qrcodetracker.bean.BcpInVerifyResult">
-        UPDATE Rkd_Bcp SET JhDw = #{jhDw}, JhFzr=#{jhFzr}, ShR=#{jhR}, ShFzr=#{shFzr}, Remark=#{remark},
-        BzID=#{bzID}, BzStatus=#{bzStatus}, FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}, ZjldID=#{zjldID}, ZjldStatus=#{zjldStatus}
+        UPDATE Rkd_Bcp SET
+        <if test="jhDw!=null">
+            JhDw = #{jhDw},
+        </if>
+        <if test="shR!=null">
+            ShR=#{shR},
+        </if>
+        <if test="bzID!=null">
+            BzID=#{bzID},
+        </if>
+        <if test="bz!=null">
+            Bz=#{bz},
+        </if>
+        <if test="bzStatus!=null">
+            BzStatus=#{bzStatus},
+        </if>
+        <if test="fzrID!=null">
+            FzrID=#{fzrID},
+        </if>
+        <if test="fzr!=null">
+            Fzr=#{fzr},
+        </if>
+        <if test="fzrStatus!=null">
+            FzrStatus=#{fzrStatus},
+        </if>
+        <if test="zjyID!=null">
+            ZjyID=#{zjyID},
+        </if>
+        <if test="zjy!=null">
+            Zjy=#{zjy},
+        </if>
+        <if test="zjyStatus!=null">
+            ZjyStatus=#{zjyStatus},
+        </if>
+        <if test="zjldID!=null">
+            ZjldID=#{zjldID},
+        </if>
+        <if test="zjld!=null">
+            Zjld=#{zjld},
+        </if>
+        <if test="zjldStatus!=null">
+            ZjldStatus=#{zjldStatus},
+        </if>
+        <if test="flfzrID!=null">
+            FlfzrID=#{flfzrID},
+        </if>
+        <if test="jhFzr!=null">
+            JhFzr=#{jhFzr},
+        </if>
+        <if test="flfzrStatus!=null">
+            FlfzrStatus=#{flfzrStatus},
+        </if>
+        <if test="kgID!=null">
+            KgID=#{kgID},
+        </if>
+        <if test="kg!=null">
+            Kg=#{kg},
+        </if>
+        <if test="kgStatus!=null">
+            KgStatus=#{kgStatus},
+        </if>
+        <if test="llfzrID!=null">
+            LlfzrID=#{llfzrID},
+        </if>
+        <if test="shFzr!=null">
+            ShFzr=#{shFzr},
+        </if>
+        <if test="llfzrStatus!=null">
+            LlfzrStatus=#{llfzrStatus},
+        </if>
+        <if test="remark!=null">
+            Remark=#{remark}
+        </if>
         WHERE InDh = #{inDh}
     </update>
 
@@ -236,8 +310,11 @@
     </update>
     <update id="refuseBcpIn" parameterType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
         UPDATE Rkd_Bcp SET
-        <if test="bzStatus!=0">
-            bzStatus=#{bzStatus}
+        <if test="bcpBzStatus!=0">
+            bzStatus=#{bzStatus},fzrStatus=0,zjyStatus=0,zjldStatus=0
+        </if>
+        <if test="cpBzStatus!=0">
+            bzStatus=#{bzStatus},flfzrStatus=0,zjyStatus=0,zjldStatus=0,kgStatus=0,llfzrStatus=0
         </if>
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
@@ -446,8 +523,8 @@
     </select>
 
     <select id="getBcpRkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
-        SELECT r.*,u1.TrueName bzName,u.TrueName zjyName,u2.TrueName zjldName
-        FROM Rkd_Bcp r LEFT JOIN Hl_User u on r.ZjyID = u.UserID LEFT JOIN Hl_User u1 on r.BzID = u1.UserID LEFT JOIN Hl_User u2 on r.ZjldID = u2.UserID
+        SELECT r.*,u.TrueName zjyName,u2.TrueName zjldName
+        FROM Rkd_Bcp r LEFT JOIN Hl_User u on r.ZjyID = u.UserID LEFT JOIN Hl_User u2 on r.ZjldID = u2.UserID
         WHERE InDh = #{0}
     </select>
 

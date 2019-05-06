@@ -1974,19 +1974,25 @@ public class MainController {
                 BcpInVerifyResult dataResult = new BcpInVerifyResult();
                 BcpRkdBean bean = mainService.getBcpRkdBean(param.getDh());
                 dataResult.setJhDw(bean.getJhDw());
-                dataResult.setShFzr(bean.getShFzr());
                 dataResult.setJhR(bean.getJhR());
-                dataResult.setJhFzr(bean.getJhFzr());
+                dataResult.setShR(bean.getShR());
                 dataResult.setShRq(bean.getShrq());
                 dataResult.setInDh(bean.getInDh());
-                dataResult.setRemark(bean.getRemark());
                 dataResult.setBzID(bean.getBzID());
-                dataResult.setBzName(bean.getBzName());
+                dataResult.setBz(bean.getBz());
                 dataResult.setFzrID(bean.getFzrID());
+                dataResult.setFzr(bean.getFzr());
+                dataResult.setFlfzrID(bean.getFlfzrID());
+                dataResult.setJhFzr(bean.getJhFzr());
                 dataResult.setZjyID(bean.getZjyID());
-                dataResult.setZjyName(bean.getZjyName());
+                dataResult.setZjy(bean.getZjy());
                 dataResult.setZjldID(bean.getZjldID());
-                dataResult.setZjldName(bean.getZjldName());
+                dataResult.setZjld(bean.getZjld());
+                dataResult.setKgID(bean.getKgID());
+                dataResult.setKg(bean.getKg());
+                dataResult.setLlfzrID(bean.getLlfzrID());
+                dataResult.setShFzr(bean.getShFzr());
+                dataResult.setRemark(bean.getRemark());
                 List<BcpInShowBean> wlinDataList = mainService.getBcpInShowBeanListByInDh(param.getDh());//先查询是不是半成品
                 if (wlinDataList == null || wlinDataList.size() <= 0) {
                     wlinDataList = mainService.getCpInShowBeanListByInDh(param.getDh());//如果半成品没有记录的话，再查成品小包装
@@ -2722,14 +2728,22 @@ public class MainController {
         if (param != null) {
             try {
                 Integer bzStatus=0;
+                Integer bcpBzStatus=0;
+                Integer cpBzStatus=0;
                 Integer fzrStatus=0;
                 Integer zjyStatus=0;
                 Integer zjldStatus=0;
                 Integer flfzrStatus=0;
                 Integer kgStatus=0;
                 Integer llfzrStatus=0;
-                if(param.getCheckQXFlag()==VerifyParam.BZ)
-                    bzStatus=2;
+                if(param.getCheckQXFlag()==VerifyParam.BCPBZ) {
+                    bzStatus = 2;
+                    bcpBzStatus=2;
+                }
+                else if(param.getCheckQXFlag()==VerifyParam.CPBZ) {
+                    bzStatus = 2;
+                    cpBzStatus=2;
+                }
                 else if(param.getCheckQXFlag()==VerifyParam.FZR)
                     fzrStatus=2;
                 else if(param.getCheckQXFlag()==VerifyParam.ZJY)
@@ -2746,6 +2760,8 @@ public class MainController {
                 BcpRkdBean bcpRkd=new BcpRkdBean();
                 bcpRkd.setInDh(param.getDh());
                 bcpRkd.setBzStatus(bzStatus);
+                bcpRkd.setBcpBzStatus(bcpBzStatus);
+                bcpRkd.setCpBzStatus(cpBzStatus);
                 bcpRkd.setFzrStatus(fzrStatus);
                 bcpRkd.setZjyStatus(zjyStatus);
                 bcpRkd.setZjldStatus(zjldStatus);
@@ -3447,7 +3463,16 @@ public class MainController {
                     NonCheckBean bean = new NonCheckBean();
                     BcpRkdBean single = bcpRkNonCheckData.get(i);
                     bean.setDh(single.getInDh());
-                    bean.setName("半成品/成品入库单");
+                    bean.setName("半成品录入单");
+                    bean.setTime(single.getShrq());
+                    allBeans.add(bean);
+                }
+                List<BcpRkdBean> cpRkNonCheckData = mainService.getCpRkCanModifyData(param.getRealName());
+                for (int i = 0; i < cpRkNonCheckData.size(); i++) {
+                    NonCheckBean bean = new NonCheckBean();
+                    BcpRkdBean single = cpRkNonCheckData.get(i);
+                    bean.setDh(single.getInDh());
+                    bean.setName("成品入库单");
                     bean.setTime(single.getShrq());
                     allBeans.add(bean);
                 }
