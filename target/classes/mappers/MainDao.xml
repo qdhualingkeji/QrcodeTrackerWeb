@@ -70,12 +70,74 @@
     </update>
 
     <update id="updateBcpTkData" parameterType="com.qdhualing.qrcodetracker.bean.BcpTkShowBean">
-        UPDATE M_BCPBk SET SHL=#{shl}, remark=#{remark}
+        UPDATE M_BCPBk SET DWZL=#{dWZL},SHL=#{shl},remark=#{remark}
         WHERE QRCode_ID = #{qRCodeID}
     </update>
     <update id="updateBcpTkdData" parameterType="com.qdhualing.qrcodetracker.bean.BcpTkVerifyResult">
-        UPDATE Tkd_Bcp SET ThDw = #{thDw}, ThFzr=#{thFzr}, ShR=#{thR}, ShFzr=#{shFzr}, Remark=#{remark},
-        BzID=#{bzID}, BzStatus=#{bzStatus}, FzrID=#{fzrID}, FzrStatus=#{fzrStatus}, ZjyID=#{zjyID}, ZjyStatus=#{zjyStatus}, ZjldID=#{zjldID}, ZjldStatus=#{zjldStatus}
+        UPDATE Tkd_Bcp SET
+        <if test="thDw!=null">
+            ThDw = #{thDw},
+        </if>
+        <if test="shR!=null">
+            ShR=#{shR},
+        </if>
+        <if test="bzID!=null">
+            BzID=#{bzID},
+        </if>
+        <if test="bz!=null">
+            Bz=#{bz},
+        </if>
+        <if test="bzStatus!=null">
+            BzStatus=#{bzStatus},
+        </if>
+        <if test="tlfzrID!=null">
+            TlfzrID=#{tlfzrID},
+        </if>
+        <if test="thFzr!=null">
+            ThFzr=#{thFzr},
+        </if>
+        <if test="tlfzrStatus!=null">
+            TlfzrStatus=#{tlfzrStatus},
+        </if>
+        <if test="zjyID!=null">
+            ZjyID=#{zjyID},
+        </if>
+        <if test="zjy!=null">
+            Zjy=#{zjy},
+        </if>
+        <if test="zjyStatus!=null">
+            ZjyStatus=#{zjyStatus},
+        </if>
+        <if test="zjldID!=null">
+            ZjldID=#{zjldID},
+        </if>
+        <if test="zjld!=null">
+            Zjld=#{zjld},
+        </if>
+        <if test="zjldStatus!=null">
+            ZjldStatus=#{zjldStatus},
+        </if>
+        <if test="kgID!=null">
+            KgID=#{kgID},
+        </if>
+        <if test="kg!=null">
+            Kg=#{kg},
+        </if>
+        <if test="kgStatus!=null">
+            KgStatus=#{kgStatus},
+        </if>
+        <if test="slfzrID!=null">
+            SlfzrID=#{slfzrID},
+        </if>
+        <if test="shFzr!=null">
+            ShFzr=#{shFzr},
+        </if>
+        <if test="slfzrStatus!=null">
+            SlfzrStatus=#{slfzrStatus},
+        </if>
+        <if test="remark!=null">
+            Remark=#{remark}
+        </if>
         WHERE BackDh = #{backDh}
     </update>
 
@@ -461,9 +523,7 @@
     </select>
 
     <select id="getBcpTkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpTkdBean">
-        SELECT t.*,u1.TrueName bzName,u.TrueName AS zjyName,u2.TrueName zjldName
-        FROM Tkd_Bcp t LEFT JOIN Hl_User u ON t.ZjyID = u.UserID LEFT JOIN Hl_User u1 on t.BzID = u1.UserID LEFT JOIN Hl_User u2 on t.ZjldID = u2.UserID
-        WHERE BackDh = #{0}
+        SELECT * FROM Tkd_Bcp WHERE BackDh = #{0}
     </select>
 
     <select id="getCpOutShowBeanListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.CpOutShowBean">
