@@ -475,24 +475,11 @@ public class MainService {
 	}
 
 	public String getPersonFromBcpTkd(NotificationParam param) {
-		String str=null;
-		if(param.getPersonFlag()==NotificationParam.BZ)
-			str=mainDao.getBZFromBcpTkd(param.getDh());
-		else if(param.getPersonFlag()==NotificationParam.TLFZR)
-			str=mainDao.getTlfzrFromBcpTkd(param.getDh());
-		else if(param.getPersonFlag()==NotificationParam.ZJY)
-			str=mainDao.getZjyFromBcpTkd(param.getDh());
-		else if(param.getPersonFlag()==NotificationParam.ZJLD)
-			str=mainDao.getZjldFromBcpTkd(param.getDh());
-		else if(param.getPersonFlag()==NotificationParam.KG)
-			str=mainDao.getKgFromBcpTkd(param.getDh());
-		else if(param.getPersonFlag()==NotificationParam.SLFZR)
-			str=mainDao.getSlfzrFromBcpTkd(param.getDh());
-		return str;
+		return mainDao.getPersonFromBcpTkd(param.getDh(),param.getPersonFlag());
 	}
 
-	public String getFzrFromBcpCkd(String dh) {
-		return mainDao.getFzrFromBcpCkd(dh);
+	public String getPersonFromBcpCkd(NotificationParam param) {
+		return mainDao.getPersonFromBcpCkd(param.getDh(),param.getPersonFlag());
 	}
 
 	public List<WlRkdBean> getWlRkNonCheckData(Integer fzrID,Integer zjyID,Integer zjldID) {

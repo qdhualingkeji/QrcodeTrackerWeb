@@ -65,7 +65,28 @@
     </select>
 
     <update id="updateCpCkdData" parameterType="com.qdhualing.qrcodetracker.bean.CpOutVerifyResult">
-        UPDATE Ckd_Bcp SET FhFzr=#{fhFzr}, Remark=#{remark}, KgStatus=#{kgStatus}, FzrStatus=#{fzrStatus}
+        UPDATE Ckd_Bcp SET
+        <if test="kgID!=null">
+          KgID=#{kgID},
+        </if>
+        <if test="kg!=null">
+          Kg=#{kg},
+        </if>
+        <if test="kgStatus!=null">
+          KgStatus=#{kgStatus},
+        </if>
+        <if test="fzrID!=null">
+          FzrID=#{fzrID},
+        </if>
+        <if test="fhFzr!=null">
+          FhFzr=#{fhFzr},
+        </if>
+        <if test="fzrStatus!=null">
+          FzrStatus=#{fzrStatus},
+        </if>
+        <if test="remark!=null">
+          Remark=#{remark}
+        </if>
         WHERE OutDh = #{outDh}
     </update>
 
@@ -784,44 +805,38 @@
         </if>
     </select>
 
-    <select id="getFzrFromBcpCkd" resultType="java.lang.String">
-        SELECT FzrID
+    <select id="getPersonFromBcpCkd" resultType="java.lang.String">
+        SELECT
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@KG">
+            KgID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@FZR">
+            FzrID
+        </if>
         FROM Ckd_Bcp
         WHERE OutDh = #{0}
     </select>
 
-    <select id="getBZFromBcpTkd" resultType="java.lang.String">
-        SELECT BzID
-        FROM Tkd_Bcp
-        WHERE BackDh = #{0}
-    </select>
-
-    <select id="getTlfzrFromBcpTkd" resultType="java.lang.String">
-        SELECT TlfzrID
-        FROM Tkd_Bcp
-        WHERE BackDh = #{0}
-    </select>
-
-    <select id="getZjyFromBcpTkd" resultType="java.lang.String">
-        SELECT ZjyID
-        FROM Tkd_Bcp
-        WHERE BackDh = #{0}
-    </select>
-
-    <select id="getZjldFromBcpTkd" resultType="java.lang.String">
-        SELECT ZjldID
-        FROM Tkd_Bcp
-        WHERE BackDh = #{0}
-    </select>
-
-    <select id="getKgFromBcpTkd" resultType="java.lang.String">
-        SELECT KgID
-        FROM Tkd_Bcp
-        WHERE BackDh = #{0}
-    </select>
-
-    <select id="getSlfzrFromBcpTkd" resultType="java.lang.String">
-        SELECT SlfzrID
+    <select id="getPersonFromBcpTkd" resultType="java.lang.String">
+        SELECT
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@BZ">
+            BzID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@TLFZR">
+            TlfzrID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@ZJY">
+            ZjyID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@ZJLD">
+            ZjldID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@KG">
+            KgID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@SLFZR">
+            SlfzrID
+        </if>
         FROM Tkd_Bcp
         WHERE BackDh = #{0}
     </select>
@@ -2816,35 +2831,59 @@ SmlPk45		= #{smlPk45},
             <if test="InDh!=null">
                 InDh,
             </if>
-            <if test="Shr!=null">
-                Shr,
-            </if>
             <if test="Jhr!=null">
                 Jhr,
             </if>
+            <if test="Shr!=null">
+                Shr,
+            </if>
+            <if test="BzID!=null">
                 BzID,
+            </if>
+            <if test="Bz!=null">
+                Bz,
+            </if>
+            <if test="BzStatus!=null">
                 BzStatus,
+            </if>
             <if test="FzrID!=null">
                 FzrID,
             </if>
             <if test="FzrStatus!=null">
                 FzrStatus,
             </if>
+            <if test="ZjyID!=null">
                 ZjyID,
+            </if>
+            <if test="Zjy!=null">
+                Zjy,
+            </if>
+            <if test="ZjyStatus!=null">
                 ZjyStatus,
+            </if>
+            <if test="ZjldID!=null">
                 ZjldID,
+            </if>
+            <if test="Zjld!=null">
+                Zjld,
+            </if>
+            <if test="ZjldStatus!=null">
                 ZjldStatus,
+            </if>
             <if test="FlfzrID!=null">
                 FlfzrID,
-            </if>
-            <if test="FlfzrStatus!=null">
-                FlfzrStatus,
             </if>
             <if test="JhFzr!=null">
                 JhFzr,
             </if>
+            <if test="FlfzrStatus!=null">
+                FlfzrStatus,
+            </if>
             <if test="KgID!=null">
                 KgID,
+            </if>
+            <if test="Kg!=null">
+                Kg,
             </if>
             <if test="KgStatus!=null">
                 KgStatus,
@@ -2852,11 +2891,11 @@ SmlPk45		= #{smlPk45},
             <if test="LlfzrID!=null">
                 LlfzrID,
             </if>
-            <if test="LlfzrStatus!=null">
-                LlfzrStatus,
-            </if>
             <if test="ShFzr!=null">
                 ShFzr,
+            </if>
+            <if test="LlfzrStatus!=null">
+                LlfzrStatus,
             </if>
             <if test="remark!=null">
                 Remark,
@@ -2873,35 +2912,59 @@ SmlPk45		= #{smlPk45},
             <if test="InDh!=null">
                 #{InDh},
             </if>
-            <if test="Shr!=null">
-                #{Shr},
-            </if>
             <if test="Jhr!=null">
                 #{Jhr},
             </if>
+            <if test="Shr!=null">
+                #{Shr},
+            </if>
+            <if test="BzID!=null">
                 #{BzID},
+            </if>
+            <if test="Bz!=null">
+                #{Bz},
+            </if>
+            <if test="BzStatus!=null">
                 #{BzStatus},
+            </if>
             <if test="FzrID!=null">
                 #{FzrID},
             </if>
             <if test="FzrStatus!=null">
                 #{FzrStatus},
             </if>
+            <if test="ZjyID!=null">
                 #{ZjyID},
+            </if>
+            <if test="Zjy!=null">
+                #{Zjy},
+            </if>
+            <if test="ZjyStatus!=null">
                 #{ZjyStatus},
+            </if>
+            <if test="ZjldID!=null">
                 #{ZjldID},
+            </if>
+            <if test="Zjld!=null">
+                #{Zjld},
+            </if>
+            <if test="ZjldStatus!=null">
                 #{ZjldStatus},
+            </if>
             <if test="FlfzrID!=null">
                 #{FlfzrID},
-            </if>
-            <if test="FlfzrStatus!=null">
-                #{FlfzrStatus},
             </if>
             <if test="JhFzr!=null">
                 #{JhFzr},
             </if>
+            <if test="FlfzrStatus!=null">
+                #{FlfzrStatus},
+            </if>
             <if test="KgID!=null">
                 #{KgID},
+            </if>
+            <if test="Kg!=null">
+                #{Kg},
             </if>
             <if test="KgStatus!=null">
                 #{KgStatus},
@@ -2909,11 +2972,11 @@ SmlPk45		= #{smlPk45},
             <if test="LlfzrID!=null">
                 #{LlfzrID},
             </if>
-            <if test="LlfzrStatus!=null">
-                #{LlfzrStatus},
-            </if>
             <if test="ShFzr!=null">
                 #{ShFzr},
+            </if>
+            <if test="LlfzrStatus!=null">
+                #{LlfzrStatus},
             </if>
             <if test="remark!=null">
                 #{remark},

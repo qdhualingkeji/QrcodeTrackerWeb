@@ -205,19 +205,9 @@ public interface MainDao {
 
     String getPersonFromBcpRkd(String dh,@Param("personFlag") int personFlag);
 
-    String getBZFromBcpTkd(String dh);
+    String getPersonFromBcpTkd(String dh,@Param("personFlag") int personFlag);
 
-    String getTlfzrFromBcpTkd(String dh);
-
-    String getZjyFromBcpTkd(String dh);
-
-    String getKgFromBcpTkd(String dh);
-
-    String getSlfzrFromBcpTkd(String dh);
-
-    String getZjldFromBcpTkd(String dh);
-
-    String getFzrFromBcpCkd(String dh);
+    String getPersonFromBcpCkd(String dh,@Param("personFlag") int personFlag);
 
     List<WlRkdBean> getWlRkNonCheckData(WlRkdBean wlrkd);
 

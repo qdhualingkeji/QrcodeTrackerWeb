@@ -11,15 +11,15 @@ public class BcpCkdBean {
     private String outDh;
     private String lhRq;
     private String fhR;
-    private String fhFzr;
-    private String remark;
     private String jhDw;
-    private int checkState;
     private Integer kgID;
+    private String kg;
     private Integer kgStatus;
-    private String kgName;
     private Integer fzrID;
+    private String fhFzr;
     private Integer fzrStatus;
+    private int checkState;
+    private String remark;
 
     public int getiD() {
         return iD;
@@ -53,36 +53,12 @@ public class BcpCkdBean {
         this.fhR = fhR;
     }
 
-    public String getFhFzr() {
-        return fhFzr;
-    }
-
-    public void setFhFzr(String fhFzr) {
-        this.fhFzr = fhFzr;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
     public String getJhDw() {
         return jhDw;
     }
 
     public void setJhDw(String jhDw) {
         this.jhDw = jhDw;
-    }
-
-    public int getCheckState() {
-        return checkState;
-    }
-
-    public void setCheckState(int checkState) {
-        this.checkState = checkState;
     }
 
     public Integer getKgID() {
@@ -93,20 +69,20 @@ public class BcpCkdBean {
         this.kgID = kgID;
     }
 
+    public String getKg() {
+        return kg;
+    }
+
+    public void setKg(String kg) {
+        this.kg = kg;
+    }
+
     public Integer getKgStatus() {
         return kgStatus;
     }
 
     public void setKgStatus(Integer kgStatus) {
         this.kgStatus = kgStatus;
-    }
-
-    public String getKgName() {
-        return kgName;
-    }
-
-    public void setKgName(String kgName) {
-        this.kgName = kgName;
     }
 
     public Integer getFzrID() {
@@ -117,11 +93,35 @@ public class BcpCkdBean {
         this.fzrID = fzrID;
     }
 
+    public String getFhFzr() {
+        return fhFzr;
+    }
+
+    public void setFhFzr(String fhFzr) {
+        this.fhFzr = fhFzr;
+    }
+
     public Integer getFzrStatus() {
         return fzrStatus;
     }
 
     public void setFzrStatus(Integer fzrStatus) {
         this.fzrStatus = fzrStatus;
+    }
+
+    public int getCheckState() {
+        return checkState;
+    }
+
+    public void setCheckState(int checkState) {
+        this.checkState = checkState;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

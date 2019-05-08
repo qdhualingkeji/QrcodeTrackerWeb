@@ -1640,7 +1640,7 @@ public class MainController {
                     alertMsgStr1="成品入库单";
                     break;
                 case NotificationType.CP_CKD:
-                    desPerson = mainService.getFzrFromBcpCkd(param.getDh());
+                    desPerson = mainService.getPersonFromBcpCkd(param);
                     alertMsgStr1="成品出库单";
                     break;
             }
@@ -2109,9 +2109,12 @@ public class MainController {
             try {
                 CpOutVerifyResult dataResult = new CpOutVerifyResult();
                 BcpCkdBean bean = mainService.getBcpCkdBean(param.getDh());
-                dataResult.setFhFzr(bean.getFhFzr());
-                dataResult.setLhRq(bean.getLhRq());
                 dataResult.setOutDh(bean.getOutDh());
+                dataResult.setLhRq(bean.getLhRq());
+                dataResult.setKgID(bean.getKgID());
+                dataResult.setKg(bean.getKg());
+                dataResult.setFzrID(bean.getFzrID());
+                dataResult.setFhFzr(bean.getFhFzr());
                 dataResult.setRemark(bean.getRemark());
                 List<CpOutShowBean> wlinDataList = mainService.getCpOutShowBeanListByOutDh(param.getDh());
                 dataResult.setBeans(wlinDataList);
