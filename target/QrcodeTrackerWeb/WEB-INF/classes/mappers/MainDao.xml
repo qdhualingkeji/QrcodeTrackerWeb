@@ -3076,6 +3076,7 @@ SmlPk45		= #{smlPk45},
             <if test="qrCodeId!=null">QRCode_ID,</if>
             <if test="productName!=null">ProductName,</if>
             DWZL,
+            PCZL,
             <if test="sortId!=null">SortID,</if>
             <if test="wlCode!=null">WL_Code,</if>
             <if test="ylpc!=null">YLPC,</if>
@@ -3093,6 +3094,7 @@ SmlPk45		= #{smlPk45},
             <if test="qrCodeId!=null">#{qrCodeId},</if>
             <if test="productName!=null">#{productName},</if>
             #{dwzl},
+            #{pczl},
             <if test="sortId!=null">#{sortId},</if>
             <if test="wlCode!=null">#{wlCode},</if>
             <if test="ylpc!=null">#{ylpc},</if>
@@ -3148,22 +3150,36 @@ SmlPk45		= #{smlPk45},
             <if test="bz!=null">
                 Bz,
             </if>
+            <if test="bzStatus!=null">
                 BzStatus,
+            </if>
+            <if test="tlfzrID!=null">
                 TlfzrID,
+            </if>
             <if test="thFzr!=null">
                 ThFzr,
             </if>
+            <if test="tlfzrStatus!=null">
                 TlfzrStatus,
+            </if>
+            <if test="kgID!=null">
                 KgID,
+            </if>
             <if test="kg!=null">
                 Kg,
             </if>
+            <if test="kgStatus!=null">
                 KgStatus,
+            </if>
+            <if test="slfzrID!=null">
                 SlfzrID,
+            </if>
             <if test="shFzr!=null">
                 ShFzr,
             </if>
+            <if test="slfzrStatus!=null">
                 SlfzrStatus,
+            </if>
             <if test="remark!=null">
                 Remark,
             </if>
@@ -3185,26 +3201,42 @@ SmlPk45		= #{smlPk45},
             <if test="thr!=null">
                 #{thr},
             </if>
+            <if test="bzID!=null">
                 #{bzID},
+            </if>
             <if test="bz!=null">
                 #{bz},
             </if>
+            <if test="bzStatus!=null">
                 #{bzStatus},
+            </if>
+            <if test="tlfzrID!=null">
                 #{tlfzrID},
+            </if>
             <if test="thFzr!=null">
                 #{thFzr},
             </if>
+            <if test="tlfzrStatus!=null">
                 #{tlfzrStatus},
+            </if>
+            <if test="kgID!=null">
                 #{kgID},
+            </if>
             <if test="kg!=null">
                 #{kg},
             </if>
+            <if test="kgStatus!=null">
                 #{kgStatus},
+            </if>
+            <if test="slfzrID!=null">
                 #{slfzrID},
+            </if>
             <if test="shFzr!=null">
                 #{shFzr},
             </if>
+            <if test="slfzrStatus!=null">
                 #{slfzrStatus},
+            </if>
             <if test="remark!=null">
                 #{remark},
             </if>
@@ -3280,41 +3312,105 @@ SmlPk45		= #{smlPk45},
     <insert id="insertWLOUT" parameterType="com.qdhualing.qrcodetracker.bean.WLOutParam">
         insert into M_WLOUT
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="qrCodeId!=null">QRCode_ID,</if>
-            <if test="productName!=null">ProductName,</if>
-            DWZL,
-            PCZL,
-            <if test="dw!=null">DW,</if>
-            <if test="bz!=null">Bz,</if>
-            <if test="sortId!=null">SortID,</if>
-            <if test="wlCode!=null">WL_Code,</if>
-            <if test="ylpc!=null">YLPC,</if>
-            <if test="gg!=null">GG,</if>
-            SHL,
-            <if test="outDh!=null">OutDh,</if>
-            <if test="flr!=null">FLR,</if>
-            <if test="llr!=null">LLR,</if>
-            <if test="time!=null">TIME,</if>
-            <if test="llbm!=null">LLBM</if>
+            <if test="qrCodeId!=null">
+                QRCode_ID,
+            </if>
+            <if test="productName!=null">
+                ProductName,
+            </if>
+            <if test="dwzl!=null">
+                DWZL,
+            </if>
+            <if test="pczl!=null">
+                PCZL,
+            </if>
+            <if test="dw!=null">
+                DW,
+            </if>
+            <if test="bz!=null">
+                Bz,
+            </if>
+            <if test="sortId!=null">
+                SortID,
+            </if>
+            <if test="wlCode!=null">
+                WL_Code,
+            </if>
+            <if test="ylpc!=null">
+                YLPC,
+            </if>
+            <if test="gg!=null">
+                GG,
+            </if>
+            <if test="ckShL!=null">
+                SHL,
+            </if>
+            <if test="outDh!=null">
+                OutDh,
+            </if>
+            <if test="flr!=null">
+                FLR,
+            </if>
+            <if test="llr!=null">
+                LLR,
+            </if>
+            <if test="time!=null">
+                TIME,
+            </if>
+            <if test="llbm!=null">
+                LLBM
+            </if>
         </trim>
         values
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="qrCodeId!=null">#{qrCodeId},</if>
-            <if test="productName!=null">#{productName},</if>
-            #{dwzl},
-            #{pczl},
-            <if test="dw!=null">#{dw},</if>
-            <if test="bz!=null">#{bz},</if>
-            <if test="sortId!=null">#{sortId},</if>
-            <if test="wlCode!=null">#{wlCode},</if>
-            <if test="ylpc!=null">#{ylpc},</if>
-            <if test="gg!=null">#{gg},</if>
-            #{ckShL},
-            <if test="outDh!=null">#{outDh},</if>
-            <if test="flr!=null">#{flr},</if>
-            <if test="llr!=null">#{llr},</if>
-            <if test="time!=null">#{time},</if>
-            <if test="llbm!=null">#{llbm}</if>
+            <if test="qrCodeId!=null">
+                #{qrCodeId},
+            </if>
+            <if test="productName!=null">
+                #{productName},
+            </if>
+            <if test="dwzl!=null">
+                #{dwzl},
+            </if>
+            <if test="pczl!=null">
+                #{pczl},
+            </if>
+            <if test="dw!=null">
+                #{dw},
+            </if>
+            <if test="bz!=null">
+                #{bz},
+            </if>
+            <if test="sortId!=null">
+                #{sortId},
+            </if>
+            <if test="wlCode!=null">
+                #{wlCode},
+            </if>
+            <if test="ylpc!=null">
+                #{ylpc},
+            </if>
+            <if test="gg!=null">
+                #{gg},
+            </if>
+            <if test="ckShL!=null">
+                #{ckShL},
+            </if>
+            <if test="outDh!=null">
+                #{outDh},
+            </if>
+            <if test="flr!=null">
+                #{flr},
+            </if>
+            <if test="llr!=null">
+                #{llr},
+            </if>
+            <if test="time!=null">
+                #{time},
+            </if>
+            <if test="llbm!=null">
+                #{llbm}
+            </if>
         </trim>
     </insert>
 
@@ -3589,17 +3685,33 @@ SmlPk45		= #{smlPk45},
             <if test="Shr!=null">
                 Shr,
             </if>
-            ZjyID,
-            Zjy,
-            ZjyStatus,
-            ZjldID,
-            Zjld,
-            ZjldStatus,
-            FzrID,
+            <if test="ZjyID!=null">
+                ZjyID,
+            </if>
+            <if test="Zjy!=null">
+                Zjy,
+            </if>
+            <if test="ZjyStatus!=null">
+                ZjyStatus,
+            </if>
+            <if test="ZjldID!=null">
+                ZjldID,
+            </if>
+            <if test="Zjld!=null">
+                Zjld,
+            </if>
+            <if test="ZjldStatus!=null">
+                ZjldStatus,
+            </if>
+            <if test="FzrID!=null">
+                FzrID,
+            </if>
             <if test="ShFzr!=null">
                 ShFzr,
             </if>
-            FzrStatus,
+            <if test="FzrStatus!=null">
+                FzrStatus,
+            </if>
             <if test="Remark!=null">
                 Remark
             </if>
@@ -3618,17 +3730,33 @@ SmlPk45		= #{smlPk45},
             <if test="Shr!=null">
                 #{Shr},
             </if>
-            #{ZjyID},
-            #{Zjy},
-            #{ZjyStatus},
-            #{ZjldID},
-            #{Zjld},
-            #{ZjldStatus},
-            #{FzrID},
+            <if test="ZjyID!=null">
+                #{ZjyID},
+            </if>
+            <if test="Zjy!=null">
+                #{Zjy},
+            </if>
+            <if test="ZjyStatus!=null">
+                #{ZjyStatus},
+            </if>
+            <if test="ZjldID!=null">
+                #{ZjldID},
+            </if>
+            <if test="Zjld!=null">
+                #{Zjld},
+            </if>
+            <if test="ZjldStatus!=null">
+                #{ZjldStatus},
+            </if>
+            <if test="FzrID!=null">
+                #{FzrID},
+            </if>
             <if test="ShFzr!=null">
                 #{ShFzr},
             </if>
-            #{FzrStatus},
+            <if test="FzrStatus!=null">
+                #{FzrStatus},
+            </if>
             <if test="Remark!=null">
                 #{Remark}
             </if>

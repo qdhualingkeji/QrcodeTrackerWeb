@@ -513,7 +513,7 @@ public class MainController {
                 wlTKParam.setProductName(wlTempSBean.getProductName());
                 wlTKParam.setWlCode(wlTempSBean.getWLCode());
                 wlTKParam.setDw(wlTempSBean.getDW());
-                //wlTKParam.setDwzl(wlTempSBean.getDWZL());
+                wlTKParam.setPczl(wlTempSBean.getPCZL());
                 wlTKParam.setGg(wlTempSBean.getGG());
                 wlTKParam.setSortId(wlTempSBean.getSortID());
                 wlTKParam.setYlpc(wlTempSBean.getYLPC());
@@ -1696,19 +1696,21 @@ public class MainController {
                 else if(param.getCheckQXFlag()==MainParams.ZJLD)
                     zjldID=userId;
 
-                List<WlRkdBean> wlRkNonCheckData = mainService.getWlRkNonCheckData(fzrID,zjyID,zjldID);
-                for (int i = 0; i < wlRkNonCheckData.size(); i++) {
-                    NonCheckBean bean = new NonCheckBean();
-                    WlRkdBean single = wlRkNonCheckData.get(i);
-                    bean.setDh(single.getInDh());
-                    bean.setName("物料入库单");
-                    bean.setTime(single.getShrq());
-                    bean.setState(single.getCheckState());
-                    allBeans.add(bean);
+                //这是加了条件，只有这三种身份允许查询
+                if(fzrID!=null||zjyID!=null||zjldID!=null) {
+                    List<WlRkdBean> wlRkNonCheckData = mainService.getWlRkNonCheckData(fzrID, zjyID, zjldID);
+                    for (int i = 0; i < wlRkNonCheckData.size(); i++) {
+                        NonCheckBean bean = new NonCheckBean();
+                        WlRkdBean single = wlRkNonCheckData.get(i);
+                        bean.setDh(single.getInDh());
+                        bean.setName("物料入库单");
+                        bean.setTime(single.getShrq());
+                        bean.setState(single.getCheckState());
+                        allBeans.add(bean);
+                    }
                 }
-                List<WlCkdBean> wlCkNonCheckData = null;
                 if(kgID!=null||bzID!=null||fzrID!=null) {
-                    wlCkNonCheckData = mainService.getWlCkNonCheckData(kgID, bzID, fzrID);
+                    List<WlCkdBean> wlCkNonCheckData = mainService.getWlCkNonCheckData(kgID, bzID, fzrID);
                     for (int i = 0; i < wlCkNonCheckData.size(); i++) {
                         NonCheckBean bean = new NonCheckBean();
                         WlCkdBean single = wlCkNonCheckData.get(i);
@@ -1721,45 +1723,50 @@ public class MainController {
                         allBeans.add(bean);
                     }
                 }
-                List<WlTkdBean> wlTkNonCheckData = mainService.getWlTkNonCheckData(bzID,kgID,fzrID);
-                for (int i = 0; i < wlTkNonCheckData.size(); i++) {
-                    NonCheckBean bean = new NonCheckBean();
-                    WlTkdBean single = wlTkNonCheckData.get(i);
-                    bean.setDh(single.getBackDh());
-                    bean.setName("物料退库单");
-                    bean.setTime(single.getThRq());
-                    bean.setTlfzrID(single.getTlfzrID());
-                    bean.setSlfzrID(single.getSlfzrID());
-                    bean.setState(single.getCheckState());
-                    allBeans.add(bean);
+                if(bzID!=null||kgID!=null||fzrID!=null) {
+                    List<WlTkdBean> wlTkNonCheckData = mainService.getWlTkNonCheckData(bzID, kgID, fzrID);
+                    for (int i = 0; i < wlTkNonCheckData.size(); i++) {
+                        NonCheckBean bean = new NonCheckBean();
+                        WlTkdBean single = wlTkNonCheckData.get(i);
+                        bean.setDh(single.getBackDh());
+                        bean.setName("物料退库单");
+                        bean.setTime(single.getThRq());
+                        bean.setTlfzrID(single.getTlfzrID());
+                        bean.setSlfzrID(single.getSlfzrID());
+                        bean.setState(single.getCheckState());
+                        allBeans.add(bean);
+                    }
                 }
-                List<BcpRkdBean> bcpRkNonCheckData = mainService.getBcpRkNonCheckData(bzID,fzrID,zjyID,zjldID);
-                for (int i = 0; i < bcpRkNonCheckData.size(); i++) {
-                    NonCheckBean bean = new NonCheckBean();
-                    BcpRkdBean single = bcpRkNonCheckData.get(i);
-                    bean.setDh(single.getInDh());
-                    //bean.setName("半成品/成品入库单");
-                    bean.setName("半成品录入单");
-                    bean.setTime(single.getShrq());
-                    bean.setFzrID(single.getFzrID());
-                    bean.setState(single.getCheckState());
-                    allBeans.add(bean);
+                if(bzID!=null||fzrID!=null||zjyID!=null||zjldID!=null) {
+                    List<BcpRkdBean> bcpRkNonCheckData = mainService.getBcpRkNonCheckData(bzID, fzrID, zjyID, zjldID);
+                    for (int i = 0; i < bcpRkNonCheckData.size(); i++) {
+                        NonCheckBean bean = new NonCheckBean();
+                        BcpRkdBean single = bcpRkNonCheckData.get(i);
+                        bean.setDh(single.getInDh());
+                        //bean.setName("半成品/成品入库单");
+                        bean.setName("半成品录入单");
+                        bean.setTime(single.getShrq());
+                        bean.setFzrID(single.getFzrID());
+                        bean.setState(single.getCheckState());
+                        allBeans.add(bean);
+                    }
                 }
-                List<BcpRkdBean> cpRkNonCheckData = mainService.getCpRkNonCheckData(bzID,fzrID,zjyID,zjldID,kgID);
-                for (int i = 0; i < cpRkNonCheckData.size(); i++) {
-                    NonCheckBean bean = new NonCheckBean();
-                    BcpRkdBean single = cpRkNonCheckData.get(i);
-                    bean.setDh(single.getInDh());
-                    bean.setName("成品入库单");
-                    bean.setTime(single.getShrq());
-                    bean.setFlfzrID(single.getFlfzrID());
-                    bean.setLlfzrID(single.getLlfzrID());
-                    bean.setState(single.getCheckState());
-                    allBeans.add(bean);
+                if(bzID!=null||fzrID!=null||zjyID!=null||zjldID!=null||kgID!=null) {
+                    List<BcpRkdBean> cpRkNonCheckData = mainService.getCpRkNonCheckData(bzID, fzrID, zjyID, zjldID, kgID);
+                    for (int i = 0; i < cpRkNonCheckData.size(); i++) {
+                        NonCheckBean bean = new NonCheckBean();
+                        BcpRkdBean single = cpRkNonCheckData.get(i);
+                        bean.setDh(single.getInDh());
+                        bean.setName("成品入库单");
+                        bean.setTime(single.getShrq());
+                        bean.setFlfzrID(single.getFlfzrID());
+                        bean.setLlfzrID(single.getLlfzrID());
+                        bean.setState(single.getCheckState());
+                        allBeans.add(bean);
+                    }
                 }
-                List<BcpCkdBean> bcpCkNonCheckData = null;
                 if(kgID!=null||fzrID!=null) {
-                    bcpCkNonCheckData = mainService.getBcpCkNonCheckData(kgID,fzrID);
+                    List<BcpCkdBean> bcpCkNonCheckData = mainService.getBcpCkNonCheckData(kgID,fzrID);
                     for (int i = 0; i < bcpCkNonCheckData.size(); i++) {
                         NonCheckBean bean = new NonCheckBean();
                         BcpCkdBean single = bcpCkNonCheckData.get(i);
@@ -1770,17 +1777,19 @@ public class MainController {
                         allBeans.add(bean);
                     }
                 }
-                List<BcpTkdBean> bcpTkNonCheckData = mainService.getBcpTkNonCheckData(bzID,zjyID,zjldID,kgID,fzrID);
-                for (int i = 0; i < bcpTkNonCheckData.size(); i++) {
-                    NonCheckBean bean = new NonCheckBean();
-                    BcpTkdBean single = bcpTkNonCheckData.get(i);
-                    bean.setDh(single.getBackDh());
-                    bean.setName("半成品入库（退库）单");
-                    bean.setTime(single.getThRq());
-                    bean.setTlfzrID(single.getTlfzrID());
-                    bean.setSlfzrID(single.getSlfzrID());
-                    bean.setState(single.getCheckState());
-                    allBeans.add(bean);
+                if(bzID!=null||zjyID!=null||zjldID!=null||kgID!=null||fzrID!=null) {
+                    List<BcpTkdBean> bcpTkNonCheckData = mainService.getBcpTkNonCheckData(bzID, zjyID, zjldID, kgID, fzrID);
+                    for (int i = 0; i < bcpTkNonCheckData.size(); i++) {
+                        NonCheckBean bean = new NonCheckBean();
+                        BcpTkdBean single = bcpTkNonCheckData.get(i);
+                        bean.setDh(single.getBackDh());
+                        bean.setName("半成品入库（退库）单");
+                        bean.setTime(single.getThRq());
+                        bean.setTlfzrID(single.getTlfzrID());
+                        bean.setSlfzrID(single.getSlfzrID());
+                        bean.setState(single.getCheckState());
+                        allBeans.add(bean);
+                    }
                 }
                 for (int i = 0; i < allBeans.size() - 1; i++) {
                     for (int j = 0; j < allBeans.size() - 1 - i; j++)// j开始等于0，
@@ -1822,14 +1831,15 @@ public class MainController {
                 WlRkdBean rkdBean = mainService.getWlRkdBean(param.getDh());
                 dataResult.setFhDw(rkdBean.getJhDw());
                 dataResult.setInDh(rkdBean.getInDh());
-                dataResult.setRemark(rkdBean.getRemark());
                 dataResult.setShRq(rkdBean.getShrq());
+                dataResult.setShR(rkdBean.getShR());
                 dataResult.setZjyID(rkdBean.getZjyID());
                 dataResult.setZjy(rkdBean.getZjy());
                 dataResult.setZjldID(rkdBean.getZjldID());
                 dataResult.setZjld(rkdBean.getZjld());
                 dataResult.setFzrID(rkdBean.getFzrID());
                 dataResult.setShFzr(rkdBean.getShFzr());
+                dataResult.setRemark(rkdBean.getRemark());
                 List<WLINShowBean> wlinDataList = mainService.getWLINShowBeanListByInDh(param.getDh());
                 dataResult.setBeans(wlinDataList);
                 result.setResult(dataResult);
@@ -3014,8 +3024,8 @@ public class MainController {
                 WlRkdBean rkdBean = mainService.getWlRkdBean(param.getDh());
                 dataResult.setFhDw(rkdBean.getJhDw());
                 dataResult.setInDh(rkdBean.getInDh());
-                dataResult.setShFzr(rkdBean.getShFzr());
                 dataResult.setShRq(rkdBean.getShrq());
+                dataResult.setZjy(rkdBean.getZjy());
                 dataResult.setRemark(rkdBean.getRemark());
                 List<WLINShowBean> wlinDataList = mainService.getWLINShowBeanListByInDh(param.getDh());
                 dataResult.setBeans(wlinDataList);
