@@ -47,15 +47,25 @@ public class BcpInShowBean implements Serializable {
     private String inDh;
     //来料时间（入库时间）
     private String time;
+    //检验状态
+    private String jyzt;
     //质检状态
-    private int zjzt;
+    private Integer zjzt;
 
-    public int getZjzt() {
+    public Integer getZjzt() {
         return zjzt;
     }
 
-    public void setZjzt(int zjzt) {
+    public void setZjzt(Integer zjzt) {
         this.zjzt = zjzt;
+    }
+
+    public String getJyzt() {
+        return jyzt;
+    }
+
+    public void setJyzt(String jyzt) {
+        this.jyzt = jyzt;
     }
 
     public String getqRCodeID() {

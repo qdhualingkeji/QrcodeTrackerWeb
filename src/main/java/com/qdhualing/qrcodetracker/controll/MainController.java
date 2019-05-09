@@ -1989,20 +1989,21 @@ public class MainController {
                 dataResult.setShR(bean.getShR());
                 dataResult.setShRq(bean.getShrq());
                 dataResult.setInDh(bean.getInDh());
-                dataResult.setBzID(bean.getBzID());
-                dataResult.setBz(bean.getBz());
-                dataResult.setFzrID(bean.getFzrID());
-                dataResult.setFzr(bean.getFzr());
-                dataResult.setFlfzrID(bean.getFlfzrID());
-                dataResult.setJhFzr(bean.getJhFzr());
-                dataResult.setZjyID(bean.getZjyID());
-                dataResult.setZjy(bean.getZjy());
-                dataResult.setZjldID(bean.getZjldID());
-                dataResult.setZjld(bean.getZjld());
-                dataResult.setKgID(bean.getKgID());
-                dataResult.setKg(bean.getKg());
-                dataResult.setLlfzrID(bean.getLlfzrID());
-                dataResult.setShFzr(bean.getShFzr());
+                //下面这里必须给默认值，不能为null，为null的话，json转换时就会出错
+                dataResult.setBzID(bean.getBzID()==null?0:bean.getBzID());
+                dataResult.setBz(TextUtils.isEmpty(bean.getBz())?"":bean.getBz());
+                dataResult.setFzrID(bean.getFzrID()==null?0:bean.getFzrID());
+                dataResult.setFzr(TextUtils.isEmpty(bean.getFzr())?"":bean.getFzr());
+                dataResult.setFlfzrID(bean.getFlfzrID()==null?0:bean.getFlfzrID());
+                dataResult.setJhFzr(TextUtils.isEmpty(bean.getJhFzr())?"":bean.getJhFzr());
+                dataResult.setZjyID(bean.getZjyID()==null?0:bean.getZjyID());
+                dataResult.setZjy(TextUtils.isEmpty(bean.getZjy())?"":bean.getZjy());
+                dataResult.setZjldID(bean.getZjldID()==null?0:bean.getZjldID());
+                dataResult.setZjld(TextUtils.isEmpty(bean.getZjld())?"":bean.getZjld());
+                dataResult.setKgID(bean.getKgID()==null?0:bean.getKgID());
+                dataResult.setKg(TextUtils.isEmpty(bean.getKg())?"":bean.getKg());
+                dataResult.setLlfzrID(bean.getLlfzrID()==null?0:bean.getLlfzrID());
+                dataResult.setShFzr(TextUtils.isEmpty(bean.getShFzr())?"":bean.getShFzr());
                 dataResult.setRemark(bean.getRemark());
                 List<BcpInShowBean> wlinDataList = mainService.getBcpInShowBeanListByInDh(param.getDh());//先查询是不是半成品
                 if (wlinDataList == null || wlinDataList.size() <= 0) {
@@ -2059,9 +2060,8 @@ public class MainController {
                 BcpInQualityCheckResult dataResult = new BcpInQualityCheckResult();
                 BcpRkdBean bean = mainService.getBcpRkdBean(param.getDh());
                 dataResult.setJhDw(bean.getJhDw());
-                dataResult.setShFzr(bean.getShFzr());
                 dataResult.setJhR(bean.getJhR());
-                dataResult.setJhFzr(bean.getJhFzr());
+                dataResult.setZjy(bean.getZjy());
                 dataResult.setShRq(bean.getShrq());
                 dataResult.setInDh(bean.getInDh());
                 dataResult.setRemark(bean.getRemark());

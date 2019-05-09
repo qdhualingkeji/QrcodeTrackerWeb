@@ -18,28 +18,28 @@ public class BcpInVerifyResult {
     private String shRq;
     private String jhR;
     private String shR;
-    private int bzID;
-    private String bz;
-    private int bzStatus;
-    private int fzrID;
-    private String fzr;
-    private int fzrStatus;
-    private int zjyID;
-    private String zjy;
-    private int zjyStatus;
-    private int zjldID;
-    private String zjld;
-    private int zjldStatus;
-    private int flfzrID;
-    private String jhFzr;
-    private int flfzrStatus;
-    private int kgID;
-    private String kg;
-    private int kgStatus;
-    private int llfzrID;
-    private String shFzr;
-    private int llfzrStatus;
-    private String remark;
+    private Integer bzID=0;
+    private String bz="";
+    private Integer bzStatus=-1;
+    private Integer fzrID=0;
+    private String fzr="";
+    private Integer fzrStatus=-1;
+    private Integer zjyID=0;
+    private String zjy="";
+    private Integer zjyStatus=-1;
+    private Integer zjldID=0;
+    private String zjld="";
+    private Integer zjldStatus=-1;
+    private Integer flfzrID=0;
+    private String jhFzr="";
+    private Integer flfzrStatus=-1;
+    private Integer kgID=0;
+    private String kg="";
+    private Integer kgStatus=-1;
+    private Integer llfzrID=0;
+    private String shFzr="";
+    private Integer llfzrStatus=-1;
+    private String remark="";
 
     private List<BcpInShowBean> beans;
 
@@ -103,15 +103,15 @@ public class BcpInVerifyResult {
         return fzrStatus;
     }
 
-    public void setFzrStatus(int fzrStatus) {
+    public void setFzrStatus(Integer fzrStatus) {
         this.fzrStatus = fzrStatus;
     }
 
-    public int getZjyID() {
+    public Integer getZjyID() {
         return zjyID;
     }
 
-    public void setZjyID(int zjyID) {
+    public void setZjyID(Integer zjyID) {
         this.zjyID = zjyID;
     }
 
@@ -123,11 +123,11 @@ public class BcpInVerifyResult {
         this.zjy = zjy;
     }
 
-    public int getZjyStatus() {
+    public Integer getZjyStatus() {
         return zjyStatus;
     }
 
-    public void setZjyStatus(int zjyStatus) {
+    public void setZjyStatus(Integer zjyStatus) {
         this.zjyStatus = zjyStatus;
     }
 
@@ -139,11 +139,11 @@ public class BcpInVerifyResult {
         this.beans = beans;
     }
 
-    public int getBzID() {
+    public Integer getBzID() {
         return bzID;
     }
 
-    public void setBzID(int bzID) {
+    public void setBzID(Integer bzID) {
         this.bzID = bzID;
     }
 
@@ -155,19 +155,19 @@ public class BcpInVerifyResult {
         this.bz = bz;
     }
 
-    public int getBzStatus() {
+    public Integer getBzStatus() {
         return bzStatus;
     }
 
-    public void setBzStatus(int bzStatus) {
+    public void setBzStatus(Integer bzStatus) {
         this.bzStatus = bzStatus;
     }
 
-    public int getZjldID() {
+    public Integer getZjldID() {
         return zjldID;
     }
 
-    public void setZjldID(int zjldID) {
+    public void setZjldID(Integer zjldID) {
         this.zjldID = zjldID;
     }
 
@@ -179,19 +179,19 @@ public class BcpInVerifyResult {
         this.zjld = zjld;
     }
 
-    public int getZjldStatus() {
+    public Integer getZjldStatus() {
         return zjldStatus;
     }
 
-    public void setZjldStatus(int zjldStatus) {
+    public void setZjldStatus(Integer zjldStatus) {
         this.zjldStatus = zjldStatus;
     }
 
-    public int getFlfzrID() {
+    public Integer getFlfzrID() {
         return flfzrID;
     }
 
-    public void setFlfzrID(int flfzrID) {
+    public void setFlfzrID(Integer flfzrID) {
         this.flfzrID = flfzrID;
     }
 
@@ -203,19 +203,19 @@ public class BcpInVerifyResult {
         this.jhFzr = jhFzr;
     }
 
-    public int getFlfzrStatus() {
+    public Integer getFlfzrStatus() {
         return flfzrStatus;
     }
 
-    public void setFlfzrStatus(int flfzrStatus) {
+    public void setFlfzrStatus(Integer flfzrStatus) {
         this.flfzrStatus = flfzrStatus;
     }
 
-    public int getKgID() {
+    public Integer getKgID() {
         return kgID;
     }
 
-    public void setKgID(int kgID) {
+    public void setKgID(Integer kgID) {
         this.kgID = kgID;
     }
 
@@ -227,19 +227,19 @@ public class BcpInVerifyResult {
         this.kg = kg;
     }
 
-    public int getKgStatus() {
+    public Integer getKgStatus() {
         return kgStatus;
     }
 
-    public void setKgStatus(int kgStatus) {
+    public void setKgStatus(Integer kgStatus) {
         this.kgStatus = kgStatus;
     }
 
-    public int getLlfzrID() {
+    public Integer getLlfzrID() {
         return llfzrID;
     }
 
-    public void setLlfzrID(int llfzrID) {
+    public void setLlfzrID(Integer llfzrID) {
         this.llfzrID = llfzrID;
     }
 
@@ -251,11 +251,11 @@ public class BcpInVerifyResult {
         this.shFzr = shFzr;
     }
 
-    public int getLlfzrStatus() {
+    public Integer getLlfzrStatus() {
         return llfzrStatus;
     }
 
-    public void setLlfzrStatus(int llfzrStatus) {
+    public void setLlfzrStatus(Integer llfzrStatus) {
         this.llfzrStatus = llfzrStatus;
     }
 

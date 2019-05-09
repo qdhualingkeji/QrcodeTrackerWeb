@@ -36,7 +36,7 @@ public class BcpRkdBean {
     private Integer llfzrID;//成品入库时的仓库负责人
     private String shFzr;
     private Integer llfzrStatus;
-    private int checkState;
+    private Integer checkState;
     private String remark;
 
     public int getiD() {
@@ -271,11 +271,11 @@ public class BcpRkdBean {
         this.llfzrStatus = llfzrStatus;
     }
 
-    public int getCheckState() {
+    public Integer getCheckState() {
         return checkState;
     }
 
-    public void setCheckState(int checkState) {
+    public void setCheckState(Integer checkState) {
         this.checkState = checkState;
     }
 

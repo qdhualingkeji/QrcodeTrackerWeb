@@ -598,15 +598,13 @@
 
     <select id="getBcpInShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.BcpInShowBean">
         SELECT QRCode_ID as qRCodeID, BCP_Code as wLCode, ProductName as productName, GG as gG, b.SortID as sortID, s.SortName as sortName,
-        YLPC as yLPC, SCPC as sCPC, SC_Time as time, CheJian as cheJian, GX as gx, CZY as czy, InDh as inDh, DW as dW, DWZL as dWZL,SHL as shl
+        YLPC as yLPC, SCPC as sCPC, SC_Time as time, CheJian as cheJian, GX as gx, CZY as czy, InDh as inDh, DW as dW, DWZL as dWZL,ZJZT as Zjzt,SHL as shl
         FROM M_BCPIn b LEFT JOIN Hl_Sort s ON b.SortID = s.SortID
         WHERE b.InDh = #{0}
     </select>
 
     <select id="getBcpRkdBean" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
-        SELECT r.*,u.TrueName zjyName,u2.TrueName zjldName
-        FROM Rkd_Bcp r LEFT JOIN Hl_User u on r.ZjyID = u.UserID LEFT JOIN Hl_User u2 on r.ZjldID = u2.UserID
-        WHERE InDh = #{0}
+        SELECT * FROM Rkd_Bcp WHERE InDh = #{0}
     </select>
 
     <select id="getWLTkShowBeanListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.WLTkShowBean">
@@ -2849,6 +2847,9 @@ SmlPk45		= #{smlPk45},
             <if test="FzrID!=null">
                 FzrID,
             </if>
+            <if test="Fzr!=null">
+                Fzr,
+            </if>
             <if test="FzrStatus!=null">
                 FzrStatus,
             </if>
@@ -2929,6 +2930,9 @@ SmlPk45		= #{smlPk45},
             </if>
             <if test="FzrID!=null">
                 #{FzrID},
+            </if>
+            <if test="Fzr!=null">
+                #{Fzr},
             </if>
             <if test="FzrStatus!=null">
                 #{FzrStatus},
