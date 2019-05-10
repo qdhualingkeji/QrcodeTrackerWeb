@@ -1708,24 +1708,35 @@ SmlPk45		= #{smlPk45},
             <if test="outDh!=null">
                 OutDh,
             </if>
+            <if test="jhDw!=null">
+                JhDw,
+            </if>
             <if test="lhRq!=null">
                 LhRq,
             </if>
             <if test="fhr!=null">
                 FhR,
             </if>
+            <if test="kgID!=null">
                 KgID,
+            </if>
+            <if test="kg!=null">
+                Kg,
+            </if>
+            <if test="kgStatus!=null">
                 KgStatus,
+            </if>
+            <if test="fzrID!=null">
                 FzrID,
-                FzrStatus,
+            </if>
             <if test="fhFzr!=null">
                 FhFzr,
             </if>
+            <if test="fzrStatus!=null">
+                FzrStatus,
+            </if>
             <if test="remark!=null">
                 Remark,
-            </if>
-            <if test="jhDw!=null">
-                JhDw,
             </if>
         </trim>
         values
@@ -1733,24 +1744,35 @@ SmlPk45		= #{smlPk45},
             <if test="outDh!=null">
                 #{outDh},
             </if>
+            <if test="jhDw!=null">
+                #{jhDw},
+            </if>
             <if test="lhRq!=null">
                 #{lhRq},
             </if>
             <if test="fhr!=null">
                 #{fhr},
             </if>
+            <if test="kgID!=null">
                 #{kgID},
+            </if>
+            <if test="kg!=null">
+                #{kg},
+            </if>
+            <if test="kgStatus!=null">
                 #{kgStatus},
+            </if>
+            <if test="fzrID!=null">
                 #{fzrID},
-                #{fzrStatus},
+            </if>
             <if test="fhFzr!=null">
                 #{fhFzr},
             </if>
+            <if test="fzrStatus!=null">
+                #{fzrStatus},
+            </if>
             <if test="remark!=null">
                 #{remark},
-            </if>
-            <if test="jhDw!=null">
-                #{jhDw},
             </if>
         </trim>
     </insert>

@@ -12,15 +12,16 @@ package com.qdhualing.qrcodetracker.bean;
 public class CreateBCPCKDParam {
 
     private String outDh;
+    private String jhDw;
     private String lhRq;
     private String fhr;
     private Integer kgID;
+    private String kg;
     private Integer kgStatus;
     private Integer fzrID;
-    private Integer fzrStatus;
     private String fhFzr;
+    private Integer fzrStatus;
     private String remark;
-    private String jhDw;
 
     public String getOutDh() {
         return outDh;
@@ -28,6 +29,14 @@ public class CreateBCPCKDParam {
 
     public void setOutDh(String outDh) {
         this.outDh = outDh;
+    }
+
+    public String getJhDw() {
+        return jhDw;
+    }
+
+    public void setJhDw(String jhDw) {
+        this.jhDw = jhDw;
     }
 
     public String getLhRq() {
@@ -54,6 +63,14 @@ public class CreateBCPCKDParam {
         this.kgID = kgID;
     }
 
+    public String getKg() {
+        return kg;
+    }
+
+    public void setKg(String kg) {
+        this.kg = kg;
+    }
+
     public Integer getKgStatus() {
         return kgStatus;
     }
@@ -70,14 +87,6 @@ public class CreateBCPCKDParam {
         this.fzrID = fzrID;
     }
 
-    public Integer getFzrStatus() {
-        return fzrStatus;
-    }
-
-    public void setFzrStatus(Integer fzrStatus) {
-        this.fzrStatus = fzrStatus;
-    }
-
     public String getFhFzr() {
         return fhFzr;
     }
@@ -86,20 +95,20 @@ public class CreateBCPCKDParam {
         this.fhFzr = fhFzr;
     }
 
+    public Integer getFzrStatus() {
+        return fzrStatus;
+    }
+
+    public void setFzrStatus(Integer fzrStatus) {
+        this.fzrStatus = fzrStatus;
+    }
+
     public String getRemark() {
         return remark;
     }
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    public String getJhDw() {
-        return jhDw;
-    }
-
-    public void setJhDw(String jhDw) {
-        this.jhDw = jhDw;
     }
 
 }

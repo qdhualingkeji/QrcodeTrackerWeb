@@ -7,17 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ff6a10a-c7d8-472d-8c1a-6507d6ca6a39" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/QrcodeTrackerWeb.war" afterPath="$PROJECT_DIR$/target/QrcodeTrackerWeb.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/QrcodeTrackerWeb/WEB-INF/classes/com/qdhualing/qrcodetracker/bean/CreateBCPTKDParam.class" afterPath="$PROJECT_DIR$/target/QrcodeTrackerWeb/WEB-INF/classes/com/qdhualing/qrcodetracker/bean/CreateBCPTKDParam.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/QrcodeTrackerWeb/WEB-INF/classes/com/qdhualing/qrcodetracker/controll/MainController.class" afterPath="$PROJECT_DIR$/target/QrcodeTrackerWeb/WEB-INF/classes/com/qdhualing/qrcodetracker/controll/MainController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/qdhualing/qrcodetracker/bean/CreateBCPTKDParam.class" afterPath="$PROJECT_DIR$/target/classes/com/qdhualing/qrcodetracker/bean/CreateBCPTKDParam.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/qdhualing/qrcodetracker/controll/MainController.class" afterPath="$PROJECT_DIR$/target/classes/com/qdhualing/qrcodetracker/controll/MainController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/CreateBCPTKDParam.java" afterPath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/CreateBCPTKDParam.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/CreateBCPCKDParam.java" afterPath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/CreateBCPCKDParam.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml" afterPath="$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/QrcodeTrackerWeb/WEB-INF/classes/mappers/MainDao.xml" afterPath="$PROJECT_DIR$/target/QrcodeTrackerWeb/WEB-INF/classes/mappers/MainDao.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mappers/MainDao.xml" afterPath="$PROJECT_DIR$/target/classes/mappers/MainDao.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -34,166 +26,166 @@
       <file leaf-file-name="MainDao.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="2232" column="36" lean-forward="true" selection-start-line="2232" selection-start-column="36" selection-end-line="2232" selection-end-column="36" />
+            <state relative-caret-position="291">
+              <caret line="1768" column="25" lean-forward="true" selection-start-line="1768" selection-start-column="25" selection-end-line="1768" selection-end-column="25" />
               <folding>
-                <marker date="1557469391424" expanded="true" signature="317:401" ph="SELECT disti... Tkd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="317:782" ph="SELECT disti... Tkd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="902:1006" ph="SELECT * FRO... Ckd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="902:1071" ph="SELECT * FRO... Ckd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="1183:1431" ph="SELECT disti... " />
-                <marker date="1557469391424" expanded="true" signature="1191:1430" ph="SELECT * FRO... *" />
-                <marker date="1557469391424" expanded="true" signature="1215:1295" ph="SELECT disti... Rkd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="1549:1750" ph="SELECT disti... Rkd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="1868:2075" ph="SELECT * FRO... Tkd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="1868:2076" ph="SELECT disti... Tkd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="2194:2295" ph="SELECT * FRO... Ckd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="2194:2436" ph="SELECT * FRO... Ckd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="2554:2736" ph="SELECT * FRO... Rkd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="2554:2737" ph="SELECT disti... Rkd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="3226:3341" ph="SELECT UserI... Hl_User" />
-                <marker date="1557469391424" expanded="true" signature="3226:3363" ph="SELECT UserI... Hl_User" />
-                <marker date="1557469391424" expanded="true" signature="3478:3634" ph="SELECT * FRO... Hl_User" />
-                <marker date="1557469391424" expanded="true" signature="3759:4323" ph="UPDATE Ckd_B... " />
-                <marker date="1557469391424" expanded="true" signature="4444:4541" ph="UPDATE M_BCP... " />
-                <marker date="1557469391424" expanded="true" signature="4666:6329" ph="UPDATE Tkd_B... " />
-                <marker date="1557469391424" expanded="true" signature="6452:6626" ph="UPDATE M_CPI... " />
-                <marker date="1557469391424" expanded="true" signature="6750:6935" ph="UPDATE M_CPI... " />
-                <marker date="1557469391424" expanded="true" signature="7055:7246" ph="UPDATE M_BCP... " />
-                <marker date="1557469391424" expanded="true" signature="7371:9258" ph="UPDATE Rkd_B... " />
-                <marker date="1557469391424" expanded="true" signature="9377:9456" ph="UPDATE M_WLB... " />
-                <marker date="1557469391424" expanded="true" signature="9579:9914" ph="UPDATE Tkd_W... " />
-                <marker date="1557469391424" expanded="true" signature="10034:10114" ph="UPDATE M_WLO... " />
-                <marker date="1557469391424" expanded="true" signature="10238:10539" ph="UPDATE Ckd_W... " />
-                <marker date="1557469391424" expanded="true" signature="10658:10895" ph="UPDATE M_WLI... " />
-                <marker date="1557469391424" expanded="true" signature="11018:11285" ph="UPDATE Rkd_W... " />
-                <marker date="1557469391424" expanded="true" signature="11355:11426" ph="UPDATE M_CPI... " />
-                <marker date="1557469391424" expanded="true" signature="11498:11568" ph="UPDATE M_CPI... " />
-                <marker date="1557469391424" expanded="true" signature="11635:11706" ph="UPDATE M_BCP... " />
-                <marker date="1557469391424" expanded="true" signature="11772:11839" ph="UPDATE M_WLI... " />
-                <marker date="1557469391424" expanded="true" signature="11965:12252" ph="SELECT M_CPI... M_CPIn2" />
-                <marker date="1557469391424" expanded="true" signature="12379:12656" ph="SELECT M_CPI... M_CPIn" />
-                <marker date="1557469391424" expanded="true" signature="12775:13098" ph="SELECT M_BCP... M_BCPIn" />
-                <marker date="1557469391424" expanded="true" signature="13212:13764" ph="UPDATE Tkd_B... " />
-                <marker date="1557469391424" expanded="true" signature="13876:14492" ph="UPDATE Tkd_B... " />
-                <marker date="1557469391424" expanded="true" signature="14606:14816" ph="UPDATE Ckd_B... " />
-                <marker date="1557469391424" expanded="true" signature="14606:14817" ph="UPDATE Ckd_B... " />
-                <marker date="1557469391424" expanded="true" signature="14929:15151" ph="UPDATE Ckd_B... " />
-                <marker date="1557469391424" expanded="true" signature="15264:16079" ph="UPDATE Rkd_B... " />
-                <marker date="1557469391424" expanded="true" signature="16191:17006" ph="UPDATE Rkd_B... " />
-                <marker date="1557469391424" expanded="true" signature="17117:17501" ph="UPDATE Tkd_W... " />
-                <marker date="1557469391424" expanded="true" signature="17611:18034" ph="UPDATE Tkd_W... " />
-                <marker date="1557469391424" expanded="true" signature="18146:18528" ph="UPDATE Ckd_W... " />
-                <marker date="1557469391424" expanded="true" signature="18639:19060" ph="UPDATE Ckd_W... " />
-                <marker date="1557469391424" expanded="true" signature="19171:19466" ph="UPDATE Rkd_W... " />
-                <marker date="1557469391424" expanded="true" signature="19576:19896" ph="UPDATE Rkd_W... " />
-                <marker date="1557469391424" expanded="true" signature="20026:20141" ph="SELECT * FRO... M_BCPBk" />
-                <marker date="1557469391424" expanded="true" signature="20254:20295" ph="SELECT * FRO... Tkd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="20425:20539" ph="SELECT * FRO... M_CPOut" />
-                <marker date="1557469391424" expanded="true" signature="20669:20709" ph="SELECT * FRO... M_CPOut" />
-                <marker date="1557469391424" expanded="true" signature="20822:20878" ph="SELECT * FRO... Ckd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="21009:21317" ph="SELECT QRCod... " />
-                <marker date="1557469391424" expanded="true" signature="21444:21506" ph="SELECT *,CP_... M_CPIn2" />
-                <marker date="1557469391424" expanded="true" signature="21634:21953" ph="SELECT QRCod... " />
-                <marker date="1557469391424" expanded="true" signature="22087:22413" ph="SELECT QRCod... " />
-                <marker date="1557469391424" expanded="true" signature="22544:22605" ph="SELECT *,CP_... M_CPIn" />
-                <marker date="1557469391424" expanded="true" signature="22742:22810" ph="SELECT *,CP_... M_CPIn" />
-                <marker date="1557469391424" expanded="true" signature="22742:22861" ph="SELECT *,CP_... M_CPIn" />
-                <marker date="1557469391424" expanded="true" signature="22833:22860" ph="SELECT QRCod... M_CPS" />
-                <marker date="1557469391424" expanded="true" signature="22990:23371" ph="SELECT QRCod... " />
-                <marker date="1557469391424" expanded="true" signature="23484:23523" ph="SELECT * FRO... Rkd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="23651:23755" ph="SELECT * FRO... M_WLBk" />
-                <marker date="1557469391424" expanded="true" signature="23877:23945" ph="SELECT *,SHL... M_WLBk" />
-                <marker date="1557469391424" expanded="true" signature="24056:24096" ph="SELECT * FRO... Tkd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="24225:24330" ph="SELECT * FRO... M_WLOUT" />
-                <marker date="1557469391424" expanded="true" signature="24453:24572" ph="SELECT *,SHL... M_WLOUT" />
-                <marker date="1557469391424" expanded="true" signature="24683:24738" ph="SELECT * FRO... Ckd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="24865:24970" ph="SELECT * FRO... M_WLIn" />
-                <marker date="1557469391424" expanded="true" signature="25081:25119" ph="SELECT * FRO... Rkd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="26802:26869" ph="SELECT * FRO... Ckd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="26802:26884" ph="SELECT * FRO... Ckd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="27398:27478" ph="SELECT disti... Rkd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="27398:28251" ph="SELECT disti... " />
-                <marker date="1557469391424" expanded="true" signature="32598:32890" ph="SELECT FzrID... Ckd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="32982:33763" ph="SELECT FzrID... Tkd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="33855:34754" ph="SELECT FzrID... Rkd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="34845:35383" ph="SELECT BzID Tkd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="35474:36011" ph="SELECT BzID Ckd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="36102:36626" ph="SELECT BzID Rkd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="36736:36806" ph="SELECT * FRO... M_CPIn2" />
-                <marker date="1557469391424" expanded="true" signature="36921:36964" ph="SELECT * FRO... M_CPIn" />
-                <marker date="1557469391424" expanded="true" signature="37778:37842" ph="SELECT SortN... Hl_Sort" />
-                <marker date="1557469391424" expanded="true" signature="37954:38233" ph="SELECT * FRO... M_BCPIn" />
-                <marker date="1557469391424" expanded="true" signature="38347:38817" ph="SELECT M_WLI... M_WLIn" />
-                <marker date="1557469391424" expanded="true" signature="38947:39120" ph="SELECT m.CP_... M_CPS" />
-                <marker date="1557469391424" expanded="true" signature="39227:39285" ph="SELECT * FRO... M_CPS" />
-                <marker date="1557469391424" expanded="true" signature="41164:41212" ph="DELETE FROM " />
-                <marker date="1557469391424" expanded="true" signature="41338:41512" ph="SELECT m.CP_... M_CPS2" />
-                <marker date="1557469391424" expanded="true" signature="41574:41624" ph="DELETE FROM " />
-                <marker date="1557469391424" expanded="true" signature="41683:41732" ph="DELETE FROM " />
-                <marker date="1557469391424" expanded="true" signature="43652:45292" ph="UPDATE M_CPI... " />
-                <marker date="1557469391424" expanded="true" signature="45402:46719" ph="UPDATE M_CPS... " />
-                <marker date="1557469391424" expanded="true" signature="46825:46884" ph="SELECT * FRO... M_CPS2" />
-                <marker date="1557469391424" expanded="true" signature="53241:53306" ph="SELECT COUNT... M_CPS" />
-                <marker date="1557469391424" expanded="true" signature="53416:53445" ph="SELECT * FRO... M_CPS2" />
-                <marker date="1557469391424" expanded="true" signature="53416:53468" ph="SELECT * FRO... M_CPIn2" />
-                <marker date="1557469391424" expanded="true" signature="55798:55864" ph="SELECT COUNT... M_CPS2" />
-                <marker date="1557469391424" expanded="true" signature="59866:60000" ph="UPDATE M_BCP... " />
-                <marker date="1557469391424" expanded="true" signature="60118:60248" ph="UPDATE M_BCP... " />
-                <marker date="1557469391424" expanded="true" signature="64476:64542" ph="SELECT COUNT... M_BCPS" />
-                <marker date="1557469391424" expanded="true" signature="68233:68290" ph="SELECT * FRO... Tkd_Bcp" />
-                <marker date="1557469391424" expanded="true" signature="68415:68712" ph="SELECT M_BCP... M_BCPTempS" />
-                <marker date="1557469391424" expanded="true" signature="72978:73112" ph="UPDATE M_BCP... " />
-                <marker date="1557469391424" expanded="true" signature="73174:73227" ph="DELETE FROM " />
-                <marker date="1557469391424" expanded="true" signature="73344:73475" ph="UPDATE M_BCP... " />
-                <marker date="1557469391424" expanded="true" signature="76831:76898" ph="SELECT COUNT... M_BCPTl" />
-                <marker date="1557469391424" expanded="true" signature="77011:77074" ph="SELECT * FRO... M_BCPTempS" />
-                <marker date="1557469391424" expanded="true" signature="77201:77658" ph="SELECT M_BCP... M_BCPTempS" />
-                <marker date="1557469391424" expanded="true" signature="77775:77861" ph="UPDATE M_BCP... " />
-                <marker date="1557469391424" expanded="true" signature="82541:82611" ph="SELECT COUNT... M_BCPTempS" />
-                <marker date="1557469391424" expanded="true" signature="82734:83143" ph="update M_CPI... " />
-                <marker date="1557469391424" expanded="true" signature="83260:83903" ph="update M_CPI... " />
-                <marker date="1557469391424" expanded="true" signature="84016:84986" ph="update M_BCP... " />
-                <marker date="1557469391424" expanded="true" signature="85057:85244" ph="UPDATE Rkd_B... " />
-                <marker date="1557469391424" expanded="true" signature="85147:85243" ph="select m2.In... M_CPIn" />
-                <marker date="1557469391424" expanded="true" signature="90205:90335" ph="UPDATE M_WLT... " />
-                <marker date="1557469391424" expanded="true" signature="90426:90492" ph="SELECT COUNT... M_WLTl" />
-                <marker date="1557469391424" expanded="true" signature="90607:90689" ph="SELECT ID , M_WLTl" />
-                <marker date="1557469391424" expanded="true" signature="90805:90888" ph="SELECT ID , M_BCPTl" />
-                <marker date="1557469391424" expanded="true" signature="95894:95926" ph="SELECT * FRO... Hl_CheJian" />
-                <marker date="1557469391424" expanded="true" signature="96048:96181" ph="UPDATE M_WLT... " />
-                <marker date="1557469391424" expanded="true" signature="98056:98189" ph="UPDATE M_WLT... " />
-                <marker date="1557469391424" expanded="true" signature="98250:98302" ph="DELETE FROM " />
-                <marker date="1557469391424" expanded="true" signature="98417:98546" ph="UPDATE M_WLS... " />
-                <marker date="1557469391424" expanded="true" signature="100224:100286" ph="SELECT * FRO... M_WLTempS" />
-                <marker date="1557469391424" expanded="true" signature="100395:100451" ph="SELECT * FRO... Tkd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="100573:100837" ph="SELECT M_WLT... M_WLTempS" />
-                <marker date="1557469391424" expanded="true" signature="104070:104228" ph="UPDATE M_WLT... " />
-                <marker date="1557469391424" expanded="true" signature="104314:104383" ph="SELECT COUNT... M_WLTempS" />
-                <marker date="1557469391424" expanded="true" signature="105886:105920" ph="SELECT * FRO... Hl_UserGroup" />
-                <marker date="1557469391424" expanded="true" signature="106037:106162" ph="UPDATE M_WLS... " />
-                <marker date="1557469391424" expanded="true" signature="109044:109102" ph="SELECT * FRO... M_WLS" />
-                <marker date="1557469391424" expanded="true" signature="109211:109266" ph="SELECT * FRO... Ckd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="109378:109552" ph="UPDATE M_WLS... " />
-                <marker date="1557469391424" expanded="true" signature="111105:111158" ph="SELECT count... M_WLS" />
-                <marker date="1557469391424" expanded="true" signature="111510:111733" ph="SELECT M_WLS... M_WLS" />
-                <marker date="1557469391424" expanded="true" signature="115156:115179" ph="SELECT * FRO... Hl_Sort" />
-                <marker date="1557469391424" expanded="true" signature="115291:115335" ph="SELECT * FRO... Hl_Product" />
-                <marker date="1557469391424" expanded="true" signature="115440:115465" ph="SELECT * FRO... Pdt_Sort2" />
-                <marker date="1557469391424" expanded="true" signature="115573:115733" ph="SELECT mwlin... M_WLIn" />
-                <marker date="1557469391424" expanded="true" signature="119278:119770" ph="update M_WLI... " />
-                <marker date="1557469391424" expanded="true" signature="121653:121694" ph="select * fro... Rkd_Wl" />
-                <marker date="1557469391424" expanded="true" signature="121806:121871" ph="select *,Sor... M_WLIn" />
-                <marker date="1557469391424" expanded="true" signature="121980:122029" ph="select * fro... M_WLS" />
-                <marker date="1557469391424" expanded="true" signature="122086:122135" ph="update M_WLS... " />
-                <marker date="1557469391424" expanded="true" signature="122244:122280" ph="SELECT ID,M_... M_Module2" />
-                <marker date="1557469391424" expanded="true" signature="122462:122508" ph="SELECT ID,M_... M_Module2" />
-                <marker date="1557469391424" expanded="true" signature="122906:122925" ph="INSERT INTO Hl_User... " />
-                <marker date="1557469391424" expanded="true" signature="122906:123601" ph="INSERT INTO Hl_User... " />
-                <marker date="1557469391424" expanded="true" signature="124402:124644" ph="UPDATE Hl_Us... " />
-                <marker date="1557469391424" expanded="true" signature="124792:124837" ph="SELECT count... Hl_User" />
-                <marker date="1557469391424" expanded="true" signature="124792:124849" ph="SELECT count... Hl_User" />
-                <marker date="1557469391424" expanded="true" signature="124980:125017" ph="DELETE FROM " />
+                <marker date="1557473553355" expanded="true" signature="317:401" ph="SELECT disti... Tkd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="317:782" ph="SELECT disti... Tkd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="902:1006" ph="SELECT * FRO... Ckd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="902:1071" ph="SELECT * FRO... Ckd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="1183:1431" ph="SELECT disti... " />
+                <marker date="1557473553355" expanded="true" signature="1191:1430" ph="SELECT * FRO... *" />
+                <marker date="1557473553355" expanded="true" signature="1215:1295" ph="SELECT disti... Rkd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="1549:1750" ph="SELECT disti... Rkd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="1868:2075" ph="SELECT * FRO... Tkd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="1868:2076" ph="SELECT disti... Tkd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="2194:2295" ph="SELECT * FRO... Ckd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="2194:2436" ph="SELECT * FRO... Ckd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="2554:2736" ph="SELECT * FRO... Rkd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="2554:2737" ph="SELECT disti... Rkd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="3226:3341" ph="SELECT UserI... Hl_User" />
+                <marker date="1557473553355" expanded="true" signature="3226:3363" ph="SELECT UserI... Hl_User" />
+                <marker date="1557473553355" expanded="true" signature="3478:3634" ph="SELECT * FRO... Hl_User" />
+                <marker date="1557473553355" expanded="true" signature="3759:4323" ph="UPDATE Ckd_B... " />
+                <marker date="1557473553355" expanded="true" signature="4444:4541" ph="UPDATE M_BCP... " />
+                <marker date="1557473553355" expanded="true" signature="4666:6329" ph="UPDATE Tkd_B... " />
+                <marker date="1557473553355" expanded="true" signature="6452:6626" ph="UPDATE M_CPI... " />
+                <marker date="1557473553355" expanded="true" signature="6750:6935" ph="UPDATE M_CPI... " />
+                <marker date="1557473553355" expanded="true" signature="7055:7246" ph="UPDATE M_BCP... " />
+                <marker date="1557473553355" expanded="true" signature="7371:9258" ph="UPDATE Rkd_B... " />
+                <marker date="1557473553355" expanded="true" signature="9377:9456" ph="UPDATE M_WLB... " />
+                <marker date="1557473553355" expanded="true" signature="9579:9914" ph="UPDATE Tkd_W... " />
+                <marker date="1557473553355" expanded="true" signature="10034:10114" ph="UPDATE M_WLO... " />
+                <marker date="1557473553355" expanded="true" signature="10238:10539" ph="UPDATE Ckd_W... " />
+                <marker date="1557473553355" expanded="true" signature="10658:10895" ph="UPDATE M_WLI... " />
+                <marker date="1557473553355" expanded="true" signature="11018:11285" ph="UPDATE Rkd_W... " />
+                <marker date="1557473553355" expanded="true" signature="11355:11426" ph="UPDATE M_CPI... " />
+                <marker date="1557473553355" expanded="true" signature="11498:11568" ph="UPDATE M_CPI... " />
+                <marker date="1557473553355" expanded="true" signature="11635:11706" ph="UPDATE M_BCP... " />
+                <marker date="1557473553355" expanded="true" signature="11772:11839" ph="UPDATE M_WLI... " />
+                <marker date="1557473553355" expanded="true" signature="11965:12252" ph="SELECT M_CPI... M_CPIn2" />
+                <marker date="1557473553355" expanded="true" signature="12379:12656" ph="SELECT M_CPI... M_CPIn" />
+                <marker date="1557473553355" expanded="true" signature="12775:13098" ph="SELECT M_BCP... M_BCPIn" />
+                <marker date="1557473553355" expanded="true" signature="13212:13764" ph="UPDATE Tkd_B... " />
+                <marker date="1557473553355" expanded="true" signature="13876:14492" ph="UPDATE Tkd_B... " />
+                <marker date="1557473553355" expanded="true" signature="14606:14816" ph="UPDATE Ckd_B... " />
+                <marker date="1557473553355" expanded="true" signature="14606:14817" ph="UPDATE Ckd_B... " />
+                <marker date="1557473553355" expanded="true" signature="14929:15151" ph="UPDATE Ckd_B... " />
+                <marker date="1557473553355" expanded="true" signature="15264:16079" ph="UPDATE Rkd_B... " />
+                <marker date="1557473553355" expanded="true" signature="16191:17006" ph="UPDATE Rkd_B... " />
+                <marker date="1557473553355" expanded="true" signature="17117:17501" ph="UPDATE Tkd_W... " />
+                <marker date="1557473553355" expanded="true" signature="17611:18034" ph="UPDATE Tkd_W... " />
+                <marker date="1557473553355" expanded="true" signature="18146:18528" ph="UPDATE Ckd_W... " />
+                <marker date="1557473553355" expanded="true" signature="18639:19060" ph="UPDATE Ckd_W... " />
+                <marker date="1557473553355" expanded="true" signature="19171:19466" ph="UPDATE Rkd_W... " />
+                <marker date="1557473553355" expanded="true" signature="19576:19896" ph="UPDATE Rkd_W... " />
+                <marker date="1557473553355" expanded="true" signature="20026:20141" ph="SELECT * FRO... M_BCPBk" />
+                <marker date="1557473553355" expanded="true" signature="20254:20295" ph="SELECT * FRO... Tkd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="20425:20539" ph="SELECT * FRO... M_CPOut" />
+                <marker date="1557473553355" expanded="true" signature="20669:20709" ph="SELECT * FRO... M_CPOut" />
+                <marker date="1557473553355" expanded="true" signature="20822:20878" ph="SELECT * FRO... Ckd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="21009:21317" ph="SELECT QRCod... " />
+                <marker date="1557473553355" expanded="true" signature="21444:21506" ph="SELECT *,CP_... M_CPIn2" />
+                <marker date="1557473553355" expanded="true" signature="21634:21953" ph="SELECT QRCod... " />
+                <marker date="1557473553355" expanded="true" signature="22087:22413" ph="SELECT QRCod... " />
+                <marker date="1557473553355" expanded="true" signature="22544:22605" ph="SELECT *,CP_... M_CPIn" />
+                <marker date="1557473553355" expanded="true" signature="22742:22810" ph="SELECT *,CP_... M_CPIn" />
+                <marker date="1557473553355" expanded="true" signature="22742:22861" ph="SELECT *,CP_... M_CPIn" />
+                <marker date="1557473553355" expanded="true" signature="22833:22860" ph="SELECT QRCod... M_CPS" />
+                <marker date="1557473553355" expanded="true" signature="22990:23371" ph="SELECT QRCod... " />
+                <marker date="1557473553355" expanded="true" signature="23484:23523" ph="SELECT * FRO... Rkd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="23651:23755" ph="SELECT * FRO... M_WLBk" />
+                <marker date="1557473553355" expanded="true" signature="23877:23945" ph="SELECT *,SHL... M_WLBk" />
+                <marker date="1557473553355" expanded="true" signature="24056:24096" ph="SELECT * FRO... Tkd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="24225:24330" ph="SELECT * FRO... M_WLOUT" />
+                <marker date="1557473553355" expanded="true" signature="24453:24572" ph="SELECT *,SHL... M_WLOUT" />
+                <marker date="1557473553355" expanded="true" signature="24683:24738" ph="SELECT * FRO... Ckd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="24865:24970" ph="SELECT * FRO... M_WLIn" />
+                <marker date="1557473553355" expanded="true" signature="25081:25119" ph="SELECT * FRO... Rkd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="26802:26869" ph="SELECT * FRO... Ckd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="26802:26884" ph="SELECT * FRO... Ckd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="27398:27478" ph="SELECT disti... Rkd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="27398:28251" ph="SELECT disti... " />
+                <marker date="1557473553355" expanded="true" signature="32598:32890" ph="SELECT FzrID... Ckd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="32982:33763" ph="SELECT FzrID... Tkd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="33855:34754" ph="SELECT FzrID... Rkd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="34845:35383" ph="SELECT BzID Tkd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="35474:36011" ph="SELECT BzID Ckd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="36102:36626" ph="SELECT BzID Rkd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="36736:36806" ph="SELECT * FRO... M_CPIn2" />
+                <marker date="1557473553355" expanded="true" signature="36921:36964" ph="SELECT * FRO... M_CPIn" />
+                <marker date="1557473553355" expanded="true" signature="37778:37842" ph="SELECT SortN... Hl_Sort" />
+                <marker date="1557473553355" expanded="true" signature="37954:38233" ph="SELECT * FRO... M_BCPIn" />
+                <marker date="1557473553355" expanded="true" signature="38347:38817" ph="SELECT M_WLI... M_WLIn" />
+                <marker date="1557473553355" expanded="true" signature="38947:39120" ph="SELECT m.CP_... M_CPS" />
+                <marker date="1557473553355" expanded="true" signature="39227:39285" ph="SELECT * FRO... M_CPS" />
+                <marker date="1557473553355" expanded="true" signature="41164:41212" ph="DELETE FROM " />
+                <marker date="1557473553355" expanded="true" signature="41338:41512" ph="SELECT m.CP_... M_CPS2" />
+                <marker date="1557473553355" expanded="true" signature="41574:41624" ph="DELETE FROM " />
+                <marker date="1557473553355" expanded="true" signature="41683:41732" ph="DELETE FROM " />
+                <marker date="1557473553355" expanded="true" signature="43652:45292" ph="UPDATE M_CPI... " />
+                <marker date="1557473553355" expanded="true" signature="45402:46719" ph="UPDATE M_CPS... " />
+                <marker date="1557473553355" expanded="true" signature="46825:46884" ph="SELECT * FRO... M_CPS2" />
+                <marker date="1557473553355" expanded="true" signature="53241:53306" ph="SELECT COUNT... M_CPS" />
+                <marker date="1557473553355" expanded="true" signature="53416:53445" ph="SELECT * FRO... M_CPS2" />
+                <marker date="1557473553355" expanded="true" signature="53416:53468" ph="SELECT * FRO... M_CPIn2" />
+                <marker date="1557473553355" expanded="true" signature="55798:55864" ph="SELECT COUNT... M_CPS2" />
+                <marker date="1557473553355" expanded="true" signature="60455:60589" ph="UPDATE M_BCP... " />
+                <marker date="1557473553355" expanded="true" signature="60707:60837" ph="UPDATE M_BCP... " />
+                <marker date="1557473553355" expanded="true" signature="65065:65131" ph="SELECT COUNT... M_BCPS" />
+                <marker date="1557473553355" expanded="true" signature="68822:68879" ph="SELECT * FRO... Tkd_Bcp" />
+                <marker date="1557473553355" expanded="true" signature="69004:69301" ph="SELECT M_BCP... M_BCPTempS" />
+                <marker date="1557473553355" expanded="true" signature="73567:73701" ph="UPDATE M_BCP... " />
+                <marker date="1557473553355" expanded="true" signature="73763:73816" ph="DELETE FROM " />
+                <marker date="1557473553355" expanded="true" signature="73933:74064" ph="UPDATE M_BCP... " />
+                <marker date="1557473553355" expanded="true" signature="77420:77487" ph="SELECT COUNT... M_BCPTl" />
+                <marker date="1557473553355" expanded="true" signature="77600:77663" ph="SELECT * FRO... M_BCPTempS" />
+                <marker date="1557473553355" expanded="true" signature="77790:78247" ph="SELECT M_BCP... M_BCPTempS" />
+                <marker date="1557473553355" expanded="true" signature="78364:78450" ph="UPDATE M_BCP... " />
+                <marker date="1557473553355" expanded="true" signature="83130:83200" ph="SELECT COUNT... M_BCPTempS" />
+                <marker date="1557473553355" expanded="true" signature="83323:83732" ph="update M_CPI... " />
+                <marker date="1557473553355" expanded="true" signature="83849:84492" ph="update M_CPI... " />
+                <marker date="1557473553355" expanded="true" signature="84605:85575" ph="update M_BCP... " />
+                <marker date="1557473553355" expanded="true" signature="85646:85833" ph="UPDATE Rkd_B... " />
+                <marker date="1557473553355" expanded="true" signature="85736:85832" ph="select m2.In... M_CPIn" />
+                <marker date="1557473553355" expanded="true" signature="90794:90924" ph="UPDATE M_WLT... " />
+                <marker date="1557473553355" expanded="true" signature="91015:91081" ph="SELECT COUNT... M_WLTl" />
+                <marker date="1557473553355" expanded="true" signature="91196:91278" ph="SELECT ID , M_WLTl" />
+                <marker date="1557473553355" expanded="true" signature="91394:91477" ph="SELECT ID , M_BCPTl" />
+                <marker date="1557473553355" expanded="true" signature="96483:96515" ph="SELECT * FRO... Hl_CheJian" />
+                <marker date="1557473553355" expanded="true" signature="96637:96770" ph="UPDATE M_WLT... " />
+                <marker date="1557473553355" expanded="true" signature="98645:98778" ph="UPDATE M_WLT... " />
+                <marker date="1557473553355" expanded="true" signature="98839:98891" ph="DELETE FROM " />
+                <marker date="1557473553355" expanded="true" signature="99006:99135" ph="UPDATE M_WLS... " />
+                <marker date="1557473553355" expanded="true" signature="100813:100875" ph="SELECT * FRO... M_WLTempS" />
+                <marker date="1557473553355" expanded="true" signature="100984:101040" ph="SELECT * FRO... Tkd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="101162:101426" ph="SELECT M_WLT... M_WLTempS" />
+                <marker date="1557473553355" expanded="true" signature="104659:104817" ph="UPDATE M_WLT... " />
+                <marker date="1557473553355" expanded="true" signature="104903:104972" ph="SELECT COUNT... M_WLTempS" />
+                <marker date="1557473553355" expanded="true" signature="106475:106509" ph="SELECT * FRO... Hl_UserGroup" />
+                <marker date="1557473553355" expanded="true" signature="106626:106751" ph="UPDATE M_WLS... " />
+                <marker date="1557473553355" expanded="true" signature="109633:109691" ph="SELECT * FRO... M_WLS" />
+                <marker date="1557473553355" expanded="true" signature="109800:109855" ph="SELECT * FRO... Ckd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="109967:110141" ph="UPDATE M_WLS... " />
+                <marker date="1557473553355" expanded="true" signature="111694:111747" ph="SELECT count... M_WLS" />
+                <marker date="1557473553355" expanded="true" signature="112099:112322" ph="SELECT M_WLS... M_WLS" />
+                <marker date="1557473553355" expanded="true" signature="115745:115768" ph="SELECT * FRO... Hl_Sort" />
+                <marker date="1557473553355" expanded="true" signature="115880:115924" ph="SELECT * FRO... Hl_Product" />
+                <marker date="1557473553355" expanded="true" signature="116029:116054" ph="SELECT * FRO... Pdt_Sort2" />
+                <marker date="1557473553355" expanded="true" signature="116162:116322" ph="SELECT mwlin... M_WLIn" />
+                <marker date="1557473553355" expanded="true" signature="119867:120359" ph="update M_WLI... " />
+                <marker date="1557473553355" expanded="true" signature="122242:122283" ph="select * fro... Rkd_Wl" />
+                <marker date="1557473553355" expanded="true" signature="122395:122460" ph="select *,Sor... M_WLIn" />
+                <marker date="1557473553355" expanded="true" signature="122569:122618" ph="select * fro... M_WLS" />
+                <marker date="1557473553355" expanded="true" signature="122675:122724" ph="update M_WLS... " />
+                <marker date="1557473553355" expanded="true" signature="122833:122869" ph="SELECT ID,M_... M_Module2" />
+                <marker date="1557473553355" expanded="true" signature="123051:123097" ph="SELECT ID,M_... M_Module2" />
+                <marker date="1557473553355" expanded="true" signature="123495:123514" ph="INSERT INTO Hl_User... " />
+                <marker date="1557473553355" expanded="true" signature="123495:124190" ph="INSERT INTO Hl_User... " />
+                <marker date="1557473553355" expanded="true" signature="124991:125233" ph="UPDATE Hl_Us... " />
+                <marker date="1557473553355" expanded="true" signature="125381:125426" ph="SELECT count... Hl_User" />
+                <marker date="1557473553355" expanded="true" signature="125381:125438" ph="SELECT count... Hl_User" />
+                <marker date="1557473553355" expanded="true" signature="125569:125606" ph="DELETE FROM " />
               </folding>
             </state>
           </provider>
@@ -229,8 +221,8 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="913" column="57" lean-forward="true" selection-start-line="913" selection-start-column="57" selection-end-line="913" selection-end-column="57" />
+            <state relative-caret-position="291">
+              <caret line="1069" column="57" lean-forward="true" selection-start-line="1069" selection-start-column="57" selection-end-line="1069" selection-end-column="57" />
               <folding>
                 <element signature="e#1533#1546#0" expanded="true" />
                 <element signature="e#3428#3440#0" expanded="true" />
@@ -703,10 +695,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>KgID</find>
-      <find>KgStatus</find>
-      <find>SlfzrID</find>
-      <find>SlfzrStatus</find>
       <find>createWL_TKD</find>
       <find>getWLTempS</find>
       <find>/wlTK</find>
@@ -729,10 +717,14 @@
       <find>getBcpTkQualityCheckData</find>
       <find>getBcpTkdBean</find>
       <find>insertBCPBk</find>
-      <find>createBCP_TKD</find>
       <find>getBcpTempS</find>
       <find>PCZL</find>
       <find>/bcpTK</find>
+      <find>createBCP_TKD</find>
+      <find>getCpOutVerifyData</find>
+      <find>getBcpCkdBean</find>
+      <find>createBCP_CKD</find>
+      <find>fhFzr</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -763,7 +755,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/utils/AuthorityParseUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/NotificationParam.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/VerifyParam.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/CreateBCPCKDParam.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/WlCkdBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/WlOutVerifyResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/WLOutShowBean.java" />
@@ -796,6 +787,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BCPTempSBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BCPTKParam.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/CreateBCPCKDParam.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml" />
       </list>
     </option>
@@ -1733,7 +1725,7 @@
       <workItem from="1557277288933" duration="17735000" />
       <workItem from="1557363717907" duration="4625000" />
       <workItem from="1557376459808" duration="10704000" />
-      <workItem from="1557452956204" duration="7372000" />
+      <workItem from="1557452956204" duration="9359000" />
     </task>
     <servers />
   </component>
@@ -1770,7 +1762,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1423436000" />
+    <option name="totallyTimeSpent" value="1425423000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1919,13 +1911,6 @@
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/CreateBCPCKDParam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1300">
-          <caret line="82" column="5" lean-forward="false" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -2716,6 +2701,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="490">
           <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding>
+            <element signature="e#839#840#0" expanded="true" />
+            <element signature="e#865#866#0" expanded="true" />
+            <element signature="e#903#904#0" expanded="true" />
+            <element signature="e#933#934#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2878,8 +2869,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="913" column="57" lean-forward="true" selection-start-line="913" selection-start-column="57" selection-end-line="913" selection-end-column="57" />
+        <state relative-caret-position="291">
+          <caret line="1069" column="57" lean-forward="true" selection-start-line="1069" selection-start-column="57" selection-end-line="1069" selection-end-column="57" />
           <folding>
             <element signature="e#1533#1546#0" expanded="true" />
             <element signature="e#3428#3440#0" expanded="true" />
@@ -2971,168 +2962,181 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/CreateBCPCKDParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="71" column="5" lean-forward="true" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+          <folding>
+            <element signature="e#1140#1141#0" expanded="true" />
+            <element signature="e#1165#1166#0" expanded="true" />
+            <element signature="e#1201#1202#0" expanded="true" />
+            <element signature="e#1229#1230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="2232" column="36" lean-forward="true" selection-start-line="2232" selection-start-column="36" selection-end-line="2232" selection-end-column="36" />
+        <state relative-caret-position="291">
+          <caret line="1768" column="25" lean-forward="true" selection-start-line="1768" selection-start-column="25" selection-end-line="1768" selection-end-column="25" />
           <folding>
-            <marker date="1557469391424" expanded="true" signature="317:401" ph="SELECT disti... Tkd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="317:782" ph="SELECT disti... Tkd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="902:1006" ph="SELECT * FRO... Ckd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="902:1071" ph="SELECT * FRO... Ckd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="1183:1431" ph="SELECT disti... " />
-            <marker date="1557469391424" expanded="true" signature="1191:1430" ph="SELECT * FRO... *" />
-            <marker date="1557469391424" expanded="true" signature="1215:1295" ph="SELECT disti... Rkd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="1549:1750" ph="SELECT disti... Rkd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="1868:2075" ph="SELECT * FRO... Tkd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="1868:2076" ph="SELECT disti... Tkd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="2194:2295" ph="SELECT * FRO... Ckd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="2194:2436" ph="SELECT * FRO... Ckd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="2554:2736" ph="SELECT * FRO... Rkd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="2554:2737" ph="SELECT disti... Rkd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="3226:3341" ph="SELECT UserI... Hl_User" />
-            <marker date="1557469391424" expanded="true" signature="3226:3363" ph="SELECT UserI... Hl_User" />
-            <marker date="1557469391424" expanded="true" signature="3478:3634" ph="SELECT * FRO... Hl_User" />
-            <marker date="1557469391424" expanded="true" signature="3759:4323" ph="UPDATE Ckd_B... " />
-            <marker date="1557469391424" expanded="true" signature="4444:4541" ph="UPDATE M_BCP... " />
-            <marker date="1557469391424" expanded="true" signature="4666:6329" ph="UPDATE Tkd_B... " />
-            <marker date="1557469391424" expanded="true" signature="6452:6626" ph="UPDATE M_CPI... " />
-            <marker date="1557469391424" expanded="true" signature="6750:6935" ph="UPDATE M_CPI... " />
-            <marker date="1557469391424" expanded="true" signature="7055:7246" ph="UPDATE M_BCP... " />
-            <marker date="1557469391424" expanded="true" signature="7371:9258" ph="UPDATE Rkd_B... " />
-            <marker date="1557469391424" expanded="true" signature="9377:9456" ph="UPDATE M_WLB... " />
-            <marker date="1557469391424" expanded="true" signature="9579:9914" ph="UPDATE Tkd_W... " />
-            <marker date="1557469391424" expanded="true" signature="10034:10114" ph="UPDATE M_WLO... " />
-            <marker date="1557469391424" expanded="true" signature="10238:10539" ph="UPDATE Ckd_W... " />
-            <marker date="1557469391424" expanded="true" signature="10658:10895" ph="UPDATE M_WLI... " />
-            <marker date="1557469391424" expanded="true" signature="11018:11285" ph="UPDATE Rkd_W... " />
-            <marker date="1557469391424" expanded="true" signature="11355:11426" ph="UPDATE M_CPI... " />
-            <marker date="1557469391424" expanded="true" signature="11498:11568" ph="UPDATE M_CPI... " />
-            <marker date="1557469391424" expanded="true" signature="11635:11706" ph="UPDATE M_BCP... " />
-            <marker date="1557469391424" expanded="true" signature="11772:11839" ph="UPDATE M_WLI... " />
-            <marker date="1557469391424" expanded="true" signature="11965:12252" ph="SELECT M_CPI... M_CPIn2" />
-            <marker date="1557469391424" expanded="true" signature="12379:12656" ph="SELECT M_CPI... M_CPIn" />
-            <marker date="1557469391424" expanded="true" signature="12775:13098" ph="SELECT M_BCP... M_BCPIn" />
-            <marker date="1557469391424" expanded="true" signature="13212:13764" ph="UPDATE Tkd_B... " />
-            <marker date="1557469391424" expanded="true" signature="13876:14492" ph="UPDATE Tkd_B... " />
-            <marker date="1557469391424" expanded="true" signature="14606:14816" ph="UPDATE Ckd_B... " />
-            <marker date="1557469391424" expanded="true" signature="14606:14817" ph="UPDATE Ckd_B... " />
-            <marker date="1557469391424" expanded="true" signature="14929:15151" ph="UPDATE Ckd_B... " />
-            <marker date="1557469391424" expanded="true" signature="15264:16079" ph="UPDATE Rkd_B... " />
-            <marker date="1557469391424" expanded="true" signature="16191:17006" ph="UPDATE Rkd_B... " />
-            <marker date="1557469391424" expanded="true" signature="17117:17501" ph="UPDATE Tkd_W... " />
-            <marker date="1557469391424" expanded="true" signature="17611:18034" ph="UPDATE Tkd_W... " />
-            <marker date="1557469391424" expanded="true" signature="18146:18528" ph="UPDATE Ckd_W... " />
-            <marker date="1557469391424" expanded="true" signature="18639:19060" ph="UPDATE Ckd_W... " />
-            <marker date="1557469391424" expanded="true" signature="19171:19466" ph="UPDATE Rkd_W... " />
-            <marker date="1557469391424" expanded="true" signature="19576:19896" ph="UPDATE Rkd_W... " />
-            <marker date="1557469391424" expanded="true" signature="20026:20141" ph="SELECT * FRO... M_BCPBk" />
-            <marker date="1557469391424" expanded="true" signature="20254:20295" ph="SELECT * FRO... Tkd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="20425:20539" ph="SELECT * FRO... M_CPOut" />
-            <marker date="1557469391424" expanded="true" signature="20669:20709" ph="SELECT * FRO... M_CPOut" />
-            <marker date="1557469391424" expanded="true" signature="20822:20878" ph="SELECT * FRO... Ckd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="21009:21317" ph="SELECT QRCod... " />
-            <marker date="1557469391424" expanded="true" signature="21444:21506" ph="SELECT *,CP_... M_CPIn2" />
-            <marker date="1557469391424" expanded="true" signature="21634:21953" ph="SELECT QRCod... " />
-            <marker date="1557469391424" expanded="true" signature="22087:22413" ph="SELECT QRCod... " />
-            <marker date="1557469391424" expanded="true" signature="22544:22605" ph="SELECT *,CP_... M_CPIn" />
-            <marker date="1557469391424" expanded="true" signature="22742:22810" ph="SELECT *,CP_... M_CPIn" />
-            <marker date="1557469391424" expanded="true" signature="22742:22861" ph="SELECT *,CP_... M_CPIn" />
-            <marker date="1557469391424" expanded="true" signature="22833:22860" ph="SELECT QRCod... M_CPS" />
-            <marker date="1557469391424" expanded="true" signature="22990:23371" ph="SELECT QRCod... " />
-            <marker date="1557469391424" expanded="true" signature="23484:23523" ph="SELECT * FRO... Rkd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="23651:23755" ph="SELECT * FRO... M_WLBk" />
-            <marker date="1557469391424" expanded="true" signature="23877:23945" ph="SELECT *,SHL... M_WLBk" />
-            <marker date="1557469391424" expanded="true" signature="24056:24096" ph="SELECT * FRO... Tkd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="24225:24330" ph="SELECT * FRO... M_WLOUT" />
-            <marker date="1557469391424" expanded="true" signature="24453:24572" ph="SELECT *,SHL... M_WLOUT" />
-            <marker date="1557469391424" expanded="true" signature="24683:24738" ph="SELECT * FRO... Ckd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="24865:24970" ph="SELECT * FRO... M_WLIn" />
-            <marker date="1557469391424" expanded="true" signature="25081:25119" ph="SELECT * FRO... Rkd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="26802:26869" ph="SELECT * FRO... Ckd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="26802:26884" ph="SELECT * FRO... Ckd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="27398:27478" ph="SELECT disti... Rkd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="27398:28251" ph="SELECT disti... " />
-            <marker date="1557469391424" expanded="true" signature="32598:32890" ph="SELECT FzrID... Ckd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="32982:33763" ph="SELECT FzrID... Tkd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="33855:34754" ph="SELECT FzrID... Rkd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="34845:35383" ph="SELECT BzID Tkd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="35474:36011" ph="SELECT BzID Ckd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="36102:36626" ph="SELECT BzID Rkd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="36736:36806" ph="SELECT * FRO... M_CPIn2" />
-            <marker date="1557469391424" expanded="true" signature="36921:36964" ph="SELECT * FRO... M_CPIn" />
-            <marker date="1557469391424" expanded="true" signature="37778:37842" ph="SELECT SortN... Hl_Sort" />
-            <marker date="1557469391424" expanded="true" signature="37954:38233" ph="SELECT * FRO... M_BCPIn" />
-            <marker date="1557469391424" expanded="true" signature="38347:38817" ph="SELECT M_WLI... M_WLIn" />
-            <marker date="1557469391424" expanded="true" signature="38947:39120" ph="SELECT m.CP_... M_CPS" />
-            <marker date="1557469391424" expanded="true" signature="39227:39285" ph="SELECT * FRO... M_CPS" />
-            <marker date="1557469391424" expanded="true" signature="41164:41212" ph="DELETE FROM " />
-            <marker date="1557469391424" expanded="true" signature="41338:41512" ph="SELECT m.CP_... M_CPS2" />
-            <marker date="1557469391424" expanded="true" signature="41574:41624" ph="DELETE FROM " />
-            <marker date="1557469391424" expanded="true" signature="41683:41732" ph="DELETE FROM " />
-            <marker date="1557469391424" expanded="true" signature="43652:45292" ph="UPDATE M_CPI... " />
-            <marker date="1557469391424" expanded="true" signature="45402:46719" ph="UPDATE M_CPS... " />
-            <marker date="1557469391424" expanded="true" signature="46825:46884" ph="SELECT * FRO... M_CPS2" />
-            <marker date="1557469391424" expanded="true" signature="53241:53306" ph="SELECT COUNT... M_CPS" />
-            <marker date="1557469391424" expanded="true" signature="53416:53445" ph="SELECT * FRO... M_CPS2" />
-            <marker date="1557469391424" expanded="true" signature="53416:53468" ph="SELECT * FRO... M_CPIn2" />
-            <marker date="1557469391424" expanded="true" signature="55798:55864" ph="SELECT COUNT... M_CPS2" />
-            <marker date="1557469391424" expanded="true" signature="59866:60000" ph="UPDATE M_BCP... " />
-            <marker date="1557469391424" expanded="true" signature="60118:60248" ph="UPDATE M_BCP... " />
-            <marker date="1557469391424" expanded="true" signature="64476:64542" ph="SELECT COUNT... M_BCPS" />
-            <marker date="1557469391424" expanded="true" signature="68233:68290" ph="SELECT * FRO... Tkd_Bcp" />
-            <marker date="1557469391424" expanded="true" signature="68415:68712" ph="SELECT M_BCP... M_BCPTempS" />
-            <marker date="1557469391424" expanded="true" signature="72978:73112" ph="UPDATE M_BCP... " />
-            <marker date="1557469391424" expanded="true" signature="73174:73227" ph="DELETE FROM " />
-            <marker date="1557469391424" expanded="true" signature="73344:73475" ph="UPDATE M_BCP... " />
-            <marker date="1557469391424" expanded="true" signature="76831:76898" ph="SELECT COUNT... M_BCPTl" />
-            <marker date="1557469391424" expanded="true" signature="77011:77074" ph="SELECT * FRO... M_BCPTempS" />
-            <marker date="1557469391424" expanded="true" signature="77201:77658" ph="SELECT M_BCP... M_BCPTempS" />
-            <marker date="1557469391424" expanded="true" signature="77775:77861" ph="UPDATE M_BCP... " />
-            <marker date="1557469391424" expanded="true" signature="82541:82611" ph="SELECT COUNT... M_BCPTempS" />
-            <marker date="1557469391424" expanded="true" signature="82734:83143" ph="update M_CPI... " />
-            <marker date="1557469391424" expanded="true" signature="83260:83903" ph="update M_CPI... " />
-            <marker date="1557469391424" expanded="true" signature="84016:84986" ph="update M_BCP... " />
-            <marker date="1557469391424" expanded="true" signature="85057:85244" ph="UPDATE Rkd_B... " />
-            <marker date="1557469391424" expanded="true" signature="85147:85243" ph="select m2.In... M_CPIn" />
-            <marker date="1557469391424" expanded="true" signature="90205:90335" ph="UPDATE M_WLT... " />
-            <marker date="1557469391424" expanded="true" signature="90426:90492" ph="SELECT COUNT... M_WLTl" />
-            <marker date="1557469391424" expanded="true" signature="90607:90689" ph="SELECT ID , M_WLTl" />
-            <marker date="1557469391424" expanded="true" signature="90805:90888" ph="SELECT ID , M_BCPTl" />
-            <marker date="1557469391424" expanded="true" signature="95894:95926" ph="SELECT * FRO... Hl_CheJian" />
-            <marker date="1557469391424" expanded="true" signature="96048:96181" ph="UPDATE M_WLT... " />
-            <marker date="1557469391424" expanded="true" signature="98056:98189" ph="UPDATE M_WLT... " />
-            <marker date="1557469391424" expanded="true" signature="98250:98302" ph="DELETE FROM " />
-            <marker date="1557469391424" expanded="true" signature="98417:98546" ph="UPDATE M_WLS... " />
-            <marker date="1557469391424" expanded="true" signature="100224:100286" ph="SELECT * FRO... M_WLTempS" />
-            <marker date="1557469391424" expanded="true" signature="100395:100451" ph="SELECT * FRO... Tkd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="100573:100837" ph="SELECT M_WLT... M_WLTempS" />
-            <marker date="1557469391424" expanded="true" signature="104070:104228" ph="UPDATE M_WLT... " />
-            <marker date="1557469391424" expanded="true" signature="104314:104383" ph="SELECT COUNT... M_WLTempS" />
-            <marker date="1557469391424" expanded="true" signature="105886:105920" ph="SELECT * FRO... Hl_UserGroup" />
-            <marker date="1557469391424" expanded="true" signature="106037:106162" ph="UPDATE M_WLS... " />
-            <marker date="1557469391424" expanded="true" signature="109044:109102" ph="SELECT * FRO... M_WLS" />
-            <marker date="1557469391424" expanded="true" signature="109211:109266" ph="SELECT * FRO... Ckd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="109378:109552" ph="UPDATE M_WLS... " />
-            <marker date="1557469391424" expanded="true" signature="111105:111158" ph="SELECT count... M_WLS" />
-            <marker date="1557469391424" expanded="true" signature="111510:111733" ph="SELECT M_WLS... M_WLS" />
-            <marker date="1557469391424" expanded="true" signature="115156:115179" ph="SELECT * FRO... Hl_Sort" />
-            <marker date="1557469391424" expanded="true" signature="115291:115335" ph="SELECT * FRO... Hl_Product" />
-            <marker date="1557469391424" expanded="true" signature="115440:115465" ph="SELECT * FRO... Pdt_Sort2" />
-            <marker date="1557469391424" expanded="true" signature="115573:115733" ph="SELECT mwlin... M_WLIn" />
-            <marker date="1557469391424" expanded="true" signature="119278:119770" ph="update M_WLI... " />
-            <marker date="1557469391424" expanded="true" signature="121653:121694" ph="select * fro... Rkd_Wl" />
-            <marker date="1557469391424" expanded="true" signature="121806:121871" ph="select *,Sor... M_WLIn" />
-            <marker date="1557469391424" expanded="true" signature="121980:122029" ph="select * fro... M_WLS" />
-            <marker date="1557469391424" expanded="true" signature="122086:122135" ph="update M_WLS... " />
-            <marker date="1557469391424" expanded="true" signature="122244:122280" ph="SELECT ID,M_... M_Module2" />
-            <marker date="1557469391424" expanded="true" signature="122462:122508" ph="SELECT ID,M_... M_Module2" />
-            <marker date="1557469391424" expanded="true" signature="122906:122925" ph="INSERT INTO Hl_User... " />
-            <marker date="1557469391424" expanded="true" signature="122906:123601" ph="INSERT INTO Hl_User... " />
-            <marker date="1557469391424" expanded="true" signature="124402:124644" ph="UPDATE Hl_Us... " />
-            <marker date="1557469391424" expanded="true" signature="124792:124837" ph="SELECT count... Hl_User" />
-            <marker date="1557469391424" expanded="true" signature="124792:124849" ph="SELECT count... Hl_User" />
-            <marker date="1557469391424" expanded="true" signature="124980:125017" ph="DELETE FROM " />
+            <marker date="1557473553355" expanded="true" signature="317:401" ph="SELECT disti... Tkd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="317:782" ph="SELECT disti... Tkd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="902:1006" ph="SELECT * FRO... Ckd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="902:1071" ph="SELECT * FRO... Ckd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="1183:1431" ph="SELECT disti... " />
+            <marker date="1557473553355" expanded="true" signature="1191:1430" ph="SELECT * FRO... *" />
+            <marker date="1557473553355" expanded="true" signature="1215:1295" ph="SELECT disti... Rkd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="1549:1750" ph="SELECT disti... Rkd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="1868:2075" ph="SELECT * FRO... Tkd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="1868:2076" ph="SELECT disti... Tkd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="2194:2295" ph="SELECT * FRO... Ckd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="2194:2436" ph="SELECT * FRO... Ckd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="2554:2736" ph="SELECT * FRO... Rkd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="2554:2737" ph="SELECT disti... Rkd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="3226:3341" ph="SELECT UserI... Hl_User" />
+            <marker date="1557473553355" expanded="true" signature="3226:3363" ph="SELECT UserI... Hl_User" />
+            <marker date="1557473553355" expanded="true" signature="3478:3634" ph="SELECT * FRO... Hl_User" />
+            <marker date="1557473553355" expanded="true" signature="3759:4323" ph="UPDATE Ckd_B... " />
+            <marker date="1557473553355" expanded="true" signature="4444:4541" ph="UPDATE M_BCP... " />
+            <marker date="1557473553355" expanded="true" signature="4666:6329" ph="UPDATE Tkd_B... " />
+            <marker date="1557473553355" expanded="true" signature="6452:6626" ph="UPDATE M_CPI... " />
+            <marker date="1557473553355" expanded="true" signature="6750:6935" ph="UPDATE M_CPI... " />
+            <marker date="1557473553355" expanded="true" signature="7055:7246" ph="UPDATE M_BCP... " />
+            <marker date="1557473553355" expanded="true" signature="7371:9258" ph="UPDATE Rkd_B... " />
+            <marker date="1557473553355" expanded="true" signature="9377:9456" ph="UPDATE M_WLB... " />
+            <marker date="1557473553355" expanded="true" signature="9579:9914" ph="UPDATE Tkd_W... " />
+            <marker date="1557473553355" expanded="true" signature="10034:10114" ph="UPDATE M_WLO... " />
+            <marker date="1557473553355" expanded="true" signature="10238:10539" ph="UPDATE Ckd_W... " />
+            <marker date="1557473553355" expanded="true" signature="10658:10895" ph="UPDATE M_WLI... " />
+            <marker date="1557473553355" expanded="true" signature="11018:11285" ph="UPDATE Rkd_W... " />
+            <marker date="1557473553355" expanded="true" signature="11355:11426" ph="UPDATE M_CPI... " />
+            <marker date="1557473553355" expanded="true" signature="11498:11568" ph="UPDATE M_CPI... " />
+            <marker date="1557473553355" expanded="true" signature="11635:11706" ph="UPDATE M_BCP... " />
+            <marker date="1557473553355" expanded="true" signature="11772:11839" ph="UPDATE M_WLI... " />
+            <marker date="1557473553355" expanded="true" signature="11965:12252" ph="SELECT M_CPI... M_CPIn2" />
+            <marker date="1557473553355" expanded="true" signature="12379:12656" ph="SELECT M_CPI... M_CPIn" />
+            <marker date="1557473553355" expanded="true" signature="12775:13098" ph="SELECT M_BCP... M_BCPIn" />
+            <marker date="1557473553355" expanded="true" signature="13212:13764" ph="UPDATE Tkd_B... " />
+            <marker date="1557473553355" expanded="true" signature="13876:14492" ph="UPDATE Tkd_B... " />
+            <marker date="1557473553355" expanded="true" signature="14606:14816" ph="UPDATE Ckd_B... " />
+            <marker date="1557473553355" expanded="true" signature="14606:14817" ph="UPDATE Ckd_B... " />
+            <marker date="1557473553355" expanded="true" signature="14929:15151" ph="UPDATE Ckd_B... " />
+            <marker date="1557473553355" expanded="true" signature="15264:16079" ph="UPDATE Rkd_B... " />
+            <marker date="1557473553355" expanded="true" signature="16191:17006" ph="UPDATE Rkd_B... " />
+            <marker date="1557473553355" expanded="true" signature="17117:17501" ph="UPDATE Tkd_W... " />
+            <marker date="1557473553355" expanded="true" signature="17611:18034" ph="UPDATE Tkd_W... " />
+            <marker date="1557473553355" expanded="true" signature="18146:18528" ph="UPDATE Ckd_W... " />
+            <marker date="1557473553355" expanded="true" signature="18639:19060" ph="UPDATE Ckd_W... " />
+            <marker date="1557473553355" expanded="true" signature="19171:19466" ph="UPDATE Rkd_W... " />
+            <marker date="1557473553355" expanded="true" signature="19576:19896" ph="UPDATE Rkd_W... " />
+            <marker date="1557473553355" expanded="true" signature="20026:20141" ph="SELECT * FRO... M_BCPBk" />
+            <marker date="1557473553355" expanded="true" signature="20254:20295" ph="SELECT * FRO... Tkd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="20425:20539" ph="SELECT * FRO... M_CPOut" />
+            <marker date="1557473553355" expanded="true" signature="20669:20709" ph="SELECT * FRO... M_CPOut" />
+            <marker date="1557473553355" expanded="true" signature="20822:20878" ph="SELECT * FRO... Ckd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="21009:21317" ph="SELECT QRCod... " />
+            <marker date="1557473553355" expanded="true" signature="21444:21506" ph="SELECT *,CP_... M_CPIn2" />
+            <marker date="1557473553355" expanded="true" signature="21634:21953" ph="SELECT QRCod... " />
+            <marker date="1557473553355" expanded="true" signature="22087:22413" ph="SELECT QRCod... " />
+            <marker date="1557473553355" expanded="true" signature="22544:22605" ph="SELECT *,CP_... M_CPIn" />
+            <marker date="1557473553355" expanded="true" signature="22742:22810" ph="SELECT *,CP_... M_CPIn" />
+            <marker date="1557473553355" expanded="true" signature="22742:22861" ph="SELECT *,CP_... M_CPIn" />
+            <marker date="1557473553355" expanded="true" signature="22833:22860" ph="SELECT QRCod... M_CPS" />
+            <marker date="1557473553355" expanded="true" signature="22990:23371" ph="SELECT QRCod... " />
+            <marker date="1557473553355" expanded="true" signature="23484:23523" ph="SELECT * FRO... Rkd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="23651:23755" ph="SELECT * FRO... M_WLBk" />
+            <marker date="1557473553355" expanded="true" signature="23877:23945" ph="SELECT *,SHL... M_WLBk" />
+            <marker date="1557473553355" expanded="true" signature="24056:24096" ph="SELECT * FRO... Tkd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="24225:24330" ph="SELECT * FRO... M_WLOUT" />
+            <marker date="1557473553355" expanded="true" signature="24453:24572" ph="SELECT *,SHL... M_WLOUT" />
+            <marker date="1557473553355" expanded="true" signature="24683:24738" ph="SELECT * FRO... Ckd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="24865:24970" ph="SELECT * FRO... M_WLIn" />
+            <marker date="1557473553355" expanded="true" signature="25081:25119" ph="SELECT * FRO... Rkd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="26802:26869" ph="SELECT * FRO... Ckd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="26802:26884" ph="SELECT * FRO... Ckd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="27398:27478" ph="SELECT disti... Rkd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="27398:28251" ph="SELECT disti... " />
+            <marker date="1557473553355" expanded="true" signature="32598:32890" ph="SELECT FzrID... Ckd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="32982:33763" ph="SELECT FzrID... Tkd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="33855:34754" ph="SELECT FzrID... Rkd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="34845:35383" ph="SELECT BzID Tkd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="35474:36011" ph="SELECT BzID Ckd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="36102:36626" ph="SELECT BzID Rkd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="36736:36806" ph="SELECT * FRO... M_CPIn2" />
+            <marker date="1557473553355" expanded="true" signature="36921:36964" ph="SELECT * FRO... M_CPIn" />
+            <marker date="1557473553355" expanded="true" signature="37778:37842" ph="SELECT SortN... Hl_Sort" />
+            <marker date="1557473553355" expanded="true" signature="37954:38233" ph="SELECT * FRO... M_BCPIn" />
+            <marker date="1557473553355" expanded="true" signature="38347:38817" ph="SELECT M_WLI... M_WLIn" />
+            <marker date="1557473553355" expanded="true" signature="38947:39120" ph="SELECT m.CP_... M_CPS" />
+            <marker date="1557473553355" expanded="true" signature="39227:39285" ph="SELECT * FRO... M_CPS" />
+            <marker date="1557473553355" expanded="true" signature="41164:41212" ph="DELETE FROM " />
+            <marker date="1557473553355" expanded="true" signature="41338:41512" ph="SELECT m.CP_... M_CPS2" />
+            <marker date="1557473553355" expanded="true" signature="41574:41624" ph="DELETE FROM " />
+            <marker date="1557473553355" expanded="true" signature="41683:41732" ph="DELETE FROM " />
+            <marker date="1557473553355" expanded="true" signature="43652:45292" ph="UPDATE M_CPI... " />
+            <marker date="1557473553355" expanded="true" signature="45402:46719" ph="UPDATE M_CPS... " />
+            <marker date="1557473553355" expanded="true" signature="46825:46884" ph="SELECT * FRO... M_CPS2" />
+            <marker date="1557473553355" expanded="true" signature="53241:53306" ph="SELECT COUNT... M_CPS" />
+            <marker date="1557473553355" expanded="true" signature="53416:53445" ph="SELECT * FRO... M_CPS2" />
+            <marker date="1557473553355" expanded="true" signature="53416:53468" ph="SELECT * FRO... M_CPIn2" />
+            <marker date="1557473553355" expanded="true" signature="55798:55864" ph="SELECT COUNT... M_CPS2" />
+            <marker date="1557473553355" expanded="true" signature="60455:60589" ph="UPDATE M_BCP... " />
+            <marker date="1557473553355" expanded="true" signature="60707:60837" ph="UPDATE M_BCP... " />
+            <marker date="1557473553355" expanded="true" signature="65065:65131" ph="SELECT COUNT... M_BCPS" />
+            <marker date="1557473553355" expanded="true" signature="68822:68879" ph="SELECT * FRO... Tkd_Bcp" />
+            <marker date="1557473553355" expanded="true" signature="69004:69301" ph="SELECT M_BCP... M_BCPTempS" />
+            <marker date="1557473553355" expanded="true" signature="73567:73701" ph="UPDATE M_BCP... " />
+            <marker date="1557473553355" expanded="true" signature="73763:73816" ph="DELETE FROM " />
+            <marker date="1557473553355" expanded="true" signature="73933:74064" ph="UPDATE M_BCP... " />
+            <marker date="1557473553355" expanded="true" signature="77420:77487" ph="SELECT COUNT... M_BCPTl" />
+            <marker date="1557473553355" expanded="true" signature="77600:77663" ph="SELECT * FRO... M_BCPTempS" />
+            <marker date="1557473553355" expanded="true" signature="77790:78247" ph="SELECT M_BCP... M_BCPTempS" />
+            <marker date="1557473553355" expanded="true" signature="78364:78450" ph="UPDATE M_BCP... " />
+            <marker date="1557473553355" expanded="true" signature="83130:83200" ph="SELECT COUNT... M_BCPTempS" />
+            <marker date="1557473553355" expanded="true" signature="83323:83732" ph="update M_CPI... " />
+            <marker date="1557473553355" expanded="true" signature="83849:84492" ph="update M_CPI... " />
+            <marker date="1557473553355" expanded="true" signature="84605:85575" ph="update M_BCP... " />
+            <marker date="1557473553355" expanded="true" signature="85646:85833" ph="UPDATE Rkd_B... " />
+            <marker date="1557473553355" expanded="true" signature="85736:85832" ph="select m2.In... M_CPIn" />
+            <marker date="1557473553355" expanded="true" signature="90794:90924" ph="UPDATE M_WLT... " />
+            <marker date="1557473553355" expanded="true" signature="91015:91081" ph="SELECT COUNT... M_WLTl" />
+            <marker date="1557473553355" expanded="true" signature="91196:91278" ph="SELECT ID , M_WLTl" />
+            <marker date="1557473553355" expanded="true" signature="91394:91477" ph="SELECT ID , M_BCPTl" />
+            <marker date="1557473553355" expanded="true" signature="96483:96515" ph="SELECT * FRO... Hl_CheJian" />
+            <marker date="1557473553355" expanded="true" signature="96637:96770" ph="UPDATE M_WLT... " />
+            <marker date="1557473553355" expanded="true" signature="98645:98778" ph="UPDATE M_WLT... " />
+            <marker date="1557473553355" expanded="true" signature="98839:98891" ph="DELETE FROM " />
+            <marker date="1557473553355" expanded="true" signature="99006:99135" ph="UPDATE M_WLS... " />
+            <marker date="1557473553355" expanded="true" signature="100813:100875" ph="SELECT * FRO... M_WLTempS" />
+            <marker date="1557473553355" expanded="true" signature="100984:101040" ph="SELECT * FRO... Tkd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="101162:101426" ph="SELECT M_WLT... M_WLTempS" />
+            <marker date="1557473553355" expanded="true" signature="104659:104817" ph="UPDATE M_WLT... " />
+            <marker date="1557473553355" expanded="true" signature="104903:104972" ph="SELECT COUNT... M_WLTempS" />
+            <marker date="1557473553355" expanded="true" signature="106475:106509" ph="SELECT * FRO... Hl_UserGroup" />
+            <marker date="1557473553355" expanded="true" signature="106626:106751" ph="UPDATE M_WLS... " />
+            <marker date="1557473553355" expanded="true" signature="109633:109691" ph="SELECT * FRO... M_WLS" />
+            <marker date="1557473553355" expanded="true" signature="109800:109855" ph="SELECT * FRO... Ckd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="109967:110141" ph="UPDATE M_WLS... " />
+            <marker date="1557473553355" expanded="true" signature="111694:111747" ph="SELECT count... M_WLS" />
+            <marker date="1557473553355" expanded="true" signature="112099:112322" ph="SELECT M_WLS... M_WLS" />
+            <marker date="1557473553355" expanded="true" signature="115745:115768" ph="SELECT * FRO... Hl_Sort" />
+            <marker date="1557473553355" expanded="true" signature="115880:115924" ph="SELECT * FRO... Hl_Product" />
+            <marker date="1557473553355" expanded="true" signature="116029:116054" ph="SELECT * FRO... Pdt_Sort2" />
+            <marker date="1557473553355" expanded="true" signature="116162:116322" ph="SELECT mwlin... M_WLIn" />
+            <marker date="1557473553355" expanded="true" signature="119867:120359" ph="update M_WLI... " />
+            <marker date="1557473553355" expanded="true" signature="122242:122283" ph="select * fro... Rkd_Wl" />
+            <marker date="1557473553355" expanded="true" signature="122395:122460" ph="select *,Sor... M_WLIn" />
+            <marker date="1557473553355" expanded="true" signature="122569:122618" ph="select * fro... M_WLS" />
+            <marker date="1557473553355" expanded="true" signature="122675:122724" ph="update M_WLS... " />
+            <marker date="1557473553355" expanded="true" signature="122833:122869" ph="SELECT ID,M_... M_Module2" />
+            <marker date="1557473553355" expanded="true" signature="123051:123097" ph="SELECT ID,M_... M_Module2" />
+            <marker date="1557473553355" expanded="true" signature="123495:123514" ph="INSERT INTO Hl_User... " />
+            <marker date="1557473553355" expanded="true" signature="123495:124190" ph="INSERT INTO Hl_User... " />
+            <marker date="1557473553355" expanded="true" signature="124991:125233" ph="UPDATE Hl_Us... " />
+            <marker date="1557473553355" expanded="true" signature="125381:125426" ph="SELECT count... Hl_User" />
+            <marker date="1557473553355" expanded="true" signature="125381:125438" ph="SELECT count... Hl_User" />
+            <marker date="1557473553355" expanded="true" signature="125569:125606" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
