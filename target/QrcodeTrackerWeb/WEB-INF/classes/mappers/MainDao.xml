@@ -1962,6 +1962,7 @@ SmlPk45		= #{smlPk45},
                 SC_Time,
             </if>
             DWZL,
+            PCZL,
             <if test="ksTime!=null">
                 KS_Time,
             </if>
@@ -2027,6 +2028,7 @@ SmlPk45		= #{smlPk45},
                 #{scTime},
             </if>
             #{dwzl},
+            #{rkzl},
             <if test="ksTime!=null">
                 #{ksTime},
             </if>
@@ -2093,29 +2095,65 @@ SmlPk45		= #{smlPk45},
             <if test="thRq!=null">
                 ThRq,
             </if>
-            <if test="shrr!=null">
-                Shr,
-            </if>
             <if test="thr!=null">
                 ThR,
             </if>
+            <if test="shrr!=null">
+                Shr,
+            </if>
+            <if test="bzID!=null">
                 BzID,
+            </if>
+            <if test="bz!=null">
+                Bz,
+            </if>
+            <if test="bzStatus!=null">
                 BzStatus,
+            </if>
+            <if test="tlfzrID!=null">
                 TlfzrID,
-                TlfzrStatus,
+            </if>
             <if test="thFzr!=null">
                 ThFzr,
             </if>
+            <if test="tlfzrStatus!=null">
+                TlfzrStatus,
+            </if>
+            <if test="zjyID!=null">
                 ZjyID,
+            </if>
+            <if test="zjy!=null">
+                Zjy,
+            </if>
+            <if test="zjyStatus!=null">
                 ZjyStatus,
+            </if>
+            <if test="zjldID!=null">
                 ZjldID,
+            </if>
+            <if test="zjld!=null">
+                Zjld,
+            </if>
+            <if test="zjldStatus!=null">
                 ZjldStatus,
+            </if>
+            <if test="kgID!=null">
                 KgID,
+            </if>
+            <if test="kg!=null">
+                Kg,
+            </if>
+            <if test="kgStatus!=null">
                 KgStatus,
+            </if>
+            <if test="slfzrID!=null">
                 SlfzrID,
-                SlfzrStatus,
+            </if>
             <if test="shFzr!=null">
                 ShFzr,
+            </if>
+            <if test="slfzrStatus!=null">
+                SlfzrStatus,
             </if>
             <if test="remark!=null">
                 Remark,
@@ -2132,29 +2170,65 @@ SmlPk45		= #{smlPk45},
             <if test="thRq!=null">
                 #{thRq},
             </if>
-            <if test="shrr!=null">
-                #{shrr},
-            </if>
             <if test="thr!=null">
                 #{thr},
             </if>
+            <if test="shrr!=null">
+                #{shrr},
+            </if>
+            <if test="bzID!=null">
                 #{bzID},
+            </if>
+            <if test="bz!=null">
+                #{bz},
+            </if>
+            <if test="bzStatus!=null">
                 #{bzStatus},
+            </if>
+            <if test="tlfzrID!=null">
                 #{tlfzrID},
-                #{tlfzrStatus},
+            </if>
             <if test="thFzr!=null">
                 #{thFzr},
             </if>
+            <if test="tlfzrStatus!=null">
+                #{tlfzrStatus},
+            </if>
+            <if test="zjyID!=null">
                 #{zjyID},
+            </if>
+            <if test="zjy!=null">
+                #{zjy},
+            </if>
+            <if test="zjyStatus!=null">
                 #{zjyStatus},
+            </if>
+            <if test="zjldID!=null">
                 #{zjldID},
+            </if>
+            <if test="zjld!=null">
+                #{zjld},
+            </if>
+            <if test="zjldStatus!=null">
                 #{zjldStatus},
+            </if>
+            <if test="kgID!=null">
                 #{kgID},
+            </if>
+            <if test="kg!=null">
+                #{kg},
+            </if>
+            <if test="kgStatus!=null">
                 #{kgStatus},
+            </if>
+            <if test="slfzrID!=null">
                 #{slfzrID},
-                #{slfzrStatus},
+            </if>
             <if test="shFzr!=null">
                 #{shFzr},
+            </if>
+            <if test="slfzrStatus!=null">
+                #{slfzrStatus},
             </if>
             <if test="remark!=null">
                 #{remark},
