@@ -2204,11 +2204,10 @@ public class MainController {
                 BcpTkdBean bean = mainService.getBcpTkdBean(param.getDh());
                 dataResult.setThDw(bean.getThDw());
                 dataResult.setBackDh(bean.getBackDh());
-                dataResult.setRemark(bean.getRemark());
-                dataResult.setShFzr(bean.getShFzr());
-                dataResult.setThFzr(bean.getThFzr());
-                dataResult.setThR(bean.getThR());
                 dataResult.setThRq(bean.getThRq());
+                dataResult.setThR(bean.getThR());
+                dataResult.setZjy(bean.getZjy());
+                dataResult.setRemark(bean.getRemark());
                 List<BcpTkShowBean> wlinDataList = mainService.getBcpTkShowBeanListByBackDh(param.getDh());
                 dataResult.setBeans(wlinDataList);
                 result.setResult(dataResult);
