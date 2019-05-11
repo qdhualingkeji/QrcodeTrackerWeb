@@ -390,4 +390,5 @@ public interface MainDao {
 
     int deleteUser(int userId);
 
+    int checkExistByQrCodeId(@Param("qrCodeId") String qrCodeId, @Param("currentFunctionType") Integer currentFunctionType);
 }

@@ -4033,4 +4033,34 @@ SmlPk45		= #{smlPk45},
     <delete id="deleteUser">
         DELETE FROM Hl_User WHERE UserID=#{0}
     </delete>
+
+    <select id="checkExistByQrCodeId" resultType="java.lang.Integer">
+        <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@WL">
+            <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@MATERIAL_IN">
+                SELECT count(*) FROM M_WLIn WHERE QRCode_ID=#{qrCodeId}
+            </if>
+            <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@MATERIAL_OUT">
+                SELECT count(*) FROM M_WLOUT WHERE QRCode_ID=#{qrCodeId}
+            </if>
+            <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@MATERIAL_RETURN">
+                SELECT count(*) FROM M_WLBK WHERE QRCode_ID=#{qrCodeId}
+            </if>
+        </if>
+        <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@BCP">
+            <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@HALF_PRODUCT_IN">
+                SELECT count(*) FROM M_BCPIn WHERE QRCode_ID=#{qrCodeId}
+            </if>
+            <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@HALF_PRODUCT_RETURN">
+                SELECT count(*) FROM M_BCPBk WHERE QRCode_ID=#{qrCodeId}
+            </if>
+        </if>
+        <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@BIG_CP">
+            <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@PRODUCT_IN">
+                SELECT count(*) FROM M_CPIn2 WHERE QRCode_ID=#{qrCodeId}
+            </if>
+            <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@PRODUCT_OUT">
+                SELECT count(*) FROM M_CPOut WHERE QRCode_ID=#{qrCodeId}
+            </if>
+        </if>
+    </select>
 </mapper>

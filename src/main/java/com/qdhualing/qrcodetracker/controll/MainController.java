@@ -3539,4 +3539,23 @@ public class MainController {
         }
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
     }
+
+    @RequestMapping(value = "/checkExistByQrCodeId", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult checkExistByQrCodeId(String json){
+        CheckExistParam param = ParamsUtils.handleParams(json, CheckExistParam.class);
+        ActionResult<DataResult> result = new ActionResult<DataResult>();
+        String qrCodeId = param.getQrCodeId();
+        Integer currentFunctionType = param.getCurrentFunctionType();
+        boolean exist = mainService.checkExistByQrCodeId(qrCodeId,currentFunctionType);
+        System.out.println("exist==="+exist);
+        if(exist) {
+            System.out.println("111111111");
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "已存在");
+        }
+        else {
+            System.out.println("2222222222");
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "不存在");
+        }
+    }
 }

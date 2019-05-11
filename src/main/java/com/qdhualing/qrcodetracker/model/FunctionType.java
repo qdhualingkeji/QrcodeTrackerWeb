@@ -35,4 +35,10 @@ public class FunctionType {
     //退库业务线
     public static final int MATERIAL_RETURN = 36;
 
+    //半成品投料业务线
+    public static final int HALF_PRODUCT_THROW = 37;
+
+    //半成品退库业务线
+    public static final int HALF_PRODUCT_RETURN = 38;
+
 }

@@ -985,4 +985,9 @@ public class MainService {
 	public List<BcpRkdBean> getCpRkCanModifyData(String realName) {
 		return mainDao.getCpRkCanModifyData(realName);
 	}
+
+	public boolean checkExistByQrCodeId(String qrCodeId, Integer currentFunctionType) {
+		int count=mainDao.checkExistByQrCodeId(qrCodeId, currentFunctionType);
+		return count>0?true:false;
+	}
 }
