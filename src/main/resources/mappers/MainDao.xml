@@ -4124,5 +4124,13 @@ SmlPk45		= #{smlPk45},
                 SELECT count(*) FROM M_CPOut WHERE QRCode_ID=#{qrCodeId}
             </if>
         </if>
+        <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@SMALL_CP">
+            <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@PRODUCT_IN">
+                SELECT count(*) FROM M_CPIn WHERE QRCode_ID=#{qrCodeId} AND InDh IS NOT NULL
+            </if>
+            <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@PRODUCT_OUT">
+                SELECT count(*) FROM M_CPOut WHERE QRCode_ID=#{qrCodeId}
+            </if>
+        </if>
     </select>
 </mapper>
