@@ -2339,6 +2339,36 @@ SmlPk45		= #{smlPk45},
             <if test="dw!=null">
                 DW,
             </if>
+            <if test="yl1!=null">
+                Yl_1,
+            </if>
+            <if test="yl2!=null">
+                Yl_2,
+            </if>
+            <if test="yl3!=null">
+                Yl_3,
+            </if>
+            <if test="yl4!=null">
+                Yl_4,
+            </if>
+            <if test="yl5!=null">
+                Yl_5,
+            </if>
+            <if test="yl6!=null">
+                Yl_6,
+            </if>
+            <if test="yl7!=null">
+                Yl_7,
+            </if>
+            <if test="yl8!=null">
+                Yl_8,
+            </if>
+            <if test="yl9!=null">
+                Yl_9,
+            </if>
+            <if test="yl10!=null">
+                Yl_10,
+            </if>
         </trim>
         values
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -2399,6 +2429,36 @@ SmlPk45		= #{smlPk45},
             <if test="dw!=null">
                 #{dw},
             </if>
+            <if test="yl1!=null">
+                #{yl1},
+            </if>
+            <if test="yl2!=null">
+                #{yl2},
+            </if>
+            <if test="yl3!=null">
+                #{yl3},
+            </if>
+            <if test="yl4!=null">
+                #{yl4},
+            </if>
+            <if test="yl5!=null">
+                #{yl5},
+            </if>
+            <if test="yl6!=null">
+                #{yl6},
+            </if>
+            <if test="yl7!=null">
+                #{yl7},
+            </if>
+            <if test="yl8!=null">
+                #{yl8},
+            </if>
+            <if test="yl9!=null">
+                #{yl9},
+            </if>
+            <if test="yl10!=null">
+                #{yl10},
+            </if>
         </trim>
     </insert>
 
@@ -2415,7 +2475,9 @@ SmlPk45		= #{smlPk45},
     </select>
 
     <select id="getBcpTempSData" resultType="com.qdhualing.qrcodetracker.bean.BcpThrowShowDataResult">
-        SELECT M_BCPTempS.ProductName, M_BCPTempS.SortID, M_BCPTempS.DWZL , M_BCPTempS.SHL , M_BCPTempS.YLPC , M_BCPTempS.SCPC , M_BCPTempS.SC_Time , M_BCPTempS.CheJian, M_BCPTempS.GX,M_BCPTempS.CZY, M_BCPIn.ZJY, M_BCPIn.ZJZT jyzt, M_BCPTempS.GG , M_BCPTempS.DW , Pdt_Sort2.Sort_Name
+        SELECT M_BCPTempS.ProductName, M_BCPTempS.SortID, M_BCPTempS.DWZL , M_BCPTempS.SHL , M_BCPTempS.YLPC , M_BCPTempS.SCPC , M_BCPTempS.SC_Time , M_BCPTempS.CheJian, M_BCPTempS.GX,
+        M_BCPTempS.Yl_1,M_BCPTempS.Yl_2,M_BCPTempS.Yl_3,M_BCPTempS.Yl_4,M_BCPTempS.Yl_5,M_BCPTempS.Yl_6,M_BCPTempS.Yl_7,M_BCPTempS.Yl_8,M_BCPTempS.Yl_9,M_BCPTempS.Yl_10,
+        M_BCPTempS.CZY, M_BCPIn.ZJY, M_BCPIn.ZJZT jyzt, M_BCPTempS.GG , M_BCPTempS.DW , Pdt_Sort2.Sort_Name
         FROM M_BCPTempS LEFT JOIN M_BCPIn on M_BCPTempS.QRCode_ID=M_BCPIn.QRCode_ID LEFT JOIN Pdt_Sort2 on M_BCPTempS.SortID = Pdt_Sort2.ID
         WHERE M_BCPTempS.QRCode_ID = #{0}
     </select>
@@ -4037,7 +4099,7 @@ SmlPk45		= #{smlPk45},
     <select id="checkExistByQrCodeId" resultType="java.lang.Integer">
         <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@WL">
             <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@MATERIAL_IN">
-                SELECT count(*) FROM M_WLIn WHERE QRCode_ID=#{qrCodeId}
+                SELECT count(*) FROM M_WLIn WHERE QRCode_ID=#{qrCodeId} AND InDh IS NOT NULL
             </if>
             <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@MATERIAL_OUT">
                 SELECT count(*) FROM M_WLOUT WHERE QRCode_ID=#{qrCodeId}
@@ -4048,7 +4110,7 @@ SmlPk45		= #{smlPk45},
         </if>
         <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@BCP">
             <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@HALF_PRODUCT_IN">
-                SELECT count(*) FROM M_BCPIn WHERE QRCode_ID=#{qrCodeId}
+                SELECT count(*) FROM M_BCPIn WHERE QRCode_ID=#{qrCodeId} AND InDh IS NOT NULL
             </if>
             <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@HALF_PRODUCT_RETURN">
                 SELECT count(*) FROM M_BCPBk WHERE QRCode_ID=#{qrCodeId}
@@ -4056,7 +4118,7 @@ SmlPk45		= #{smlPk45},
         </if>
         <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@BIG_CP">
             <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@PRODUCT_IN">
-                SELECT count(*) FROM M_CPIn2 WHERE QRCode_ID=#{qrCodeId}
+                SELECT count(*) FROM M_CPIn2 WHERE QRCode_ID=#{qrCodeId} AND InDh IS NOT NULL
             </if>
             <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@PRODUCT_OUT">
                 SELECT count(*) FROM M_CPOut WHERE QRCode_ID=#{qrCodeId}

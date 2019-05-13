@@ -863,6 +863,16 @@ public class MainController {
                 bcpTLParam.setGg(bcpTempSBean.getGg());
                 bcpTLParam.setSortId(bcpTempSBean.getSortID());
                 bcpTLParam.setYlpc(bcpTempSBean.getYlpc());
+                bcpTLParam.setYl1(bcpTempSBean.getYl1());
+                bcpTLParam.setYl2(bcpTempSBean.getYl2());
+                bcpTLParam.setYl3(bcpTempSBean.getYl3());
+                bcpTLParam.setYl4(bcpTempSBean.getYl4());
+                bcpTLParam.setYl5(bcpTempSBean.getYl5());
+                bcpTLParam.setYl6(bcpTempSBean.getYl6());
+                bcpTLParam.setYl7(bcpTempSBean.getYl7());
+                bcpTLParam.setYl8(bcpTempSBean.getYl8());
+                bcpTLParam.setYl9(bcpTempSBean.getYl9());
+                bcpTLParam.setYl10(bcpTempSBean.getYl10());
                 int b = mainService.getBcpTLDataCount(bcpTLParam.getQrcodeId());
                 if (b <= 0) {
                     //生成半成品投料记录
@@ -3540,6 +3550,11 @@ public class MainController {
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
     }
 
+    /**
+     * 验证原料是否存在
+     * @param json
+     * @return
+     */
     @RequestMapping(value = "/checkExistByQrCodeId", method = RequestMethod.POST)
     @ResponseBody
     public ActionResult checkExistByQrCodeId(String json){
@@ -3548,13 +3563,10 @@ public class MainController {
         String qrCodeId = param.getQrCodeId();
         Integer currentFunctionType = param.getCurrentFunctionType();
         boolean exist = mainService.checkExistByQrCodeId(qrCodeId,currentFunctionType);
-        System.out.println("exist==="+exist);
         if(exist) {
-            System.out.println("111111111");
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "已存在");
         }
         else {
-            System.out.println("2222222222");
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "不存在");
         }
     }
