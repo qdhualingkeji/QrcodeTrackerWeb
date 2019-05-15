@@ -320,9 +320,10 @@
         WHERE M_CPIn.QRCode_ID = #{0}
     </select>
     <select id="getBcpInShowData" resultType="com.qdhualing.qrcodetracker.bean.BcpTrackResult">
-        SELECT M_BCPIn.ProductName , M_BCPIn.YLPC , M_BCPIn.SCPC ,M_BCPIn.BCP_Code,
+        SELECT M_BCPIn.ProductName, M_BCPIn.SortID, M_BCPIn.YLPC , M_BCPIn.SCPC ,M_BCPIn.BCP_Code,
         M_BCPIn.SC_Time , M_BCPIn.GG , Pdt_Sort2.Sort_Name ,M_BCPIn.DWZL,
-        M_BCPIn.CZY ,M_BCPIn.DW ,M_BCPIn.CheJian ,M_BCPIn.GX
+        M_BCPIn.CZY ,M_BCPIn.DW ,M_BCPIn.CheJian ,M_BCPIn.GX ,
+        M_BCPIn.Yl_1,M_BCPIn.Yl_2,M_BCPIn.Yl_3,M_BCPIn.Yl_4,M_BCPIn.Yl_5,M_BCPIn.Yl_6,M_BCPIn.Yl_7,M_BCPIn.Yl_8,M_BCPIn.Yl_9,M_BCPIn.Yl_10
         FROM M_BCPIn LEFT JOIN Pdt_Sort2 on M_BCPIn.SortID = Pdt_Sort2.ID
         WHERE M_BCPIn.QRCode_ID = #{0}
     </select>
@@ -4016,7 +4017,7 @@ SmlPk45		= #{smlPk45},
         <if test="shenFen=='zjy'||shenFen=='zjld'">
             AND M_name='质检'
         </if>
-        <if test="shenFen=='bz'||shenFen=='fzr'">
+        <if test="shenFen=='bz'||shenFen=='kg'||shenFen=='fzr'">
             AND M_name='审核'
         </if>
         <if test="shenFen=='ptyg'">
@@ -4101,20 +4102,24 @@ SmlPk45		= #{smlPk45},
             <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@MATERIAL_IN">
                 SELECT count(*) FROM M_WLIn WHERE QRCode_ID=#{qrCodeId} AND InDh IS NOT NULL
             </if>
+            <!--
             <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@MATERIAL_OUT">
                 SELECT count(*) FROM M_WLOUT WHERE QRCode_ID=#{qrCodeId}
             </if>
             <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@MATERIAL_RETURN">
                 SELECT count(*) FROM M_WLBK WHERE QRCode_ID=#{qrCodeId}
             </if>
+            -->
         </if>
         <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@BCP">
             <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@HALF_PRODUCT_IN">
                 SELECT count(*) FROM M_BCPIn WHERE QRCode_ID=#{qrCodeId} AND InDh IS NOT NULL
             </if>
+            <!--
             <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@HALF_PRODUCT_RETURN">
                 SELECT count(*) FROM M_BCPBk WHERE QRCode_ID=#{qrCodeId}
             </if>
+            -->
         </if>
         <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@BIG_CP">
             <if test="currentFunctionType==@com.qdhualing.qrcodetracker.model.FunctionType@PRODUCT_IN">

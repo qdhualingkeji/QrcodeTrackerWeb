@@ -1420,7 +1420,8 @@ public class MainController {
         ActionResult<BcpTrackResult> result = new ActionResult<BcpTrackResult>();
         if (param != null) {
             try {
-                BcpThrowShowDataResult dataResult = mainService.getBcpTempSData(param.getQrCodeId());
+                //BcpThrowShowDataResult dataResult = mainService.getBcpTempSData(param.getQrCodeId());
+                BcpTrackResult dataResult = mainService.getBcpInShowData(param.getQrCodeId()).get(0);
                 if (dataResult == null) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "查无此料");
                 } else {
