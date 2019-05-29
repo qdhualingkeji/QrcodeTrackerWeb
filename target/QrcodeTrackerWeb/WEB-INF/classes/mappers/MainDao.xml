@@ -29,7 +29,7 @@
     <select id="getCpRkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpRkdBean">
         SELECT distinct r.*
         FROM Rkd_Bcp r,M_CPIn2 m
-        WHERE JhR = #{0} AND r.InDh=m.InDh AND (BzStatus = 2 OR FzrStatus = 2 OR ZjyStatus = 2 OR ZjldStatus = 2 OR FzrStatus = 0 AND ZjyStatus = 0)
+        WHERE JhR = #{0} AND r.InDh=m.InDh AND (BzStatus = 2 OR FlfzrStatus = 2 OR ZjyStatus = 2 OR ZjldStatus = 2 OR KgStatus = 2 OR LlfzrStatus = 2 OR FlfzrStatus = 0 AND ZjyStatus = 0)
     </select>
     <select id="getWlTkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.WlTkdBean">
         SELECT distinct t.*
