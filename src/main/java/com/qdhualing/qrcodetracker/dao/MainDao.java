@@ -48,6 +48,8 @@ public interface MainDao {
     int createWLWT_CKD(CreateWLCKDParam ckdParam);
     //物料出库获取已知数据用于显示不可修改
     WLOutShowDataResult getWLSData(String qrcodeId);
+    //半成品出库获取已知数据用于显示不可修改
+    BCPOutShowDataResult getBCPSData(String qrcodeId);
     //查询物料库存表是否已存在记录
     Integer queryWLS(String s);
     //插入物料库存表记录
@@ -391,4 +393,5 @@ public interface MainDao {
     int deleteUser(int userId);
 
     int checkExistByQrCodeId(@Param("qrCodeId") String qrCodeId, @Param("currentFunctionType") Integer currentFunctionType);
+
 }

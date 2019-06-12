@@ -131,6 +131,12 @@ public class MainService {
 		return result;
 	}
 
+	public BCPOutShowDataResult getBCPSData(String qrcodeId) {
+		BCPOutShowDataResult result = null;
+		result = mainDao.getBCPSData(qrcodeId);
+		return result;
+	}
+
 	public int queryWLS(String s) {
     	Integer bb = mainDao.queryWLS(s);
 		return bb==null?0:bb;
@@ -990,4 +996,5 @@ public class MainService {
 		int count=mainDao.checkExistByQrCodeId(qrCodeId, currentFunctionType);
 		return count>0?true:false;
 	}
+
 }

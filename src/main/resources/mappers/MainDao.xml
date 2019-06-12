@@ -812,6 +812,12 @@
         <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@FZR">
             FzrID
         </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@BZ">
+            BzID
+        </if>
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@LLFZR">
+            LlfzrID
+        </if>
         FROM Ckd_Bcp
         WHERE OutDh = #{0}
     </select>
@@ -1709,6 +1715,9 @@ SmlPk45		= #{smlPk45},
             <if test="outDh!=null">
                 OutDh,
             </if>
+            <if test="lhDw!=null">
+                LhDw,
+            </if>
             <if test="jhDw!=null">
                 JhDw,
             </if>
@@ -1717,6 +1726,24 @@ SmlPk45		= #{smlPk45},
             </if>
             <if test="fhr!=null">
                 FhR,
+            </if>
+            <if test="bzID!=null">
+                BzID,
+            </if>
+            <if test="bz!=null">
+                Bz,
+            </if>
+            <if test="bzStatus!=null">
+                BzStatus,
+            </if>
+            <if test="llfzrID!=null">
+                LlfzrID,
+            </if>
+            <if test="lhFzr!=null">
+                LhFzr,
+            </if>
+            <if test="llfzrStatus!=null">
+                LlfzrStatus,
             </if>
             <if test="kgID!=null">
                 KgID,
@@ -1745,6 +1772,9 @@ SmlPk45		= #{smlPk45},
             <if test="outDh!=null">
                 #{outDh},
             </if>
+            <if test="lhDw!=null">
+                #{lhDw},
+            </if>
             <if test="jhDw!=null">
                 #{jhDw},
             </if>
@@ -1753,6 +1783,24 @@ SmlPk45		= #{smlPk45},
             </if>
             <if test="fhr!=null">
                 #{fhr},
+            </if>
+            <if test="bzID!=null">
+                #{bzID},
+            </if>
+            <if test="bz!=null">
+                #{bz},
+            </if>
+            <if test="bzStatus!=null">
+                #{bzStatus},
+            </if>
+            <if test="llfzrID!=null">
+                #{llfzrID},
+            </if>
+            <if test="lhFzr!=null">
+                #{lhFzr},
+            </if>
+            <if test="llfzrStatus!=null">
+                #{llfzrStatus},
             </if>
             <if test="kgID!=null">
                 #{kgID},
@@ -3303,9 +3351,6 @@ SmlPk45		= #{smlPk45},
             <if test="thRq!=null">
                 ThRq,
             </if>
-            <if test="shrr!=null">
-                Shr,
-            </if>
             <if test="thr!=null">
                 ThR,
             </if>
@@ -3357,9 +3402,6 @@ SmlPk45		= #{smlPk45},
             </if>
             <if test="thRq!=null">
                 #{thRq},
-            </if>
-            <if test="shrr!=null">
-                #{shrr},
             </if>
             <if test="thr!=null">
                 #{thr},
@@ -3642,16 +3684,16 @@ SmlPk45		= #{smlPk45},
 	</select>
 
     <select id="getWLSData" resultType="com.qdhualing.qrcodetracker.bean.WLOutShowDataResult">
-        <!--
-		SELECT M_WLS.ProductName, M_WLS.PCZL , M_WLS.DWZL, M_WLS.SHL, M_WLS.CHD, M_WLS.GG, M_WLS.DW, Pdt_Sort2.Sort_Name
-		FROM M_WLS left JOIN Pdt_Sort2 on M_WLS.SortID = Pdt_Sort2.ID
-		where M_WLS.QRCode_ID = #{qrcodeId}
-		-->
         SELECT M_WLS.ProductName, M_WLS.PCZL , M_WLS.DWZL, M_WLS.SHL, M_WLS.CHD, M_WLS.GG, M_WLS.DW, Hl_Sort.SortName
         FROM M_WLS left JOIN Hl_Sort on M_WLS.SortID = Hl_Sort.SortID
         where M_WLS.QRCode_ID = #{qrcodeId}
 	</select>
 
+    <select id="getBCPSData" resultType="com.qdhualing.qrcodetracker.bean.BCPOutShowDataResult">
+        SELECT M_BCPS.ProductName, M_BCPS.RKZL , M_BCPS.DWZL, M_BCPS.SHL, M_BCPS.GG, M_BCPS.DW, Hl_Sort.SortName
+        FROM M_BCPS left JOIN Hl_Sort on M_BCPS.SortID = Hl_Sort.SortID
+        where M_BCPS.QRCode_ID = #{qrcodeId}
+	</select>
 
     <insert id="createWLWT_CKD" parameterType="com.qdhualing.qrcodetracker.bean.CreateWLCKDParam">
         insert into Ckd_WlWt

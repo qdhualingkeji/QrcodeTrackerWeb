@@ -18,7 +18,6 @@ public class WLOutShowDataResult {
     private float dwzl;
     //剩余数量
     private float shl;
-    private String chd;
     private String gg;
     private String dw;
 
@@ -60,14 +59,6 @@ public class WLOutShowDataResult {
 
     public void setShl(float shl) {
         this.shl = shl;
-    }
-
-    public String getChd() {
-        return chd;
-    }
-
-    public void setChd(String chd) {
-        this.chd = chd;
     }
 
     public String getGg() {

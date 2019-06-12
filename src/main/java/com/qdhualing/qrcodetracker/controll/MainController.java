@@ -350,6 +350,37 @@ public class MainController {
 
     /**
      * @return
+     * @author 逄坤
+     * @desc 半成品出库界面显示数据获取
+     */
+    @RequestMapping(value = "/getBcpOutShowData", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult getBcpOutShowData(String json) {
+        BcpOutGetShowDataParam param = ParamsUtils.handleParams(json, BcpOutGetShowDataParam.class);
+        ActionResult<BCPOutShowDataResult> result = new ActionResult<BCPOutShowDataResult>();
+        if (param != null) {
+            try {
+                BCPOutShowDataResult showDataResult = mainService.getBCPSData(param.getQrcodeId());
+                if (showDataResult == null) {
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "获取基本信息失败,请重新扫码");
+                }
+                else if(showDataResult.getShl()==0&&showDataResult.getDwzl()==0){
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "已经没有库存了,请重新扫码");
+                }
+                else{
+                    result.setResult(showDataResult);
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+            }
+        }
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "获取基本信息失败,请重新扫码");
+    }
+
+    /**
+     * @return
      * @author 马鹏昊
      * @desc 物料出库
      */
@@ -1084,7 +1115,7 @@ public class MainController {
                     BCPCKDResult ckd = new BCPCKDResult();
                     ckd.setOutDh(dh);
                     result.setResult(ckd);
-                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "半成品退库单创建成功");
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "半成品出库单创建成功");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -1646,6 +1677,10 @@ public class MainController {
                 case NotificationType.BCP_TKD:
                     desPerson = mainService.getPersonFromBcpTkd(param);
                     alertMsgStr1="半成品入库（退库）单";
+                    break;
+                case NotificationType.BCP_CKD:
+                    desPerson = mainService.getPersonFromBcpCkd(param);
+                    alertMsgStr1="半成品出库单";
                     break;
                 case NotificationType.CP_RKD:
                     desPerson = mainService.getPersonFromBcpRkd(param);
