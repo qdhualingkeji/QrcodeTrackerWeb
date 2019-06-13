@@ -150,6 +150,12 @@ public class MainService {
 		return mainDao.updateWLS(wlinParam);
 	}
 
+	public BcpSBean findBcpS(String qrCodeId) {
+		BcpSBean bcpsBean = null;
+		bcpsBean = mainDao.findBcpS(qrCodeId);
+		return bcpsBean;
+	}
+
 	public WLSBean findWLS(String qrCodeId) {
     	WLSBean wlsBean = null;
     	wlsBean = mainDao.findWLS(qrCodeId);
@@ -159,6 +165,11 @@ public class MainService {
 	public int insertWLOUT(WLOutParam wlOutParam) {
 		wlOutParam.setBz(1);
 		int a=mainDao.insertWLOUT(wlOutParam);
+		return a;
+	}
+
+	public int insertBcpOUT(BcpOutParam bcpOutParam) {
+		int a=mainDao.insertBcpOUT(bcpOutParam);
 		return a;
 	}
 
@@ -541,9 +552,18 @@ public class MainService {
 		return mainDao.getCpRkNonCheckData(bcprkd);
 	}
 
-	public List<BcpCkdBean> getBcpCkNonCheckData(Integer kgID,Integer fzrID) {
+	public List<BcpCkdBean> getCpCkNonCheckData(Integer kgID,Integer fzrID) {
 		BcpCkdBean bcpCkdBean=new BcpCkdBean();
 		bcpCkdBean.setKgID(kgID);
+		bcpCkdBean.setFzrID(fzrID);
+
+		return mainDao.getCpCkNonCheckData(bcpCkdBean);
+	}
+
+	public List<BcpCkdBean> getBcpCkNonCheckData(Integer kgID, Integer bzID, Integer fzrID) {
+		BcpCkdBean bcpCkdBean=new BcpCkdBean();
+		bcpCkdBean.setKgID(kgID);
+		bcpCkdBean.setBzID(bzID);
 		bcpCkdBean.setFzrID(fzrID);
 
 		return mainDao.getBcpCkNonCheckData(bcpCkdBean);

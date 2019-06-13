@@ -11,7 +11,14 @@ public class BcpCkdBean {
     private String outDh;
     private String lhRq;
     private String fhR;
+    private String lhDw;
     private String jhDw;
+    private Integer bzID;
+    private String bz;
+    private Integer bzStatus;
+    private Integer llfzrID;
+    private String lhfzr;
+    private Integer llfzrStatus;
     private Integer kgID;
     private String kg;
     private Integer kgStatus;
@@ -53,12 +60,68 @@ public class BcpCkdBean {
         this.fhR = fhR;
     }
 
+    public String getLhDw() {
+        return lhDw;
+    }
+
+    public void setLhDw(String lhDw) {
+        this.lhDw = lhDw;
+    }
+
     public String getJhDw() {
         return jhDw;
     }
 
     public void setJhDw(String jhDw) {
         this.jhDw = jhDw;
+    }
+
+    public Integer getBzID() {
+        return bzID;
+    }
+
+    public void setBzID(Integer bzID) {
+        this.bzID = bzID;
+    }
+
+    public String getBz() {
+        return bz;
+    }
+
+    public void setBz(String bz) {
+        this.bz = bz;
+    }
+
+    public Integer getBzStatus() {
+        return bzStatus;
+    }
+
+    public void setBzStatus(Integer bzStatus) {
+        this.bzStatus = bzStatus;
+    }
+
+    public Integer getLlfzrID() {
+        return llfzrID;
+    }
+
+    public void setLlfzrID(Integer llfzrID) {
+        this.llfzrID = llfzrID;
+    }
+
+    public String getLhfzr() {
+        return lhfzr;
+    }
+
+    public void setLhfzr(String lhfzr) {
+        this.lhfzr = lhfzr;
+    }
+
+    public Integer getLlfzrStatus() {
+        return llfzrStatus;
+    }
+
+    public void setLlfzrStatus(Integer llfzrStatus) {
+        this.llfzrStatus = llfzrStatus;
     }
 
     public Integer getKgID() {

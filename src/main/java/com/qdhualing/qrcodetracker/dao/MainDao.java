@@ -56,10 +56,14 @@ public interface MainDao {
     int insertWLS(WLINParam wlinParam);
     //物料入库修改库存表数据（数量加）
     int updateWLS(WLINParam wlinParam);
+    //select半成品库存表记录
+    BcpSBean findBcpS(String qrCodeId);
     //select库存表记录
     WLSBean findWLS(String qrCodeId);
     //插入物料出库记录表记录
     int insertWLOUT(WLOutParam wlOutParam);
+    //插入半成品出库记录表记录
+    int insertBcpOUT(BcpOutParam bcpOutParam);
     //物料出库修改库存表记录（数量减）
     int outUpdateWLS(WLOutParam wlOutParam);
     //查找出库单数据
@@ -222,6 +226,8 @@ public interface MainDao {
     List<BcpRkdBean> getCpRkNonCheckData(BcpRkdBean bcprkd);
 
     List<BcpCkdBean> getBcpCkNonCheckData(BcpCkdBean bcpCkdBean);
+
+    List<BcpCkdBean> getCpCkNonCheckData(BcpCkdBean bcpCkdBean);
 
     List<BcpTkdBean> getBcpTkNonCheckData(BcpTkdBean bcptkd);
 
@@ -393,5 +399,4 @@ public interface MainDao {
     int deleteUser(int userId);
 
     int checkExistByQrCodeId(@Param("qrCodeId") String qrCodeId, @Param("currentFunctionType") Integer currentFunctionType);
-
 }

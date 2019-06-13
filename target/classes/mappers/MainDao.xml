@@ -682,6 +682,26 @@
 
     <select id="getBcpCkNonCheckData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         SELECT distinct c.*
+        FROM Ckd_Bcp c,M_BcpOUT m
+        WHERE c.OutDh=m.OutDh
+        <if test="kgID!=null">
+            and (KgID = #{kgID} and KgStatus=0 and FzrStatus=0 and BzStatus=0 and LlfzrStatus=0)
+            or (KgID = #{kgID} and  KgStatus=2)
+            or (KgID = #{kgID} and  FzrStatus=2)
+            or (KgID = #{kgID} and  BzStatus=2)
+            or (KgID = #{kgID} and  LlfzrStatus=2)
+        </if>
+        <if test="bzID!=null">
+            and BzID = #{bzID} and KgStatus=1 and FzrStatus=1 and BzStatus=0 and LlfzrStatus=0
+        </if>
+        <if test="fzrID!=null">
+            and (FlfzrID = #{flfzrID} and KgStatus=1 and FzrStatus=0 and BzStatus=0 and LlfzrStatus=0)
+            or (LlfzrID = #{llfzrID} and KgStatus=1 and FzrStatus=1 and BzStatus=1 and LlfzrStatus=0)
+        </if>
+    </select>
+
+    <select id="getCpCkNonCheckData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
+        SELECT distinct c.*
         FROM Ckd_Bcp c,M_CPOut m
         WHERE c.OutDh=m.OutDh
         <if test="kgID!=null">
@@ -3618,6 +3638,111 @@ SmlPk45		= #{smlPk45},
             </if>
         </trim>
     </insert>
+
+    <insert id="insertBcpOUT" parameterType="com.qdhualing.qrcodetracker.bean.BcpOutParam">
+        insert into M_BCPOUT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="qrCodeId!=null">
+                QRCode_ID,
+            </if>
+            <if test="productName!=null">
+                ProductName,
+            </if>
+            <if test="dwzl!=null">
+                DWZL,
+            </if>
+            <if test="rkzl!=null">
+                RKZL,
+            </if>
+            <if test="dw!=null">
+                DW,
+            </if>
+            <if test="sortId!=null">
+                SortID,
+            </if>
+            <if test="bcpCode!=null">
+                BCP_Code,
+            </if>
+            <if test="ylpc!=null">
+                YLPC,
+            </if>
+            <if test="gg!=null">
+                GG,
+            </if>
+            <if test="ckShL!=null">
+                SHL,
+            </if>
+            <if test="outDh!=null">
+                OutDh,
+            </if>
+            <if test="flr!=null">
+                FLR,
+            </if>
+            <if test="llr!=null">
+                LLR,
+            </if>
+            <if test="time!=null">
+                TIME,
+            </if>
+            <if test="llbm!=null">
+                LLBM
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="qrCodeId!=null">
+                #{qrCodeId},
+            </if>
+            <if test="productName!=null">
+                #{productName},
+            </if>
+            <if test="dwzl!=null">
+                #{dwzl},
+            </if>
+            <if test="rkzl!=null">
+                #{rkzl},
+            </if>
+            <if test="dw!=null">
+                #{dw},
+            </if>
+            <if test="sortId!=null">
+                #{sortId},
+            </if>
+            <if test="bcpCode!=null">
+                #{bcpCode},
+            </if>
+            <if test="ylpc!=null">
+                #{ylpc},
+            </if>
+            <if test="gg!=null">
+                #{gg},
+            </if>
+            <if test="ckShL!=null">
+                #{ckShL},
+            </if>
+            <if test="outDh!=null">
+                #{outDh},
+            </if>
+            <if test="flr!=null">
+                #{flr},
+            </if>
+            <if test="llr!=null">
+                #{llr},
+            </if>
+            <if test="time!=null">
+                #{time},
+            </if>
+            <if test="llbm!=null">
+                #{llbm}
+            </if>
+        </trim>
+    </insert>
+
+    <select id="findBcpS" resultType="com.qdhualing.qrcodetracker.bean.BcpSBean">
+        SELECT *
+        FROM M_BcpS
+        where QRCode_ID = #{0}
+    </select>
 
     <select id="findWLS" resultType="com.qdhualing.qrcodetracker.bean.WLSBean">
         SELECT *

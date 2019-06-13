@@ -427,6 +427,53 @@ public class MainController {
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "失败");
     }
 
+    /**
+     * @return
+     * @author 逄坤
+     * @desc 半成品出库
+     */
+    @RequestMapping(value = "/bcpOut", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult bcpOut(String json) {
+        BcpOutParam bcpOutParam = ParamsUtils.handleParams(json, BcpOutParam.class);
+        ActionResult<ActionResult> result = new ActionResult<ActionResult>();
+        if (bcpOutParam != null) {
+            Date data = new Date();
+            long time = data.getTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            bcpOutParam.setTime(sdf.format(data));
+            try {
+                BcpCkdBean bcpCkd = mainService.getBcpCkdBean(bcpOutParam.getOutDh());
+                if (bcpCkd == null) {
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "出库单不存在");
+                }
+                bcpOutParam.setFlr(bcpCkd.getFhR());
+                bcpOutParam.setLlr(bcpCkd.getLhfzr());
+                bcpOutParam.setLlbm(bcpCkd.getLhDw());
+                BcpSBean bcpsBean = mainService.findBcpS(bcpOutParam.getQrCodeId());
+                if (bcpsBean == null)
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "没找到该半成品，请先入库（退库）");
+                bcpOutParam.setProductName(bcpsBean.getProductName());
+                bcpOutParam.setBcpCode(bcpsBean.getBcpCode());
+                bcpOutParam.setDw(bcpsBean.getDw());
+                bcpOutParam.setRkzl(bcpsBean.getRkzl());
+                bcpOutParam.setGg(bcpsBean.getGg());
+                bcpOutParam.setSortId(bcpsBean.getSortID());
+                bcpOutParam.setYlpc(bcpsBean.getYlpc());
+                int b = mainService.insertBcpOUT(bcpOutParam);
+                if (b <= 0) {
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成出库记录失败");
+                } else {
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+            }
+        }
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "失败");
+    }
+
 
     /**
      * @return
@@ -1813,7 +1860,7 @@ public class MainController {
                     }
                 }
                 if(kgID!=null||fzrID!=null) {
-                    List<BcpCkdBean> bcpCkNonCheckData = mainService.getBcpCkNonCheckData(kgID,fzrID);
+                    List<BcpCkdBean> bcpCkNonCheckData = mainService.getCpCkNonCheckData(kgID,fzrID);
                     for (int i = 0; i < bcpCkNonCheckData.size(); i++) {
                         NonCheckBean bean = new NonCheckBean();
                         BcpCkdBean single = bcpCkNonCheckData.get(i);
@@ -1834,6 +1881,18 @@ public class MainController {
                         bean.setTime(single.getThRq());
                         bean.setTlfzrID(single.getTlfzrID());
                         bean.setSlfzrID(single.getSlfzrID());
+                        bean.setState(single.getCheckState());
+                        allBeans.add(bean);
+                    }
+                }
+                if(kgID!=null||bzID!=null||fzrID!=null) {
+                    List<BcpCkdBean> bcpCkNonCheckData = mainService.getBcpCkNonCheckData(kgID,bzID,fzrID);
+                    for (int i = 0; i < bcpCkNonCheckData.size(); i++) {
+                        NonCheckBean bean = new NonCheckBean();
+                        BcpCkdBean single = bcpCkNonCheckData.get(i);
+                        bean.setDh(single.getOutDh());
+                        bean.setName("半成品出库单");
+                        bean.setTime(single.getLhRq());
                         bean.setState(single.getCheckState());
                         allBeans.add(bean);
                     }
