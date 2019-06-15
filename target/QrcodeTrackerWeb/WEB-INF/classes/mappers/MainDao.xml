@@ -548,6 +548,12 @@
         SELECT * FROM Tkd_Bcp WHERE BackDh = #{0}
     </select>
 
+    <select id="getBcpOutShowBeanListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.BcpOutShowBean">
+        SELECT b.*,s.SortName
+        FROM M_BCPOut b LEFT JOIN Hl_Sort s ON b.SortID = s.SortID
+        WHERE OutDh = #{0}
+    </select>
+
     <select id="getCpOutShowBeanListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.CpOutShowBean">
         SELECT c.*,s.SortName
         FROM M_CPOut c LEFT JOIN Hl_Sort s ON c.SortID = s.SortID

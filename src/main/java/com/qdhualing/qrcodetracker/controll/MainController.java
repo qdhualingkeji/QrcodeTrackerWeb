@@ -1893,6 +1893,8 @@ public class MainController {
                         bean.setDh(single.getOutDh());
                         bean.setName("半成品出库单");
                         bean.setTime(single.getLhRq());
+                        bean.setFlfzrID(single.getFzrID());
+                        bean.setLlfzrID(single.getLlfzrID());
                         bean.setState(single.getCheckState());
                         allBeans.add(bean);
                     }
@@ -2213,8 +2215,43 @@ public class MainController {
 
     /**
      * @return
-     * @author 马鹏昊
+     * @author 逄坤
      * @desc 获取半成品出库审核信息（包括出库单详情和关联的每一条记录的信息）
+     */
+    @RequestMapping(value = "/getBcpOutVerifyData", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult getBcpOutVerifyData(String json) {
+        VerifyParam param = ParamsUtils.handleParams(json, VerifyParam.class);
+        ActionResult<BcpOutVerifyResult> result = new ActionResult<BcpOutVerifyResult>();
+        if (param != null) {
+            try {
+                BcpOutVerifyResult dataResult = new BcpOutVerifyResult();
+                BcpCkdBean bean = mainService.getBcpCkdBean(param.getDh());
+                dataResult.setOutDh(bean.getOutDh());
+                dataResult.setLhRq(bean.getLhRq());
+                dataResult.setKgID(bean.getKgID());
+                dataResult.setKg(bean.getKg());
+                dataResult.setBzID(bean.getBzID());
+                dataResult.setBz(bean.getBz());
+                dataResult.setFzrID(bean.getFzrID());
+                dataResult.setFhFzr(bean.getFhFzr());
+                dataResult.setRemark(bean.getRemark());
+                List<BcpOutShowBean> wlinDataList = mainService.getBcpOutShowBeanListByOutDh(param.getDh());
+                dataResult.setBeans(wlinDataList);
+                result.setResult(dataResult);
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+            }
+        }
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
+    }
+
+    /**
+     * @return
+     * @author 马鹏昊
+     * @desc 获取成品出库审核信息（包括出库单详情和关联的每一条记录的信息）
      */
     @RequestMapping(value = "/getCpOutVerifyData", method = RequestMethod.POST)
     @ResponseBody

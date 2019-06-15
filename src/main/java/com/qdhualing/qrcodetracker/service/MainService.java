@@ -636,6 +636,11 @@ public class MainService {
 		return mainDao.getBcpCkdBean(dh);
 	}
 
+	public List<BcpOutShowBean> getBcpOutShowBeanListByOutDh(String dh) {
+		List<BcpOutShowBean> list=mainDao.getBcpOutShowBeanListByOutDh(dh);
+		return list;
+	}
+
 	public List<CpOutShowBean> getCpOutShowBeanListByOutDh(String dh) {
 		List<CpOutShowBean> list=mainDao.getCpOutShowBeanListByOutDh(dh);
 		return list;

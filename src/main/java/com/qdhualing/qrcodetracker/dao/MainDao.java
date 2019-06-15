@@ -259,6 +259,8 @@ public interface MainDao {
 
     BcpCkdBean getBcpCkdBean(String dh);
 
+    List<BcpOutShowBean> getBcpOutShowBeanListByOutDh(String dh);
+
     List<CpOutShowBean> getCpOutShowBeanListByOutDh(String dh);
 
     BcpTkdBean getBcpTkdBean(String dh);
@@ -399,4 +401,5 @@ public interface MainDao {
     int deleteUser(int userId);
 
     int checkExistByQrCodeId(@Param("qrCodeId") String qrCodeId, @Param("currentFunctionType") Integer currentFunctionType);
+
 }
