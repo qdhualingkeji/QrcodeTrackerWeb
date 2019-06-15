@@ -66,6 +66,8 @@ public interface MainDao {
     int insertBcpOUT(BcpOutParam bcpOutParam);
     //物料出库修改库存表记录（数量减）
     int outUpdateWLS(WLOutParam wlOutParam);
+    //半成品出库修改库存表记录（数量减）
+    int outUpdateBCPS(BcpOutParam bcpOutParam);
     //查找出库单数据
     CKDWLBean findWL_CKD(String outDh);
     //获取部门数据
@@ -237,9 +239,11 @@ public interface MainDao {
 
     WlCkdBean getWlCkdBean(String dh);
 
-    List<WLOutShowBean> getWLOutShowBeanListByInDh(String dh);
+    List<WLOutShowBean> getWLOutShowBeanListByOutDh(String dh);
 
-    List<WLOutParam> getWLOutParamListByInDh(String dh);
+    List<WLOutParam> getWLOutParamListByOutDh(String dh);
+
+    List<BcpOutParam> getBcpOutParamListByOutDh(String dh);
 
     WlTkdBean getWlTkdBean(String dh);
 
@@ -285,7 +289,11 @@ public interface MainDao {
 
     int agreeBcpOut(BcpCkdBean bcpckd);
 
+    int agreeCpOut(BcpCkdBean bcpckd);
+
     int refuseBcpOut(BcpCkdBean bcpCkd);
+
+    int refuseCpOut(BcpCkdBean bcpCkd);
 
     int agreeBcpTk(BcpTkdBean bcpTkd);
 

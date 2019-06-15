@@ -177,6 +177,10 @@ public class MainService {
 		return mainDao.outUpdateWLS(wlOutParam);
 	}
 
+	public int outUpdateBCPS(BcpOutParam bcpOutParam) {
+		return mainDao.outUpdateBCPS(bcpOutParam);
+	}
+
 	public CKDWLBean findWL_CKD(String outDh) {
 		CKDWLBean ckdwlBean = null;
 		ckdwlBean = mainDao.findWL_CKD(outDh);
@@ -595,8 +599,8 @@ public class MainService {
 		return mainDao.getWlCkdBean(dh);
 	}
 
-	public List<WLOutShowBean> getWLOutShowBeanListByInDh(String dh) {
-		List<WLOutShowBean> list=mainDao.getWLOutShowBeanListByInDh(dh);
+	public List<WLOutShowBean> getWLOutShowBeanListByOutDh(String dh) {
+		List<WLOutShowBean> list=mainDao.getWLOutShowBeanListByOutDh(dh);
 		return list;
 	}
 
@@ -691,8 +695,16 @@ public class MainService {
 		return mainDao.agreeBcpOut(bcpckd);
 	}
 
+	public int agreeCpOut(BcpCkdBean bcpckd) {
+		return mainDao.agreeCpOut(bcpckd);
+	}
+
 	public int refuseBcpOut(BcpCkdBean bcpCkd) {
 		return mainDao.refuseBcpOut(bcpCkd);
+	}
+
+	public int refuseCpOut(BcpCkdBean bcpCkd) {
+		return mainDao.refuseCpOut(bcpCkd);
 	}
 
 	public int agreeBcpTk(BcpTkdBean bcpTkd) {
@@ -937,8 +949,12 @@ public class MainService {
 		return mainDao.getCreateRKDParamByInDh(dh);
 	}
 
-	public List<WLOutParam> getWLOutParamListByInDh(String dh) {
-		return mainDao.getWLOutParamListByInDh(dh);
+	public List<WLOutParam> getWLOutParamListByOutDh(String dh) {
+		return mainDao.getWLOutParamListByOutDh(dh);
+	}
+
+	public List<BcpOutParam> getBcpOutParamListByOutDh(String dh) {
+		return mainDao.getBcpOutParamListByOutDh(dh);
 	}
 
 	public List<WLTKParam> getWLTKParamListByOutDh(String dh) {

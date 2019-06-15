@@ -1987,7 +1987,7 @@ public class MainController {
                 dataResult.setLhRq(ckdBean.getLhRq());
                 dataResult.setOutDh(ckdBean.getOutDh());
                 dataResult.setRemark(ckdBean.getRemark());
-                List<WLOutShowBean> wlinDataList = mainService.getWLOutShowBeanListByInDh(param.getDh());
+                List<WLOutShowBean> wlinDataList = mainService.getWLOutShowBeanListByOutDh(param.getDh());
                 dataResult.setBeans(wlinDataList);
                 result.setResult(dataResult);
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
@@ -2510,7 +2510,7 @@ public class MainController {
                 if (a == 1) {
                     WlCkdBean wlCkd = mainService.getWlCkdBean(param.getDh());
                     if(wlCkd.getKgStatus()==1&&wlCkd.getFlfzrStatus()==1&&wlCkd.getBzStatus()==1&&wlCkd.getLlfzrStatus()==1) {
-                        List<WLOutParam> wlOutList = mainService.getWLOutParamListByInDh(param.getDh());
+                        List<WLOutParam> wlOutList = mainService.getWLOutParamListByOutDh(param.getDh());
                         for (WLOutParam wlOutParam : wlOutList) {
                             //更新仓库库存表数量
                             a = mainService.outUpdateWLS(wlOutParam);
@@ -2950,11 +2950,109 @@ public class MainController {
     /**
      * @return
      * @author 马鹏昊
-     * @desc 修改半成品出库单审核标志为已审核
+     * @desc 修改成品出库单审核标志为已审核
      */
     @RequestMapping(value = "/agreeBcpOut", method = RequestMethod.POST)
     @ResponseBody
     public ActionResult agreeBcpOut(String json) {
+        VerifyParam param = ParamsUtils.handleParams(json, VerifyParam.class);
+        ActionResult<ActionResult> result = new ActionResult<ActionResult>();
+        if (param != null) {
+            try {
+                Integer kgStatus=0;
+                Integer flfzrStatus=0;
+                Integer bzStatus=0;
+                Integer bcpBzStatus=0;
+                Integer llfzrStatus=0;
+                if(param.getCheckQXFlag()==VerifyParam.KG)
+                    kgStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.FLFZR)
+                    flfzrStatus=1;
+                else if(param.getCheckQXFlag()==VerifyParam.BCPBZ) {
+                    bzStatus = 1;
+                    bcpBzStatus = 1;
+                }
+                else if(param.getCheckQXFlag()==VerifyParam.LLFZR)
+                    llfzrStatus=1;
+
+                BcpCkdBean bcpckd=new BcpCkdBean();
+                bcpckd.setOutDh(param.getDh());
+                bcpckd.setKgStatus(kgStatus);
+                bcpckd.setFzrStatus(flfzrStatus);
+                bcpckd.setBzStatus(bzStatus);
+                bcpckd.setBcpBzStatus(bcpBzStatus);
+                bcpckd.setLlfzrStatus(llfzrStatus);
+                int a = mainService.agreeBcpOut(bcpckd);
+                if (a == 1) {
+                    BcpCkdBean bcpCkd = mainService.getBcpCkdBean(param.getDh());
+                    if(bcpCkd.getKgStatus()==1&&bcpCkd.getFzrStatus()==1&&bcpCkd.getBzStatus()==1) {
+                        List<BcpOutParam> bcpOutList = mainService.getBcpOutParamListByOutDh(param.getDh());
+                        for (BcpOutParam bcpOutParam : bcpOutList) {
+                            //更新仓库库存表数量
+                            a = mainService.outUpdateBCPS(bcpOutParam);
+                            if (a <= 0) {
+                                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
+                            }
+                            BCPINParam bcpInParam = convertBcpOutIntoInParam(bcpOutParam);
+                            //查询临时库存表中是否有数据
+                            a = mainService.findBCPTempS(bcpOutParam.getQrCodeId());
+                            if (a <= 0) {
+                                //插入临时库存表（车间）
+                                a = mainService.insertBCPTempS(bcpInParam);
+                            } else {
+                                a = mainService.updateBCPTempS(bcpInParam);
+                            }
+                        }
+                    }
+
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
+                } else {
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "审核失败");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+            }
+        }
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
+    }
+
+    public BCPINParam convertBcpOutIntoInParam(BcpOutParam bcpOutParam){
+        BCPINParam bcpInParam = new BCPINParam();
+        bcpInParam.setQrCodeId(bcpOutParam.getQrCodeId());
+        bcpInParam.setProductName(bcpOutParam.getProductName());
+        bcpInParam.setSortID(bcpOutParam.getSortId());
+        bcpInParam.setYlpc(bcpOutParam.getYlpc());
+        bcpInParam.setGg(bcpOutParam.getGg());
+        bcpInParam.setScTime(bcpOutParam.getScTime());
+        bcpInParam.setDwzl(bcpOutParam.getDwzl());
+        bcpInParam.setKsTime(bcpOutParam.getKsTime());
+        bcpInParam.setWcTime(bcpOutParam.getWcTime());
+        bcpInParam.setGx(bcpOutParam.getGx());
+        bcpInParam.setCzy(bcpOutParam.getCzy());
+        bcpInParam.setCheJian(bcpOutParam.getCheJian());
+        bcpInParam.setDw(bcpOutParam.getDw());
+        bcpInParam.setYl1(bcpOutParam.getYl1());
+        bcpInParam.setYl2(bcpOutParam.getYl2());
+        bcpInParam.setYl3(bcpOutParam.getYl3());
+        bcpInParam.setYl4(bcpOutParam.getYl4());
+        bcpInParam.setYl5(bcpOutParam.getYl5());
+        bcpInParam.setYl6(bcpOutParam.getYl6());
+        bcpInParam.setYl7(bcpOutParam.getYl7());
+        bcpInParam.setYl8(bcpOutParam.getYl8());
+        bcpInParam.setYl9(bcpOutParam.getYl9());
+        bcpInParam.setYl10(bcpOutParam.getYl10());
+        return bcpInParam;
+    }
+
+    /**
+     * @return
+     * @author 马鹏昊
+     * @desc 修改成品出库单审核标志为已审核
+     */
+    @RequestMapping(value = "/agreeCpOut", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult agreeCpOut(String json) {
         VerifyParam param = ParamsUtils.handleParams(json, VerifyParam.class);
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
@@ -2970,7 +3068,7 @@ public class MainController {
                 bcpckd.setOutDh(param.getDh());
                 bcpckd.setKgStatus(kgStatus);
                 bcpckd.setFzrStatus(fzrStatus);
-                int a = mainService.agreeBcpOut(bcpckd);
+                int a = mainService.agreeCpOut(bcpckd);
                 if (a == 1) {
                     BcpCkdBean bcpCkd = mainService.getBcpCkdBean(param.getDh());
                     if(bcpCkd.getKgStatus()==1&&bcpCkd.getFzrStatus()==1) {
@@ -3006,12 +3104,58 @@ public class MainController {
 
     /**
      * @return
-     * @author 马鹏昊
+     * @author 逄坤
      * @desc 修改半成品出库单审核标志为未通过审核
      */
     @RequestMapping(value = "/refuseBcpOut", method = RequestMethod.POST)
     @ResponseBody
     public ActionResult refuseBcpOut(String json) {
+        VerifyParam param = ParamsUtils.handleParams(json, VerifyParam.class);
+        ActionResult<ActionResult> result = new ActionResult<ActionResult>();
+        if (param != null) {
+            try {
+                Integer kgStatus=0;
+                Integer flfzrStatus=0;
+                Integer bzStatus=0;
+                Integer llfzrStatus=0;
+                if(param.getCheckQXFlag()==VerifyParam.KG)
+                    kgStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.FLFZR)
+                    flfzrStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.BZ)
+                    bzStatus=2;
+                else if(param.getCheckQXFlag()==VerifyParam.LLFZR)
+                    llfzrStatus=2;
+
+                BcpCkdBean bcpCkd=new BcpCkdBean();
+                bcpCkd.setOutDh(param.getDh());
+                bcpCkd.setKgStatus(kgStatus);
+                bcpCkd.setFzrStatus(flfzrStatus);
+                bcpCkd.setBzStatus(bzStatus);
+                bcpCkd.setLlfzrStatus(llfzrStatus);
+
+                int a = mainService.refuseBcpOut(bcpCkd);
+                if (a == 1) {
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
+                } else {
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "审核失败");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+            }
+        }
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
+    }
+
+    /**
+     * @return
+     * @author 马鹏昊
+     * @desc 修改成品出库单审核标志为未通过审核
+     */
+    @RequestMapping(value = "/refuseCpOut", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult refuseCpOut(String json) {
         VerifyParam param = ParamsUtils.handleParams(json, VerifyParam.class);
         ActionResult<ActionResult> result = new ActionResult<ActionResult>();
         if (param != null) {
@@ -3028,7 +3172,7 @@ public class MainController {
                 bcpCkd.setKgStatus(kgStatus);
                 bcpCkd.setFzrStatus(fzrStatus);
 
-                int a = mainService.refuseBcpOut(bcpCkd);
+                int a = mainService.refuseCpOut(bcpCkd);
                 if (a == 1) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 } else {

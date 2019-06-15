@@ -12,6 +12,9 @@ public class BcpOutParam {
     private String bcpCode;
     private String ylpc;
     private String gg;
+    private String gx;
+    private String czy;
+    private String cheJian;
     private float dwzl;
     //入库总量
     private float rkzl;
@@ -22,6 +25,19 @@ public class BcpOutParam {
     private String dw;
     private float ckShL ;
     private String llbm ;
+    private String scTime;
+    private String ksTime;
+    private String wcTime;
+    private String yl1;
+    private String yl2;
+    private String yl3;
+    private String yl4;
+    private String yl5;
+    private String yl6;
+    private String yl7;
+    private String yl8;
+    private String yl9;
+    private String yl10;
 
     public String getQrCodeId() {
         return qrCodeId;
@@ -69,6 +85,30 @@ public class BcpOutParam {
 
     public void setGg(String gg) {
         this.gg = gg;
+    }
+
+    public String getGx() {
+        return gx;
+    }
+
+    public void setGx(String gx) {
+        this.gx = gx;
+    }
+
+    public String getCzy() {
+        return czy;
+    }
+
+    public void setCzy(String czy) {
+        this.czy = czy;
+    }
+
+    public String getCheJian() {
+        return cheJian;
+    }
+
+    public void setCheJian(String cheJian) {
+        this.cheJian = cheJian;
     }
 
     public float getDwzl() {
@@ -142,4 +182,109 @@ public class BcpOutParam {
     public void setLlbm(String llbm) {
         this.llbm = llbm;
     }
+
+    public String getScTime() {
+        return scTime;
+    }
+
+    public void setScTime(String scTime) {
+        this.scTime = scTime;
+    }
+
+    public String getKsTime() {
+        return ksTime;
+    }
+
+    public void setKsTime(String ksTime) {
+        this.ksTime = ksTime;
+    }
+
+    public String getWcTime() {
+        return wcTime;
+    }
+
+    public void setWcTime(String wcTime) {
+        this.wcTime = wcTime;
+    }
+
+    public String getYl1() {
+        return yl1;
+    }
+
+    public void setYl1(String yl1) {
+        this.yl1 = yl1;
+    }
+
+    public String getYl2() {
+        return yl2;
+    }
+
+    public void setYl2(String yl2) {
+        this.yl2 = yl2;
+    }
+
+    public String getYl3() {
+        return yl3;
+    }
+
+    public void setYl3(String yl3) {
+        this.yl3 = yl3;
+    }
+
+    public String getYl4() {
+        return yl4;
+    }
+
+    public void setYl4(String yl4) {
+        this.yl4 = yl4;
+    }
+
+    public String getYl5() {
+        return yl5;
+    }
+
+    public void setYl5(String yl5) {
+        this.yl5 = yl5;
+    }
+
+    public String getYl6() {
+        return yl6;
+    }
+
+    public void setYl6(String yl6) {
+        this.yl6 = yl6;
+    }
+
+    public String getYl7() {
+        return yl7;
+    }
+
+    public void setYl7(String yl7) {
+        this.yl7 = yl7;
+    }
+
+    public String getYl8() {
+        return yl8;
+    }
+
+    public void setYl8(String yl8) {
+        this.yl8 = yl8;
+    }
+
+    public String getYl9() {
+        return yl9;
+    }
+
+    public void setYl9(String yl9) {
+        this.yl9 = yl9;
+    }
+
+    public String getYl10() {
+        return yl10;
+    }
+
+    public void setYl10(String yl10) {
+        this.yl10 = yl10;
+    }
+
 }

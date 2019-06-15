@@ -16,6 +16,8 @@ public class BcpCkdBean {
     private Integer bzID;
     private String bz;
     private Integer bzStatus;
+    private Integer bcpBzStatus;
+    private Integer cpBzStatus;
     private Integer llfzrID;
     private String lhfzr;
     private Integer llfzrStatus;
@@ -98,6 +100,22 @@ public class BcpCkdBean {
 
     public void setBzStatus(Integer bzStatus) {
         this.bzStatus = bzStatus;
+    }
+
+    public Integer getBcpBzStatus() {
+        return bcpBzStatus;
+    }
+
+    public void setBcpBzStatus(Integer bcpBzStatus) {
+        this.bcpBzStatus = bcpBzStatus;
+    }
+
+    public Integer getCpBzStatus() {
+        return cpBzStatus;
+    }
+
+    public void setCpBzStatus(Integer cpBzStatus) {
+        this.cpBzStatus = cpBzStatus;
     }
 
     public Integer getLlfzrID() {

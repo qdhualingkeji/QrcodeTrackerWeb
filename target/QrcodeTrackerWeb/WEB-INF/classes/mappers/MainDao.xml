@@ -380,9 +380,41 @@
         <if test="fzrStatus!=0">
             fzrStatus=#{fzrStatus}
         </if>
+        <if test="bzStatus!=0">
+            bzStatus=#{bzStatus}
+        </if>
+        <if test="llfzrStatus!=0">
+            llfzrStatus=#{llfzrStatus}
+        </if>
+        WHERE OutDh = #{outDh}
+    </update>
+    <update id="refuseCpOut" parameterType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
+        UPDATE Ckd_Bcp SET
+        <if test="kgStatus!=0">
+            kgStatus=#{kgStatus}
+        </if>
+        <if test="fzrStatus!=0">
+            fzrStatus=#{fzrStatus}
+        </if>
         WHERE OutDh = #{outDh}
     </update>
     <update id="agreeBcpOut" parameterType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
+        UPDATE Ckd_Bcp SET
+        <if test="kgStatus!=0">
+            kgStatus=#{kgStatus},fzrStatus=0,bzStatus=0,llfzrStatus=0
+        </if>
+        <if test="fzrStatus!=0">
+            fzrStatus=#{fzrStatus}
+        </if>
+        <if test="bzStatus!=0">
+            bzStatus=#{bzStatus}
+        </if>
+        <if test="llfzrStatus!=0">
+            llfzrStatus=#{llfzrStatus}
+        </if>
+        WHERE OutDh = #{outDh}
+    </update>
+    <update id="agreeCpOut" parameterType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         UPDATE Ckd_Bcp SET
         <if test="kgStatus!=0">
             kgStatus=#{kgStatus},fzrStatus=0
@@ -630,15 +662,21 @@
         SELECT * FROM Tkd_Wl WHERE BackDh = #{0}
     </select>
 
-    <select id="getWLOutShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.WLOutShowBean">
+    <select id="getWLOutShowBeanListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.WLOutShowBean">
         SELECT w.*,s.SortName
         FROM M_WLOUT w,Hl_Sort s
         WHERE w.SortID = s.SortID AND OutDh = #{0}
     </select>
 
-    <select id="getWLOutParamListByInDh" resultType="com.qdhualing.qrcodetracker.bean.WLOutParam">
+    <select id="getWLOutParamListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.WLOutParam">
         SELECT o.*,o.SHL AS ckShL,s.CHD
         FROM M_WLOUT o,M_WLS s
+        WHERE o.QRCode_ID=s.QRCode_ID AND o.OutDh = #{0}
+    </select>
+
+    <select id="getBcpOutParamListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.BcpOutParam">
+        SELECT o.*,o.SHL AS ckShL
+        FROM M_BCPOUT o,M_BCPS s
         WHERE o.QRCode_ID=s.QRCode_ID AND o.OutDh = #{0}
     </select>
 
@@ -3529,15 +3567,20 @@ SmlPk45		= #{smlPk45},
         FROM Hl_UserGroup
     </select>
 
-
     <update id="outUpdateWLS" parameterType="com.qdhualing.qrcodetracker.bean.WLOutParam">
-
         UPDATE M_WLS
         SET
         DWZL = DWZL-#{dwzl},
         SHL = (DWZL-#{dwzl})/PCZL
         WHERE QRCode_ID = #{qrCodeId};
+    </update>
 
+    <update id="outUpdateBCPS" parameterType="com.qdhualing.qrcodetracker.bean.BcpOutParam">
+        UPDATE M_BCPS
+        SET
+        DWZL = DWZL-#{dwzl},
+        SHL = (DWZL-#{dwzl})/RKZL
+        WHERE QRCode_ID = #{qrCodeId};
     </update>
 
     <insert id="insertWLOUT" parameterType="com.qdhualing.qrcodetracker.bean.WLOutParam">
