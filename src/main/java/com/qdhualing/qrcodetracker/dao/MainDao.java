@@ -349,6 +349,8 @@ public interface MainDao {
 
     int updateBcpTkData(BcpTkShowBean bcpTkShowBean);
 
+    int updateBcpCkdData(BcpOutVerifyResult param);
+
     int updateCpCkdData(CpOutVerifyResult param);
 
     int updateWLIN_M(WLINParam wlinParam);
@@ -372,6 +374,8 @@ public interface MainDao {
     List<BcpRkdBean> getCpRkCanModifyData(String realName);
 
     List<BcpCkdBean> getBcpCkCanModifyData(String realName);
+
+    List<BcpCkdBean> getCpCkCanModifyData(String realName);
 
     List<BcpTkdBean> getBcpTkCanModifyData(String realName);
 

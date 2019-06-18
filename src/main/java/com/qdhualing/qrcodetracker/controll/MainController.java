@@ -2231,10 +2231,12 @@ public class MainController {
                 dataResult.setLhRq(bean.getLhRq());
                 dataResult.setKgID(bean.getKgID());
                 dataResult.setKg(bean.getKg());
-                dataResult.setBzID(bean.getBzID());
-                dataResult.setBz(bean.getBz());
                 dataResult.setFzrID(bean.getFzrID());
                 dataResult.setFhFzr(bean.getFhFzr());
+                dataResult.setBzID(bean.getBzID());
+                dataResult.setBz(bean.getBz());
+                dataResult.setLlfzrID(bean.getLlfzrID());
+                dataResult.setLhFzr(bean.getLhfzr());
                 dataResult.setRemark(bean.getRemark());
                 List<BcpOutShowBean> wlinDataList = mainService.getBcpOutShowBeanListByOutDh(param.getDh());
                 dataResult.setBeans(wlinDataList);
@@ -3122,7 +3124,7 @@ public class MainController {
                     kgStatus=2;
                 else if(param.getCheckQXFlag()==VerifyParam.FLFZR)
                     flfzrStatus=2;
-                else if(param.getCheckQXFlag()==VerifyParam.BZ)
+                else if(param.getCheckQXFlag()==VerifyParam.BCPBZ)
                     bzStatus=2;
                 else if(param.getCheckQXFlag()==VerifyParam.LLFZR)
                     llfzrStatus=2;
@@ -3589,10 +3591,37 @@ public class MainController {
         }
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
     }
+
     /**
      * @return
      * @author 马鹏昊
-     * @desc 修改审核数据——半成品/成品入库
+     * @desc 修改审核数据——半成品出库
+     */
+    @RequestMapping(value = "/updateBcpOutData", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult updateBcpOutData(String json) {
+        BcpOutVerifyResult param = ParamsUtils.handleListParams(json, BcpOutVerifyResult.class,"beans",BcpOutShowBean.class);
+        ActionResult<ActionResult> result = new ActionResult<ActionResult>();
+        if (param != null) {
+            try {
+                int b = mainService.updateBcpCkdData(param);
+                if (b<0){
+                    result = ActionResultUtils.setResultMsg(result,ActionResult.STATUS_MESSAGE_ERROR,"修改半成品出库单数据失败");
+                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+                }
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+            }
+        }
+        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
+    }
+
+    /**
+     * @return
+     * @author 马鹏昊
+     * @desc 修改审核数据——成品出库
      */
     @RequestMapping(value = "/updateCpOutData", method = RequestMethod.POST)
     @ResponseBody
@@ -3614,6 +3643,7 @@ public class MainController {
         }
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
     }
+
     /**
      * @return
      * @author 马鹏昊
@@ -3784,10 +3814,10 @@ public class MainController {
                     bean.setTime(single.getShrq());
                     allBeans.add(bean);
                 }
-                List<BcpCkdBean> bcpCkNonCheckData = mainService.getBcpCkCanModifyData(param.getRealName());
-                for (int i = 0; i < bcpCkNonCheckData.size(); i++) {
+                List<BcpCkdBean> cpCkNonCheckData = mainService.getCpCkCanModifyData(param.getRealName());
+                for (int i = 0; i < cpCkNonCheckData.size(); i++) {
                     NonCheckBean bean = new NonCheckBean();
-                    BcpCkdBean single = bcpCkNonCheckData.get(i);
+                    BcpCkdBean single = cpCkNonCheckData.get(i);
                     bean.setDh(single.getOutDh());
                     bean.setName("成品出库单");
                     bean.setTime(single.getLhRq());
@@ -3800,6 +3830,15 @@ public class MainController {
                     bean.setDh(single.getBackDh());
                     bean.setName("半成品入库（退库）单");
                     bean.setTime(single.getThRq());
+                    allBeans.add(bean);
+                }
+                List<BcpCkdBean> bcpCkNonCheckData = mainService.getBcpCkCanModifyData(param.getRealName());
+                for (int i = 0; i < bcpCkNonCheckData.size(); i++) {
+                    NonCheckBean bean = new NonCheckBean();
+                    BcpCkdBean single = bcpCkNonCheckData.get(i);
+                    bean.setDh(single.getOutDh());
+                    bean.setName("半成品出库单");
+                    bean.setTime(single.getLhRq());
                     allBeans.add(bean);
                 }
                 for (int i = 0; i < allBeans.size() - 1; i++) {

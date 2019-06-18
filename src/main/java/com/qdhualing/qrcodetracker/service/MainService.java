@@ -569,6 +569,7 @@ public class MainService {
 		bcpCkdBean.setKgID(kgID);
 		bcpCkdBean.setBzID(bzID);
 		bcpCkdBean.setFzrID(fzrID);
+		bcpCkdBean.setLlfzrID(fzrID);
 
 		return mainDao.getBcpCkNonCheckData(bcpCkdBean);
 	}
@@ -815,6 +816,10 @@ public class MainService {
 		return mainDao.updateBcpTkData(bcpTkShowBean);
 	}
 
+	public int updateBcpCkdData(BcpOutVerifyResult param) {
+		return mainDao.updateBcpCkdData(param);
+	}
+
 	public int updateCpCkdData(CpOutVerifyResult param) {
 		return mainDao.updateCpCkdData(param);
 	}
@@ -895,6 +900,10 @@ public class MainService {
 
 	public List<BcpCkdBean> getBcpCkCanModifyData(String realName) {
 		return mainDao.getBcpCkCanModifyData(realName);
+	}
+
+	public List<BcpCkdBean> getCpCkCanModifyData(String realName) {
+		return mainDao.getCpCkCanModifyData(realName);
 	}
 
 	public List<BcpTkdBean> getBcpTkCanModifyData(String realName) {

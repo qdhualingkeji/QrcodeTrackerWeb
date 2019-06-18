@@ -16,6 +16,11 @@
     </select>
     <select id="getBcpCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
         SELECT distinct c.*
+        FROM Ckd_Bcp c,M_BCPOut m
+        WHERE c.FhR = #{0} AND c.OutDh=m.OutDh AND (KgStatus = 2 OR FzrStatus = 2 OR BzStatus = 2 OR LlfzrStatus = 2 OR FzrStatus = 0 AND KgStatus = 0)
+    </select>
+    <select id="getCpCkCanModifyData" resultType="com.qdhualing.qrcodetracker.bean.BcpCkdBean">
+        SELECT distinct c.*
         FROM Ckd_Bcp c,M_CPOut m
         WHERE c.FhR = #{0} AND c.OutDh=m.OutDh AND (KgStatus = 2 OR FzrStatus = 2 OR FzrStatus = 0 AND KgStatus = 0)
     </select>
@@ -63,6 +68,50 @@
     <select id="getPersonById" resultType="com.qdhualing.qrcodetracker.bean.PersonResult">
         SELECT UserID,TrueName,LoginName,RegTime,u.GroupID,GroupName,CheckQXGroup FROM Hl_User u LEFT JOIN Hl_UserGroup ug ON u.GroupID=ug.GroupID WHERE UserID=#{0}
     </select>
+
+    <update id="updateBcpCkdData" parameterType="com.qdhualing.qrcodetracker.bean.BcpOutVerifyResult">
+        UPDATE Ckd_Bcp SET
+        <if test="kgID!=null">
+          KgID=#{kgID},
+        </if>
+        <if test="kg!=null">
+          Kg=#{kg},
+        </if>
+        <if test="kgStatus!=null">
+          KgStatus=#{kgStatus},
+        </if>
+        <if test="fzrID!=null">
+          FzrID=#{fzrID},
+        </if>
+        <if test="fhFzr!=null">
+          FhFzr=#{fhFzr},
+        </if>
+        <if test="fzrStatus!=null">
+          FzrStatus=#{fzrStatus},
+        </if>
+        <if test="bzID!=null">
+          BzID=#{bzID},
+        </if>
+        <if test="bz!=null">
+          Bz=#{bz},
+        </if>
+        <if test="bzStatus!=null">
+          BzStatus=#{bzStatus},
+        </if>
+        <if test="llfzrID!=null">
+          LlfzrID=#{llfzrID},
+        </if>
+        <if test="lhFzr!=null">
+          LhFzr=#{lhFzr},
+        </if>
+        <if test="llfzrStatus!=null">
+          LlfzrStatus=#{llfzrStatus},
+        </if>
+        <if test="remark!=null">
+          Remark=#{remark}
+        </if>
+        WHERE OutDh = #{outDh}
+    </update>
 
     <update id="updateCpCkdData" parameterType="com.qdhualing.qrcodetracker.bean.CpOutVerifyResult">
         UPDATE Ckd_Bcp SET
@@ -739,7 +788,7 @@
             and BzID = #{bzID} and KgStatus=1 and FzrStatus=1 and BzStatus=0 and LlfzrStatus=0
         </if>
         <if test="fzrID!=null">
-            and (FlfzrID = #{flfzrID} and KgStatus=1 and FzrStatus=0 and BzStatus=0 and LlfzrStatus=0)
+            and (FzrID = #{fzrID} and KgStatus=1 and FzrStatus=0 and BzStatus=0 and LlfzrStatus=0)
             or (LlfzrID = #{llfzrID} and KgStatus=1 and FzrStatus=1 and BzStatus=1 and LlfzrStatus=0)
         </if>
     </select>
@@ -873,7 +922,7 @@
         <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@KG">
             KgID
         </if>
-        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@FZR">
+        <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@FZR||personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@FLFZR">
             FzrID
         </if>
         <if test="personFlag==@com.qdhualing.qrcodetracker.bean.NotificationParam@BZ">
