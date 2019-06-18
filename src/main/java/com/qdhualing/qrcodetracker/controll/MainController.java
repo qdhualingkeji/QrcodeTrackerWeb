@@ -460,6 +460,22 @@ public class MainController {
                 bcpOutParam.setGg(bcpsBean.getGg());
                 bcpOutParam.setSortId(bcpsBean.getSortID());
                 bcpOutParam.setYlpc(bcpsBean.getYlpc());
+                bcpOutParam.setScTime(bcpsBean.getScTime());
+                bcpOutParam.setKsTime(bcpsBean.getKsTime());
+                bcpOutParam.setWcTime(bcpsBean.getWcTime());
+                bcpOutParam.setGx(bcpsBean.getGx());
+                bcpOutParam.setCzy(bcpsBean.getCzy());
+                bcpOutParam.setCheJian(bcpsBean.getCheJian());
+                bcpOutParam.setYl1(bcpsBean.getYl1());
+                bcpOutParam.setYl2(bcpsBean.getYl2());
+                bcpOutParam.setYl3(bcpsBean.getYl3());
+                bcpOutParam.setYl4(bcpsBean.getYl4());
+                bcpOutParam.setYl5(bcpsBean.getYl5());
+                bcpOutParam.setYl6(bcpsBean.getYl6());
+                bcpOutParam.setYl7(bcpsBean.getYl7());
+                bcpOutParam.setYl8(bcpsBean.getYl8());
+                bcpOutParam.setYl9(bcpsBean.getYl9());
+                bcpOutParam.setYl10(bcpsBean.getYl10());
                 int b = mainService.insertBcpOUT(bcpOutParam);
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成出库记录失败");
@@ -1095,6 +1111,8 @@ public class MainController {
                 param.setYl8(bcpTempSBean.getYl8());
                 param.setYl9(bcpTempSBean.getYl9());
                 param.setYl10(bcpTempSBean.getYl10());
+                param.setGg(bcpTempSBean.getGg());
+                param.setDw(bcpTempSBean.getDw());
                 //生成退库记录
                 int b = mainService.insertBCPBk(param);
                 if (b <= 0) {
@@ -2987,7 +3005,7 @@ public class MainController {
                 int a = mainService.agreeBcpOut(bcpckd);
                 if (a == 1) {
                     BcpCkdBean bcpCkd = mainService.getBcpCkdBean(param.getDh());
-                    if(bcpCkd.getKgStatus()==1&&bcpCkd.getFzrStatus()==1&&bcpCkd.getBzStatus()==1) {
+                    if(bcpCkd.getKgStatus()==1&&bcpCkd.getFzrStatus()==1&&bcpCkd.getBzStatus()==1&&bcpCkd.getLlfzrStatus()==1) {
                         List<BcpOutParam> bcpOutList = mainService.getBcpOutParamListByOutDh(param.getDh());
                         for (BcpOutParam bcpOutParam : bcpOutList) {
                             //更新仓库库存表数量

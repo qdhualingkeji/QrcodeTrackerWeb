@@ -34,7 +34,8 @@ public class BCPTKParam {
     private String thr ;
     private String shrr ;
     private String thDw ;
-
+    private String gg;
+    private String dw;
     private String yl1;
     private String yl2;
     private String yl3;
@@ -45,6 +46,22 @@ public class BCPTKParam {
     private String yl8;
     private String yl9;
     private String yl10;
+
+    public String getGg() {
+        return gg;
+    }
+
+    public void setGg(String gg) {
+        this.gg = gg;
+    }
+
+    public String getDw() {
+        return dw;
+    }
+
+    public void setDw(String dw) {
+        this.dw = dw;
+    }
 
     public String getYl1() {
         return yl1;
