@@ -527,6 +527,7 @@ public class MainService {
     	WlTkdBean wltkd=new WlTkdBean();
 		wltkd.setBzID(bzID);
 		wltkd.setFzrID(fzrID);
+		wltkd.setKgID(kgID);
 		wltkd.setTlfzrID(fzrID);
 		wltkd.setSlfzrID(fzrID);
 

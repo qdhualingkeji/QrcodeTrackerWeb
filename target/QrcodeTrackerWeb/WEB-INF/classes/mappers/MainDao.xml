@@ -871,7 +871,7 @@
             or (BzID=#{bzID} and SlfzrStatus=2)
         </if>
         <if test="kgID!=null">
-            and kgID=#{kgID} and BzStatus=0 and TlfzrStatus=0 and KgStatus=1 and SlfzrStatus=1
+            and kgID=#{kgID} and BzStatus=1 and TlfzrStatus=1 and KgStatus=0 and SlfzrStatus=0
         </if>
         <if test="fzrID!=null">
             and (TlfzrID = #{tlfzrID} and BzStatus=1 and TlfzrStatus=0 and KgStatus=0 and SlfzrStatus=0)
