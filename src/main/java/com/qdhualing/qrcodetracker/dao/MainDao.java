@@ -41,7 +41,7 @@ public interface MainDao {
     //获取父级物料分类数据
     List<HlSortBean> getParentHlSort(@Param("qrCodeId") String qrCodeId);
     //获取子级物料分类数据
-    List<HlSortBean> getChildHlSort(@Param("parentID") int parentID);
+    List<HlSortBean> getChildHlSort(@Param("parentID") int parentID,@Param("qrCodeId") String qrCodeId);
     //获取产品数据
     List<HlProductBean> getHlProduct(int sortID);
     //创建物料出库单

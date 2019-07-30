@@ -4154,16 +4154,31 @@ SmlPk45		= #{smlPk45},
 
     <select id="getParentHlSort" resultType="com.qdhualing.qrcodetracker.bean.HlSortBean">
 		SELECT *
-		FROM Hl_Sort WHERE ParentID=0
+		FROM Hl_Sort WHERE 1=1
         <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@WL">
-            AND SortCode in(1,4,5)
+            AND ParentID=0 AND SortCode in(1,4,5)
+        </if>
+        <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@BCP">
+            AND ParentID=0 AND SortCode in(2)
+        </if>
+        <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@SMALL_CP||qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@BIG_CP">
+            AND ParentID=0 AND SortCode in(3)
         </if>
         ORDER BY SortOrder
 	</select>
 
     <select id="getChildHlSort" resultType="com.qdhualing.qrcodetracker.bean.HlSortBean">
 		SELECT *
-		FROM Hl_Sort WHERE ParentID=#{parentID}
+		FROM Hl_Sort WHERE 1=1
+        <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@WL||qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@BCP">
+            AND ParentID=#{parentID}
+        </if>
+        <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@SMALL_CP">
+            AND ParentID=#{parentID} AND SortCode in(501)
+        </if>
+        <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@BIG_CP">
+            AND ParentID=#{parentID} AND SortCode in(502)
+        </if>
         ORDER BY SortOrder
 	</select>
 

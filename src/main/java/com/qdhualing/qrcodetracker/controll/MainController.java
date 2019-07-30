@@ -270,7 +270,7 @@ public class MainController {
         HlSortBean hlSortBean = ParamsUtils.handleParams(json, HlSortBean.class);
         ActionResult<HlSortResult> result = new ActionResult<HlSortResult>();
         try {
-            HlSortResult hlSortResult = mainService.getChildHlSort(hlSortBean.getParentID());
+            HlSortResult hlSortResult = mainService.getChildHlSort(hlSortBean.getParentID(),hlSortBean.getMemo());
             if (hlSortResult.getHlSortBeans() == null || hlSortResult.getHlSortBeans().size() <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "无物料类别数据");
             }

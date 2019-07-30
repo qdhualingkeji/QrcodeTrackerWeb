@@ -101,15 +101,15 @@ public class MainService {
 		return pdtSortResult;
 	}
 
-	public HlSortResult getParentHlSort(String qrcodeId) {
-		List<HlSortBean> beans =  mainDao.getParentHlSort(qrcodeId);
+	public HlSortResult getParentHlSort(String qrCodeId) {
+		List<HlSortBean> beans =  mainDao.getParentHlSort(qrCodeId);
 		HlSortResult hlSortResult = new HlSortResult();
 		hlSortResult.setHlSortBeans(beans);
 		return hlSortResult;
 	}
 
-	public HlSortResult getChildHlSort(int parentID) {
-		List<HlSortBean> beans =  mainDao.getChildHlSort(parentID);
+	public HlSortResult getChildHlSort(int parentID,String qrCodeId) {
+		List<HlSortBean> beans =  mainDao.getChildHlSort(parentID,qrCodeId);
 		HlSortResult hlSortResult = new HlSortResult();
 		hlSortResult.setHlSortBeans(beans);
 		return hlSortResult;
