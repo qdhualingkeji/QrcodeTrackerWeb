@@ -38,8 +38,10 @@ public interface MainDao {
     int commitMaterialInputedData(DataInputParams params);
     //获取物料类别数据
     List<PdtSortBean> getPdtSort();
-    //获取物料分类数据
-    List<HlSortBean> getHlSort();
+    //获取父级物料分类数据
+    List<HlSortBean> getParentHlSort(@Param("qrCodeId") String qrCodeId);
+    //获取子级物料分类数据
+    List<HlSortBean> getChildHlSort(@Param("parentID") int parentID);
     //获取产品数据
     List<HlProductBean> getHlProduct(int sortID);
     //创建物料出库单

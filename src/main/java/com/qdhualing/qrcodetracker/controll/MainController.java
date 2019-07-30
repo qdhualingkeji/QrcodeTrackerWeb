@@ -236,18 +236,41 @@ public class MainController {
         }
     }
 
-
     /**
      * @return
      * @author 马鹏昊
-     * @desc 获取物料分类（含物料编码）
+     * @desc 获取父级物料分类（含物料编码）
      */
-    @RequestMapping(value = "/getHlSort", method = RequestMethod.POST)
+    @RequestMapping(value = "/getParentHlSort", method = RequestMethod.POST)
     @ResponseBody
-    public ActionResult getHlSort() {
+    public ActionResult getParentHlSort(String json) {
+        HlSortBean hlSortBean = ParamsUtils.handleParams(json, HlSortBean.class);
         ActionResult<HlSortResult> result = new ActionResult<HlSortResult>();
         try {
-            HlSortResult hlSortResult = mainService.getHlSort();
+            HlSortResult hlSortResult = mainService.getParentHlSort(hlSortBean.getMemo());
+            if (hlSortResult.getHlSortBeans() == null || hlSortResult.getHlSortBeans().size() <= 0) {
+                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "无物料类别数据");
+            }
+            result.setResult(hlSortResult);
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "获取类别成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+        }
+    }
+
+    /**
+     * @return
+     * @author 逄坤
+     * @desc 获取子级物料分类（含物料编码）
+     */
+    @RequestMapping(value = "/getChildHlSort", method = RequestMethod.POST)
+    @ResponseBody
+    public ActionResult getChildHlSort(String json) {
+        HlSortBean hlSortBean = ParamsUtils.handleParams(json, HlSortBean.class);
+        ActionResult<HlSortResult> result = new ActionResult<HlSortResult>();
+        try {
+            HlSortResult hlSortResult = mainService.getChildHlSort(hlSortBean.getParentID());
             if (hlSortResult.getHlSortBeans() == null || hlSortResult.getHlSortBeans().size() <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "无物料类别数据");
             }

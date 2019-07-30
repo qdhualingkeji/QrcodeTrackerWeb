@@ -4152,9 +4152,19 @@ SmlPk45		= #{smlPk45},
         </trim>
     </insert>
 
-    <select id="getHlSort" resultType="com.qdhualing.qrcodetracker.bean.HlSortBean">
+    <select id="getParentHlSort" resultType="com.qdhualing.qrcodetracker.bean.HlSortBean">
 		SELECT *
-		FROM Hl_Sort
+		FROM Hl_Sort WHERE ParentID=0
+        <if test="qrCodeId.substring(8,9)==@com.qdhualing.qrcodetracker.bean.TrackType@WL">
+            AND SortCode in(1,4,5)
+        </if>
+        ORDER BY SortOrder
+	</select>
+
+    <select id="getChildHlSort" resultType="com.qdhualing.qrcodetracker.bean.HlSortBean">
+		SELECT *
+		FROM Hl_Sort WHERE ParentID=#{parentID}
+        ORDER BY SortOrder
 	</select>
 
     <select id="getHlProduct" resultType="com.qdhualing.qrcodetracker.bean.HlProductBean">
