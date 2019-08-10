@@ -440,7 +440,14 @@ public class MainController {
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成出库记录失败");
                 } else {
-                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
+                    //更新仓库库存表数量
+                    b = mainService.outUpdateWLS(wlOutParam);
+                    if (b <= 0) {
+                        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
+                    }
+                    else {
+                        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -503,6 +510,11 @@ public class MainController {
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成出库记录失败");
                 } else {
+                    //更新仓库库存表数量
+                    b = mainService.outUpdateBCPS(bcpOutParam);
+                    if (b <= 0) {
+                        return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
+                    }
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 }
             } catch (Exception e) {
@@ -640,6 +652,12 @@ public class MainController {
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成退库记录失败");
                 } else {
+                    //临时库存表中数据减去或者删除
+                    if (wlTKParam.getTkShL() >= wlTempSBean.getSHL()&&wlTKParam.getDwzl() >= wlTempSBean.getDWZL()) {
+                        b = mainService.deleteFromWLTempS(wlTKParam.getQrCodeId());
+                    } else {
+                        b = mainService.updateWLTempSByTk(wlTKParam);
+                    }
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 }
             } catch (Exception e) {
@@ -2555,11 +2573,13 @@ public class MainController {
                     if(wlCkd.getKgStatus()==1&&wlCkd.getFlfzrStatus()==1&&wlCkd.getBzStatus()==1&&wlCkd.getLlfzrStatus()==1) {
                         List<WLOutParam> wlOutList = mainService.getWLOutParamListByOutDh(param.getDh());
                         for (WLOutParam wlOutParam : wlOutList) {
+                            /*
                             //更新仓库库存表数量
                             a = mainService.outUpdateWLS(wlOutParam);
                             if (a <= 0) {
                                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
                             }
+                            */
                             //查询临时库存表中是否有数据
                             a = mainService.findWLTempS(wlOutParam.getQrCodeId());
                             if (a <= 0) {
@@ -2672,6 +2692,7 @@ public class MainController {
                             if (a <= 0) {
                                 //return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
                             }
+                            /*
                             //临时库存表中数据减去或者删除
                             WLTempSBean wlTempSBean = mainService.getWLTempS(wlTKParam.getQrCodeId());
                             if (wlTKParam.getTkShL() >= wlTempSBean.getSHL()&&wlTKParam.getDwzl() >= wlTempSBean.getDWZL()) {
@@ -2679,6 +2700,7 @@ public class MainController {
                             } else {
                                 a = mainService.updateWLTempSByTk(wlTKParam);
                             }
+                            */
                         }
                     }
 
@@ -3031,11 +3053,13 @@ public class MainController {
                     if(bcpCkd.getKgStatus()==1&&bcpCkd.getFzrStatus()==1&&bcpCkd.getBzStatus()==1&&bcpCkd.getLlfzrStatus()==1) {
                         List<BcpOutParam> bcpOutList = mainService.getBcpOutParamListByOutDh(param.getDh());
                         for (BcpOutParam bcpOutParam : bcpOutList) {
+                            /*
                             //更新仓库库存表数量
                             a = mainService.outUpdateBCPS(bcpOutParam);
                             if (a <= 0) {
                                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
                             }
+                            */
                             BCPINParam bcpInParam = convertBcpOutIntoInParam(bcpOutParam);
                             //查询临时库存表中是否有数据
                             a = mainService.findBCPTempS(bcpOutParam.getQrCodeId());
@@ -3068,7 +3092,9 @@ public class MainController {
         bcpInParam.setYlpc(bcpOutParam.getYlpc());
         bcpInParam.setGg(bcpOutParam.getGg());
         bcpInParam.setScTime(bcpOutParam.getScTime());
+        bcpInParam.setRkzl(bcpOutParam.getRkzl());
         bcpInParam.setDwzl(bcpOutParam.getDwzl());
+        bcpInParam.setShl(bcpOutParam.getCkShL());
         bcpInParam.setKsTime(bcpOutParam.getKsTime());
         bcpInParam.setWcTime(bcpOutParam.getWcTime());
         bcpInParam.setGx(bcpOutParam.getGx());

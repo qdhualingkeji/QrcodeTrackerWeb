@@ -2779,7 +2779,7 @@ SmlPk45		= #{smlPk45},
             <if test="scTime!=null">
                 #{scTime},
             </if>
-            #{dwzl},
+            #{rkzl},
             #{dwzl},
             <if test="ksTime!=null">
                 #{ksTime},

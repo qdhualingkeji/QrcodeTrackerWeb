@@ -20,6 +20,7 @@ public class WLOutShowDataResult {
     private float shl;
     private String gg;
     private String dw;
+    private String chd;
 
     public String getProductName() {
         return productName;
@@ -75,5 +76,13 @@ public class WLOutShowDataResult {
 
     public void setDw(String dw) {
         this.dw = dw;
+    }
+
+    public String getChd() {
+        return chd;
+    }
+
+    public void setChd(String chd) {
+        this.chd = chd;
     }
 }

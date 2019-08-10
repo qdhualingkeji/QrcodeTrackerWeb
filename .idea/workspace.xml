@@ -8,9 +8,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ff6a10a-c7d8-472d-8c1a-6507d6ca6a39" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/qdhualing/qrcodetracker/controll/MainController.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/QrcodeTrackerWeb.war" afterPath="$PROJECT_DIR$/target/QrcodeTrackerWeb.war" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/QrcodeTrackerWeb/WEB-INF/classes/com/qdhualing/qrcodetracker/bean/WLOutShowDataResult.class" afterPath="$PROJECT_DIR$/target/QrcodeTrackerWeb/WEB-INF/classes/com/qdhualing/qrcodetracker/bean/WLOutShowDataResult.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/QrcodeTrackerWeb/WEB-INF/classes/com/qdhualing/qrcodetracker/controll/MainController.class" afterPath="$PROJECT_DIR$/target/QrcodeTrackerWeb/WEB-INF/classes/com/qdhualing/qrcodetracker/controll/MainController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/qdhualing/qrcodetracker/bean/WLOutShowDataResult.class" afterPath="$PROJECT_DIR$/target/classes/com/qdhualing/qrcodetracker/bean/WLOutShowDataResult.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_Release.xml" afterPath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_Release.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_Release1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_Release1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_spring4_Release.xml" afterPath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_spring4_Release.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_spring4_Release1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_spring4_Release1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BCPINParam.java" afterPath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BCPINParam.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/WLOutShowDataResult.java" afterPath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/WLOutShowDataResult.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/dao/MainDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/dao/MainDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/service/MainService.java" afterPath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/service/MainService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml" afterPath="$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,190 +38,190 @@
       <file leaf-file-name="MainDao.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="4178" column="95" lean-forward="true" selection-start-line="4178" selection-start-column="95" selection-end-line="4178" selection-end-column="95" />
+            <state relative-caret-position="389">
+              <caret line="1949" column="92" lean-forward="true" selection-start-line="1949" selection-start-column="92" selection-end-line="1949" selection-end-column="92" />
               <folding>
-                <marker date="1564471471843" expanded="true" signature="317:401" ph="SELECT disti... Tkd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="317:782" ph="SELECT disti... Tkd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="902:1007" ph="SELECT * FRO... Ckd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="902:1107" ph="SELECT * FRO... Ckd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="1226:1395" ph="SELECT disti... Ckd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="1507:1755" ph="SELECT disti... " />
-                <marker date="1564471471843" expanded="true" signature="1515:1754" ph="SELECT * FRO... *" />
-                <marker date="1564471471843" expanded="true" signature="1539:1619" ph="SELECT disti... Rkd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="1873:2113" ph="SELECT disti... Rkd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="2231:2438" ph="SELECT * FRO... Tkd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="2231:2439" ph="SELECT disti... Tkd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="2557:2658" ph="SELECT * FRO... Ckd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="2557:2799" ph="SELECT * FRO... Ckd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="2917:3099" ph="SELECT * FRO... Rkd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="2917:3100" ph="SELECT disti... Rkd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="3589:3704" ph="SELECT UserI... Hl_User" />
-                <marker date="1564471471843" expanded="true" signature="3589:3726" ph="SELECT UserI... Hl_User" />
-                <marker date="1564471471843" expanded="true" signature="3841:3997" ph="SELECT * FRO... Hl_User" />
-                <marker date="1564471471843" expanded="true" signature="4124:5141" ph="UPDATE Ckd_B... " />
-                <marker date="1564471471843" expanded="true" signature="5266:5830" ph="UPDATE Ckd_B... " />
-                <marker date="1564471471843" expanded="true" signature="5951:6048" ph="UPDATE M_BCP... " />
-                <marker date="1564471471843" expanded="true" signature="6173:7836" ph="UPDATE Tkd_B... " />
-                <marker date="1564471471843" expanded="true" signature="7959:8133" ph="UPDATE M_CPI... " />
-                <marker date="1564471471843" expanded="true" signature="8257:8442" ph="UPDATE M_CPI... " />
-                <marker date="1564471471843" expanded="true" signature="8562:8753" ph="UPDATE M_BCP... " />
-                <marker date="1564471471843" expanded="true" signature="8878:10765" ph="UPDATE Rkd_B... " />
-                <marker date="1564471471843" expanded="true" signature="10884:10963" ph="UPDATE M_WLB... " />
-                <marker date="1564471471843" expanded="true" signature="11086:11421" ph="UPDATE Tkd_W... " />
-                <marker date="1564471471843" expanded="true" signature="11541:11621" ph="UPDATE M_WLO... " />
-                <marker date="1564471471843" expanded="true" signature="11745:12046" ph="UPDATE Ckd_W... " />
-                <marker date="1564471471843" expanded="true" signature="12165:12402" ph="UPDATE M_WLI... " />
-                <marker date="1564471471843" expanded="true" signature="12525:12792" ph="UPDATE Rkd_W... " />
-                <marker date="1564471471843" expanded="true" signature="12862:12933" ph="UPDATE M_CPI... " />
-                <marker date="1564471471843" expanded="true" signature="13005:13075" ph="UPDATE M_CPI... " />
-                <marker date="1564471471843" expanded="true" signature="13142:13213" ph="UPDATE M_BCP... " />
-                <marker date="1564471471843" expanded="true" signature="13279:13346" ph="UPDATE M_WLI... " />
-                <marker date="1564471471843" expanded="true" signature="13472:13759" ph="SELECT M_CPI... M_CPIn2" />
-                <marker date="1564471471843" expanded="true" signature="13886:14163" ph="SELECT M_CPI... M_CPIn" />
-                <marker date="1564471471843" expanded="true" signature="14282:14761" ph="SELECT M_BCP... M_BCPIn" />
-                <marker date="1564471471843" expanded="true" signature="14875:15427" ph="UPDATE Tkd_B... " />
-                <marker date="1564471471843" expanded="true" signature="15539:16155" ph="UPDATE Tkd_B... " />
-                <marker date="1564471471843" expanded="true" signature="16269:16646" ph="UPDATE Ckd_B... " />
-                <marker date="1564471471843" expanded="true" signature="16269:16647" ph="UPDATE Ckd_B... " />
-                <marker date="1564471471843" expanded="true" signature="16759:16969" ph="UPDATE Ckd_B... " />
-                <marker date="1564471471843" expanded="true" signature="17082:17496" ph="UPDATE Ckd_B... " />
-                <marker date="1564471471843" expanded="true" signature="17608:17830" ph="UPDATE Ckd_B... " />
-                <marker date="1564471471843" expanded="true" signature="17943:18758" ph="UPDATE Rkd_B... " />
-                <marker date="1564471471843" expanded="true" signature="18870:19685" ph="UPDATE Rkd_B... " />
-                <marker date="1564471471843" expanded="true" signature="19796:20180" ph="UPDATE Tkd_W... " />
-                <marker date="1564471471843" expanded="true" signature="20290:20713" ph="UPDATE Tkd_W... " />
-                <marker date="1564471471843" expanded="true" signature="20825:21207" ph="UPDATE Ckd_W... " />
-                <marker date="1564471471843" expanded="true" signature="21318:21739" ph="UPDATE Ckd_W... " />
-                <marker date="1564471471843" expanded="true" signature="21850:22145" ph="UPDATE Rkd_W... " />
-                <marker date="1564471471843" expanded="true" signature="22255:22575" ph="UPDATE Rkd_W... " />
-                <marker date="1564471471843" expanded="true" signature="22705:22820" ph="SELECT * FRO... M_BCPBk" />
-                <marker date="1564471471843" expanded="true" signature="22933:22974" ph="SELECT * FRO... Tkd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="23106:23221" ph="SELECT * FRO... M_CPOut" />
-                <marker date="1564471471843" expanded="true" signature="23351:23465" ph="SELECT c.*,s... M_CPOut" />
-                <marker date="1564471471843" expanded="true" signature="23595:23635" ph="SELECT * FRO... M_CPOut" />
-                <marker date="1564471471843" expanded="true" signature="23748:23804" ph="SELECT * FRO... Ckd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="23935:24243" ph="SELECT QRCod... " />
-                <marker date="1564471471843" expanded="true" signature="24370:24432" ph="SELECT *,CP_... M_CPIn2" />
-                <marker date="1564471471843" expanded="true" signature="24560:24879" ph="SELECT QRCod... " />
-                <marker date="1564471471843" expanded="true" signature="25013:25339" ph="SELECT QRCod... " />
-                <marker date="1564471471843" expanded="true" signature="25470:25531" ph="SELECT *,CP_... M_CPIn" />
-                <marker date="1564471471843" expanded="true" signature="25668:25736" ph="SELECT *,CP_... M_CPIn" />
-                <marker date="1564471471843" expanded="true" signature="25668:25787" ph="SELECT *,CP_... M_CPIn" />
-                <marker date="1564471471843" expanded="true" signature="25759:25786" ph="SELECT QRCod... M_CPS" />
-                <marker date="1564471471843" expanded="true" signature="25916:26297" ph="SELECT QRCod... " />
-                <marker date="1564471471843" expanded="true" signature="26410:26449" ph="SELECT * FRO... Rkd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="26577:26681" ph="SELECT * FRO... M_WLBk" />
-                <marker date="1564471471843" expanded="true" signature="26803:26871" ph="SELECT *,SHL... M_WLBk" />
-                <marker date="1564471471843" expanded="true" signature="26982:27022" ph="SELECT * FRO... Tkd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="27152:27257" ph="SELECT * FRO... M_WLOUT" />
-                <marker date="1564471471843" expanded="true" signature="27381:27500" ph="SELECT *,SHL... M_WLOUT" />
-                <marker date="1564471471843" expanded="true" signature="27626:27741" ph="SELECT o.*,o... M_BCPOUT" />
-                <marker date="1564471471843" expanded="true" signature="27852:27907" ph="SELECT * FRO... Ckd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="28034:28139" ph="SELECT * FRO... M_WLIn" />
-                <marker date="1564471471843" expanded="true" signature="28250:28288" ph="SELECT * FRO... Rkd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="30898:30965" ph="SELECT * FRO... Ckd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="30898:30980" ph="SELECT * FRO... Ckd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="31494:31574" ph="SELECT disti... Rkd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="31494:32347" ph="SELECT disti... " />
-                <marker date="1564471471843" expanded="true" signature="36694:37299" ph="SELECT FzrID... Ckd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="37391:38172" ph="SELECT FzrID... Tkd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="38264:39163" ph="SELECT FzrID... Rkd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="39254:39792" ph="SELECT BzID Tkd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="39883:40420" ph="SELECT BzID Ckd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="40511:41035" ph="SELECT BzID Rkd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="41145:41215" ph="SELECT * FRO... M_CPIn2" />
-                <marker date="1564471471843" expanded="true" signature="41330:41373" ph="SELECT * FRO... M_CPIn" />
-                <marker date="1564471471843" expanded="true" signature="42187:42251" ph="SELECT SortN... Hl_Sort" />
-                <marker date="1564471471843" expanded="true" signature="42363:42642" ph="SELECT * FRO... M_BCPIn" />
-                <marker date="1564471471843" expanded="true" signature="42756:43226" ph="SELECT M_WLI... M_WLIn" />
-                <marker date="1564471471843" expanded="true" signature="43356:43529" ph="SELECT m.CP_... M_CPS" />
-                <marker date="1564471471843" expanded="true" signature="43636:43694" ph="SELECT * FRO... M_CPS" />
-                <marker date="1564471471843" expanded="true" signature="45573:45621" ph="DELETE FROM " />
-                <marker date="1564471471843" expanded="true" signature="45747:45921" ph="SELECT m.CP_... M_CPS2" />
-                <marker date="1564471471843" expanded="true" signature="45983:46033" ph="DELETE FROM " />
-                <marker date="1564471471843" expanded="true" signature="46092:46141" ph="DELETE FROM " />
-                <marker date="1564471471843" expanded="true" signature="48061:49701" ph="UPDATE M_CPI... " />
-                <marker date="1564471471843" expanded="true" signature="49811:51128" ph="UPDATE M_CPS... " />
-                <marker date="1564471471843" expanded="true" signature="51234:51293" ph="SELECT * FRO... M_CPS2" />
-                <marker date="1564471471843" expanded="true" signature="57650:57715" ph="SELECT COUNT... M_CPS" />
-                <marker date="1564471471843" expanded="true" signature="57825:57854" ph="SELECT * FRO... M_CPS2" />
-                <marker date="1564471471843" expanded="true" signature="57825:57877" ph="SELECT * FRO... M_CPIn2" />
-                <marker date="1564471471843" expanded="true" signature="60207:60273" ph="SELECT COUNT... M_CPS2" />
-                <marker date="1564471471843" expanded="true" signature="65987:66121" ph="UPDATE M_BCP... " />
-                <marker date="1564471471843" expanded="true" signature="66239:66369" ph="UPDATE M_BCP... " />
-                <marker date="1564471471843" expanded="true" signature="70887:70953" ph="SELECT COUNT... M_BCPS" />
-                <marker date="1564471471843" expanded="true" signature="74644:74701" ph="SELECT * FRO... Tkd_Bcp" />
-                <marker date="1564471471843" expanded="true" signature="74826:75123" ph="SELECT M_BCP... M_BCPTempS" />
-                <marker date="1564471471843" expanded="true" signature="79389:79523" ph="UPDATE M_BCP... " />
-                <marker date="1564471471843" expanded="true" signature="79585:79638" ph="DELETE FROM " />
-                <marker date="1564471471843" expanded="true" signature="79755:79886" ph="UPDATE M_BCP... " />
-                <marker date="1564471471843" expanded="true" signature="84746:84813" ph="SELECT COUNT... M_BCPTl" />
-                <marker date="1564471471843" expanded="true" signature="84926:84989" ph="SELECT * FRO... M_BCPTempS" />
-                <marker date="1564471471843" expanded="true" signature="85116:85752" ph="SELECT M_BCP... M_BCPTempS" />
-                <marker date="1564471471843" expanded="true" signature="85869:85999" ph="UPDATE M_BCP... " />
-                <marker date="1564471471843" expanded="true" signature="90679:90749" ph="SELECT COUNT... M_BCPTempS" />
-                <marker date="1564471471843" expanded="true" signature="90872:91281" ph="update M_CPI... " />
-                <marker date="1564471471843" expanded="true" signature="91398:92041" ph="update M_CPI... " />
-                <marker date="1564471471843" expanded="true" signature="92154:93124" ph="update M_BCP... " />
-                <marker date="1564471471843" expanded="true" signature="93195:93382" ph="UPDATE Rkd_B... " />
-                <marker date="1564471471843" expanded="true" signature="93285:93381" ph="select m2.In... M_CPIn" />
-                <marker date="1564471471843" expanded="true" signature="98343:98473" ph="UPDATE M_WLT... " />
-                <marker date="1564471471843" expanded="true" signature="98564:98630" ph="SELECT COUNT... M_WLTl" />
-                <marker date="1564471471843" expanded="true" signature="98745:98827" ph="SELECT ID , M_WLTl" />
-                <marker date="1564471471843" expanded="true" signature="98943:99026" ph="SELECT ID , M_BCPTl" />
-                <marker date="1564471471843" expanded="true" signature="104032:104064" ph="SELECT * FRO... Hl_CheJian" />
-                <marker date="1564471471843" expanded="true" signature="104186:104319" ph="UPDATE M_WLT... " />
-                <marker date="1564471471843" expanded="true" signature="106194:106327" ph="UPDATE M_WLT... " />
-                <marker date="1564471471843" expanded="true" signature="106388:106440" ph="DELETE FROM " />
-                <marker date="1564471471843" expanded="true" signature="106555:106684" ph="UPDATE M_WLS... " />
-                <marker date="1564471471843" expanded="true" signature="108362:108424" ph="SELECT * FRO... M_WLTempS" />
-                <marker date="1564471471843" expanded="true" signature="108533:108589" ph="SELECT * FRO... Tkd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="108711:108975" ph="SELECT M_WLT... M_WLTempS" />
-                <marker date="1564471471843" expanded="true" signature="112056:112214" ph="UPDATE M_WLT... " />
-                <marker date="1564471471843" expanded="true" signature="112300:112369" ph="SELECT COUNT... M_WLTempS" />
-                <marker date="1564471471843" expanded="true" signature="113872:113906" ph="SELECT * FRO... Hl_UserGroup" />
-                <marker date="1564471471843" expanded="true" signature="114021:114146" ph="UPDATE M_WLS... " />
-                <marker date="1564471471843" expanded="true" signature="114264:114390" ph="UPDATE M_BCP... " />
-                <marker date="1564471471843" expanded="true" signature="122362:122421" ph="SELECT * FRO... M_WLS" />
-                <marker date="1564471471843" expanded="true" signature="122525:122583" ph="SELECT * FRO... M_WLS" />
-                <marker date="1564471471843" expanded="true" signature="122692:122747" ph="SELECT * FRO... Ckd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="122859:123033" ph="UPDATE M_WLS... " />
-                <marker date="1564471471843" expanded="true" signature="124586:124639" ph="SELECT count... M_WLS" />
-                <marker date="1564471471843" expanded="true" signature="124755:124978" ph="SELECT M_WLS... M_WLS" />
-                <marker date="1564471471843" expanded="true" signature="125096:125317" ph="SELECT M_BCP... M_BCPS" />
-                <marker date="1564471471843" expanded="true" signature="128745:128768" ph="SELECT * FRO... Hl_Sort" />
-                <marker date="1564471471843" expanded="true" signature="128745:128778" ph="SELECT * FRO... Hl_Sort" />
-                <marker date="1564471471843" expanded="true" signature="128745:129349" ph="SELECT * FRO... Hl_Sort" />
-                <marker date="1564471471843" expanded="true" signature="129454:130069" ph="SELECT * FRO... Hl_Sort" />
-                <marker date="1564471471843" expanded="true" signature="130181:130225" ph="SELECT * FRO... Hl_Product" />
-                <marker date="1564471471843" expanded="true" signature="130330:130355" ph="SELECT * FRO... Pdt_Sort2" />
-                <marker date="1564471471843" expanded="true" signature="130463:130623" ph="SELECT mwlin... M_WLIn" />
-                <marker date="1564471471843" expanded="true" signature="134168:134660" ph="update M_WLI... " />
-                <marker date="1564471471843" expanded="true" signature="136543:136584" ph="select * fro... Rkd_Wl" />
-                <marker date="1564471471843" expanded="true" signature="136696:136761" ph="select *,Sor... M_WLIn" />
-                <marker date="1564471471843" expanded="true" signature="136870:136919" ph="select * fro... M_WLS" />
-                <marker date="1564471471843" expanded="true" signature="136976:137025" ph="update M_WLS... " />
-                <marker date="1564471471843" expanded="true" signature="137134:137170" ph="SELECT ID,M_... M_Module2" />
-                <marker date="1564471471843" expanded="true" signature="137352:137398" ph="SELECT ID,M_... M_Module2" />
-                <marker date="1564471471843" expanded="true" signature="137811:137830" ph="INSERT INTO Hl_User... " />
-                <marker date="1564471471843" expanded="true" signature="137811:138506" ph="INSERT INTO Hl_User... " />
-                <marker date="1564471471843" expanded="true" signature="139307:139549" ph="UPDATE Hl_Us... " />
-                <marker date="1564471471843" expanded="true" signature="139697:139742" ph="SELECT count... Hl_User" />
-                <marker date="1564471471843" expanded="true" signature="139697:139754" ph="SELECT count... Hl_User" />
-                <marker date="1564471471843" expanded="true" signature="139885:139922" ph="DELETE FROM " />
-                <marker date="1564471471843" expanded="true" signature="140221:140276" ph="SELECT count... M_WLIn" />
-                <marker date="1564471471843" expanded="true" signature="140221:140297" ph="SELECT count... M_WLIn" />
-                <marker date="1564471471843" expanded="true" signature="140455:140511" ph="SELECT count... M_WLOUT" />
-                <marker date="1564471471843" expanded="true" signature="140655:140710" ph="SELECT count... M_WLBK" />
-                <marker date="1564471471843" expanded="true" signature="140977:141033" ph="SELECT count... M_BCPIn" />
-                <marker date="1564471471843" expanded="true" signature="140977:141054" ph="SELECT count... M_BCPIn" />
-                <marker date="1564471471843" expanded="true" signature="141219:141275" ph="SELECT count... M_BCPBK" />
-                <marker date="1564471471843" expanded="true" signature="141540:141596" ph="SELECT count... M_CPOut" />
-                <marker date="1564471471843" expanded="true" signature="141540:141617" ph="SELECT count... M_CPIn2" />
-                <marker date="1564471471843" expanded="true" signature="141757:141813" ph="SELECT count... M_CPOut" />
-                <marker date="1564471471843" expanded="true" signature="142064:142140" ph="SELECT count... M_CPIn" />
-                <marker date="1564471471843" expanded="true" signature="142280:142336" ph="SELECT count... M_CPOut" />
+                <marker date="1565408532114" expanded="true" signature="317:401" ph="SELECT disti... Tkd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="317:782" ph="SELECT disti... Tkd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="902:1007" ph="SELECT * FRO... Ckd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="902:1107" ph="SELECT * FRO... Ckd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="1226:1395" ph="SELECT disti... Ckd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="1507:1755" ph="SELECT disti... " />
+                <marker date="1565408532114" expanded="true" signature="1515:1754" ph="SELECT * FRO... *" />
+                <marker date="1565408532114" expanded="true" signature="1539:1619" ph="SELECT disti... Rkd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="1873:2113" ph="SELECT disti... Rkd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="2231:2438" ph="SELECT * FRO... Tkd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="2231:2439" ph="SELECT disti... Tkd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="2557:2658" ph="SELECT * FRO... Ckd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="2557:2799" ph="SELECT * FRO... Ckd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="2917:3099" ph="SELECT * FRO... Rkd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="2917:3100" ph="SELECT disti... Rkd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="3589:3704" ph="SELECT UserI... Hl_User" />
+                <marker date="1565408532114" expanded="true" signature="3589:3726" ph="SELECT UserI... Hl_User" />
+                <marker date="1565408532114" expanded="true" signature="3841:3997" ph="SELECT * FRO... Hl_User" />
+                <marker date="1565408532114" expanded="true" signature="4124:5141" ph="UPDATE Ckd_B... " />
+                <marker date="1565408532114" expanded="true" signature="5266:5830" ph="UPDATE Ckd_B... " />
+                <marker date="1565408532114" expanded="true" signature="5951:6048" ph="UPDATE M_BCP... " />
+                <marker date="1565408532114" expanded="true" signature="6173:7836" ph="UPDATE Tkd_B... " />
+                <marker date="1565408532114" expanded="true" signature="7959:8133" ph="UPDATE M_CPI... " />
+                <marker date="1565408532114" expanded="true" signature="8257:8442" ph="UPDATE M_CPI... " />
+                <marker date="1565408532114" expanded="true" signature="8562:8753" ph="UPDATE M_BCP... " />
+                <marker date="1565408532114" expanded="true" signature="8878:10765" ph="UPDATE Rkd_B... " />
+                <marker date="1565408532114" expanded="true" signature="10884:10963" ph="UPDATE M_WLB... " />
+                <marker date="1565408532114" expanded="true" signature="11086:11421" ph="UPDATE Tkd_W... " />
+                <marker date="1565408532114" expanded="true" signature="11541:11621" ph="UPDATE M_WLO... " />
+                <marker date="1565408532114" expanded="true" signature="11745:12046" ph="UPDATE Ckd_W... " />
+                <marker date="1565408532114" expanded="true" signature="12165:12402" ph="UPDATE M_WLI... " />
+                <marker date="1565408532114" expanded="true" signature="12525:12792" ph="UPDATE Rkd_W... " />
+                <marker date="1565408532114" expanded="true" signature="12862:12933" ph="UPDATE M_CPI... " />
+                <marker date="1565408532114" expanded="true" signature="13005:13075" ph="UPDATE M_CPI... " />
+                <marker date="1565408532114" expanded="true" signature="13142:13213" ph="UPDATE M_BCP... " />
+                <marker date="1565408532114" expanded="true" signature="13279:13346" ph="UPDATE M_WLI... " />
+                <marker date="1565408532114" expanded="true" signature="13472:13759" ph="SELECT M_CPI... M_CPIn2" />
+                <marker date="1565408532114" expanded="true" signature="13886:14163" ph="SELECT M_CPI... M_CPIn" />
+                <marker date="1565408532114" expanded="true" signature="14282:14761" ph="SELECT M_BCP... M_BCPIn" />
+                <marker date="1565408532114" expanded="true" signature="14875:15427" ph="UPDATE Tkd_B... " />
+                <marker date="1565408532114" expanded="true" signature="15539:16155" ph="UPDATE Tkd_B... " />
+                <marker date="1565408532114" expanded="true" signature="16269:16646" ph="UPDATE Ckd_B... " />
+                <marker date="1565408532114" expanded="true" signature="16269:16647" ph="UPDATE Ckd_B... " />
+                <marker date="1565408532114" expanded="true" signature="16759:16969" ph="UPDATE Ckd_B... " />
+                <marker date="1565408532114" expanded="true" signature="17082:17496" ph="UPDATE Ckd_B... " />
+                <marker date="1565408532114" expanded="true" signature="17608:17830" ph="UPDATE Ckd_B... " />
+                <marker date="1565408532114" expanded="true" signature="17943:18758" ph="UPDATE Rkd_B... " />
+                <marker date="1565408532114" expanded="true" signature="18870:19685" ph="UPDATE Rkd_B... " />
+                <marker date="1565408532114" expanded="true" signature="19796:20180" ph="UPDATE Tkd_W... " />
+                <marker date="1565408532114" expanded="true" signature="20290:20713" ph="UPDATE Tkd_W... " />
+                <marker date="1565408532114" expanded="true" signature="20825:21207" ph="UPDATE Ckd_W... " />
+                <marker date="1565408532114" expanded="true" signature="21318:21739" ph="UPDATE Ckd_W... " />
+                <marker date="1565408532114" expanded="true" signature="21850:22145" ph="UPDATE Rkd_W... " />
+                <marker date="1565408532114" expanded="true" signature="22255:22575" ph="UPDATE Rkd_W... " />
+                <marker date="1565408532114" expanded="true" signature="22705:22820" ph="SELECT * FRO... M_BCPBk" />
+                <marker date="1565408532114" expanded="true" signature="22933:22974" ph="SELECT * FRO... Tkd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="23106:23221" ph="SELECT * FRO... M_CPOut" />
+                <marker date="1565408532114" expanded="true" signature="23351:23465" ph="SELECT c.*,s... M_CPOut" />
+                <marker date="1565408532114" expanded="true" signature="23595:23635" ph="SELECT * FRO... M_CPOut" />
+                <marker date="1565408532114" expanded="true" signature="23748:23804" ph="SELECT * FRO... Ckd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="23935:24243" ph="SELECT QRCod... " />
+                <marker date="1565408532114" expanded="true" signature="24370:24432" ph="SELECT *,CP_... M_CPIn2" />
+                <marker date="1565408532114" expanded="true" signature="24560:24879" ph="SELECT QRCod... " />
+                <marker date="1565408532114" expanded="true" signature="25013:25339" ph="SELECT QRCod... " />
+                <marker date="1565408532114" expanded="true" signature="25470:25531" ph="SELECT *,CP_... M_CPIn" />
+                <marker date="1565408532114" expanded="true" signature="25668:25736" ph="SELECT *,CP_... M_CPIn" />
+                <marker date="1565408532114" expanded="true" signature="25668:25787" ph="SELECT *,CP_... M_CPIn" />
+                <marker date="1565408532114" expanded="true" signature="25759:25786" ph="SELECT QRCod... M_CPS" />
+                <marker date="1565408532114" expanded="true" signature="25916:26297" ph="SELECT QRCod... " />
+                <marker date="1565408532114" expanded="true" signature="26410:26449" ph="SELECT * FRO... Rkd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="26577:26681" ph="SELECT * FRO... M_WLBk" />
+                <marker date="1565408532114" expanded="true" signature="26803:26871" ph="SELECT *,SHL... M_WLBk" />
+                <marker date="1565408532114" expanded="true" signature="26982:27022" ph="SELECT * FRO... Tkd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="27152:27257" ph="SELECT * FRO... M_WLOUT" />
+                <marker date="1565408532114" expanded="true" signature="27381:27500" ph="SELECT *,SHL... M_WLOUT" />
+                <marker date="1565408532114" expanded="true" signature="27626:27741" ph="SELECT o.*,o... M_BCPOUT" />
+                <marker date="1565408532114" expanded="true" signature="27852:27907" ph="SELECT * FRO... Ckd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="28034:28139" ph="SELECT * FRO... M_WLIn" />
+                <marker date="1565408532114" expanded="true" signature="28250:28288" ph="SELECT * FRO... Rkd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="30898:30965" ph="SELECT * FRO... Ckd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="30898:30980" ph="SELECT * FRO... Ckd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="31494:31574" ph="SELECT disti... Rkd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="31494:32347" ph="SELECT disti... " />
+                <marker date="1565408532114" expanded="true" signature="36694:37299" ph="SELECT FzrID... Ckd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="37391:38172" ph="SELECT FzrID... Tkd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="38264:39163" ph="SELECT FzrID... Rkd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="39254:39792" ph="SELECT BzID Tkd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="39883:40420" ph="SELECT BzID Ckd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="40511:41035" ph="SELECT BzID Rkd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="41145:41215" ph="SELECT * FRO... M_CPIn2" />
+                <marker date="1565408532114" expanded="true" signature="41330:41373" ph="SELECT * FRO... M_CPIn" />
+                <marker date="1565408532114" expanded="true" signature="42187:42251" ph="SELECT SortN... Hl_Sort" />
+                <marker date="1565408532114" expanded="true" signature="42363:42642" ph="SELECT * FRO... M_BCPIn" />
+                <marker date="1565408532114" expanded="true" signature="42756:43226" ph="SELECT M_WLI... M_WLIn" />
+                <marker date="1565408532114" expanded="true" signature="43356:43529" ph="SELECT m.CP_... M_CPS" />
+                <marker date="1565408532114" expanded="true" signature="43636:43694" ph="SELECT * FRO... M_CPS" />
+                <marker date="1565408532114" expanded="true" signature="45573:45621" ph="DELETE FROM " />
+                <marker date="1565408532114" expanded="true" signature="45747:45921" ph="SELECT m.CP_... M_CPS2" />
+                <marker date="1565408532114" expanded="true" signature="45983:46033" ph="DELETE FROM " />
+                <marker date="1565408532114" expanded="true" signature="46092:46141" ph="DELETE FROM " />
+                <marker date="1565408532114" expanded="true" signature="48061:49701" ph="UPDATE M_CPI... " />
+                <marker date="1565408532114" expanded="true" signature="49811:51128" ph="UPDATE M_CPS... " />
+                <marker date="1565408532114" expanded="true" signature="51234:51293" ph="SELECT * FRO... M_CPS2" />
+                <marker date="1565408532114" expanded="true" signature="57650:57715" ph="SELECT COUNT... M_CPS" />
+                <marker date="1565408532114" expanded="true" signature="57825:57854" ph="SELECT * FRO... M_CPS2" />
+                <marker date="1565408532114" expanded="true" signature="57825:57877" ph="SELECT * FRO... M_CPIn2" />
+                <marker date="1565408532114" expanded="true" signature="60207:60273" ph="SELECT COUNT... M_CPS2" />
+                <marker date="1565408532114" expanded="true" signature="65987:66121" ph="UPDATE M_BCP... " />
+                <marker date="1565408532114" expanded="true" signature="66239:66369" ph="UPDATE M_BCP... " />
+                <marker date="1565408532114" expanded="true" signature="70887:70953" ph="SELECT COUNT... M_BCPS" />
+                <marker date="1565408532114" expanded="true" signature="74644:74701" ph="SELECT * FRO... Tkd_Bcp" />
+                <marker date="1565408532114" expanded="true" signature="74826:75123" ph="SELECT M_BCP... M_BCPTempS" />
+                <marker date="1565408532114" expanded="true" signature="79389:79523" ph="UPDATE M_BCP... " />
+                <marker date="1565408532114" expanded="true" signature="79585:79638" ph="DELETE FROM " />
+                <marker date="1565408532114" expanded="true" signature="79755:79886" ph="UPDATE M_BCP... " />
+                <marker date="1565408532114" expanded="true" signature="84746:84813" ph="SELECT COUNT... M_BCPTl" />
+                <marker date="1565408532114" expanded="true" signature="84926:84989" ph="SELECT * FRO... M_BCPTempS" />
+                <marker date="1565408532114" expanded="true" signature="85116:85752" ph="SELECT M_BCP... M_BCPTempS" />
+                <marker date="1565408532114" expanded="true" signature="85869:85999" ph="UPDATE M_BCP... " />
+                <marker date="1565408532114" expanded="true" signature="90679:90749" ph="SELECT COUNT... M_BCPTempS" />
+                <marker date="1565408532114" expanded="true" signature="90872:91281" ph="update M_CPI... " />
+                <marker date="1565408532114" expanded="true" signature="91398:92041" ph="update M_CPI... " />
+                <marker date="1565408532114" expanded="true" signature="92154:93124" ph="update M_BCP... " />
+                <marker date="1565408532114" expanded="true" signature="93195:93382" ph="UPDATE Rkd_B... " />
+                <marker date="1565408532114" expanded="true" signature="93285:93381" ph="select m2.In... M_CPIn" />
+                <marker date="1565408532114" expanded="true" signature="98343:98473" ph="UPDATE M_WLT... " />
+                <marker date="1565408532114" expanded="true" signature="98564:98630" ph="SELECT COUNT... M_WLTl" />
+                <marker date="1565408532114" expanded="true" signature="98745:98827" ph="SELECT ID , M_WLTl" />
+                <marker date="1565408532114" expanded="true" signature="98943:99026" ph="SELECT ID , M_BCPTl" />
+                <marker date="1565408532114" expanded="true" signature="104032:104064" ph="SELECT * FRO... Hl_CheJian" />
+                <marker date="1565408532114" expanded="true" signature="104186:104319" ph="UPDATE M_WLT... " />
+                <marker date="1565408532114" expanded="true" signature="106194:106327" ph="UPDATE M_WLT... " />
+                <marker date="1565408532114" expanded="true" signature="106388:106440" ph="DELETE FROM " />
+                <marker date="1565408532114" expanded="true" signature="106555:106684" ph="UPDATE M_WLS... " />
+                <marker date="1565408532114" expanded="true" signature="108362:108424" ph="SELECT * FRO... M_WLTempS" />
+                <marker date="1565408532114" expanded="true" signature="108533:108589" ph="SELECT * FRO... Tkd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="108711:108975" ph="SELECT M_WLT... M_WLTempS" />
+                <marker date="1565408532114" expanded="true" signature="112056:112214" ph="UPDATE M_WLT... " />
+                <marker date="1565408532114" expanded="true" signature="112300:112369" ph="SELECT COUNT... M_WLTempS" />
+                <marker date="1565408532114" expanded="true" signature="113872:113906" ph="SELECT * FRO... Hl_UserGroup" />
+                <marker date="1565408532114" expanded="true" signature="114021:114146" ph="UPDATE M_WLS... " />
+                <marker date="1565408532114" expanded="true" signature="114264:114390" ph="UPDATE M_BCP... " />
+                <marker date="1565408532114" expanded="true" signature="122362:122421" ph="SELECT * FRO... M_WLS" />
+                <marker date="1565408532114" expanded="true" signature="122525:122583" ph="SELECT * FRO... M_WLS" />
+                <marker date="1565408532114" expanded="true" signature="122692:122747" ph="SELECT * FRO... Ckd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="122859:123033" ph="UPDATE M_WLS... " />
+                <marker date="1565408532114" expanded="true" signature="124586:124639" ph="SELECT count... M_WLS" />
+                <marker date="1565408532114" expanded="true" signature="124755:124978" ph="SELECT M_WLS... M_WLS" />
+                <marker date="1565408532114" expanded="true" signature="125096:125317" ph="SELECT M_BCP... M_BCPS" />
+                <marker date="1565408532114" expanded="true" signature="128745:128768" ph="SELECT * FRO... Hl_Sort" />
+                <marker date="1565408532114" expanded="true" signature="128745:128778" ph="SELECT * FRO... Hl_Sort" />
+                <marker date="1565408532114" expanded="true" signature="128745:129349" ph="SELECT * FRO... Hl_Sort" />
+                <marker date="1565408532114" expanded="true" signature="129454:130069" ph="SELECT * FRO... Hl_Sort" />
+                <marker date="1565408532114" expanded="true" signature="130181:130225" ph="SELECT * FRO... Hl_Product" />
+                <marker date="1565408532114" expanded="true" signature="130330:130355" ph="SELECT * FRO... Pdt_Sort2" />
+                <marker date="1565408532114" expanded="true" signature="130463:130623" ph="SELECT mwlin... M_WLIn" />
+                <marker date="1565408532114" expanded="true" signature="134168:134660" ph="update M_WLI... " />
+                <marker date="1565408532114" expanded="true" signature="136543:136584" ph="select * fro... Rkd_Wl" />
+                <marker date="1565408532114" expanded="true" signature="136696:136761" ph="select *,Sor... M_WLIn" />
+                <marker date="1565408532114" expanded="true" signature="136870:136919" ph="select * fro... M_WLS" />
+                <marker date="1565408532114" expanded="true" signature="136976:137025" ph="update M_WLS... " />
+                <marker date="1565408532114" expanded="true" signature="137134:137170" ph="SELECT ID,M_... M_Module2" />
+                <marker date="1565408532114" expanded="true" signature="137352:137398" ph="SELECT ID,M_... M_Module2" />
+                <marker date="1565408532114" expanded="true" signature="137811:137830" ph="INSERT INTO Hl_User... " />
+                <marker date="1565408532114" expanded="true" signature="137811:138506" ph="INSERT INTO Hl_User... " />
+                <marker date="1565408532114" expanded="true" signature="139307:139549" ph="UPDATE Hl_Us... " />
+                <marker date="1565408532114" expanded="true" signature="139697:139742" ph="SELECT count... Hl_User" />
+                <marker date="1565408532114" expanded="true" signature="139697:139754" ph="SELECT count... Hl_User" />
+                <marker date="1565408532114" expanded="true" signature="139885:139922" ph="DELETE FROM " />
+                <marker date="1565408532114" expanded="true" signature="140221:140276" ph="SELECT count... M_WLIn" />
+                <marker date="1565408532114" expanded="true" signature="140221:140297" ph="SELECT count... M_WLIn" />
+                <marker date="1565408532114" expanded="true" signature="140455:140511" ph="SELECT count... M_WLOUT" />
+                <marker date="1565408532114" expanded="true" signature="140655:140710" ph="SELECT count... M_WLBK" />
+                <marker date="1565408532114" expanded="true" signature="140977:141033" ph="SELECT count... M_BCPIn" />
+                <marker date="1565408532114" expanded="true" signature="140977:141054" ph="SELECT count... M_BCPIn" />
+                <marker date="1565408532114" expanded="true" signature="141219:141275" ph="SELECT count... M_BCPBK" />
+                <marker date="1565408532114" expanded="true" signature="141540:141596" ph="SELECT count... M_CPOut" />
+                <marker date="1565408532114" expanded="true" signature="141540:141617" ph="SELECT count... M_CPIn2" />
+                <marker date="1565408532114" expanded="true" signature="141757:141813" ph="SELECT count... M_CPOut" />
+                <marker date="1565408532114" expanded="true" signature="142064:142140" ph="SELECT count... M_CPIn" />
+                <marker date="1565408532114" expanded="true" signature="142280:142336" ph="SELECT count... M_CPOut" />
               </folding>
             </state>
           </provider>
@@ -220,137 +230,12 @@
       <file leaf-file-name="BCPINParam.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BCPINParam.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+            <state relative-caret-position="2348">
+              <caret line="137" column="37" lean-forward="true" selection-start-line="137" selection-start-column="37" selection-end-line="137" selection-end-column="37" />
               <folding>
-                <element signature="e#1034#1035#0" expanded="false" />
-                <element signature="e#1059#1060#0" expanded="false" />
-                <element signature="e#1092#1093#0" expanded="false" />
-                <element signature="e#1120#1121#0" expanded="false" />
-                <element signature="e#1155#1156#0" expanded="false" />
-                <element signature="e#1186#1187#0" expanded="false" />
-                <element signature="e#1234#1235#0" expanded="false" />
-                <element signature="e#1274#1275#0" expanded="false" />
-                <element signature="e#1312#1313#0" expanded="false" />
-                <element signature="e#1346#1347#0" expanded="false" />
-                <element signature="e#1400#1401#0" expanded="false" />
-                <element signature="e#1446#1447#0" expanded="false" />
-                <element signature="e#1476#1477#0" expanded="false" />
-                <element signature="e#1505#1506#0" expanded="false" />
-                <element signature="e#1546#1547#0" expanded="false" />
-                <element signature="e#1582#1583#0" expanded="false" />
-                <element signature="e#1616#1617#0" expanded="false" />
-                <element signature="e#1646#1647#0" expanded="false" />
-                <element signature="e#1692#1693#0" expanded="false" />
-                <element signature="e#1730#1731#0" expanded="false" />
-                <element signature="e#1761#1762#0" expanded="false" />
-                <element signature="e#1788#1789#0" expanded="false" />
-                <element signature="e#1828#1829#0" expanded="false" />
-                <element signature="e#1860#1861#0" expanded="false" />
-                <element signature="e#1891#1892#0" expanded="false" />
-                <element signature="e#1918#1919#0" expanded="false" />
-                <element signature="e#1958#1959#0" expanded="false" />
-                <element signature="e#1990#1991#0" expanded="false" />
-                <element signature="e#2019#2020#0" expanded="false" />
-                <element signature="e#2044#2045#0" expanded="false" />
-                <element signature="e#2080#2081#0" expanded="false" />
-                <element signature="e#2108#2109#0" expanded="false" />
-                <element signature="e#2137#2138#0" expanded="false" />
-                <element signature="e#2163#2164#0" expanded="false" />
-                <element signature="e#2200#2201#0" expanded="false" />
-                <element signature="e#2230#2231#0" expanded="false" />
-                <element signature="e#2263#2264#0" expanded="false" />
-                <element signature="e#2292#2293#0" expanded="false" />
-                <element signature="e#2336#2337#0" expanded="false" />
-                <element signature="e#2372#2373#0" expanded="false" />
-                <element signature="e#2402#2403#0" expanded="false" />
-                <element signature="e#2429#2430#0" expanded="false" />
-                <element signature="e#2468#2469#0" expanded="false" />
-                <element signature="e#2500#2501#0" expanded="false" />
-                <element signature="e#2533#2534#0" expanded="false" />
-                <element signature="e#2562#2563#0" expanded="false" />
-                <element signature="e#2606#2607#0" expanded="false" />
-                <element signature="e#2642#2643#0" expanded="false" />
-                <element signature="e#2675#2676#0" expanded="false" />
-                <element signature="e#2704#2705#0" expanded="false" />
-                <element signature="e#2748#2749#0" expanded="false" />
-                <element signature="e#2784#2785#0" expanded="false" />
-                <element signature="e#2813#2814#0" expanded="false" />
-                <element signature="e#2838#2839#0" expanded="false" />
-                <element signature="e#2874#2875#0" expanded="false" />
-                <element signature="e#2902#2903#0" expanded="false" />
-                <element signature="e#2932#2933#0" expanded="false" />
-                <element signature="e#2958#2959#0" expanded="false" />
-                <element signature="e#2996#2997#0" expanded="false" />
-                <element signature="e#3026#3027#0" expanded="false" />
-                <element signature="e#3056#3057#0" expanded="false" />
-                <element signature="e#3082#3083#0" expanded="false" />
-                <element signature="e#3120#3121#0" expanded="false" />
-                <element signature="e#3150#3151#0" expanded="false" />
-                <element signature="e#3181#3182#0" expanded="false" />
-                <element signature="e#3208#3209#0" expanded="false" />
-                <element signature="e#3248#3249#0" expanded="false" />
-                <element signature="e#3280#3281#0" expanded="false" />
-                <element signature="e#3311#3312#0" expanded="false" />
-                <element signature="e#3338#3339#0" expanded="false" />
-                <element signature="e#3378#3379#0" expanded="false" />
-                <element signature="e#3410#3411#0" expanded="false" />
-                <element signature="e#3436#3437#0" expanded="false" />
-                <element signature="e#3461#3462#0" expanded="false" />
-                <element signature="e#3494#3495#0" expanded="false" />
-                <element signature="e#3522#3523#0" expanded="false" />
-                <element signature="e#3556#3557#0" expanded="false" />
-                <element signature="e#3586#3587#0" expanded="false" />
-                <element signature="e#3632#3633#0" expanded="false" />
-                <element signature="e#3670#3671#0" expanded="false" />
-                <element signature="e#3701#3702#0" expanded="false" />
-                <element signature="e#3728#3729#0" expanded="false" />
-                <element signature="e#3768#3769#0" expanded="false" />
-                <element signature="e#3800#3801#0" expanded="false" />
-                <element signature="e#3829#3830#0" expanded="false" />
-                <element signature="e#3854#3855#0" expanded="false" />
-                <element signature="e#3890#3891#0" expanded="false" />
-                <element signature="e#3918#3919#0" expanded="false" />
-                <element signature="e#3948#3949#0" expanded="false" />
-                <element signature="e#3974#3975#0" expanded="false" />
-                <element signature="e#4012#4013#0" expanded="false" />
-                <element signature="e#4042#4043#0" expanded="false" />
-                <element signature="e#4072#4073#0" expanded="false" />
-                <element signature="e#4098#4099#0" expanded="false" />
-                <element signature="e#4136#4137#0" expanded="false" />
-                <element signature="e#4166#4167#0" expanded="false" />
-                <element signature="e#4196#4197#0" expanded="false" />
-                <element signature="e#4222#4223#0" expanded="false" />
-                <element signature="e#4260#4261#0" expanded="false" />
-                <element signature="e#4290#4291#0" expanded="false" />
-                <element signature="e#4320#4321#0" expanded="false" />
-                <element signature="e#4346#4347#0" expanded="false" />
-                <element signature="e#4384#4385#0" expanded="false" />
-                <element signature="e#4414#4415#0" expanded="false" />
-                <element signature="e#4444#4445#0" expanded="false" />
-                <element signature="e#4470#4471#0" expanded="false" />
-                <element signature="e#4508#4509#0" expanded="false" />
-                <element signature="e#4538#4539#0" expanded="false" />
-                <element signature="e#4568#4569#0" expanded="false" />
-                <element signature="e#4594#4595#0" expanded="false" />
-                <element signature="e#4632#4633#0" expanded="false" />
-                <element signature="e#4662#4663#0" expanded="false" />
-                <element signature="e#4692#4693#0" expanded="false" />
-                <element signature="e#4718#4719#0" expanded="false" />
-                <element signature="e#4756#4757#0" expanded="false" />
-                <element signature="e#4786#4787#0" expanded="false" />
-                <element signature="e#4816#4817#0" expanded="false" />
-                <element signature="e#4842#4843#0" expanded="false" />
-                <element signature="e#4880#4881#0" expanded="false" />
-                <element signature="e#4910#4911#0" expanded="false" />
-                <element signature="e#4940#4941#0" expanded="false" />
-                <element signature="e#4966#4967#0" expanded="false" />
-                <element signature="e#5004#5005#0" expanded="false" />
-                <element signature="e#5034#5035#0" expanded="false" />
-                <element signature="e#5065#5066#0" expanded="false" />
-                <element signature="e#5092#5093#0" expanded="false" />
-                <element signature="e#5132#5133#0" expanded="false" />
-                <element signature="e#5164#5165#0" expanded="false" />
+                <element signature="e#2426#2427#0" expanded="true" />
+                <element signature="e#2453#2454#0" expanded="true" />
+                <element signature="e#2524#2525#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -494,8 +379,8 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="249" column="90" lean-forward="true" selection-start-line="249" selection-start-column="90" selection-end-line="249" selection-end-column="90" />
+            <state relative-caret-position="189">
+              <caret line="3069" column="75" lean-forward="true" selection-start-line="3069" selection-start-column="75" selection-end-line="3069" selection-end-column="75" />
               <folding>
                 <element signature="e#1533#1546#0" expanded="true" />
                 <element signature="e#3428#3440#0" expanded="true" />
@@ -511,86 +396,86 @@
                 <element signature="e#15577#15598#0" expanded="true" />
                 <element signature="e#17054#17076#0" expanded="true" />
                 <element signature="e#18475#18489#0" expanded="true" />
-                <element signature="e#20851#20865#0" expanded="true" />
-                <element signature="e#24037#24054#0" expanded="true" />
-                <element signature="e#25076#25089#0" expanded="true" />
-                <element signature="e#26645#26665#0" expanded="true" />
-                <element signature="e#27844#27858#0" expanded="true" />
-                <element signature="e#30382#30405#0" expanded="true" />
-                <element signature="e#32234#32248#0" expanded="true" />
-                <element signature="e#34886#34896#0" expanded="true" />
-                <element signature="e#35933#35943#0" expanded="true" />
-                <element signature="e#36930#36944#0" expanded="true" />
-                <element signature="e#38501#38513#0" expanded="true" />
-                <element signature="e#39486#39501#0" expanded="true" />
-                <element signature="e#40496#40510#0" expanded="true" />
-                <element signature="e#42778#42802#0" expanded="true" />
-                <element signature="e#43988#44002#0" expanded="true" />
-                <element signature="e#47385#47399#0" expanded="true" />
-                <element signature="e#48945#48966#0" expanded="true" />
-                <element signature="e#50133#50147#0" expanded="true" />
-                <element signature="e#55183#55197#0" expanded="true" />
-                <element signature="e#56613#56628#0" expanded="true" />
-                <element signature="e#57588#57602#0" expanded="true" />
-                <element signature="e#58626#58639#0" expanded="true" />
-                <element signature="e#59613#59627#0" expanded="true" />
-                <element signature="e#62702#62716#0" expanded="true" />
-                <element signature="e#64758#64781#0" expanded="true" />
-                <element signature="e#65968#65982#0" expanded="true" />
-                <element signature="e#67669#67694#0" expanded="true" />
-                <element signature="e#68874#68889#0" expanded="true" />
-                <element signature="e#70035#70051#0" expanded="true" />
-                <element signature="e#71582#71590#0" expanded="true" />
-                <element signature="e#73154#73169#0" expanded="true" />
-                <element signature="e#74301#74321#0" expanded="true" />
-                <element signature="e#75597#75605#0" expanded="true" />
-                <element signature="e#77009#77024#0" expanded="true" />
-                <element signature="e#78140#78158#0" expanded="true" />
-                <element signature="e#80289#80303#0" expanded="true" />
-                <element signature="e#84166#84182#0" expanded="true" />
-                <element signature="e#84358#84372#0" expanded="true" />
-                <element signature="e#92971#92989#0" expanded="true" />
-                <element signature="e#94799#94818#0" expanded="true" />
-                <element signature="e#96742#96760#0" expanded="true" />
-                <element signature="e#99130#99154#0" expanded="true" />
-                <element signature="e#100758#100777#0" expanded="true" />
-                <element signature="e#104156#104175#0" expanded="true" />
-                <element signature="e#104945#104970#0" expanded="true" />
-                <element signature="e#107099#107124#0" expanded="true" />
-                <element signature="e#107891#107911#0" expanded="true" />
-                <element signature="e#109696#109715#0" expanded="true" />
-                <element signature="e#111285#111304#0" expanded="true" />
-                <element signature="e#113852#113877#0" expanded="true" />
-                <element signature="e#115366#115380#0" expanded="true" />
-                <element signature="e#118692#118706#0" expanded="true" />
-                <element signature="e#120396#120410#0" expanded="true" />
-                <element signature="e#123453#123467#0" expanded="true" />
-                <element signature="e#125340#125354#0" expanded="true" />
-                <element signature="e#128480#128494#0" expanded="true" />
-                <element signature="e#130375#130389#0" expanded="true" />
-                <element signature="e#140825#140839#0" expanded="true" />
-                <element signature="e#143676#143690#0" expanded="true" />
-                <element signature="e#148345#148359#0" expanded="true" />
-                <element signature="e#151176#151190#0" expanded="true" />
-                <element signature="e#153085#153099#0" expanded="true" />
-                <element signature="e#154608#154622#0" expanded="true" />
-                <element signature="e#156887#156901#0" expanded="true" />
-                <element signature="e#159213#159237#0" expanded="true" />
-                <element signature="e#160707#160726#0" expanded="true" />
-                <element signature="e#165588#165602#0" expanded="true" />
-                <element signature="e#167520#167534#0" expanded="true" />
-                <element signature="e#169262#169276#0" expanded="true" />
-                <element signature="e#171001#171015#0" expanded="true" />
-                <element signature="e#172747#172761#0" expanded="true" />
-                <element signature="e#174352#174366#0" expanded="true" />
-                <element signature="e#175556#175570#0" expanded="true" />
-                <element signature="e#176762#176776#0" expanded="true" />
-                <element signature="e#178144#178158#0" expanded="true" />
-                <element signature="e#179059#179073#0" expanded="true" />
-                <element signature="e#180060#180074#0" expanded="true" />
-                <element signature="e#181457#181473#0" expanded="true" />
-                <element signature="e#181649#181663#0" expanded="true" />
-                <element signature="e#187269#187281#0" expanded="true" />
+                <element signature="e#21171#21185#0" expanded="true" />
+                <element signature="e#24626#24643#0" expanded="true" />
+                <element signature="e#25665#25678#0" expanded="true" />
+                <element signature="e#27234#27254#0" expanded="true" />
+                <element signature="e#28433#28447#0" expanded="true" />
+                <element signature="e#31331#31354#0" expanded="true" />
+                <element signature="e#33183#33197#0" expanded="true" />
+                <element signature="e#35835#35845#0" expanded="true" />
+                <element signature="e#36882#36892#0" expanded="true" />
+                <element signature="e#37879#37893#0" expanded="true" />
+                <element signature="e#39450#39462#0" expanded="true" />
+                <element signature="e#40435#40450#0" expanded="true" />
+                <element signature="e#41445#41459#0" expanded="true" />
+                <element signature="e#43727#43751#0" expanded="true" />
+                <element signature="e#44937#44951#0" expanded="true" />
+                <element signature="e#48334#48348#0" expanded="true" />
+                <element signature="e#49894#49915#0" expanded="true" />
+                <element signature="e#51082#51096#0" expanded="true" />
+                <element signature="e#56132#56146#0" expanded="true" />
+                <element signature="e#57562#57577#0" expanded="true" />
+                <element signature="e#58537#58551#0" expanded="true" />
+                <element signature="e#59575#59588#0" expanded="true" />
+                <element signature="e#60562#60576#0" expanded="true" />
+                <element signature="e#63651#63665#0" expanded="true" />
+                <element signature="e#65707#65730#0" expanded="true" />
+                <element signature="e#66917#66931#0" expanded="true" />
+                <element signature="e#68618#68643#0" expanded="true" />
+                <element signature="e#69823#69838#0" expanded="true" />
+                <element signature="e#70984#71000#0" expanded="true" />
+                <element signature="e#72531#72539#0" expanded="true" />
+                <element signature="e#74103#74118#0" expanded="true" />
+                <element signature="e#75250#75270#0" expanded="true" />
+                <element signature="e#76546#76554#0" expanded="true" />
+                <element signature="e#77958#77973#0" expanded="true" />
+                <element signature="e#79089#79107#0" expanded="true" />
+                <element signature="e#81238#81252#0" expanded="true" />
+                <element signature="e#85115#85131#0" expanded="true" />
+                <element signature="e#85307#85321#0" expanded="true" />
+                <element signature="e#93920#93938#0" expanded="true" />
+                <element signature="e#95748#95767#0" expanded="true" />
+                <element signature="e#97691#97709#0" expanded="true" />
+                <element signature="e#100079#100103#0" expanded="true" />
+                <element signature="e#101707#101726#0" expanded="true" />
+                <element signature="e#105105#105124#0" expanded="true" />
+                <element signature="e#105894#105919#0" expanded="true" />
+                <element signature="e#108048#108073#0" expanded="true" />
+                <element signature="e#108840#108860#0" expanded="true" />
+                <element signature="e#110645#110664#0" expanded="true" />
+                <element signature="e#112234#112253#0" expanded="true" />
+                <element signature="e#114801#114826#0" expanded="true" />
+                <element signature="e#116315#116329#0" expanded="true" />
+                <element signature="e#119641#119655#0" expanded="true" />
+                <element signature="e#121345#121359#0" expanded="true" />
+                <element signature="e#124464#124478#0" expanded="true" />
+                <element signature="e#126351#126365#0" expanded="true" />
+                <element signature="e#129553#129567#0" expanded="true" />
+                <element signature="e#131448#131462#0" expanded="true" />
+                <element signature="e#141898#141912#0" expanded="true" />
+                <element signature="e#144749#144763#0" expanded="true" />
+                <element signature="e#149582#149596#0" expanded="true" />
+                <element signature="e#152413#152427#0" expanded="true" />
+                <element signature="e#154322#154336#0" expanded="true" />
+                <element signature="e#155845#155859#0" expanded="true" />
+                <element signature="e#158124#158138#0" expanded="true" />
+                <element signature="e#160450#160474#0" expanded="true" />
+                <element signature="e#161944#161963#0" expanded="true" />
+                <element signature="e#166825#166839#0" expanded="true" />
+                <element signature="e#168757#168771#0" expanded="true" />
+                <element signature="e#170499#170513#0" expanded="true" />
+                <element signature="e#172238#172252#0" expanded="true" />
+                <element signature="e#173984#173998#0" expanded="true" />
+                <element signature="e#175589#175603#0" expanded="true" />
+                <element signature="e#176793#176807#0" expanded="true" />
+                <element signature="e#177999#178013#0" expanded="true" />
+                <element signature="e#179381#179395#0" expanded="true" />
+                <element signature="e#180296#180310#0" expanded="true" />
+                <element signature="e#181297#181311#0" expanded="true" />
+                <element signature="e#182694#182710#0" expanded="true" />
+                <element signature="e#182886#182900#0" expanded="true" />
+                <element signature="e#188506#188518#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -600,7 +485,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/TrackType.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="500">
-              <caret line="20" column="44" lean-forward="true" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+              <caret line="20" column="44" lean-forward="false" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -891,15 +776,21 @@
       <file leaf-file-name="MainService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/service/MainService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="111" column="76" lean-forward="true" selection-start-line="111" selection-start-column="76" selection-end-line="111" selection-end-column="76" />
+            <state relative-caret-position="233">
+              <caret line="973" column="53" lean-forward="true" selection-start-line="973" selection-start-column="53" selection-end-line="973" selection-end-column="53" />
               <folding>
-                <element signature="e#4070#4071#0" expanded="true" />
-                <element signature="e#4112#4113#0" expanded="true" />
-                <element signature="e#17900#17901#0" expanded="true" />
-                <element signature="e#17939#17940#0" expanded="true" />
-                <element signature="e#25851#25852#0" expanded="true" />
-                <element signature="e#25901#25902#0" expanded="true" />
+                <element signature="e#4864#4865#0" expanded="true" />
+                <element signature="e#4912#4913#0" expanded="true" />
+                <element signature="e#6153#6154#0" expanded="true" />
+                <element signature="e#6199#6200#0" expanded="true" />
+                <element signature="e#6249#6250#0" expanded="true" />
+                <element signature="e#6298#6299#0" expanded="true" />
+                <element signature="e#6352#6353#0" expanded="true" />
+                <element signature="e#6402#6403#0" expanded="true" />
+                <element signature="e#7962#7963#0" expanded="true" />
+                <element signature="e#8010#8011#0" expanded="true" />
+                <element signature="e#25967#25968#0" expanded="true" />
+                <element signature="e#26018#26019#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -908,7 +799,7 @@
       <file leaf-file-name="MainDao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/dao/MainDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
+            <state relative-caret-position="975">
               <caret line="43" column="79" lean-forward="false" selection-start-line="43" selection-start-column="79" selection-end-line="43" selection-end-column="79" />
               <folding />
             </state>
@@ -931,36 +822,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getBCPSData</find>
-      <find>insertBcpOUT</find>
-      <find>bcpOut</find>
-      <find>getPersonFromBcpCkd</find>
-      <find>updateBCPTempS</find>
-      <find>insertBCPTempS</find>
-      <find>ebcpout</find>
-      <find>sendNotification</find>
-      <find>outUpdateBCPS</find>
-      <find>getNonCheckData</find>
-      <find>qrcodetracker</find>
-      <find>getWlTkNonCheckData</find>
-      <find>substring</find>
-      <find>getParentHlSort</find>
-      <find>getHlSort</find>
-      <find>createWLIn_M</find>
-      <find>getHlProduct</find>
-      <find>updateWLIN_M</find>
       <find>getWLINParamListByInDh</find>
       <find>agreeWlIn</find>
       <find>insertWLS</find>
-      <find>/bcpOut</find>
       <find>findBcpS</find>
       <find>getWLOutParamListByOutDh</find>
       <find>agreeWlOut</find>
-      <find>insertWLOUT</find>
       <find>/wlOut</find>
       <find>getChildHlSort</find>
       <find>checkExistByQrCodeId</find>
       <find>@com.qdhualing.qrcodetracker.bean.TrackType@W</find>
+      <find>outUpdateWLS</find>
+      <find>insertWLTempS</find>
+      <find>insertWLOUT</find>
+      <find>M_WLS</find>
+      <find>getWlOutShowData</find>
+      <find>CHD</find>
+      <find>getWLSData</find>
+      <find>/agreeWlOut</find>
+      <find>updateWLSByTk</find>
+      <find>deleteFromWLTempS</find>
+      <find>/agreeWlTk</find>
+      <find>updateWLTempSByTk</find>
+      <find>agreeBcpOut</find>
+      <find>outUpdateBCPS</find>
+      <find>RKZL</find>
+      <find>getBcpOutParamListByOutDh</find>
+      <find>rkzl</find>
+      <find>insertBCPTempS</find>
+      <find>/bcpOut</find>
+      <find>updateBCPTempS</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -977,7 +868,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/MainParams.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/utils/AuthorityParseUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/NotificationParam.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/VerifyParam.java" />
@@ -1015,7 +905,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BcpOutGetShowDataParam.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/model/NotificationType.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BCPOutShowDataResult.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/WLOutShowDataResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/CreateBCPCKDParam.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BcpSBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BcpOutShowBean.java" />
@@ -1024,10 +913,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BcpOutParam.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BCPTKParam.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/HlSortBean.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/dao/MainDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/service/MainService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/WLOutShowDataResult.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BCPINParam.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java" />
       </list>
     </option>
   </component>
@@ -1164,82 +1055,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="qrcodetracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QrcodeTrackerWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QrcodeTrackerWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qdhualing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qrcodetracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controll" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QrcodeTrackerWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QrcodeTrackerWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qdhualing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qrcodetracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bean" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2086,7 +1901,9 @@
       <workItem from="1562031947865" duration="2510000" />
       <workItem from="1562119921646" duration="1739000" />
       <workItem from="1562897907599" duration="3071000" />
-      <workItem from="1564452535584" duration="12711000" />
+      <workItem from="1564452535584" duration="14053000" />
+      <workItem from="1565334439433" duration="3823000" />
+      <workItem from="1565399781651" duration="10315000" />
     </task>
     <servers />
   </component>
@@ -2123,7 +1940,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1578498000" />
+    <option name="totallyTimeSpent" value="1593978000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2158,11 +1975,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32839838" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30552545" sideWeight="0.49484536" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24946696" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25479743" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23014805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -2185,10 +2002,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java</url>
+          <line>3026</line>
+          <properties />
+          <option name="timeStamp" value="405" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="403" />
+      <option name="time" value="406" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -2335,13 +2160,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/WLOutShowDataResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1025">
-          <caret line="61" column="5" lean-forward="false" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/utils/ProjectUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -2402,7 +2220,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2848,143 +2665,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BCPINParam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding>
-            <element signature="e#1034#1035#0" expanded="false" />
-            <element signature="e#1059#1060#0" expanded="false" />
-            <element signature="e#1092#1093#0" expanded="false" />
-            <element signature="e#1120#1121#0" expanded="false" />
-            <element signature="e#1155#1156#0" expanded="false" />
-            <element signature="e#1186#1187#0" expanded="false" />
-            <element signature="e#1234#1235#0" expanded="false" />
-            <element signature="e#1274#1275#0" expanded="false" />
-            <element signature="e#1312#1313#0" expanded="false" />
-            <element signature="e#1346#1347#0" expanded="false" />
-            <element signature="e#1400#1401#0" expanded="false" />
-            <element signature="e#1446#1447#0" expanded="false" />
-            <element signature="e#1476#1477#0" expanded="false" />
-            <element signature="e#1505#1506#0" expanded="false" />
-            <element signature="e#1546#1547#0" expanded="false" />
-            <element signature="e#1582#1583#0" expanded="false" />
-            <element signature="e#1616#1617#0" expanded="false" />
-            <element signature="e#1646#1647#0" expanded="false" />
-            <element signature="e#1692#1693#0" expanded="false" />
-            <element signature="e#1730#1731#0" expanded="false" />
-            <element signature="e#1761#1762#0" expanded="false" />
-            <element signature="e#1788#1789#0" expanded="false" />
-            <element signature="e#1828#1829#0" expanded="false" />
-            <element signature="e#1860#1861#0" expanded="false" />
-            <element signature="e#1891#1892#0" expanded="false" />
-            <element signature="e#1918#1919#0" expanded="false" />
-            <element signature="e#1958#1959#0" expanded="false" />
-            <element signature="e#1990#1991#0" expanded="false" />
-            <element signature="e#2019#2020#0" expanded="false" />
-            <element signature="e#2044#2045#0" expanded="false" />
-            <element signature="e#2080#2081#0" expanded="false" />
-            <element signature="e#2108#2109#0" expanded="false" />
-            <element signature="e#2137#2138#0" expanded="false" />
-            <element signature="e#2163#2164#0" expanded="false" />
-            <element signature="e#2200#2201#0" expanded="false" />
-            <element signature="e#2230#2231#0" expanded="false" />
-            <element signature="e#2263#2264#0" expanded="false" />
-            <element signature="e#2292#2293#0" expanded="false" />
-            <element signature="e#2336#2337#0" expanded="false" />
-            <element signature="e#2372#2373#0" expanded="false" />
-            <element signature="e#2402#2403#0" expanded="false" />
-            <element signature="e#2429#2430#0" expanded="false" />
-            <element signature="e#2468#2469#0" expanded="false" />
-            <element signature="e#2500#2501#0" expanded="false" />
-            <element signature="e#2533#2534#0" expanded="false" />
-            <element signature="e#2562#2563#0" expanded="false" />
-            <element signature="e#2606#2607#0" expanded="false" />
-            <element signature="e#2642#2643#0" expanded="false" />
-            <element signature="e#2675#2676#0" expanded="false" />
-            <element signature="e#2704#2705#0" expanded="false" />
-            <element signature="e#2748#2749#0" expanded="false" />
-            <element signature="e#2784#2785#0" expanded="false" />
-            <element signature="e#2813#2814#0" expanded="false" />
-            <element signature="e#2838#2839#0" expanded="false" />
-            <element signature="e#2874#2875#0" expanded="false" />
-            <element signature="e#2902#2903#0" expanded="false" />
-            <element signature="e#2932#2933#0" expanded="false" />
-            <element signature="e#2958#2959#0" expanded="false" />
-            <element signature="e#2996#2997#0" expanded="false" />
-            <element signature="e#3026#3027#0" expanded="false" />
-            <element signature="e#3056#3057#0" expanded="false" />
-            <element signature="e#3082#3083#0" expanded="false" />
-            <element signature="e#3120#3121#0" expanded="false" />
-            <element signature="e#3150#3151#0" expanded="false" />
-            <element signature="e#3181#3182#0" expanded="false" />
-            <element signature="e#3208#3209#0" expanded="false" />
-            <element signature="e#3248#3249#0" expanded="false" />
-            <element signature="e#3280#3281#0" expanded="false" />
-            <element signature="e#3311#3312#0" expanded="false" />
-            <element signature="e#3338#3339#0" expanded="false" />
-            <element signature="e#3378#3379#0" expanded="false" />
-            <element signature="e#3410#3411#0" expanded="false" />
-            <element signature="e#3436#3437#0" expanded="false" />
-            <element signature="e#3461#3462#0" expanded="false" />
-            <element signature="e#3494#3495#0" expanded="false" />
-            <element signature="e#3522#3523#0" expanded="false" />
-            <element signature="e#3556#3557#0" expanded="false" />
-            <element signature="e#3586#3587#0" expanded="false" />
-            <element signature="e#3632#3633#0" expanded="false" />
-            <element signature="e#3670#3671#0" expanded="false" />
-            <element signature="e#3701#3702#0" expanded="false" />
-            <element signature="e#3728#3729#0" expanded="false" />
-            <element signature="e#3768#3769#0" expanded="false" />
-            <element signature="e#3800#3801#0" expanded="false" />
-            <element signature="e#3829#3830#0" expanded="false" />
-            <element signature="e#3854#3855#0" expanded="false" />
-            <element signature="e#3890#3891#0" expanded="false" />
-            <element signature="e#3918#3919#0" expanded="false" />
-            <element signature="e#3948#3949#0" expanded="false" />
-            <element signature="e#3974#3975#0" expanded="false" />
-            <element signature="e#4012#4013#0" expanded="false" />
-            <element signature="e#4042#4043#0" expanded="false" />
-            <element signature="e#4072#4073#0" expanded="false" />
-            <element signature="e#4098#4099#0" expanded="false" />
-            <element signature="e#4136#4137#0" expanded="false" />
-            <element signature="e#4166#4167#0" expanded="false" />
-            <element signature="e#4196#4197#0" expanded="false" />
-            <element signature="e#4222#4223#0" expanded="false" />
-            <element signature="e#4260#4261#0" expanded="false" />
-            <element signature="e#4290#4291#0" expanded="false" />
-            <element signature="e#4320#4321#0" expanded="false" />
-            <element signature="e#4346#4347#0" expanded="false" />
-            <element signature="e#4384#4385#0" expanded="false" />
-            <element signature="e#4414#4415#0" expanded="false" />
-            <element signature="e#4444#4445#0" expanded="false" />
-            <element signature="e#4470#4471#0" expanded="false" />
-            <element signature="e#4508#4509#0" expanded="false" />
-            <element signature="e#4538#4539#0" expanded="false" />
-            <element signature="e#4568#4569#0" expanded="false" />
-            <element signature="e#4594#4595#0" expanded="false" />
-            <element signature="e#4632#4633#0" expanded="false" />
-            <element signature="e#4662#4663#0" expanded="false" />
-            <element signature="e#4692#4693#0" expanded="false" />
-            <element signature="e#4718#4719#0" expanded="false" />
-            <element signature="e#4756#4757#0" expanded="false" />
-            <element signature="e#4786#4787#0" expanded="false" />
-            <element signature="e#4816#4817#0" expanded="false" />
-            <element signature="e#4842#4843#0" expanded="false" />
-            <element signature="e#4880#4881#0" expanded="false" />
-            <element signature="e#4910#4911#0" expanded="false" />
-            <element signature="e#4940#4941#0" expanded="false" />
-            <element signature="e#4966#4967#0" expanded="false" />
-            <element signature="e#5004#5005#0" expanded="false" />
-            <element signature="e#5034#5035#0" expanded="false" />
-            <element signature="e#5065#5066#0" expanded="false" />
-            <element signature="e#5092#5093#0" expanded="false" />
-            <element signature="e#5132#5133#0" expanded="false" />
-            <element signature="e#5164#5165#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/utils/JPushUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
@@ -3026,7 +2706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="217" column="24" lean-forward="false" selection-start-line="217" selection-start-column="24" selection-end-line="217" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3042,19 +2721,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
           <caret line="77" column="5" lean-forward="false" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
-          <folding>
-            <element signature="e#1321#1322#0" expanded="false" />
-            <element signature="e#1348#1349#0" expanded="false" />
-            <element signature="e#1388#1389#0" expanded="false" />
-            <element signature="e#1420#1421#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/TrackType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
-          <caret line="20" column="44" lean-forward="true" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+          <caret line="20" column="44" lean-forward="false" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -3063,227 +2736,251 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/service/MainService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="111" column="76" lean-forward="true" selection-start-line="111" selection-start-column="76" selection-end-line="111" selection-end-column="76" />
-          <folding>
-            <element signature="e#4070#4071#0" expanded="true" />
-            <element signature="e#4112#4113#0" expanded="true" />
-            <element signature="e#17900#17901#0" expanded="true" />
-            <element signature="e#17939#17940#0" expanded="true" />
-            <element signature="e#25851#25852#0" expanded="true" />
-            <element signature="e#25901#25902#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/dao/MainDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
+        <state relative-caret-position="975">
           <caret line="43" column="79" lean-forward="false" selection-start-line="43" selection-start-column="79" selection-end-line="43" selection-end-column="79" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/WLOutShowDataResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="86" column="5" lean-forward="true" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/service/MainService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="973" column="53" lean-forward="true" selection-start-line="973" selection-start-column="53" selection-end-line="973" selection-end-column="53" />
+          <folding>
+            <element signature="e#4864#4865#0" expanded="true" />
+            <element signature="e#4912#4913#0" expanded="true" />
+            <element signature="e#6153#6154#0" expanded="true" />
+            <element signature="e#6199#6200#0" expanded="true" />
+            <element signature="e#6249#6250#0" expanded="true" />
+            <element signature="e#6298#6299#0" expanded="true" />
+            <element signature="e#6352#6353#0" expanded="true" />
+            <element signature="e#6402#6403#0" expanded="true" />
+            <element signature="e#7962#7963#0" expanded="true" />
+            <element signature="e#8010#8011#0" expanded="true" />
+            <element signature="e#25967#25968#0" expanded="true" />
+            <element signature="e#26018#26019#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BCPINParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2348">
+          <caret line="137" column="37" lean-forward="true" selection-start-line="137" selection-start-column="37" selection-end-line="137" selection-end-column="37" />
+          <folding>
+            <element signature="e#2426#2427#0" expanded="true" />
+            <element signature="e#2453#2454#0" expanded="true" />
+            <element signature="e#2524#2525#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="4178" column="95" lean-forward="true" selection-start-line="4178" selection-start-column="95" selection-end-line="4178" selection-end-column="95" />
+        <state relative-caret-position="389">
+          <caret line="1949" column="92" lean-forward="true" selection-start-line="1949" selection-start-column="92" selection-end-line="1949" selection-end-column="92" />
           <folding>
-            <marker date="1564471471843" expanded="true" signature="317:401" ph="SELECT disti... Tkd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="317:782" ph="SELECT disti... Tkd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="902:1007" ph="SELECT * FRO... Ckd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="902:1107" ph="SELECT * FRO... Ckd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="1226:1395" ph="SELECT disti... Ckd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="1507:1755" ph="SELECT disti... " />
-            <marker date="1564471471843" expanded="true" signature="1515:1754" ph="SELECT * FRO... *" />
-            <marker date="1564471471843" expanded="true" signature="1539:1619" ph="SELECT disti... Rkd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="1873:2113" ph="SELECT disti... Rkd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="2231:2438" ph="SELECT * FRO... Tkd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="2231:2439" ph="SELECT disti... Tkd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="2557:2658" ph="SELECT * FRO... Ckd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="2557:2799" ph="SELECT * FRO... Ckd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="2917:3099" ph="SELECT * FRO... Rkd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="2917:3100" ph="SELECT disti... Rkd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="3589:3704" ph="SELECT UserI... Hl_User" />
-            <marker date="1564471471843" expanded="true" signature="3589:3726" ph="SELECT UserI... Hl_User" />
-            <marker date="1564471471843" expanded="true" signature="3841:3997" ph="SELECT * FRO... Hl_User" />
-            <marker date="1564471471843" expanded="true" signature="4124:5141" ph="UPDATE Ckd_B... " />
-            <marker date="1564471471843" expanded="true" signature="5266:5830" ph="UPDATE Ckd_B... " />
-            <marker date="1564471471843" expanded="true" signature="5951:6048" ph="UPDATE M_BCP... " />
-            <marker date="1564471471843" expanded="true" signature="6173:7836" ph="UPDATE Tkd_B... " />
-            <marker date="1564471471843" expanded="true" signature="7959:8133" ph="UPDATE M_CPI... " />
-            <marker date="1564471471843" expanded="true" signature="8257:8442" ph="UPDATE M_CPI... " />
-            <marker date="1564471471843" expanded="true" signature="8562:8753" ph="UPDATE M_BCP... " />
-            <marker date="1564471471843" expanded="true" signature="8878:10765" ph="UPDATE Rkd_B... " />
-            <marker date="1564471471843" expanded="true" signature="10884:10963" ph="UPDATE M_WLB... " />
-            <marker date="1564471471843" expanded="true" signature="11086:11421" ph="UPDATE Tkd_W... " />
-            <marker date="1564471471843" expanded="true" signature="11541:11621" ph="UPDATE M_WLO... " />
-            <marker date="1564471471843" expanded="true" signature="11745:12046" ph="UPDATE Ckd_W... " />
-            <marker date="1564471471843" expanded="true" signature="12165:12402" ph="UPDATE M_WLI... " />
-            <marker date="1564471471843" expanded="true" signature="12525:12792" ph="UPDATE Rkd_W... " />
-            <marker date="1564471471843" expanded="true" signature="12862:12933" ph="UPDATE M_CPI... " />
-            <marker date="1564471471843" expanded="true" signature="13005:13075" ph="UPDATE M_CPI... " />
-            <marker date="1564471471843" expanded="true" signature="13142:13213" ph="UPDATE M_BCP... " />
-            <marker date="1564471471843" expanded="true" signature="13279:13346" ph="UPDATE M_WLI... " />
-            <marker date="1564471471843" expanded="true" signature="13472:13759" ph="SELECT M_CPI... M_CPIn2" />
-            <marker date="1564471471843" expanded="true" signature="13886:14163" ph="SELECT M_CPI... M_CPIn" />
-            <marker date="1564471471843" expanded="true" signature="14282:14761" ph="SELECT M_BCP... M_BCPIn" />
-            <marker date="1564471471843" expanded="true" signature="14875:15427" ph="UPDATE Tkd_B... " />
-            <marker date="1564471471843" expanded="true" signature="15539:16155" ph="UPDATE Tkd_B... " />
-            <marker date="1564471471843" expanded="true" signature="16269:16646" ph="UPDATE Ckd_B... " />
-            <marker date="1564471471843" expanded="true" signature="16269:16647" ph="UPDATE Ckd_B... " />
-            <marker date="1564471471843" expanded="true" signature="16759:16969" ph="UPDATE Ckd_B... " />
-            <marker date="1564471471843" expanded="true" signature="17082:17496" ph="UPDATE Ckd_B... " />
-            <marker date="1564471471843" expanded="true" signature="17608:17830" ph="UPDATE Ckd_B... " />
-            <marker date="1564471471843" expanded="true" signature="17943:18758" ph="UPDATE Rkd_B... " />
-            <marker date="1564471471843" expanded="true" signature="18870:19685" ph="UPDATE Rkd_B... " />
-            <marker date="1564471471843" expanded="true" signature="19796:20180" ph="UPDATE Tkd_W... " />
-            <marker date="1564471471843" expanded="true" signature="20290:20713" ph="UPDATE Tkd_W... " />
-            <marker date="1564471471843" expanded="true" signature="20825:21207" ph="UPDATE Ckd_W... " />
-            <marker date="1564471471843" expanded="true" signature="21318:21739" ph="UPDATE Ckd_W... " />
-            <marker date="1564471471843" expanded="true" signature="21850:22145" ph="UPDATE Rkd_W... " />
-            <marker date="1564471471843" expanded="true" signature="22255:22575" ph="UPDATE Rkd_W... " />
-            <marker date="1564471471843" expanded="true" signature="22705:22820" ph="SELECT * FRO... M_BCPBk" />
-            <marker date="1564471471843" expanded="true" signature="22933:22974" ph="SELECT * FRO... Tkd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="23106:23221" ph="SELECT * FRO... M_CPOut" />
-            <marker date="1564471471843" expanded="true" signature="23351:23465" ph="SELECT c.*,s... M_CPOut" />
-            <marker date="1564471471843" expanded="true" signature="23595:23635" ph="SELECT * FRO... M_CPOut" />
-            <marker date="1564471471843" expanded="true" signature="23748:23804" ph="SELECT * FRO... Ckd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="23935:24243" ph="SELECT QRCod... " />
-            <marker date="1564471471843" expanded="true" signature="24370:24432" ph="SELECT *,CP_... M_CPIn2" />
-            <marker date="1564471471843" expanded="true" signature="24560:24879" ph="SELECT QRCod... " />
-            <marker date="1564471471843" expanded="true" signature="25013:25339" ph="SELECT QRCod... " />
-            <marker date="1564471471843" expanded="true" signature="25470:25531" ph="SELECT *,CP_... M_CPIn" />
-            <marker date="1564471471843" expanded="true" signature="25668:25736" ph="SELECT *,CP_... M_CPIn" />
-            <marker date="1564471471843" expanded="true" signature="25668:25787" ph="SELECT *,CP_... M_CPIn" />
-            <marker date="1564471471843" expanded="true" signature="25759:25786" ph="SELECT QRCod... M_CPS" />
-            <marker date="1564471471843" expanded="true" signature="25916:26297" ph="SELECT QRCod... " />
-            <marker date="1564471471843" expanded="true" signature="26410:26449" ph="SELECT * FRO... Rkd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="26577:26681" ph="SELECT * FRO... M_WLBk" />
-            <marker date="1564471471843" expanded="true" signature="26803:26871" ph="SELECT *,SHL... M_WLBk" />
-            <marker date="1564471471843" expanded="true" signature="26982:27022" ph="SELECT * FRO... Tkd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="27152:27257" ph="SELECT * FRO... M_WLOUT" />
-            <marker date="1564471471843" expanded="true" signature="27381:27500" ph="SELECT *,SHL... M_WLOUT" />
-            <marker date="1564471471843" expanded="true" signature="27626:27741" ph="SELECT o.*,o... M_BCPOUT" />
-            <marker date="1564471471843" expanded="true" signature="27852:27907" ph="SELECT * FRO... Ckd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="28034:28139" ph="SELECT * FRO... M_WLIn" />
-            <marker date="1564471471843" expanded="true" signature="28250:28288" ph="SELECT * FRO... Rkd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="30898:30965" ph="SELECT * FRO... Ckd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="30898:30980" ph="SELECT * FRO... Ckd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="31494:31574" ph="SELECT disti... Rkd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="31494:32347" ph="SELECT disti... " />
-            <marker date="1564471471843" expanded="true" signature="36694:37299" ph="SELECT FzrID... Ckd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="37391:38172" ph="SELECT FzrID... Tkd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="38264:39163" ph="SELECT FzrID... Rkd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="39254:39792" ph="SELECT BzID Tkd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="39883:40420" ph="SELECT BzID Ckd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="40511:41035" ph="SELECT BzID Rkd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="41145:41215" ph="SELECT * FRO... M_CPIn2" />
-            <marker date="1564471471843" expanded="true" signature="41330:41373" ph="SELECT * FRO... M_CPIn" />
-            <marker date="1564471471843" expanded="true" signature="42187:42251" ph="SELECT SortN... Hl_Sort" />
-            <marker date="1564471471843" expanded="true" signature="42363:42642" ph="SELECT * FRO... M_BCPIn" />
-            <marker date="1564471471843" expanded="true" signature="42756:43226" ph="SELECT M_WLI... M_WLIn" />
-            <marker date="1564471471843" expanded="true" signature="43356:43529" ph="SELECT m.CP_... M_CPS" />
-            <marker date="1564471471843" expanded="true" signature="43636:43694" ph="SELECT * FRO... M_CPS" />
-            <marker date="1564471471843" expanded="true" signature="45573:45621" ph="DELETE FROM " />
-            <marker date="1564471471843" expanded="true" signature="45747:45921" ph="SELECT m.CP_... M_CPS2" />
-            <marker date="1564471471843" expanded="true" signature="45983:46033" ph="DELETE FROM " />
-            <marker date="1564471471843" expanded="true" signature="46092:46141" ph="DELETE FROM " />
-            <marker date="1564471471843" expanded="true" signature="48061:49701" ph="UPDATE M_CPI... " />
-            <marker date="1564471471843" expanded="true" signature="49811:51128" ph="UPDATE M_CPS... " />
-            <marker date="1564471471843" expanded="true" signature="51234:51293" ph="SELECT * FRO... M_CPS2" />
-            <marker date="1564471471843" expanded="true" signature="57650:57715" ph="SELECT COUNT... M_CPS" />
-            <marker date="1564471471843" expanded="true" signature="57825:57854" ph="SELECT * FRO... M_CPS2" />
-            <marker date="1564471471843" expanded="true" signature="57825:57877" ph="SELECT * FRO... M_CPIn2" />
-            <marker date="1564471471843" expanded="true" signature="60207:60273" ph="SELECT COUNT... M_CPS2" />
-            <marker date="1564471471843" expanded="true" signature="65987:66121" ph="UPDATE M_BCP... " />
-            <marker date="1564471471843" expanded="true" signature="66239:66369" ph="UPDATE M_BCP... " />
-            <marker date="1564471471843" expanded="true" signature="70887:70953" ph="SELECT COUNT... M_BCPS" />
-            <marker date="1564471471843" expanded="true" signature="74644:74701" ph="SELECT * FRO... Tkd_Bcp" />
-            <marker date="1564471471843" expanded="true" signature="74826:75123" ph="SELECT M_BCP... M_BCPTempS" />
-            <marker date="1564471471843" expanded="true" signature="79389:79523" ph="UPDATE M_BCP... " />
-            <marker date="1564471471843" expanded="true" signature="79585:79638" ph="DELETE FROM " />
-            <marker date="1564471471843" expanded="true" signature="79755:79886" ph="UPDATE M_BCP... " />
-            <marker date="1564471471843" expanded="true" signature="84746:84813" ph="SELECT COUNT... M_BCPTl" />
-            <marker date="1564471471843" expanded="true" signature="84926:84989" ph="SELECT * FRO... M_BCPTempS" />
-            <marker date="1564471471843" expanded="true" signature="85116:85752" ph="SELECT M_BCP... M_BCPTempS" />
-            <marker date="1564471471843" expanded="true" signature="85869:85999" ph="UPDATE M_BCP... " />
-            <marker date="1564471471843" expanded="true" signature="90679:90749" ph="SELECT COUNT... M_BCPTempS" />
-            <marker date="1564471471843" expanded="true" signature="90872:91281" ph="update M_CPI... " />
-            <marker date="1564471471843" expanded="true" signature="91398:92041" ph="update M_CPI... " />
-            <marker date="1564471471843" expanded="true" signature="92154:93124" ph="update M_BCP... " />
-            <marker date="1564471471843" expanded="true" signature="93195:93382" ph="UPDATE Rkd_B... " />
-            <marker date="1564471471843" expanded="true" signature="93285:93381" ph="select m2.In... M_CPIn" />
-            <marker date="1564471471843" expanded="true" signature="98343:98473" ph="UPDATE M_WLT... " />
-            <marker date="1564471471843" expanded="true" signature="98564:98630" ph="SELECT COUNT... M_WLTl" />
-            <marker date="1564471471843" expanded="true" signature="98745:98827" ph="SELECT ID , M_WLTl" />
-            <marker date="1564471471843" expanded="true" signature="98943:99026" ph="SELECT ID , M_BCPTl" />
-            <marker date="1564471471843" expanded="true" signature="104032:104064" ph="SELECT * FRO... Hl_CheJian" />
-            <marker date="1564471471843" expanded="true" signature="104186:104319" ph="UPDATE M_WLT... " />
-            <marker date="1564471471843" expanded="true" signature="106194:106327" ph="UPDATE M_WLT... " />
-            <marker date="1564471471843" expanded="true" signature="106388:106440" ph="DELETE FROM " />
-            <marker date="1564471471843" expanded="true" signature="106555:106684" ph="UPDATE M_WLS... " />
-            <marker date="1564471471843" expanded="true" signature="108362:108424" ph="SELECT * FRO... M_WLTempS" />
-            <marker date="1564471471843" expanded="true" signature="108533:108589" ph="SELECT * FRO... Tkd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="108711:108975" ph="SELECT M_WLT... M_WLTempS" />
-            <marker date="1564471471843" expanded="true" signature="112056:112214" ph="UPDATE M_WLT... " />
-            <marker date="1564471471843" expanded="true" signature="112300:112369" ph="SELECT COUNT... M_WLTempS" />
-            <marker date="1564471471843" expanded="true" signature="113872:113906" ph="SELECT * FRO... Hl_UserGroup" />
-            <marker date="1564471471843" expanded="true" signature="114021:114146" ph="UPDATE M_WLS... " />
-            <marker date="1564471471843" expanded="true" signature="114264:114390" ph="UPDATE M_BCP... " />
-            <marker date="1564471471843" expanded="true" signature="122362:122421" ph="SELECT * FRO... M_WLS" />
-            <marker date="1564471471843" expanded="true" signature="122525:122583" ph="SELECT * FRO... M_WLS" />
-            <marker date="1564471471843" expanded="true" signature="122692:122747" ph="SELECT * FRO... Ckd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="122859:123033" ph="UPDATE M_WLS... " />
-            <marker date="1564471471843" expanded="true" signature="124586:124639" ph="SELECT count... M_WLS" />
-            <marker date="1564471471843" expanded="true" signature="124755:124978" ph="SELECT M_WLS... M_WLS" />
-            <marker date="1564471471843" expanded="true" signature="125096:125317" ph="SELECT M_BCP... M_BCPS" />
-            <marker date="1564471471843" expanded="true" signature="128745:128768" ph="SELECT * FRO... Hl_Sort" />
-            <marker date="1564471471843" expanded="true" signature="128745:128778" ph="SELECT * FRO... Hl_Sort" />
-            <marker date="1564471471843" expanded="true" signature="128745:129349" ph="SELECT * FRO... Hl_Sort" />
-            <marker date="1564471471843" expanded="true" signature="129454:130069" ph="SELECT * FRO... Hl_Sort" />
-            <marker date="1564471471843" expanded="true" signature="130181:130225" ph="SELECT * FRO... Hl_Product" />
-            <marker date="1564471471843" expanded="true" signature="130330:130355" ph="SELECT * FRO... Pdt_Sort2" />
-            <marker date="1564471471843" expanded="true" signature="130463:130623" ph="SELECT mwlin... M_WLIn" />
-            <marker date="1564471471843" expanded="true" signature="134168:134660" ph="update M_WLI... " />
-            <marker date="1564471471843" expanded="true" signature="136543:136584" ph="select * fro... Rkd_Wl" />
-            <marker date="1564471471843" expanded="true" signature="136696:136761" ph="select *,Sor... M_WLIn" />
-            <marker date="1564471471843" expanded="true" signature="136870:136919" ph="select * fro... M_WLS" />
-            <marker date="1564471471843" expanded="true" signature="136976:137025" ph="update M_WLS... " />
-            <marker date="1564471471843" expanded="true" signature="137134:137170" ph="SELECT ID,M_... M_Module2" />
-            <marker date="1564471471843" expanded="true" signature="137352:137398" ph="SELECT ID,M_... M_Module2" />
-            <marker date="1564471471843" expanded="true" signature="137811:137830" ph="INSERT INTO Hl_User... " />
-            <marker date="1564471471843" expanded="true" signature="137811:138506" ph="INSERT INTO Hl_User... " />
-            <marker date="1564471471843" expanded="true" signature="139307:139549" ph="UPDATE Hl_Us... " />
-            <marker date="1564471471843" expanded="true" signature="139697:139742" ph="SELECT count... Hl_User" />
-            <marker date="1564471471843" expanded="true" signature="139697:139754" ph="SELECT count... Hl_User" />
-            <marker date="1564471471843" expanded="true" signature="139885:139922" ph="DELETE FROM " />
-            <marker date="1564471471843" expanded="true" signature="140221:140276" ph="SELECT count... M_WLIn" />
-            <marker date="1564471471843" expanded="true" signature="140221:140297" ph="SELECT count... M_WLIn" />
-            <marker date="1564471471843" expanded="true" signature="140455:140511" ph="SELECT count... M_WLOUT" />
-            <marker date="1564471471843" expanded="true" signature="140655:140710" ph="SELECT count... M_WLBK" />
-            <marker date="1564471471843" expanded="true" signature="140977:141033" ph="SELECT count... M_BCPIn" />
-            <marker date="1564471471843" expanded="true" signature="140977:141054" ph="SELECT count... M_BCPIn" />
-            <marker date="1564471471843" expanded="true" signature="141219:141275" ph="SELECT count... M_BCPBK" />
-            <marker date="1564471471843" expanded="true" signature="141540:141596" ph="SELECT count... M_CPOut" />
-            <marker date="1564471471843" expanded="true" signature="141540:141617" ph="SELECT count... M_CPIn2" />
-            <marker date="1564471471843" expanded="true" signature="141757:141813" ph="SELECT count... M_CPOut" />
-            <marker date="1564471471843" expanded="true" signature="142064:142140" ph="SELECT count... M_CPIn" />
-            <marker date="1564471471843" expanded="true" signature="142280:142336" ph="SELECT count... M_CPOut" />
+            <marker date="1565408532114" expanded="true" signature="317:401" ph="SELECT disti... Tkd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="317:782" ph="SELECT disti... Tkd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="902:1007" ph="SELECT * FRO... Ckd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="902:1107" ph="SELECT * FRO... Ckd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="1226:1395" ph="SELECT disti... Ckd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="1507:1755" ph="SELECT disti... " />
+            <marker date="1565408532114" expanded="true" signature="1515:1754" ph="SELECT * FRO... *" />
+            <marker date="1565408532114" expanded="true" signature="1539:1619" ph="SELECT disti... Rkd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="1873:2113" ph="SELECT disti... Rkd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="2231:2438" ph="SELECT * FRO... Tkd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="2231:2439" ph="SELECT disti... Tkd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="2557:2658" ph="SELECT * FRO... Ckd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="2557:2799" ph="SELECT * FRO... Ckd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="2917:3099" ph="SELECT * FRO... Rkd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="2917:3100" ph="SELECT disti... Rkd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="3589:3704" ph="SELECT UserI... Hl_User" />
+            <marker date="1565408532114" expanded="true" signature="3589:3726" ph="SELECT UserI... Hl_User" />
+            <marker date="1565408532114" expanded="true" signature="3841:3997" ph="SELECT * FRO... Hl_User" />
+            <marker date="1565408532114" expanded="true" signature="4124:5141" ph="UPDATE Ckd_B... " />
+            <marker date="1565408532114" expanded="true" signature="5266:5830" ph="UPDATE Ckd_B... " />
+            <marker date="1565408532114" expanded="true" signature="5951:6048" ph="UPDATE M_BCP... " />
+            <marker date="1565408532114" expanded="true" signature="6173:7836" ph="UPDATE Tkd_B... " />
+            <marker date="1565408532114" expanded="true" signature="7959:8133" ph="UPDATE M_CPI... " />
+            <marker date="1565408532114" expanded="true" signature="8257:8442" ph="UPDATE M_CPI... " />
+            <marker date="1565408532114" expanded="true" signature="8562:8753" ph="UPDATE M_BCP... " />
+            <marker date="1565408532114" expanded="true" signature="8878:10765" ph="UPDATE Rkd_B... " />
+            <marker date="1565408532114" expanded="true" signature="10884:10963" ph="UPDATE M_WLB... " />
+            <marker date="1565408532114" expanded="true" signature="11086:11421" ph="UPDATE Tkd_W... " />
+            <marker date="1565408532114" expanded="true" signature="11541:11621" ph="UPDATE M_WLO... " />
+            <marker date="1565408532114" expanded="true" signature="11745:12046" ph="UPDATE Ckd_W... " />
+            <marker date="1565408532114" expanded="true" signature="12165:12402" ph="UPDATE M_WLI... " />
+            <marker date="1565408532114" expanded="true" signature="12525:12792" ph="UPDATE Rkd_W... " />
+            <marker date="1565408532114" expanded="true" signature="12862:12933" ph="UPDATE M_CPI... " />
+            <marker date="1565408532114" expanded="true" signature="13005:13075" ph="UPDATE M_CPI... " />
+            <marker date="1565408532114" expanded="true" signature="13142:13213" ph="UPDATE M_BCP... " />
+            <marker date="1565408532114" expanded="true" signature="13279:13346" ph="UPDATE M_WLI... " />
+            <marker date="1565408532114" expanded="true" signature="13472:13759" ph="SELECT M_CPI... M_CPIn2" />
+            <marker date="1565408532114" expanded="true" signature="13886:14163" ph="SELECT M_CPI... M_CPIn" />
+            <marker date="1565408532114" expanded="true" signature="14282:14761" ph="SELECT M_BCP... M_BCPIn" />
+            <marker date="1565408532114" expanded="true" signature="14875:15427" ph="UPDATE Tkd_B... " />
+            <marker date="1565408532114" expanded="true" signature="15539:16155" ph="UPDATE Tkd_B... " />
+            <marker date="1565408532114" expanded="true" signature="16269:16646" ph="UPDATE Ckd_B... " />
+            <marker date="1565408532114" expanded="true" signature="16269:16647" ph="UPDATE Ckd_B... " />
+            <marker date="1565408532114" expanded="true" signature="16759:16969" ph="UPDATE Ckd_B... " />
+            <marker date="1565408532114" expanded="true" signature="17082:17496" ph="UPDATE Ckd_B... " />
+            <marker date="1565408532114" expanded="true" signature="17608:17830" ph="UPDATE Ckd_B... " />
+            <marker date="1565408532114" expanded="true" signature="17943:18758" ph="UPDATE Rkd_B... " />
+            <marker date="1565408532114" expanded="true" signature="18870:19685" ph="UPDATE Rkd_B... " />
+            <marker date="1565408532114" expanded="true" signature="19796:20180" ph="UPDATE Tkd_W... " />
+            <marker date="1565408532114" expanded="true" signature="20290:20713" ph="UPDATE Tkd_W... " />
+            <marker date="1565408532114" expanded="true" signature="20825:21207" ph="UPDATE Ckd_W... " />
+            <marker date="1565408532114" expanded="true" signature="21318:21739" ph="UPDATE Ckd_W... " />
+            <marker date="1565408532114" expanded="true" signature="21850:22145" ph="UPDATE Rkd_W... " />
+            <marker date="1565408532114" expanded="true" signature="22255:22575" ph="UPDATE Rkd_W... " />
+            <marker date="1565408532114" expanded="true" signature="22705:22820" ph="SELECT * FRO... M_BCPBk" />
+            <marker date="1565408532114" expanded="true" signature="22933:22974" ph="SELECT * FRO... Tkd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="23106:23221" ph="SELECT * FRO... M_CPOut" />
+            <marker date="1565408532114" expanded="true" signature="23351:23465" ph="SELECT c.*,s... M_CPOut" />
+            <marker date="1565408532114" expanded="true" signature="23595:23635" ph="SELECT * FRO... M_CPOut" />
+            <marker date="1565408532114" expanded="true" signature="23748:23804" ph="SELECT * FRO... Ckd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="23935:24243" ph="SELECT QRCod... " />
+            <marker date="1565408532114" expanded="true" signature="24370:24432" ph="SELECT *,CP_... M_CPIn2" />
+            <marker date="1565408532114" expanded="true" signature="24560:24879" ph="SELECT QRCod... " />
+            <marker date="1565408532114" expanded="true" signature="25013:25339" ph="SELECT QRCod... " />
+            <marker date="1565408532114" expanded="true" signature="25470:25531" ph="SELECT *,CP_... M_CPIn" />
+            <marker date="1565408532114" expanded="true" signature="25668:25736" ph="SELECT *,CP_... M_CPIn" />
+            <marker date="1565408532114" expanded="true" signature="25668:25787" ph="SELECT *,CP_... M_CPIn" />
+            <marker date="1565408532114" expanded="true" signature="25759:25786" ph="SELECT QRCod... M_CPS" />
+            <marker date="1565408532114" expanded="true" signature="25916:26297" ph="SELECT QRCod... " />
+            <marker date="1565408532114" expanded="true" signature="26410:26449" ph="SELECT * FRO... Rkd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="26577:26681" ph="SELECT * FRO... M_WLBk" />
+            <marker date="1565408532114" expanded="true" signature="26803:26871" ph="SELECT *,SHL... M_WLBk" />
+            <marker date="1565408532114" expanded="true" signature="26982:27022" ph="SELECT * FRO... Tkd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="27152:27257" ph="SELECT * FRO... M_WLOUT" />
+            <marker date="1565408532114" expanded="true" signature="27381:27500" ph="SELECT *,SHL... M_WLOUT" />
+            <marker date="1565408532114" expanded="true" signature="27626:27741" ph="SELECT o.*,o... M_BCPOUT" />
+            <marker date="1565408532114" expanded="true" signature="27852:27907" ph="SELECT * FRO... Ckd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="28034:28139" ph="SELECT * FRO... M_WLIn" />
+            <marker date="1565408532114" expanded="true" signature="28250:28288" ph="SELECT * FRO... Rkd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="30898:30965" ph="SELECT * FRO... Ckd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="30898:30980" ph="SELECT * FRO... Ckd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="31494:31574" ph="SELECT disti... Rkd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="31494:32347" ph="SELECT disti... " />
+            <marker date="1565408532114" expanded="true" signature="36694:37299" ph="SELECT FzrID... Ckd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="37391:38172" ph="SELECT FzrID... Tkd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="38264:39163" ph="SELECT FzrID... Rkd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="39254:39792" ph="SELECT BzID Tkd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="39883:40420" ph="SELECT BzID Ckd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="40511:41035" ph="SELECT BzID Rkd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="41145:41215" ph="SELECT * FRO... M_CPIn2" />
+            <marker date="1565408532114" expanded="true" signature="41330:41373" ph="SELECT * FRO... M_CPIn" />
+            <marker date="1565408532114" expanded="true" signature="42187:42251" ph="SELECT SortN... Hl_Sort" />
+            <marker date="1565408532114" expanded="true" signature="42363:42642" ph="SELECT * FRO... M_BCPIn" />
+            <marker date="1565408532114" expanded="true" signature="42756:43226" ph="SELECT M_WLI... M_WLIn" />
+            <marker date="1565408532114" expanded="true" signature="43356:43529" ph="SELECT m.CP_... M_CPS" />
+            <marker date="1565408532114" expanded="true" signature="43636:43694" ph="SELECT * FRO... M_CPS" />
+            <marker date="1565408532114" expanded="true" signature="45573:45621" ph="DELETE FROM " />
+            <marker date="1565408532114" expanded="true" signature="45747:45921" ph="SELECT m.CP_... M_CPS2" />
+            <marker date="1565408532114" expanded="true" signature="45983:46033" ph="DELETE FROM " />
+            <marker date="1565408532114" expanded="true" signature="46092:46141" ph="DELETE FROM " />
+            <marker date="1565408532114" expanded="true" signature="48061:49701" ph="UPDATE M_CPI... " />
+            <marker date="1565408532114" expanded="true" signature="49811:51128" ph="UPDATE M_CPS... " />
+            <marker date="1565408532114" expanded="true" signature="51234:51293" ph="SELECT * FRO... M_CPS2" />
+            <marker date="1565408532114" expanded="true" signature="57650:57715" ph="SELECT COUNT... M_CPS" />
+            <marker date="1565408532114" expanded="true" signature="57825:57854" ph="SELECT * FRO... M_CPS2" />
+            <marker date="1565408532114" expanded="true" signature="57825:57877" ph="SELECT * FRO... M_CPIn2" />
+            <marker date="1565408532114" expanded="true" signature="60207:60273" ph="SELECT COUNT... M_CPS2" />
+            <marker date="1565408532114" expanded="true" signature="65987:66121" ph="UPDATE M_BCP... " />
+            <marker date="1565408532114" expanded="true" signature="66239:66369" ph="UPDATE M_BCP... " />
+            <marker date="1565408532114" expanded="true" signature="70887:70953" ph="SELECT COUNT... M_BCPS" />
+            <marker date="1565408532114" expanded="true" signature="74644:74701" ph="SELECT * FRO... Tkd_Bcp" />
+            <marker date="1565408532114" expanded="true" signature="74826:75123" ph="SELECT M_BCP... M_BCPTempS" />
+            <marker date="1565408532114" expanded="true" signature="79389:79523" ph="UPDATE M_BCP... " />
+            <marker date="1565408532114" expanded="true" signature="79585:79638" ph="DELETE FROM " />
+            <marker date="1565408532114" expanded="true" signature="79755:79886" ph="UPDATE M_BCP... " />
+            <marker date="1565408532114" expanded="true" signature="84746:84813" ph="SELECT COUNT... M_BCPTl" />
+            <marker date="1565408532114" expanded="true" signature="84926:84989" ph="SELECT * FRO... M_BCPTempS" />
+            <marker date="1565408532114" expanded="true" signature="85116:85752" ph="SELECT M_BCP... M_BCPTempS" />
+            <marker date="1565408532114" expanded="true" signature="85869:85999" ph="UPDATE M_BCP... " />
+            <marker date="1565408532114" expanded="true" signature="90679:90749" ph="SELECT COUNT... M_BCPTempS" />
+            <marker date="1565408532114" expanded="true" signature="90872:91281" ph="update M_CPI... " />
+            <marker date="1565408532114" expanded="true" signature="91398:92041" ph="update M_CPI... " />
+            <marker date="1565408532114" expanded="true" signature="92154:93124" ph="update M_BCP... " />
+            <marker date="1565408532114" expanded="true" signature="93195:93382" ph="UPDATE Rkd_B... " />
+            <marker date="1565408532114" expanded="true" signature="93285:93381" ph="select m2.In... M_CPIn" />
+            <marker date="1565408532114" expanded="true" signature="98343:98473" ph="UPDATE M_WLT... " />
+            <marker date="1565408532114" expanded="true" signature="98564:98630" ph="SELECT COUNT... M_WLTl" />
+            <marker date="1565408532114" expanded="true" signature="98745:98827" ph="SELECT ID , M_WLTl" />
+            <marker date="1565408532114" expanded="true" signature="98943:99026" ph="SELECT ID , M_BCPTl" />
+            <marker date="1565408532114" expanded="true" signature="104032:104064" ph="SELECT * FRO... Hl_CheJian" />
+            <marker date="1565408532114" expanded="true" signature="104186:104319" ph="UPDATE M_WLT... " />
+            <marker date="1565408532114" expanded="true" signature="106194:106327" ph="UPDATE M_WLT... " />
+            <marker date="1565408532114" expanded="true" signature="106388:106440" ph="DELETE FROM " />
+            <marker date="1565408532114" expanded="true" signature="106555:106684" ph="UPDATE M_WLS... " />
+            <marker date="1565408532114" expanded="true" signature="108362:108424" ph="SELECT * FRO... M_WLTempS" />
+            <marker date="1565408532114" expanded="true" signature="108533:108589" ph="SELECT * FRO... Tkd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="108711:108975" ph="SELECT M_WLT... M_WLTempS" />
+            <marker date="1565408532114" expanded="true" signature="112056:112214" ph="UPDATE M_WLT... " />
+            <marker date="1565408532114" expanded="true" signature="112300:112369" ph="SELECT COUNT... M_WLTempS" />
+            <marker date="1565408532114" expanded="true" signature="113872:113906" ph="SELECT * FRO... Hl_UserGroup" />
+            <marker date="1565408532114" expanded="true" signature="114021:114146" ph="UPDATE M_WLS... " />
+            <marker date="1565408532114" expanded="true" signature="114264:114390" ph="UPDATE M_BCP... " />
+            <marker date="1565408532114" expanded="true" signature="122362:122421" ph="SELECT * FRO... M_WLS" />
+            <marker date="1565408532114" expanded="true" signature="122525:122583" ph="SELECT * FRO... M_WLS" />
+            <marker date="1565408532114" expanded="true" signature="122692:122747" ph="SELECT * FRO... Ckd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="122859:123033" ph="UPDATE M_WLS... " />
+            <marker date="1565408532114" expanded="true" signature="124586:124639" ph="SELECT count... M_WLS" />
+            <marker date="1565408532114" expanded="true" signature="124755:124978" ph="SELECT M_WLS... M_WLS" />
+            <marker date="1565408532114" expanded="true" signature="125096:125317" ph="SELECT M_BCP... M_BCPS" />
+            <marker date="1565408532114" expanded="true" signature="128745:128768" ph="SELECT * FRO... Hl_Sort" />
+            <marker date="1565408532114" expanded="true" signature="128745:128778" ph="SELECT * FRO... Hl_Sort" />
+            <marker date="1565408532114" expanded="true" signature="128745:129349" ph="SELECT * FRO... Hl_Sort" />
+            <marker date="1565408532114" expanded="true" signature="129454:130069" ph="SELECT * FRO... Hl_Sort" />
+            <marker date="1565408532114" expanded="true" signature="130181:130225" ph="SELECT * FRO... Hl_Product" />
+            <marker date="1565408532114" expanded="true" signature="130330:130355" ph="SELECT * FRO... Pdt_Sort2" />
+            <marker date="1565408532114" expanded="true" signature="130463:130623" ph="SELECT mwlin... M_WLIn" />
+            <marker date="1565408532114" expanded="true" signature="134168:134660" ph="update M_WLI... " />
+            <marker date="1565408532114" expanded="true" signature="136543:136584" ph="select * fro... Rkd_Wl" />
+            <marker date="1565408532114" expanded="true" signature="136696:136761" ph="select *,Sor... M_WLIn" />
+            <marker date="1565408532114" expanded="true" signature="136870:136919" ph="select * fro... M_WLS" />
+            <marker date="1565408532114" expanded="true" signature="136976:137025" ph="update M_WLS... " />
+            <marker date="1565408532114" expanded="true" signature="137134:137170" ph="SELECT ID,M_... M_Module2" />
+            <marker date="1565408532114" expanded="true" signature="137352:137398" ph="SELECT ID,M_... M_Module2" />
+            <marker date="1565408532114" expanded="true" signature="137811:137830" ph="INSERT INTO Hl_User... " />
+            <marker date="1565408532114" expanded="true" signature="137811:138506" ph="INSERT INTO Hl_User... " />
+            <marker date="1565408532114" expanded="true" signature="139307:139549" ph="UPDATE Hl_Us... " />
+            <marker date="1565408532114" expanded="true" signature="139697:139742" ph="SELECT count... Hl_User" />
+            <marker date="1565408532114" expanded="true" signature="139697:139754" ph="SELECT count... Hl_User" />
+            <marker date="1565408532114" expanded="true" signature="139885:139922" ph="DELETE FROM " />
+            <marker date="1565408532114" expanded="true" signature="140221:140276" ph="SELECT count... M_WLIn" />
+            <marker date="1565408532114" expanded="true" signature="140221:140297" ph="SELECT count... M_WLIn" />
+            <marker date="1565408532114" expanded="true" signature="140455:140511" ph="SELECT count... M_WLOUT" />
+            <marker date="1565408532114" expanded="true" signature="140655:140710" ph="SELECT count... M_WLBK" />
+            <marker date="1565408532114" expanded="true" signature="140977:141033" ph="SELECT count... M_BCPIn" />
+            <marker date="1565408532114" expanded="true" signature="140977:141054" ph="SELECT count... M_BCPIn" />
+            <marker date="1565408532114" expanded="true" signature="141219:141275" ph="SELECT count... M_BCPBK" />
+            <marker date="1565408532114" expanded="true" signature="141540:141596" ph="SELECT count... M_CPOut" />
+            <marker date="1565408532114" expanded="true" signature="141540:141617" ph="SELECT count... M_CPIn2" />
+            <marker date="1565408532114" expanded="true" signature="141757:141813" ph="SELECT count... M_CPOut" />
+            <marker date="1565408532114" expanded="true" signature="142064:142140" ph="SELECT count... M_CPIn" />
+            <marker date="1565408532114" expanded="true" signature="142280:142336" ph="SELECT count... M_CPOut" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="249" column="90" lean-forward="true" selection-start-line="249" selection-start-column="90" selection-end-line="249" selection-end-column="90" />
+        <state relative-caret-position="189">
+          <caret line="3069" column="75" lean-forward="true" selection-start-line="3069" selection-start-column="75" selection-end-line="3069" selection-end-column="75" />
           <folding>
             <element signature="e#1533#1546#0" expanded="true" />
             <element signature="e#3428#3440#0" expanded="true" />
@@ -3299,86 +2996,86 @@
             <element signature="e#15577#15598#0" expanded="true" />
             <element signature="e#17054#17076#0" expanded="true" />
             <element signature="e#18475#18489#0" expanded="true" />
-            <element signature="e#20851#20865#0" expanded="true" />
-            <element signature="e#24037#24054#0" expanded="true" />
-            <element signature="e#25076#25089#0" expanded="true" />
-            <element signature="e#26645#26665#0" expanded="true" />
-            <element signature="e#27844#27858#0" expanded="true" />
-            <element signature="e#30382#30405#0" expanded="true" />
-            <element signature="e#32234#32248#0" expanded="true" />
-            <element signature="e#34886#34896#0" expanded="true" />
-            <element signature="e#35933#35943#0" expanded="true" />
-            <element signature="e#36930#36944#0" expanded="true" />
-            <element signature="e#38501#38513#0" expanded="true" />
-            <element signature="e#39486#39501#0" expanded="true" />
-            <element signature="e#40496#40510#0" expanded="true" />
-            <element signature="e#42778#42802#0" expanded="true" />
-            <element signature="e#43988#44002#0" expanded="true" />
-            <element signature="e#47385#47399#0" expanded="true" />
-            <element signature="e#48945#48966#0" expanded="true" />
-            <element signature="e#50133#50147#0" expanded="true" />
-            <element signature="e#55183#55197#0" expanded="true" />
-            <element signature="e#56613#56628#0" expanded="true" />
-            <element signature="e#57588#57602#0" expanded="true" />
-            <element signature="e#58626#58639#0" expanded="true" />
-            <element signature="e#59613#59627#0" expanded="true" />
-            <element signature="e#62702#62716#0" expanded="true" />
-            <element signature="e#64758#64781#0" expanded="true" />
-            <element signature="e#65968#65982#0" expanded="true" />
-            <element signature="e#67669#67694#0" expanded="true" />
-            <element signature="e#68874#68889#0" expanded="true" />
-            <element signature="e#70035#70051#0" expanded="true" />
-            <element signature="e#71582#71590#0" expanded="true" />
-            <element signature="e#73154#73169#0" expanded="true" />
-            <element signature="e#74301#74321#0" expanded="true" />
-            <element signature="e#75597#75605#0" expanded="true" />
-            <element signature="e#77009#77024#0" expanded="true" />
-            <element signature="e#78140#78158#0" expanded="true" />
-            <element signature="e#80289#80303#0" expanded="true" />
-            <element signature="e#84166#84182#0" expanded="true" />
-            <element signature="e#84358#84372#0" expanded="true" />
-            <element signature="e#92971#92989#0" expanded="true" />
-            <element signature="e#94799#94818#0" expanded="true" />
-            <element signature="e#96742#96760#0" expanded="true" />
-            <element signature="e#99130#99154#0" expanded="true" />
-            <element signature="e#100758#100777#0" expanded="true" />
-            <element signature="e#104156#104175#0" expanded="true" />
-            <element signature="e#104945#104970#0" expanded="true" />
-            <element signature="e#107099#107124#0" expanded="true" />
-            <element signature="e#107891#107911#0" expanded="true" />
-            <element signature="e#109696#109715#0" expanded="true" />
-            <element signature="e#111285#111304#0" expanded="true" />
-            <element signature="e#113852#113877#0" expanded="true" />
-            <element signature="e#115366#115380#0" expanded="true" />
-            <element signature="e#118692#118706#0" expanded="true" />
-            <element signature="e#120396#120410#0" expanded="true" />
-            <element signature="e#123453#123467#0" expanded="true" />
-            <element signature="e#125340#125354#0" expanded="true" />
-            <element signature="e#128480#128494#0" expanded="true" />
-            <element signature="e#130375#130389#0" expanded="true" />
-            <element signature="e#140825#140839#0" expanded="true" />
-            <element signature="e#143676#143690#0" expanded="true" />
-            <element signature="e#148345#148359#0" expanded="true" />
-            <element signature="e#151176#151190#0" expanded="true" />
-            <element signature="e#153085#153099#0" expanded="true" />
-            <element signature="e#154608#154622#0" expanded="true" />
-            <element signature="e#156887#156901#0" expanded="true" />
-            <element signature="e#159213#159237#0" expanded="true" />
-            <element signature="e#160707#160726#0" expanded="true" />
-            <element signature="e#165588#165602#0" expanded="true" />
-            <element signature="e#167520#167534#0" expanded="true" />
-            <element signature="e#169262#169276#0" expanded="true" />
-            <element signature="e#171001#171015#0" expanded="true" />
-            <element signature="e#172747#172761#0" expanded="true" />
-            <element signature="e#174352#174366#0" expanded="true" />
-            <element signature="e#175556#175570#0" expanded="true" />
-            <element signature="e#176762#176776#0" expanded="true" />
-            <element signature="e#178144#178158#0" expanded="true" />
-            <element signature="e#179059#179073#0" expanded="true" />
-            <element signature="e#180060#180074#0" expanded="true" />
-            <element signature="e#181457#181473#0" expanded="true" />
-            <element signature="e#181649#181663#0" expanded="true" />
-            <element signature="e#187269#187281#0" expanded="true" />
+            <element signature="e#21171#21185#0" expanded="true" />
+            <element signature="e#24626#24643#0" expanded="true" />
+            <element signature="e#25665#25678#0" expanded="true" />
+            <element signature="e#27234#27254#0" expanded="true" />
+            <element signature="e#28433#28447#0" expanded="true" />
+            <element signature="e#31331#31354#0" expanded="true" />
+            <element signature="e#33183#33197#0" expanded="true" />
+            <element signature="e#35835#35845#0" expanded="true" />
+            <element signature="e#36882#36892#0" expanded="true" />
+            <element signature="e#37879#37893#0" expanded="true" />
+            <element signature="e#39450#39462#0" expanded="true" />
+            <element signature="e#40435#40450#0" expanded="true" />
+            <element signature="e#41445#41459#0" expanded="true" />
+            <element signature="e#43727#43751#0" expanded="true" />
+            <element signature="e#44937#44951#0" expanded="true" />
+            <element signature="e#48334#48348#0" expanded="true" />
+            <element signature="e#49894#49915#0" expanded="true" />
+            <element signature="e#51082#51096#0" expanded="true" />
+            <element signature="e#56132#56146#0" expanded="true" />
+            <element signature="e#57562#57577#0" expanded="true" />
+            <element signature="e#58537#58551#0" expanded="true" />
+            <element signature="e#59575#59588#0" expanded="true" />
+            <element signature="e#60562#60576#0" expanded="true" />
+            <element signature="e#63651#63665#0" expanded="true" />
+            <element signature="e#65707#65730#0" expanded="true" />
+            <element signature="e#66917#66931#0" expanded="true" />
+            <element signature="e#68618#68643#0" expanded="true" />
+            <element signature="e#69823#69838#0" expanded="true" />
+            <element signature="e#70984#71000#0" expanded="true" />
+            <element signature="e#72531#72539#0" expanded="true" />
+            <element signature="e#74103#74118#0" expanded="true" />
+            <element signature="e#75250#75270#0" expanded="true" />
+            <element signature="e#76546#76554#0" expanded="true" />
+            <element signature="e#77958#77973#0" expanded="true" />
+            <element signature="e#79089#79107#0" expanded="true" />
+            <element signature="e#81238#81252#0" expanded="true" />
+            <element signature="e#85115#85131#0" expanded="true" />
+            <element signature="e#85307#85321#0" expanded="true" />
+            <element signature="e#93920#93938#0" expanded="true" />
+            <element signature="e#95748#95767#0" expanded="true" />
+            <element signature="e#97691#97709#0" expanded="true" />
+            <element signature="e#100079#100103#0" expanded="true" />
+            <element signature="e#101707#101726#0" expanded="true" />
+            <element signature="e#105105#105124#0" expanded="true" />
+            <element signature="e#105894#105919#0" expanded="true" />
+            <element signature="e#108048#108073#0" expanded="true" />
+            <element signature="e#108840#108860#0" expanded="true" />
+            <element signature="e#110645#110664#0" expanded="true" />
+            <element signature="e#112234#112253#0" expanded="true" />
+            <element signature="e#114801#114826#0" expanded="true" />
+            <element signature="e#116315#116329#0" expanded="true" />
+            <element signature="e#119641#119655#0" expanded="true" />
+            <element signature="e#121345#121359#0" expanded="true" />
+            <element signature="e#124464#124478#0" expanded="true" />
+            <element signature="e#126351#126365#0" expanded="true" />
+            <element signature="e#129553#129567#0" expanded="true" />
+            <element signature="e#131448#131462#0" expanded="true" />
+            <element signature="e#141898#141912#0" expanded="true" />
+            <element signature="e#144749#144763#0" expanded="true" />
+            <element signature="e#149582#149596#0" expanded="true" />
+            <element signature="e#152413#152427#0" expanded="true" />
+            <element signature="e#154322#154336#0" expanded="true" />
+            <element signature="e#155845#155859#0" expanded="true" />
+            <element signature="e#158124#158138#0" expanded="true" />
+            <element signature="e#160450#160474#0" expanded="true" />
+            <element signature="e#161944#161963#0" expanded="true" />
+            <element signature="e#166825#166839#0" expanded="true" />
+            <element signature="e#168757#168771#0" expanded="true" />
+            <element signature="e#170499#170513#0" expanded="true" />
+            <element signature="e#172238#172252#0" expanded="true" />
+            <element signature="e#173984#173998#0" expanded="true" />
+            <element signature="e#175589#175603#0" expanded="true" />
+            <element signature="e#176793#176807#0" expanded="true" />
+            <element signature="e#177999#178013#0" expanded="true" />
+            <element signature="e#179381#179395#0" expanded="true" />
+            <element signature="e#180296#180310#0" expanded="true" />
+            <element signature="e#181297#181311#0" expanded="true" />
+            <element signature="e#182694#182710#0" expanded="true" />
+            <element signature="e#182886#182900#0" expanded="true" />
+            <element signature="e#188506#188518#0" expanded="true" />
           </folding>
         </state>
       </provider>
