@@ -371,7 +371,7 @@
     <select id="getBcpInShowData" resultType="com.qdhualing.qrcodetracker.bean.BcpTrackResult">
         SELECT M_BCPIn.ProductName, M_BCPIn.SortID, M_BCPIn.YLPC , M_BCPIn.SCPC ,M_BCPIn.BCP_Code,
         M_BCPIn.SC_Time , M_BCPIn.GG , Pdt_Sort2.Sort_Name ,M_BCPIn.DWZL,
-        M_BCPIn.CZY ,M_BCPIn.DW ,M_BCPIn.CheJian ,M_BCPIn.GX ,
+        M_BCPIn.CZY ,M_BCPIn.ZJY ,M_BCPIn.ZJZT ,M_BCPIn.DW ,M_BCPIn.CheJian ,M_BCPIn.GX ,
         M_BCPIn.Yl_1,M_BCPIn.Yl_2,M_BCPIn.Yl_3,M_BCPIn.Yl_4,M_BCPIn.Yl_5,M_BCPIn.Yl_6,M_BCPIn.Yl_7,M_BCPIn.Yl_8,M_BCPIn.Yl_9,M_BCPIn.Yl_10
         FROM M_BCPIn LEFT JOIN Pdt_Sort2 on M_BCPIn.SortID = Pdt_Sort2.ID
         WHERE M_BCPIn.QRCode_ID = #{0}
@@ -724,7 +724,7 @@
     </select>
 
     <select id="getBcpOutParamListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.BcpOutParam">
-        SELECT o.*,o.SHL AS ckShL
+        SELECT o.*,o.SHL AS ckShL,s.SCPC
         FROM M_BCPOUT o,M_BCPS s
         WHERE o.QRCode_ID=s.QRCode_ID AND o.OutDh = #{0}
     </select>
@@ -2908,6 +2908,7 @@ SmlPk45		= #{smlPk45},
                 GG= #{gg},
                 SHL=#{shl},
                 SC_Time=#{scTime},
+                RKZL= #{rkzl},
                 DWZL= #{dwzl},
                 KS_Time=#{ksTime},
                 WC_Time=#{wcTime},

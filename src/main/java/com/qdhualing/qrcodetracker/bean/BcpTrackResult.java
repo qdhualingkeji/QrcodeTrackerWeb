@@ -26,6 +26,7 @@ public class BcpTrackResult {
     private String gg	;
     private String czy	;
     private String zjy	;
+    private Integer zjzt	;
     private String jyzt	;
     private String sortID ;
     private String yl1 ;
@@ -144,6 +145,14 @@ public class BcpTrackResult {
 
     public void setZjy(String zjy) {
         this.zjy = zjy;
+    }
+
+    public Integer getZjzt() {
+        return zjzt;
+    }
+
+    public void setZjzt(Integer zjzt) {
+        this.zjzt = zjzt;
     }
 
     public String getJyzt() {

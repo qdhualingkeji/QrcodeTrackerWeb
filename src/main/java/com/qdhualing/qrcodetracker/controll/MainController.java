@@ -1578,6 +1578,7 @@ public class MainController {
                     singleData.setSortName(sortName);
                     singleData.setYlpc(dataResult.getYlpc());
                     singleData.setZjy(dataResult.getZjy());
+                    singleData.setZjzt(dataResult.getZjzt());
                     List<String> ylList = new ArrayList<String>();
                     if (!TextUtils.isEmpty(dataResult.getYl1()))
                         ylList.add(dataResult.getYl1());
@@ -3089,7 +3090,9 @@ public class MainController {
         bcpInParam.setQrCodeId(bcpOutParam.getQrCodeId());
         bcpInParam.setProductName(bcpOutParam.getProductName());
         bcpInParam.setSortID(bcpOutParam.getSortId());
+        bcpInParam.setBcpCode(bcpOutParam.getBcpCode());
         bcpInParam.setYlpc(bcpOutParam.getYlpc());
+        bcpInParam.setScpc(bcpOutParam.getScpc());
         bcpInParam.setGg(bcpOutParam.getGg());
         bcpInParam.setScTime(bcpOutParam.getScTime());
         bcpInParam.setRkzl(bcpOutParam.getRkzl());

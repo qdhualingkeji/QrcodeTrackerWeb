@@ -11,6 +11,7 @@ public class BcpOutParam {
     private int sortId;
     private String bcpCode;
     private String ylpc;
+    private String scpc;
     private String gg;
     private String gx;
     private String czy;
@@ -77,6 +78,14 @@ public class BcpOutParam {
 
     public void setYlpc(String ylpc) {
         this.ylpc = ylpc;
+    }
+
+    public String getScpc() {
+        return scpc;
+    }
+
+    public void setScpc(String scpc) {
+        this.scpc = scpc;
     }
 
     public String getGg() {
