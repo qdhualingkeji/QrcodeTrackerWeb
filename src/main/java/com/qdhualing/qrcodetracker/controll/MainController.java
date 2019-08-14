@@ -1927,6 +1927,7 @@ public class MainController {
                         bean.setDh(single.getOutDh());
                         bean.setName("成品出库单");
                         bean.setTime(single.getLhRq());
+                        bean.setFzrID(single.getFzrID());
                         bean.setState(single.getCheckState());
                         allBeans.add(bean);
                     }
