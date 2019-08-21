@@ -1055,4 +1055,7 @@ public class MainService {
 		return count>0?true:false;
 	}
 
+	public int deleteFromWLS(String qrCodeId) {
+		return mainDao.deleteFromWLS(qrCodeId);
+	}
 }

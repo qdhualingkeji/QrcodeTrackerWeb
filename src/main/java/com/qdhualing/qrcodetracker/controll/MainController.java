@@ -432,6 +432,8 @@ public class MainController {
                 wlOutParam.setWlCode(wlsBean.getWLCode());
                 wlOutParam.setDw(wlsBean.getDW());
                 wlOutParam.setPczl(wlsBean.getPCZL());
+                wlOutParam.setDwzl(wlsBean.getDWZL());
+                wlOutParam.setSyzl(wlsBean.getSYZL()-wlOutParam.getCkzl());
                 wlOutParam.setGg(wlsBean.getGG());
                 wlOutParam.setSortId(wlsBean.getSortID());
                 wlOutParam.setYlpc(wlsBean.getYLPC());
@@ -440,8 +442,13 @@ public class MainController {
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成出库记录失败");
                 } else {
-                    //更新仓库库存表数量
-                    b = mainService.outUpdateWLS(wlOutParam);
+                    //仓库库存表中数据减去或者删除
+                    if (wlOutParam.getCkShL() >= wlsBean.getSHL()&&wlOutParam.getCkzl() >= wlsBean.getSYZL()) {
+                        b = mainService.deleteFromWLS(wlOutParam.getQrCodeId());
+                    }
+                    else {
+                        b = mainService.outUpdateWLS(wlOutParam);
+                    }
                     if (b <= 0) {
                         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
                     }
@@ -643,17 +650,21 @@ public class MainController {
                 wlTKParam.setWlCode(wlTempSBean.getWLCode());
                 wlTKParam.setDw(wlTempSBean.getDW());
                 wlTKParam.setPczl(wlTempSBean.getPCZL());
+                wlTKParam.setDwzl(wlTempSBean.getDWZL());
+                wlTKParam.setSyzl(wlTempSBean.getSYZL()-wlTKParam.getTkzl());
                 wlTKParam.setGg(wlTempSBean.getGG());
                 wlTKParam.setSortId(wlTempSBean.getSortID());
                 wlTKParam.setYlpc(wlTempSBean.getYLPC());
                 wlTKParam.setChd(wlTempSBean.getCHD());
+                wlTKParam.setCzy(wlTempSBean.getCZY());
+                wlTKParam.setlLTime(wlTempSBean.getLLTime());
                 //生成退库记录
                 int b = mainService.insertWLBk(wlTKParam);
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成退库记录失败");
                 } else {
                     //临时库存表中数据减去或者删除
-                    if (wlTKParam.getTkShL() >= wlTempSBean.getSHL()&&wlTKParam.getDwzl() >= wlTempSBean.getDWZL()) {
+                    if (wlTKParam.getTkShL() >= wlTempSBean.getSHL()&&wlTKParam.getTkzl() >= wlTempSBean.getSYZL()) {
                         b = mainService.deleteFromWLTempS(wlTKParam.getQrCodeId());
                     } else {
                         b = mainService.updateWLTempSByTk(wlTKParam);
@@ -689,6 +700,7 @@ public class MainController {
                     wlThrowShowDataResult.setChd(showDataResult.getChd());
                     wlThrowShowDataResult.setDw(showDataResult.getDw());
                     wlThrowShowDataResult.setDwzl(showDataResult.getDwzl());
+                    wlThrowShowDataResult.setSyzl(showDataResult.getSyzl());
                     wlThrowShowDataResult.setGg(showDataResult.getGg());
                     wlThrowShowDataResult.setShl(showDataResult.getShl());
                     wlThrowShowDataResult.setSortName(showDataResult.getSortName());
@@ -728,6 +740,8 @@ public class MainController {
                 wlTLParam.setWlCode(wlTempSBean.getWLCode());
                 wlTLParam.setDw(wlTempSBean.getDW());
                 wlTLParam.setPczl(wlTempSBean.getPCZL());
+                wlTLParam.setDwzl(wlTempSBean.getDWZL());
+                wlTLParam.setSyzl(wlTempSBean.getSYZL());
                 wlTLParam.setGg(wlTempSBean.getGG());
                 wlTLParam.setSortId(wlTempSBean.getSortID());
                 wlTLParam.setYlpc(wlTempSBean.getYLPC());
@@ -745,7 +759,7 @@ public class MainController {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成物料投料记录失败");
                 } else {
                     //临时库存表中数据减去或者删除
-                    if (wlTLParam.getTlShl() >= wlTempSBean.getSHL()&&wlTLParam.getDwzl() >= wlTempSBean.getDWZL()) {
+                    if (wlTLParam.getTlShl() >= wlTempSBean.getSHL()&&wlTLParam.getTlzl() >= wlTempSBean.getSYZL()) {
                         b = mainService.deleteFromWLTempS(wlTLParam.getQrcodeId());
                     } else {
                         b = mainService.updateWLTempSByTl(wlTLParam);
@@ -2575,13 +2589,6 @@ public class MainController {
                     if(wlCkd.getKgStatus()==1&&wlCkd.getFlfzrStatus()==1&&wlCkd.getBzStatus()==1&&wlCkd.getLlfzrStatus()==1) {
                         List<WLOutParam> wlOutList = mainService.getWLOutParamListByOutDh(param.getDh());
                         for (WLOutParam wlOutParam : wlOutList) {
-                            /*
-                            //更新仓库库存表数量
-                            a = mainService.outUpdateWLS(wlOutParam);
-                            if (a <= 0) {
-                                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
-                            }
-                            */
                             //查询临时库存表中是否有数据
                             a = mainService.findWLTempS(wlOutParam.getQrCodeId());
                             if (a <= 0) {
@@ -2690,7 +2697,16 @@ public class MainController {
                         //更新仓库库存表数量（退库的数量加上）
                         List<WLTKParam> wlTKList = mainService.getWLTKParamListByOutDh(param.getDh());
                         for(WLTKParam wlTKParam : wlTKList) {
-                            a = mainService.updateWLSByTk(wlTKParam);
+                            //查询仓库库存表中是否有数据
+                            a = mainService.queryWLS(wlTKParam.getQrCodeId());
+                            if (a <= 0) {
+                                //插入仓库库存表
+                                WLINParam wlinParam = convertWlTKIntoInParam(wlTKParam);
+                                a = mainService.insertWLS(wlinParam);
+                            } else {
+                                a = mainService.updateWLSByTk(wlTKParam);
+                            }
+
                             if (a <= 0) {
                                 //return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
                             }
@@ -3116,6 +3132,25 @@ public class MainController {
         bcpInParam.setYl9(bcpOutParam.getYl9());
         bcpInParam.setYl10(bcpOutParam.getYl10());
         return bcpInParam;
+    }
+
+    public WLINParam convertWlTKIntoInParam(WLTKParam wlTKParam){
+        WLINParam wlINParam=new WLINParam();
+        wlINParam.setqRCodeID(wlTKParam.getQrCodeId());
+        wlINParam.setProductName(wlTKParam.getProductName());
+        wlINParam.setdWZL(wlTKParam.getDwzl());
+        wlINParam.setpCZL(wlTKParam.getPczl());
+        wlINParam.setsYZL(wlTKParam.getSyzl());
+        wlINParam.setdW(wlTKParam.getDw());
+        wlINParam.setLb(wlTKParam.getSortId());
+        wlINParam.setwLCode(wlTKParam.getWlCode());
+        wlINParam.setyLPC(wlTKParam.getYlpc());
+        wlINParam.setgG(wlTKParam.getGg());
+        wlINParam.setcHD(wlTKParam.getChd());
+        wlINParam.setShl(wlTKParam.getTkShL());
+        wlINParam.setcZY(wlTKParam.getCzy());
+        wlINParam.setlLTime(wlTKParam.getlLTime());
+        return wlINParam;
     }
 
     /**

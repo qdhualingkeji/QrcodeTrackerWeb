@@ -19,6 +19,8 @@ public class WLSBean {
     private String YLPC;
     //数量
     private float SHL ;
+    //剩余重量
+    private float SYZL;
     //单位重量
     private float DWZL;
     //批次总量
@@ -80,6 +82,14 @@ public class WLSBean {
 
     public void setSHL(float SHL) {
         this.SHL = SHL;
+    }
+
+    public float getSYZL() {
+        return SYZL;
+    }
+
+    public void setSYZL(float SYZL) {
+        this.SYZL = SYZL;
     }
 
     public float getDWZL() {

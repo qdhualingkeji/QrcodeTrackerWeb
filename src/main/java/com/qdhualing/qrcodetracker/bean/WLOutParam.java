@@ -17,6 +17,8 @@ public class WLOutParam {
     private String wlCode;
     private String ylpc;
     private String gg;
+    private float syzl;
+    private float ckzl;
     private float dwzl;
     //批次总量
     private float pczl;
@@ -85,6 +87,22 @@ public class WLOutParam {
 
     public void setGg(String gg) {
         this.gg = gg;
+    }
+
+    public float getSyzl() {
+        return syzl;
+    }
+
+    public void setSyzl(float syzl) {
+        this.syzl = syzl;
+    }
+
+    public float getCkzl() {
+        return ckzl;
+    }
+
+    public void setCkzl(float ckzl) {
+        this.ckzl = ckzl;
     }
 
     public float getDwzl() {

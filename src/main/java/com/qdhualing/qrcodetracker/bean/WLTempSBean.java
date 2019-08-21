@@ -17,6 +17,7 @@ public class WLTempSBean {
     private String LLTime ;
     private String LgLTime ;
     private float DWZL ;
+    private float SYZL ;
     private float SHL ;
     private int XH ;
     private String CHD ;
@@ -105,6 +106,14 @@ public class WLTempSBean {
 
     public void setDWZL(float DWZL) {
         this.DWZL = DWZL;
+    }
+
+    public float getSYZL() {
+        return SYZL;
+    }
+
+    public void setSYZL(float SYZL) {
+        this.SYZL = SYZL;
     }
 
     public float getSHL() {

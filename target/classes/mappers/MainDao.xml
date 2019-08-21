@@ -718,9 +718,7 @@
     </select>
 
     <select id="getWLOutParamListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.WLOutParam">
-        SELECT o.*,o.SHL AS ckShL,s.CHD
-        FROM M_WLOUT o,M_WLS s
-        WHERE o.QRCode_ID=s.QRCode_ID AND o.OutDh = #{0}
+        SELECT *,SHL AS ckShL FROM M_WLOUT WHERE OutDh = #{0}
     </select>
 
     <select id="getBcpOutParamListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.BcpOutParam">
@@ -3129,8 +3127,8 @@ SmlPk45		= #{smlPk45},
     <update id="updateWLTl" parameterType="com.qdhualing.qrcodetracker.bean.WLThrowParam">
         UPDATE M_WLTl
         SET
-        DWZL = DWZL + #{dwzl},
-        SHL = (DWZL + #{dwzl})/PCZL
+        SYZL = SYZL + #{tlzl},
+        SHL = (SYZL + #{tlzl})/PCZL
         WHERE QRCode_ID = #{qrcodeId};
     </update>
 
@@ -3340,8 +3338,8 @@ SmlPk45		= #{smlPk45},
     <update id="updateWLTempSByTl" parameterType="com.qdhualing.qrcodetracker.bean.WLThrowParam">
         UPDATE M_WLTempS
         SET
-        DWZL = DWZL - #{dwzl},
-        SHL = (DWZL - #{dwzl})/PCZL
+        SYZL = SYZL - #{tlzl},
+        SHL = (SYZL - #{tlzl})/PCZL
         WHERE QRCode_ID = #{qrcodeId};
     </update>
 
@@ -3352,6 +3350,7 @@ SmlPk45		= #{smlPk45},
             <if test="productName!=null">ProductName,</if>
             PCZL,
             DWZL,
+            SYZL,
             <if test="sortId!=null">SortID,</if>
             <if test="wlCode!=null">WL_Code,</if>
             <if test="ylpc!=null">YLPC,</if>
@@ -3372,6 +3371,7 @@ SmlPk45		= #{smlPk45},
             <if test="productName!=null">#{productName},</if>
             #{pczl},
             #{dwzl},
+            #{tlzl},
             <if test="sortId!=null">#{sortId},</if>
             <if test="wlCode!=null">#{wlCode},</if>
             <if test="ylpc!=null">#{ylpc},</if>
@@ -3391,8 +3391,8 @@ SmlPk45		= #{smlPk45},
     <update id="updateWLTempSByTk" parameterType="com.qdhualing.qrcodetracker.bean.WLTKParam">
         UPDATE M_WLTempS
         SET
-        DWZL = DWZL - #{dwzl},
-        SHL = (DWZL - #{dwzl})/PCZL
+        SYZL = SYZL - #{tkzl},
+        SHL = (SYZL - #{tkzl})/PCZL
         WHERE QRCode_ID = #{qrCodeId};
     </update>
 
@@ -3404,8 +3404,8 @@ SmlPk45		= #{smlPk45},
     <update id="updateWLSByTk" parameterType="com.qdhualing.qrcodetracker.bean.WLTKParam">
         UPDATE M_WLS
         SET
-        DWZL = DWZL + #{dwzl},
-        SHL = (DWZL + #{dwzl})/PCZL
+        SYZL = SYZL + #{tkzl},
+        SHL = (SYZL + #{tkzl})/PCZL
         WHERE QRCode_ID = #{qrCodeId};
     </update>
 
@@ -3416,6 +3416,8 @@ SmlPk45		= #{smlPk45},
             <if test="productName!=null">ProductName,</if>
             DWZL,
             PCZL,
+            SYZL,
+            TKZL,
             <if test="sortId!=null">SortID,</if>
             <if test="wlCode!=null">WL_Code,</if>
             <if test="ylpc!=null">YLPC,</if>
@@ -3427,6 +3429,9 @@ SmlPk45		= #{smlPk45},
             <if test="llr!=null">LLR,</if>
             <if test="time!=null">TIME,</if>
             <if test="outDh!=null">OutDh,</if>
+            <if test="czy!=null">CZY,</if>
+            <if test="lLTime!=null">LL_Time,</if>
+            <if test="chd!=null">CHD,</if>
         </trim>
         values
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -3434,6 +3439,8 @@ SmlPk45		= #{smlPk45},
             <if test="productName!=null">#{productName},</if>
             #{dwzl},
             #{pczl},
+            #{syzl},
+            #{tkzl},
             <if test="sortId!=null">#{sortId},</if>
             <if test="wlCode!=null">#{wlCode},</if>
             <if test="ylpc!=null">#{ylpc},</if>
@@ -3445,6 +3452,9 @@ SmlPk45		= #{smlPk45},
             <if test="llr!=null">#{llr},</if>
             <if test="time!=null">#{time},</if>
             <if test="outDh!=null">#{outDh},</if>
+            <if test="czy!=null">#{czy},</if>
+            <if test="lLTime!=null">#{lLTime},</if>
+            <if test="chd!=null">#{chd},</if>
         </trim>
     </insert>
 
@@ -3461,7 +3471,7 @@ SmlPk45		= #{smlPk45},
     </select>
 
     <select id="getWLTempSData" resultType="com.qdhualing.qrcodetracker.bean.WLTKShowDataResult">
-        SELECT M_WLTempS.ProductName ,M_WLTempS.PCZL,  M_WLTempS.DWZL , M_WLTempS.SHL , M_WLTempS.CHD , M_WLTempS.GG , M_WLTempS.DW , Pdt_Sort2.Sort_Name
+        SELECT M_WLTempS.ProductName ,M_WLTempS.PCZL,  M_WLTempS.DWZL , M_WLTempS.SYZL , M_WLTempS.SHL , M_WLTempS.CHD , M_WLTempS.GG , M_WLTempS.DW , Pdt_Sort2.Sort_Name
         FROM M_WLTempS LEFT JOIN Pdt_Sort2 on M_WLTempS.SortID = Pdt_Sort2.ID
         WHERE M_WLTempS.QRCode_ID = #{0}
     </select>
@@ -3580,8 +3590,8 @@ SmlPk45		= #{smlPk45},
         UPDATE M_WLTempS
         SET
         LL_Time = #{time},
-        DWZL = DWZL + #{dwzl},
-        SHL = (DWZL+#{dwzl})/PCZL
+        SYZL = SYZL + #{ckzl},
+        SHL = (SYZL+#{ckzl})/PCZL
         WHERE QRCode_ID = #{qrCodeId};
     </update>
 
@@ -3598,6 +3608,7 @@ SmlPk45		= #{smlPk45},
             <if test="productName!=null">ProductName,</if>
             PCZL,
             DWZL,
+            SYZL,
             <if test="sortId!=null">SortID,</if>
             <if test="wlCode!=null">WL_Code,</if>
             <if test="ylpc!=null">YLPC,</if>
@@ -3614,6 +3625,7 @@ SmlPk45		= #{smlPk45},
             <if test="productName!=null">#{productName},</if>
             #{pczl},
             #{dwzl},
+            #{ckzl},
             <if test="sortId!=null">#{sortId},</if>
             <if test="wlCode!=null">#{wlCode},</if>
             <if test="ylpc!=null">#{ylpc},</if>
@@ -3634,10 +3646,15 @@ SmlPk45		= #{smlPk45},
     <update id="outUpdateWLS" parameterType="com.qdhualing.qrcodetracker.bean.WLOutParam">
         UPDATE M_WLS
         SET
-        DWZL = DWZL-#{dwzl},
-        SHL = (DWZL-#{dwzl})/PCZL
+        SYZL = SYZL-#{ckzl},
+        SHL = (SYZL-#{ckzl})/PCZL
         WHERE QRCode_ID = #{qrCodeId};
     </update>
+
+    <delete id="deleteFromWLS">
+        DELETE FROM M_WLS
+        WHERE QRCode_ID = #{0}
+    </delete>
 
     <update id="outUpdateBCPS" parameterType="com.qdhualing.qrcodetracker.bean.BcpOutParam">
         UPDATE M_BCPS
@@ -3661,6 +3678,9 @@ SmlPk45		= #{smlPk45},
             </if>
             <if test="pczl!=null">
                 PCZL,
+            </if>
+            <if test="syzl!=null">
+                SYZL,
             </if>
             <if test="dw!=null">
                 DW,
@@ -3696,7 +3716,13 @@ SmlPk45		= #{smlPk45},
                 TIME,
             </if>
             <if test="llbm!=null">
-                LLBM
+                LLBM,
+            </if>
+            <if test="ckzl!=null">
+                CKZL,
+            </if>
+            <if test="chd!=null">
+                CHD
             </if>
         </trim>
         values
@@ -3712,6 +3738,9 @@ SmlPk45		= #{smlPk45},
             </if>
             <if test="pczl!=null">
                 #{pczl},
+            </if>
+            <if test="syzl!=null">
+                #{syzl},
             </if>
             <if test="dw!=null">
                 #{dw},
@@ -3747,7 +3776,13 @@ SmlPk45		= #{smlPk45},
                 #{time},
             </if>
             <if test="llbm!=null">
-                #{llbm}
+                #{llbm},
+            </if>
+            <if test="ckzl!=null">
+                #{ckzl},
+            </if>
+            <if test="chd!=null">
+                #{chd},
             </if>
         </trim>
     </insert>
@@ -3983,6 +4018,7 @@ SmlPk45		= #{smlPk45},
             <if test="productName!=null">ProductName,</if>
             <if test="dWZL!=null">DWZL,</if>
             <if test="pCZL!=null">PCZL,</if>
+            <if test="sYZL!=null">SYZL,</if>
             <if test="dW!=null">DW,</if>
             <if test="lb!=null">SortID,</if>
             <if test="wLCode!=null">WL_Code,</if>
@@ -3999,6 +4035,7 @@ SmlPk45		= #{smlPk45},
             <if test="productName!=null">#{productName},</if>
             <if test="dWZL!=null">#{dWZL},</if>
             <if test="pCZL!=null">#{pCZL},</if>
+            <if test="sYZL!=null">#{sYZL},</if>
             <if test="dW!=null">#{dW},</if>
             <if test="lb!=null">#{lb},</if>
             <if test="wLCode!=null">#{wLCode},</if>
@@ -4018,7 +4055,7 @@ SmlPk45		= #{smlPk45},
 	</select>
 
     <select id="getWLSData" resultType="com.qdhualing.qrcodetracker.bean.WLOutShowDataResult">
-        SELECT M_WLS.ProductName, M_WLS.PCZL , M_WLS.DWZL, M_WLS.SHL, M_WLS.CHD, M_WLS.GG, M_WLS.DW, Hl_Sort.SortName
+        SELECT M_WLS.ProductName, M_WLS.PCZL , M_WLS.DWZL, M_WLS.SYZL, M_WLS.SHL, M_WLS.CHD, M_WLS.GG, M_WLS.DW, Hl_Sort.SortName
         FROM M_WLS left JOIN Hl_Sort on M_WLS.SortID = Hl_Sort.SortID
         where M_WLS.QRCode_ID = #{qrcodeId}
 	</select>
@@ -4331,6 +4368,7 @@ SmlPk45		= #{smlPk45},
         update M_WLIn
         set
             ProductName = #{productName},
+            SYZL = #{sYZL},
             DWZL = #{dWZL},
             PCZL = #{pCZL},
             Unit = #{dW},

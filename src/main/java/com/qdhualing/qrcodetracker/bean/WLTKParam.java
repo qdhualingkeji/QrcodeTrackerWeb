@@ -19,6 +19,8 @@ public class WLTKParam {
     private String gg;
     private float dwzl;
     private float pczl;
+    private float syzl;
+    private float tkzl;
     private String time;
     private String flr;
     private String llr;
@@ -38,6 +40,9 @@ public class WLTKParam {
 
     private float tkShL ;
     private String tkbm ;
+    private String czy ;
+    //来料时间（入库时间），用于类与类之间转换时传递
+    private String lLTime;
 
     public String getQrCodeId() {
         return qrCodeId;
@@ -103,6 +108,22 @@ public class WLTKParam {
         this.pczl = pczl;
     }
 
+    public float getSyzl() {
+        return syzl;
+    }
+
+    public void setSyzl(float syzl) {
+        this.syzl = syzl;
+    }
+
+    public float getTkzl() {
+        return tkzl;
+    }
+
+    public void setTkzl(float tkzl) {
+        this.tkzl = tkzl;
+    }
+
     public String getTime() {
         return time;
     }
@@ -165,5 +186,21 @@ public class WLTKParam {
 
     public void setTkbm(String tkbm) {
         this.tkbm = tkbm;
+    }
+
+    public String getCzy() {
+        return czy;
+    }
+
+    public void setCzy(String czy) {
+        this.czy = czy;
+    }
+
+    public String getlLTime() {
+        return lLTime;
+    }
+
+    public void setlLTime(String lLTime) {
+        this.lLTime = lLTime;
     }
 }

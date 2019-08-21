@@ -44,6 +44,8 @@ public class WLThrowParam {
     private String gg;
     private float pczl;
     private float dwzl;
+    private float syzl;
+    private float tlzl;
     private String czy;
     private String dw;
     private String remark;
@@ -142,6 +144,22 @@ public class WLThrowParam {
 
     public void setDwzl(float dwzl) {
         this.dwzl = dwzl;
+    }
+
+    public float getSyzl() {
+        return syzl;
+    }
+
+    public void setSyzl(float syzl) {
+        this.syzl = syzl;
+    }
+
+    public float getTlzl() {
+        return tlzl;
+    }
+
+    public void setTlzl(float tlzl) {
+        this.tlzl = tlzl;
     }
 
     public String getCzy() {
