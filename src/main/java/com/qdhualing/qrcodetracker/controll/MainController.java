@@ -1150,6 +1150,8 @@ public class MainController {
                 param.setScpc(bcpTempSBean.getScpc());
                 param.setScTime(bcpTempSBean.getScTime());
                 param.setRkzl(bcpTempSBean.getRkzl());
+                param.setDwzl(bcpTempSBean.getDwzl());
+                param.setSyzl(bcpTempSBean.getSyzl()-param.getTkzl());
                 param.setKsTime(bcpTempSBean.getKsTime());
                 param.setWcTime(bcpTempSBean.getWcTime());
                 param.setZjy(bcpTempSBean.getZjy());

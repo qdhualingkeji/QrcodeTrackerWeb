@@ -18,6 +18,7 @@ public class BCPTempSBean {
     private String scTime;
     private float rkzl;
     private float dwzl;
+    private float syzl;
     private String ksTime;
     private String wcTime;
     private String gx;
@@ -124,6 +125,14 @@ public class BCPTempSBean {
 
     public void setDwzl(float dwzl) {
         this.dwzl = dwzl;
+    }
+
+    public float getSyzl() {
+        return syzl;
+    }
+
+    public void setSyzl(float syzl) {
+        this.syzl = syzl;
     }
 
     public String getKsTime() {

@@ -1940,16 +1940,16 @@ SmlPk45		= #{smlPk45},
     <update id="updateBCPTempSByBCPTk" parameterType="com.qdhualing.qrcodetracker.bean.BCPTKParam">
         UPDATE M_BCPTempS
         SET
-        DWZL = DWZL - #{dwzl},
-        SHL = (DWZL - #{dwzl})/RKZL
+        SYZL = SYZL - #{tkzl},
+        SHL = (SYZL - #{tkzl})/RKZL
         WHERE QRCode_ID = #{qrCodeId};
     </update>
 
     <update id="updateBCPSByTk" parameterType="com.qdhualing.qrcodetracker.bean.BCPTKParam">
         UPDATE M_BCPS
         SET
-        DWZL = DWZL + #{dwzl},
-        SHL = (DWZL + #{dwzl})/RKZL
+        SYZL = SYZL + #{tkzl},
+        SHL = (SYZL + #{tkzl})/RKZL
         WHERE QRCode_ID = #{qrCodeId}
     </update>
 
@@ -1980,6 +1980,7 @@ SmlPk45		= #{smlPk45},
             </if>
             RKZL,
             DWZL,
+            SYZL,
             <if test="ksTime!=null">
                 KS_Time,
             </if>
@@ -2064,6 +2065,7 @@ SmlPk45		= #{smlPk45},
             </if>
             #{rkzl},
             #{dwzl},
+            #{syzl},
             <if test="ksTime!=null">
                 #{ksTime},
             </if>
@@ -2157,6 +2159,8 @@ SmlPk45		= #{smlPk45},
             </if>
             DWZL,
             PCZL,
+            SYZL,
+            TKZL,
             <if test="ksTime!=null">
                 KS_Time,
             </if>
@@ -2223,6 +2227,8 @@ SmlPk45		= #{smlPk45},
             </if>
             #{dwzl},
             #{rkzl},
+            #{syzl},
+            #{tkzl},
             <if test="ksTime!=null">
                 #{ksTime},
             </if>
@@ -2272,7 +2278,7 @@ SmlPk45		= #{smlPk45},
     </select>
 
     <select id="getBCPTKShowData" resultType="com.qdhualing.qrcodetracker.bean.BCPTKShowDataResult">
-        SELECT M_BCPTempS.ProductName , M_BCPTempS.DWZL , M_BCPTempS.SHL , M_BCPTempS.YLPC , M_BCPTempS.SCPC , M_BCPTempS.SC_Time , M_BCPTempS.GG , M_BCPTempS.DW , Pdt_Sort2.Sort_Name
+        SELECT M_BCPTempS.ProductName , M_BCPTempS.DWZL ,M_BCPTempS.SYZL ,  M_BCPTempS.SHL , M_BCPTempS.YLPC , M_BCPTempS.SCPC , M_BCPTempS.SC_Time , M_BCPTempS.GG , M_BCPTempS.DW , Pdt_Sort2.Sort_Name
         FROM M_BCPTempS LEFT JOIN Pdt_Sort2 on M_BCPTempS.SortID = Pdt_Sort2.ID
         WHERE M_BCPTempS.QRCode_ID = #{0}
     </select>
@@ -2692,6 +2698,7 @@ SmlPk45		= #{smlPk45},
             </if>
             RKZL,
             DWZL,
+            SYZL,
             <if test="ksTime!=null">
                 KS_Time,
             </if>
@@ -2779,6 +2786,7 @@ SmlPk45		= #{smlPk45},
             </if>
             #{rkzl},
             #{dwzl},
+            #{syzl},
             <if test="ksTime!=null">
                 #{ksTime},
             </if>
@@ -2908,6 +2916,7 @@ SmlPk45		= #{smlPk45},
                 SC_Time=#{scTime},
                 RKZL= #{rkzl},
                 DWZL= #{dwzl},
+                SYZL= #{syzl},
                 KS_Time=#{ksTime},
                 WC_Time=#{wcTime},
                 GX=#{gx},
@@ -3139,13 +3148,13 @@ SmlPk45		= #{smlPk45},
     </select>
 
     <select id="getWLTLDataByGxId" resultType="com.qdhualing.qrcodetracker.bean.TLYLBean">
-        SELECT ID , QRCode_ID , ProductName
+        SELECT ID , QRCode_ID , ProductName, DW, SYZL
         FROM M_WLTl
         WHERE GX_ID = #{0}
     </select>
 
     <select id="getBCPTLDataByGxId" resultType="com.qdhualing.qrcodetracker.bean.TLYLBean">
-        SELECT ID , QRCode_ID , ProductName
+        SELECT ID , QRCode_ID , ProductName, DW, SYZL
         FROM M_BCPTl
         WHERE GX_ID = #{0}
     </select>
