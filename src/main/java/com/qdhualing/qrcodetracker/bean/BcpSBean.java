@@ -24,6 +24,8 @@ public class BcpSBean {
     private float rkzl;
     //单位重量
     private float dwzl;
+    //剩余重量
+    private float syzl;
     private String ksTime;
     private String wcTime;
     private String gx;
@@ -116,6 +118,14 @@ public class BcpSBean {
 
     public void setDwzl(float dwzl) {
         this.dwzl = dwzl;
+    }
+
+    public float getSyzl() {
+        return syzl;
+    }
+
+    public void setSyzl(float syzl) {
+        this.syzl = syzl;
     }
 
     public String getKsTime() {

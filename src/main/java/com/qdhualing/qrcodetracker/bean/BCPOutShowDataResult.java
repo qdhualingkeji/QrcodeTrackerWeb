@@ -10,6 +10,7 @@ public class BCPOutShowDataResult {
     private String sortName;
     private float rkzl;
     private float dwzl;
+    private float syzl;
     private float shl;
     private String chd;
     private String gg;
@@ -45,6 +46,14 @@ public class BCPOutShowDataResult {
 
     public void setDwzl(float dwzl) {
         this.dwzl = dwzl;
+    }
+
+    public float getSyzl() {
+        return syzl;
+    }
+
+    public void setSyzl(float syzl) {
+        this.syzl = syzl;
     }
 
     public float getShl() {

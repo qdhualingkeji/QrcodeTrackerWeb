@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import sun.tools.jar.Main;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -494,6 +492,8 @@ public class MainController {
                 bcpOutParam.setBcpCode(bcpsBean.getBcpCode());
                 bcpOutParam.setDw(bcpsBean.getDw());
                 bcpOutParam.setRkzl(bcpsBean.getRkzl());
+                bcpOutParam.setDwzl(bcpsBean.getDwzl());
+                bcpOutParam.setSyzl(bcpsBean.getSyzl()-bcpOutParam.getCkzl());
                 bcpOutParam.setGg(bcpsBean.getGg());
                 bcpOutParam.setSortId(bcpsBean.getSortID());
                 bcpOutParam.setYlpc(bcpsBean.getYlpc());
@@ -937,6 +937,87 @@ public class MainController {
                 b = mainService.findBCPTempS(bcpInParam.getQrCodeId());
                 if (b <= 0) {
                     insertCount+=mainService.insertBCPTempS(bcpInParam);
+
+                    List<Map<String,Object>> tlList=new ArrayList<Map<String,Object>>();
+                    Map<String,Object> tlMap=null;
+                    if(!StringUtils.isEmpty(bcpInParam.getYl1())){
+                        tlMap=new HashMap<String,Object>();
+                        tlMap.put("yl",bcpInParam.getYl1());
+                        tlMap.put("tlzl",bcpInParam.getTlzl1());
+                        tlList.add(tlMap);
+                    }
+                    if(!StringUtils.isEmpty(bcpInParam.getYl2())){
+                        tlMap=new HashMap<String,Object>();
+                        tlMap.put("yl",bcpInParam.getYl2());
+                        tlMap.put("tlzl",bcpInParam.getTlzl2());
+                        tlList.add(tlMap);
+                    }
+                    if(!StringUtils.isEmpty(bcpInParam.getYl3())){
+                        tlMap=new HashMap<String,Object>();
+                        tlMap.put("yl",bcpInParam.getYl3());
+                        tlMap.put("tlzl",bcpInParam.getTlzl3());
+                        tlList.add(tlMap);
+                    }
+                    if(!StringUtils.isEmpty(bcpInParam.getYl4())){
+                        tlMap=new HashMap<String,Object>();
+                        tlMap.put("yl",bcpInParam.getYl4());
+                        tlMap.put("tlzl",bcpInParam.getTlzl4());
+                        tlList.add(tlMap);
+                    }
+                    if(!StringUtils.isEmpty(bcpInParam.getYl5())){
+                        tlMap=new HashMap<String,Object>();
+                        tlMap.put("yl",bcpInParam.getYl5());
+                        tlMap.put("tlzl",bcpInParam.getTlzl5());
+                        tlList.add(tlMap);
+                    }
+                    if(!StringUtils.isEmpty(bcpInParam.getYl6())){
+                        tlMap=new HashMap<String,Object>();
+                        tlMap.put("yl",bcpInParam.getYl6());
+                        tlMap.put("tlzl",bcpInParam.getTlzl6());
+                        tlList.add(tlMap);
+                    }
+                    if(!StringUtils.isEmpty(bcpInParam.getYl7())){
+                        tlMap=new HashMap<String,Object>();
+                        tlMap.put("yl",bcpInParam.getYl7());
+                        tlMap.put("tlzl",bcpInParam.getTlzl7());
+                        tlList.add(tlMap);
+                    }
+                    if(!StringUtils.isEmpty(bcpInParam.getYl8())){
+                        tlMap=new HashMap<String,Object>();
+                        tlMap.put("yl",bcpInParam.getYl8());
+                        tlMap.put("tlzl",bcpInParam.getTlzl8());
+                        tlList.add(tlMap);
+                    }
+                    if(!StringUtils.isEmpty(bcpInParam.getYl9())){
+                        tlMap=new HashMap<String,Object>();
+                        tlMap.put("yl",bcpInParam.getYl9());
+                        tlMap.put("tlzl",bcpInParam.getTlzl9());
+                        tlList.add(tlMap);
+                    }
+                    if(!StringUtils.isEmpty(bcpInParam.getYl10())){
+                        tlMap=new HashMap<String,Object>();
+                        tlMap.put("yl",bcpInParam.getYl10());
+                        tlMap.put("tlzl",bcpInParam.getTlzl10());
+                        tlList.add(tlMap);
+                    }
+                    //遍历集合里的元素，查找投料表信息
+                    for (Map<String,Object> tlMap1: tlList) {
+                        String yl=tlMap1.get("yl").toString();
+                        float tlzl=Float.valueOf(tlMap1.get("tlzl").toString());
+
+                        if(TrackType.WL.equals(yl.substring(8, 9))) {
+                            WLThrowShowDataResult wlThrowShowDataResult = mainService.getWLTl(yl);
+                            //投料表中数据减去或者删除
+                            if (bcpInParam.getTlzl1() >= wlThrowShowDataResult.getSyzl()) {
+                                mainService.deleteFromWLTl(yl);
+                            } else {
+                                WLThrowParam wlThrowParam = new WLThrowParam();
+                                wlThrowParam.setQrcodeId(yl);
+                                wlThrowParam.setTlzl(tlzl);
+                                mainService.updateWLTlByBcpIn(wlThrowParam);
+                            }
+                        }
+                    }
                 }
                 else if (b >= 1){
                     existQrCodeID+=","+bcpInParam.getQrCodeId();
@@ -1144,7 +1225,6 @@ public class MainController {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "没找到该物料，请先出库");
                 param.setProductName(bcpTempSBean.getProductName());
                 param.setBcpCode(bcpTempSBean.getBcpCode());
-                param.setRkzl(bcpTempSBean.getRkzl());
                 param.setSortID(bcpTempSBean.getSortID());
                 param.setYlpc(bcpTempSBean.getYlpc());
                 param.setScpc(bcpTempSBean.getScpc());
@@ -1159,15 +1239,25 @@ public class MainController {
                 param.setCheJian(bcpTempSBean.getCheJian());
                 param.setGx(bcpTempSBean.getGx());
                 param.setYl1(bcpTempSBean.getYl1());
+                param.setTlzl1(bcpTempSBean.getTlzl1());
                 param.setYl2(bcpTempSBean.getYl2());
+                param.setTlzl2(bcpTempSBean.getTlzl2());
                 param.setYl3(bcpTempSBean.getYl3());
+                param.setTlzl3(bcpTempSBean.getTlzl3());
                 param.setYl4(bcpTempSBean.getYl4());
+                param.setTlzl4(bcpTempSBean.getTlzl4());
                 param.setYl5(bcpTempSBean.getYl5());
+                param.setTlzl5(bcpTempSBean.getTlzl5());
                 param.setYl6(bcpTempSBean.getYl6());
+                param.setTlzl6(bcpTempSBean.getTlzl6());
                 param.setYl7(bcpTempSBean.getYl7());
+                param.setTlzl7(bcpTempSBean.getTlzl7());
                 param.setYl8(bcpTempSBean.getYl8());
+                param.setTlzl8(bcpTempSBean.getTlzl8());
                 param.setYl9(bcpTempSBean.getYl9());
+                param.setTlzl9(bcpTempSBean.getTlzl9());
                 param.setYl10(bcpTempSBean.getYl10());
+                param.setTlzl10(bcpTempSBean.getTlzl10());
                 param.setGg(bcpTempSBean.getGg());
                 param.setDw(bcpTempSBean.getDw());
                 //生成退库记录
@@ -3114,8 +3204,9 @@ public class MainController {
         bcpInParam.setScpc(bcpOutParam.getScpc());
         bcpInParam.setGg(bcpOutParam.getGg());
         bcpInParam.setScTime(bcpOutParam.getScTime());
-        bcpInParam.setRkzl(bcpOutParam.getRkzl());
+        bcpInParam.setRkzl(bcpOutParam.getCkzl());//这里是半成品出库，相当于一开始录入后直接出库，参数用的就是入库的类里的参数，出库重量就是入库的重量
         bcpInParam.setDwzl(bcpOutParam.getDwzl());
+        bcpInParam.setSyzl(bcpOutParam.getSyzl());
         bcpInParam.setShl(bcpOutParam.getCkShL());
         bcpInParam.setKsTime(bcpOutParam.getKsTime());
         bcpInParam.setWcTime(bcpOutParam.getWcTime());

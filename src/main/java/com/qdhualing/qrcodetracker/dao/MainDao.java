@@ -417,4 +417,10 @@ public interface MainDao {
     int checkExistByQrCodeId(@Param("qrCodeId") String qrCodeId, @Param("currentFunctionType") Integer currentFunctionType);
 
     int deleteFromWLS(String qrCodeId);
+
+    WLThrowShowDataResult getWLTl(String qrCodeId);
+
+    int deleteFromWLTl(String qrCodeId);
+
+    int updateWLTlByBcpIn(WLThrowParam wlThrowParam);
 }

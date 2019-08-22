@@ -1058,4 +1058,16 @@ public class MainService {
 	public int deleteFromWLS(String qrCodeId) {
 		return mainDao.deleteFromWLS(qrCodeId);
 	}
+
+	public WLThrowShowDataResult getWLTl(String qrCodeId) {
+		return mainDao.getWLTl(qrCodeId);
+	}
+
+	public int deleteFromWLTl(String qrCodeId) {
+		return mainDao.deleteFromWLTl(qrCodeId);
+	}
+
+	public int updateWLTlByBcpIn(WLThrowParam wlThrowParam) {
+		return mainDao.updateWLTlByBcpIn(wlThrowParam);
+	}
 }
