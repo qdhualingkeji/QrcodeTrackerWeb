@@ -2499,8 +2499,8 @@ SmlPk45		= #{smlPk45},
     <update id="updateBcpTempSByTl" parameterType="com.qdhualing.qrcodetracker.bean.BcpThrowParam">
         UPDATE M_BCPTempS
         SET
-        DWZL = DWZL - #{dwzl},
-        SHL = (DWZL - #{dwzl})/RKZL
+        SYZL = SYZL - #{tlzl},
+        SHL = (SYZL - #{tlzl})/RKZL
         WHERE QRCode_ID = #{qrcodeId};
     </update>
 
@@ -2512,8 +2512,8 @@ SmlPk45		= #{smlPk45},
     <update id="updateBcpTl" parameterType="com.qdhualing.qrcodetracker.bean.BcpThrowParam">
         UPDATE M_BCPTl
         SET
-        DWZL = DWZL + #{dwzl},
-        SHL = (DWZL + #{dwzl})/RKZL
+        SYZL = SYZL + #{tlzl},
+        SHL = (SYZL + #{tlzl})/RKZL
         WHERE QRCode_ID = #{qrcodeId};
     </update>
 
@@ -2547,6 +2547,7 @@ SmlPk45		= #{smlPk45},
             </if>
             RKZL,
             DWZL,
+            SYZL,
             <if test="ksTime!=null">
                 KS_Time,
             </if>
@@ -2580,32 +2581,62 @@ SmlPk45		= #{smlPk45},
             <if test="yl1!=null">
                 Yl_1,
             </if>
+            <if test="tlzl1!=null">
+                Tlzl_1,
+            </if>
             <if test="yl2!=null">
                 Yl_2,
+            </if>
+            <if test="tlzl2!=null">
+                Tlzl_2,
             </if>
             <if test="yl3!=null">
                 Yl_3,
             </if>
+            <if test="tlzl3!=null">
+                Tlzl_3,
+            </if>
             <if test="yl4!=null">
                 Yl_4,
+            </if>
+            <if test="tlzl4!=null">
+                Tlzl_4,
             </if>
             <if test="yl5!=null">
                 Yl_5,
             </if>
+            <if test="tlzl5!=null">
+                Tlzl_5,
+            </if>
             <if test="yl6!=null">
                 Yl_6,
+            </if>
+            <if test="tlzl6!=null">
+                Tlzl_6,
             </if>
             <if test="yl7!=null">
                 Yl_7,
             </if>
+            <if test="tlzl7!=null">
+                Tlzl_7,
+            </if>
             <if test="yl8!=null">
                 Yl_8,
+            </if>
+            <if test="tlzl8!=null">
+                Tlzl_8,
             </if>
             <if test="yl9!=null">
                 Yl_9,
             </if>
+            <if test="tlzl9!=null">
+                Tlzl_9,
+            </if>
             <if test="yl10!=null">
                 Yl_10,
+            </if>
+            <if test="tlzl10!=null">
+                Tlzl_10,
             </if>
         </trim>
         values
@@ -2637,6 +2668,7 @@ SmlPk45		= #{smlPk45},
             </if>
             #{rkzl},
             #{dwzl},
+            #{tlzl},
             <if test="ksTime!=null">
                 #{ksTime},
             </if>
@@ -2670,32 +2702,62 @@ SmlPk45		= #{smlPk45},
             <if test="yl1!=null">
                 #{yl1},
             </if>
+            <if test="tlzl1!=null">
+                #{tlzl1},
+            </if>
             <if test="yl2!=null">
                 #{yl2},
+            </if>
+            <if test="tlzl2!=null">
+                #{tlzl2},
             </if>
             <if test="yl3!=null">
                 #{yl3},
             </if>
+            <if test="tlzl3!=null">
+                #{tlzl3},
+            </if>
             <if test="yl4!=null">
                 #{yl4},
+            </if>
+            <if test="tlzl4!=null">
+                #{tlzl4},
             </if>
             <if test="yl5!=null">
                 #{yl5},
             </if>
+            <if test="tlzl5!=null">
+                #{tlzl5},
+            </if>
             <if test="yl6!=null">
                 #{yl6},
+            </if>
+            <if test="tlzl6!=null">
+                #{tlzl6},
             </if>
             <if test="yl7!=null">
                 #{yl7},
             </if>
+            <if test="tlzl7!=null">
+                #{tlzl7},
+            </if>
             <if test="yl8!=null">
                 #{yl8},
+            </if>
+            <if test="tlzl8!=null">
+                #{tlzl8},
             </if>
             <if test="yl9!=null">
                 #{yl9},
             </if>
+            <if test="tlzl9!=null">
+                #{tlzl9},
+            </if>
             <if test="yl10!=null">
                 #{yl10},
+            </if>
+            <if test="tlzl10!=null">
+                #{tlzl10},
             </if>
         </trim>
     </insert>
@@ -2713,7 +2775,7 @@ SmlPk45		= #{smlPk45},
     </select>
 
     <select id="getBcpTempSData" resultType="com.qdhualing.qrcodetracker.bean.BcpThrowShowDataResult">
-        SELECT M_BCPTempS.ProductName, M_BCPTempS.SortID, M_BCPTempS.DWZL , M_BCPTempS.SHL , M_BCPTempS.YLPC , M_BCPTempS.SCPC , M_BCPTempS.SC_Time , M_BCPTempS.CheJian, M_BCPTempS.GX,
+        SELECT M_BCPTempS.ProductName, M_BCPTempS.SortID, M_BCPTempS.DWZL , M_BCPTempS.SYZL , M_BCPTempS.SHL , M_BCPTempS.YLPC , M_BCPTempS.SCPC , M_BCPTempS.SC_Time , M_BCPTempS.CheJian, M_BCPTempS.GX,
         M_BCPTempS.Yl_1,M_BCPTempS.Yl_2,M_BCPTempS.Yl_3,M_BCPTempS.Yl_4,M_BCPTempS.Yl_5,M_BCPTempS.Yl_6,M_BCPTempS.Yl_7,M_BCPTempS.Yl_8,M_BCPTempS.Yl_9,M_BCPTempS.Yl_10,
         M_BCPTempS.CZY, M_BCPIn.ZJY, M_BCPIn.ZJZT jyzt, M_BCPTempS.GG , M_BCPTempS.DW , Pdt_Sort2.Sort_Name
         FROM M_BCPTempS LEFT JOIN M_BCPIn on M_BCPTempS.QRCode_ID=M_BCPIn.QRCode_ID LEFT JOIN Pdt_Sort2 on M_BCPTempS.SortID = Pdt_Sort2.ID

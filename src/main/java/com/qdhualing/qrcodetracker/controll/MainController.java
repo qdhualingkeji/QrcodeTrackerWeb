@@ -1090,19 +1090,31 @@ public class MainController {
                 bcpTLParam.setBcpCode(bcpTempSBean.getBcpCode());
                 bcpTLParam.setDw(bcpTempSBean.getDw());
                 bcpTLParam.setRkzl(bcpTempSBean.getRkzl());
+                bcpTLParam.setDwzl(bcpTempSBean.getDwzl());
+                bcpTLParam.setSyzl(bcpTempSBean.getSyzl());
                 bcpTLParam.setGg(bcpTempSBean.getGg());
                 bcpTLParam.setSortId(bcpTempSBean.getSortID());
                 bcpTLParam.setYlpc(bcpTempSBean.getYlpc());
                 bcpTLParam.setYl1(bcpTempSBean.getYl1());
+                bcpTLParam.setTlzl1(bcpTempSBean.getTlzl1());
                 bcpTLParam.setYl2(bcpTempSBean.getYl2());
+                bcpTLParam.setTlzl2(bcpTempSBean.getTlzl2());
                 bcpTLParam.setYl3(bcpTempSBean.getYl3());
+                bcpTLParam.setTlzl3(bcpTempSBean.getTlzl3());
                 bcpTLParam.setYl4(bcpTempSBean.getYl4());
+                bcpTLParam.setTlzl4(bcpTempSBean.getTlzl4());
                 bcpTLParam.setYl5(bcpTempSBean.getYl5());
+                bcpTLParam.setTlzl5(bcpTempSBean.getTlzl5());
                 bcpTLParam.setYl6(bcpTempSBean.getYl6());
+                bcpTLParam.setTlzl6(bcpTempSBean.getTlzl6());
                 bcpTLParam.setYl7(bcpTempSBean.getYl7());
+                bcpTLParam.setTlzl7(bcpTempSBean.getTlzl7());
                 bcpTLParam.setYl8(bcpTempSBean.getYl8());
+                bcpTLParam.setTlzl8(bcpTempSBean.getTlzl8());
                 bcpTLParam.setYl9(bcpTempSBean.getYl9());
+                bcpTLParam.setTlzl9(bcpTempSBean.getTlzl9());
                 bcpTLParam.setYl10(bcpTempSBean.getYl10());
+                bcpTLParam.setTlzl10(bcpTempSBean.getTlzl10());
                 int b = mainService.getBcpTLDataCount(bcpTLParam.getQrcodeId());
                 if (b <= 0) {
                     //生成半成品投料记录
@@ -1117,7 +1129,7 @@ public class MainController {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成半成品投料记录失败");
                 } else {
                     //临时库存表中数据减去或者删除
-                    if (bcpTLParam.getTlShl() >= bcpTempSBean.getShl()&&bcpTLParam.getDwzl() >= bcpTempSBean.getDwzl()) {
+                    if (bcpTLParam.getTlShl() >= bcpTempSBean.getShl()&&bcpTLParam.getTlzl() >= bcpTempSBean.getSyzl()) {
                         b = mainService.deleteFromBcpTempS(bcpTLParam.getQrcodeId());
                     } else {
                         b = mainService.updateBcpTempSByTl(bcpTLParam);
