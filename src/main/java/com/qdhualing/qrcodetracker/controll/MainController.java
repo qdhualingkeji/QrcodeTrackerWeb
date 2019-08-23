@@ -517,8 +517,13 @@ public class MainController {
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成出库记录失败");
                 } else {
-                    //更新仓库库存表数量
-                    b = mainService.outUpdateBCPS(bcpOutParam);
+                    //临时库存表中数据减去或者删除
+                    if (bcpOutParam.getCkShL() >= bcpsBean.getShl()&&bcpOutParam.getCkzl() >= bcpsBean.getSyzl()) {
+                        b = mainService.deleteFromBCPS(bcpOutParam.getQrCodeId());
+                    } else {
+                        b = mainService.outUpdateBCPS(bcpOutParam);
+                    }
+
                     if (b <= 0) {
                         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
                     }

@@ -426,6 +426,8 @@ public interface MainDao {
 
     int deleteFromBCPTl(String qrCodeId);
 
+    int deleteFromBCPS(String qrCodeId);
+
     int updateWLTlByBcpIn(WLThrowParam wlThrowParam);
 
     int updateBCPTlByBcpIn(BcpThrowParam bcpThrowParam);

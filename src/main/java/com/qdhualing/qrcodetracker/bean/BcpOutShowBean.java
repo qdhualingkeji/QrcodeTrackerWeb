@@ -23,6 +23,8 @@ public class BcpOutShowBean {
     private float dWZL;
     //入库重量
     private float rKZL;
+    //出库重量
+    private float cKZL;
     //出库单号
     private String outDh;
     //出库时间
@@ -92,6 +94,14 @@ public class BcpOutShowBean {
 
     public void setrKZL(float rKZL) {
         this.rKZL = rKZL;
+    }
+
+    public float getcKZL() {
+        return cKZL;
+    }
+
+    public void setcKZL(float cKZL) {
+        this.cKZL = cKZL;
     }
 
     public String getOutDh() {

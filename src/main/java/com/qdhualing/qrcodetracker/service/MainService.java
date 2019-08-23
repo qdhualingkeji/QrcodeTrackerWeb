@@ -1079,6 +1079,10 @@ public class MainService {
 		return mainDao.deleteFromBCPTl(qrCodeId);
 	}
 
+	public int deleteFromBCPS(String qrCodeId) {
+		return mainDao.deleteFromBCPS(qrCodeId);
+	}
+
 	public int updateWLTlByBcpIn(WLThrowParam wlThrowParam) {
 		return mainDao.updateWLTlByBcpIn(wlThrowParam);
 	}

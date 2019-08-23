@@ -2095,7 +2095,7 @@ SmlPk45		= #{smlPk45},
             </if>
             #{rkzl},
             #{dwzl},
-            #{syzl},
+            #{tkzl},
             <if test="ksTime!=null">
                 #{ksTime},
             </if>
@@ -3631,6 +3631,11 @@ SmlPk45		= #{smlPk45},
 
     <delete id="deleteFromWLTempS">
         DELETE FROM M_WLTempS
+        WHERE QRCode_ID = #{0}
+    </delete>
+
+    <delete id="deleteFromBCPS">
+        DELETE FROM M_BCPS
         WHERE QRCode_ID = #{0}
     </delete>
 
