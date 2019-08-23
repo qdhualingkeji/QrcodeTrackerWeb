@@ -2768,6 +2768,12 @@ SmlPk45		= #{smlPk45},
         WHERE QRCode_ID = #{0}
     </select>
 
+    <select id="getBCPTl" resultType="com.qdhualing.qrcodetracker.bean.BcpThrowShowDataResult">
+        SELECT *
+        FROM M_BCPTl
+        WHERE QRCode_ID = #{0}
+    </select>
+
     <select id="getBcpTempS" resultType="com.qdhualing.qrcodetracker.bean.BCPTempSBean">
         SELECT *
         FROM M_BCPTempS
@@ -3075,15 +3081,25 @@ SmlPk45		= #{smlPk45},
         CPS2_QRCode=#{cPS2QRCode},
         GG=#{gg},
         Yl_1=#{yl1},
+        Tlzl_1=#{tlzl1},
         Yl_2=#{yl2},
+        Tlzl_2=#{tlzl2},
         Yl_3=#{yl3},
+        Tlzl_3=#{tlzl3},
         Yl_4=#{yl4},
+        Tlzl_4=#{tlzl4},
         Yl_5=#{yl5},
+        Tlzl_5=#{tlzl5},
         Yl_6=#{yl6},
+        Tlzl_6=#{tlzl6},
         Yl_7=#{yl7},
+        Tlzl_7=#{tlzl7},
         Yl_8=#{yl8},
+        Tlzl_8=#{tlzl8},
         Yl_9=#{yl9},
-        Yl_10=#{yl10}
+        Tlzl_9=#{tlzl9},
+        Yl_10=#{yl10},
+        Tlzl_10=#{tlzl10}
         where QRCode_ID=#{qrCodeId}
     </update>
     <update id="updateBcpIn" parameterType="com.qdhualing.qrcodetracker.bean.BCPINParam">
@@ -3552,6 +3568,14 @@ SmlPk45		= #{smlPk45},
         WHERE QRCode_ID = #{qrcodeId};
     </update>
 
+    <update id="updateBCPTlByBcpIn" parameterType="com.qdhualing.qrcodetracker.bean.BcpThrowParam">
+        UPDATE M_BCPTl
+        SET
+        SYZL = SYZL - #{tlzl},
+        SHL = (SYZL - #{tlzl})/RKZL
+        WHERE QRCode_ID = #{qrcodeId};
+    </update>
+
     <insert id="insertWLTl" parameterType="com.qdhualing.qrcodetracker.bean.WLThrowParam">
         insert into M_WLTl
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -3612,6 +3636,11 @@ SmlPk45		= #{smlPk45},
 
     <delete id="deleteFromWLTl">
         DELETE FROM M_WLTl
+        WHERE QRCode_ID = #{0}
+    </delete>
+
+    <delete id="deleteFromBCPTl">
+        DELETE FROM M_BCPTl
         WHERE QRCode_ID = #{0}
     </delete>
 

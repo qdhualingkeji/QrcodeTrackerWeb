@@ -273,13 +273,17 @@ public class MainService {
 		return  mainDao.createBCP_RKD(rkdParam);
 	}
 
-	public SXYLResult getSXYLData(int gxId) {
-    	//获取该工序下的物料
-		List<TLYLBean> beans1 =  mainDao.getWLTLDataByGxId(gxId);
-		//获取该工序下的半成品
-		List<TLYLBean> beans2 =  mainDao.getBCPTLDataByGxId(gxId);
+	public SXYLResult getSXYLData(int gxId, String trackType) {
 		List<TLYLBean> bb = new ArrayList<TLYLBean>();
-		bb.addAll(beans1);
+		List<TLYLBean> beans1 = null;
+		List<TLYLBean> beans2 = null;
+    	//获取该工序下的物料
+		if(TrackType.BCP.equals(trackType)) {
+			beans1 = mainDao.getWLTLDataByGxId(gxId);
+			bb.addAll(beans1);
+		}
+		//获取该工序下的半成品
+		beans2 =  mainDao.getBCPTLDataByGxId(gxId);
 		bb.addAll(beans2);
 		SXYLResult result = new SXYLResult();
 		result.setTlylList(bb);
@@ -1063,11 +1067,23 @@ public class MainService {
 		return mainDao.getWLTl(qrCodeId);
 	}
 
+	public BcpThrowShowDataResult getBCPTl(String qrCodeId) {
+		return mainDao.getBCPTl(qrCodeId);
+	}
+
 	public int deleteFromWLTl(String qrCodeId) {
 		return mainDao.deleteFromWLTl(qrCodeId);
 	}
 
+	public int deleteFromBCPTl(String qrCodeId) {
+		return mainDao.deleteFromBCPTl(qrCodeId);
+	}
+
 	public int updateWLTlByBcpIn(WLThrowParam wlThrowParam) {
 		return mainDao.updateWLTlByBcpIn(wlThrowParam);
+	}
+
+	public int updateBCPTlByBcpIn(BcpThrowParam bcpThrowParam) {
+		return mainDao.updateBCPTlByBcpIn(bcpThrowParam);
 	}
 }

@@ -420,7 +420,13 @@ public interface MainDao {
 
     WLThrowShowDataResult getWLTl(String qrCodeId);
 
+    BcpThrowShowDataResult getBCPTl(String qrCodeId);
+
     int deleteFromWLTl(String qrCodeId);
 
+    int deleteFromBCPTl(String qrCodeId);
+
     int updateWLTlByBcpIn(WLThrowParam wlThrowParam);
+
+    int updateBCPTlByBcpIn(BcpThrowParam bcpThrowParam);
 }

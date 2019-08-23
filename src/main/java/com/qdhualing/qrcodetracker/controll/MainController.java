@@ -866,9 +866,10 @@ public class MainController {
     public ActionResult getTLYL(String json) {
         GetSXYLParam gxParam = ParamsUtils.handleParams(json, GetSXYLParam.class);
         int gxId = gxParam.getGxId();
+        String trackType = gxParam.getTrackType();
         ActionResult<SXYLResult> result = new ActionResult<SXYLResult>();
         try {
-            SXYLResult sxylResult = mainService.getSXYLData(gxId);
+            SXYLResult sxylResult = mainService.getSXYLData(gxId,trackType);
             if (sxylResult.getTlylList() == null || sxylResult.getTlylList().size() <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "无数据,请先进行投料");
             }
@@ -1008,7 +1009,7 @@ public class MainController {
                         if(TrackType.WL.equals(yl.substring(8, 9))) {
                             WLThrowShowDataResult wlThrowShowDataResult = mainService.getWLTl(yl);
                             //投料表中数据减去或者删除
-                            if (bcpInParam.getTlzl1() >= wlThrowShowDataResult.getSyzl()) {
+                            if (tlzl >= wlThrowShowDataResult.getSyzl()) {
                                 mainService.deleteFromWLTl(yl);
                             } else {
                                 WLThrowParam wlThrowParam = new WLThrowParam();
@@ -1449,6 +1450,87 @@ public class MainController {
             else{
                 //根据小包装二维码还原相关大包装入库单状态
                 mainService.updateBcpRkdStatusByQRCodeID(inParam.getQrCodeId());
+
+                List<Map<String,Object>> tlList=new ArrayList<Map<String,Object>>();
+                Map<String,Object> tlMap=null;
+                if(!StringUtils.isEmpty(inParam.getYl1())){
+                    tlMap=new HashMap<String,Object>();
+                    tlMap.put("yl",inParam.getYl1());
+                    tlMap.put("tlzl",inParam.getTlzl1());
+                    tlList.add(tlMap);
+                }
+                if(!StringUtils.isEmpty(inParam.getYl2())){
+                    tlMap=new HashMap<String,Object>();
+                    tlMap.put("yl",inParam.getYl2());
+                    tlMap.put("tlzl",inParam.getTlzl2());
+                    tlList.add(tlMap);
+                }
+                if(!StringUtils.isEmpty(inParam.getYl3())){
+                    tlMap=new HashMap<String,Object>();
+                    tlMap.put("yl",inParam.getYl3());
+                    tlMap.put("tlzl",inParam.getTlzl3());
+                    tlList.add(tlMap);
+                }
+                if(!StringUtils.isEmpty(inParam.getYl4())){
+                    tlMap=new HashMap<String,Object>();
+                    tlMap.put("yl",inParam.getYl4());
+                    tlMap.put("tlzl",inParam.getTlzl4());
+                    tlList.add(tlMap);
+                }
+                if(!StringUtils.isEmpty(inParam.getYl5())){
+                    tlMap=new HashMap<String,Object>();
+                    tlMap.put("yl",inParam.getYl5());
+                    tlMap.put("tlzl",inParam.getTlzl5());
+                    tlList.add(tlMap);
+                }
+                if(!StringUtils.isEmpty(inParam.getYl6())){
+                    tlMap=new HashMap<String,Object>();
+                    tlMap.put("yl",inParam.getYl6());
+                    tlMap.put("tlzl",inParam.getTlzl6());
+                    tlList.add(tlMap);
+                }
+                if(!StringUtils.isEmpty(inParam.getYl7())){
+                    tlMap=new HashMap<String,Object>();
+                    tlMap.put("yl",inParam.getYl7());
+                    tlMap.put("tlzl",inParam.getTlzl7());
+                    tlList.add(tlMap);
+                }
+                if(!StringUtils.isEmpty(inParam.getYl8())){
+                    tlMap=new HashMap<String,Object>();
+                    tlMap.put("yl",inParam.getYl8());
+                    tlMap.put("tlzl",inParam.getTlzl8());
+                    tlList.add(tlMap);
+                }
+                if(!StringUtils.isEmpty(inParam.getYl9())){
+                    tlMap=new HashMap<String,Object>();
+                    tlMap.put("yl",inParam.getYl9());
+                    tlMap.put("tlzl",inParam.getTlzl9());
+                    tlList.add(tlMap);
+                }
+                if(!StringUtils.isEmpty(inParam.getYl10())){
+                    tlMap=new HashMap<String,Object>();
+                    tlMap.put("yl",inParam.getYl10());
+                    tlMap.put("tlzl",inParam.getTlzl10());
+                    tlList.add(tlMap);
+                }
+                //遍历集合里的元素，查找投料表信息
+                for (Map<String,Object> tlMap1: tlList) {
+                    String yl=tlMap1.get("yl").toString();
+                    float tlzl=Float.valueOf(tlMap1.get("tlzl").toString());
+
+                    if(TrackType.BCP.equals(yl.substring(8, 9))) {
+                        BcpThrowShowDataResult bcpThrowShowDataResult = mainService.getBCPTl(yl);
+                        //投料表中数据减去或者删除
+                        if (tlzl >= bcpThrowShowDataResult.getSyzl()) {
+                            mainService.deleteFromBCPTl(yl);
+                        } else {
+                            BcpThrowParam bcpThrowParam = new BcpThrowParam();
+                            bcpThrowParam.setQrcodeId(yl);
+                            bcpThrowParam.setTlzl(tlzl);
+                            mainService.updateBCPTlByBcpIn(bcpThrowParam);
+                        }
+                    }
+                }
             }
 
             /*
