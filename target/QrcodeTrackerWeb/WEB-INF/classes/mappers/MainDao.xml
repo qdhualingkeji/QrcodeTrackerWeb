@@ -1081,14 +1081,14 @@
     </select>
 
     <select id="getWlInData" resultType="com.qdhualing.qrcodetracker.bean.WlTrackResult">
-        SELECT M_WLIn.ProductName , M_WLIn.YLPC , M_WLIn.PCZL ,M_WLIn.WL_Code,
+        SELECT M_WLIn.ProductName , M_WLIn.YLPC , M_WLIn.PCZL , M_WLIn.DWZL ,M_WLIn.WL_Code,
         M_WLIn.LL_Time , M_WLIn.GG , Hl_Sort.SortName ,
         CASE
         WHEN
-        M_WLS.DWZL IS NULL THEN M_WLIN.DWZL
-        ELSE M_WLS.DWZL
+        M_WLS.SYZL IS NULL THEN 0
+        ELSE M_WLS.SYZL
         END
-        DWZL,
+        SYZL,
         M_WLIn.CHD , M_WLIn.CZY ,M_WLIn.Unit,M_WLIn.Unit dw
         FROM M_WLIn LEFT JOIN M_WLS ON M_WLIn.QRCode_ID = M_WLS.QRCode_ID LEFT JOIN Hl_Sort on M_WLIn.SortID = Hl_Sort.SortID
         WHERE M_WLIn.QRCode_ID = #{0}

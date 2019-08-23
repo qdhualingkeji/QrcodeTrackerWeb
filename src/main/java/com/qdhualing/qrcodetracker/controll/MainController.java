@@ -1018,6 +1018,18 @@ public class MainController {
                                 mainService.updateWLTlByBcpIn(wlThrowParam);
                             }
                         }
+                        else if(TrackType.BCP.equals(yl.substring(8, 9))) {
+                            BcpThrowShowDataResult bcpThrowShowDataResult = mainService.getBCPTl(yl);
+                            //投料表中数据减去或者删除
+                            if (tlzl >= bcpThrowShowDataResult.getSyzl()) {
+                                mainService.deleteFromBCPTl(yl);
+                            } else {
+                                BcpThrowParam bcpThrowParam = new BcpThrowParam();
+                                bcpThrowParam.setQrcodeId(yl);
+                                bcpThrowParam.setTlzl(tlzl);
+                                mainService.updateBCPTlByBcpIn(bcpThrowParam);
+                            }
+                        }
                     }
                 }
                 else if (b >= 1){
@@ -3327,7 +3339,7 @@ public class MainController {
         wlINParam.setProductName(wlTKParam.getProductName());
         wlINParam.setdWZL(wlTKParam.getDwzl());
         wlINParam.setpCZL(wlTKParam.getPczl());
-        wlINParam.setsYZL(wlTKParam.getSyzl());
+        wlINParam.setsYZL(wlTKParam.getTkzl());//这里是把退库的重量加到库里，当第一次添加，库里没有数据时，就得把退库重量转为剩余重量
         wlINParam.setdW(wlTKParam.getDw());
         wlINParam.setLb(wlTKParam.getSortId());
         wlINParam.setwLCode(wlTKParam.getWlCode());
