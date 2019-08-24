@@ -504,15 +504,26 @@ public class MainController {
                 bcpOutParam.setCzy(bcpsBean.getCzy());
                 bcpOutParam.setCheJian(bcpsBean.getCheJian());
                 bcpOutParam.setYl1(bcpsBean.getYl1());
+                bcpOutParam.setTlzl1(bcpsBean.getTlzl1());
                 bcpOutParam.setYl2(bcpsBean.getYl2());
+                bcpOutParam.setTlzl2(bcpsBean.getTlzl2());
                 bcpOutParam.setYl3(bcpsBean.getYl3());
+                bcpOutParam.setTlzl3(bcpsBean.getTlzl3());
                 bcpOutParam.setYl4(bcpsBean.getYl4());
+                bcpOutParam.setTlzl4(bcpsBean.getTlzl4());
                 bcpOutParam.setYl5(bcpsBean.getYl5());
+                bcpOutParam.setTlzl5(bcpsBean.getTlzl5());
                 bcpOutParam.setYl6(bcpsBean.getYl6());
+                bcpOutParam.setTlzl6(bcpsBean.getTlzl6());
                 bcpOutParam.setYl7(bcpsBean.getYl7());
+                bcpOutParam.setTlzl7(bcpsBean.getTlzl7());
                 bcpOutParam.setYl8(bcpsBean.getYl8());
+                bcpOutParam.setTlzl8(bcpsBean.getTlzl8());
                 bcpOutParam.setYl9(bcpsBean.getYl9());
+                bcpOutParam.setTlzl9(bcpsBean.getTlzl9());
                 bcpOutParam.setYl10(bcpsBean.getYl10());
+                bcpOutParam.setTlzl10(bcpsBean.getTlzl10());
+
                 int b = mainService.insertBcpOUT(bcpOutParam);
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成出库记录失败");
@@ -3286,8 +3297,11 @@ public class MainController {
                             a = mainService.findBCPTempS(bcpOutParam.getQrCodeId());
                             if (a <= 0) {
                                 //插入临时库存表（车间）
+                                bcpInParam.setRkzl(bcpOutParam.getRkzl());//当临时库存表中没有数据时，入库重量就是入库重量
+                                bcpInParam.setSyzl(bcpOutParam.getCkzl());//当临时库存表中没有数据时，剩余重量就是出库重量
                                 a = mainService.insertBCPTempS(bcpInParam);
                             } else {
+                                bcpInParam.setRkzl(bcpOutParam.getCkzl());//这里之前已经加进数据了，就用入库重量属性来接收出库重量，和之前添加时的入库重量不同
                                 a = mainService.updateBCPTempS(bcpInParam);
                             }
                         }
@@ -3305,6 +3319,11 @@ public class MainController {
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
     }
 
+    /**
+     * 将半成品出库参数放进半成品入库参数里
+     * @param bcpOutParam
+     * @return
+     */
     public BCPINParam convertBcpOutIntoInParam(BcpOutParam bcpOutParam){
         BCPINParam bcpInParam = new BCPINParam();
         bcpInParam.setQrCodeId(bcpOutParam.getQrCodeId());
@@ -3315,9 +3334,7 @@ public class MainController {
         bcpInParam.setScpc(bcpOutParam.getScpc());
         bcpInParam.setGg(bcpOutParam.getGg());
         bcpInParam.setScTime(bcpOutParam.getScTime());
-        bcpInParam.setRkzl(bcpOutParam.getCkzl());//这里是半成品出库，相当于一开始录入后直接出库，参数用的就是入库的类里的参数，出库重量就是入库的重量
         bcpInParam.setDwzl(bcpOutParam.getDwzl());
-        bcpInParam.setSyzl(bcpOutParam.getSyzl());
         bcpInParam.setShl(bcpOutParam.getCkShL());
         bcpInParam.setKsTime(bcpOutParam.getKsTime());
         bcpInParam.setWcTime(bcpOutParam.getWcTime());
@@ -3326,15 +3343,25 @@ public class MainController {
         bcpInParam.setCheJian(bcpOutParam.getCheJian());
         bcpInParam.setDw(bcpOutParam.getDw());
         bcpInParam.setYl1(bcpOutParam.getYl1());
+        bcpInParam.setTlzl1(bcpOutParam.getTlzl1());
         bcpInParam.setYl2(bcpOutParam.getYl2());
+        bcpInParam.setTlzl2(bcpOutParam.getTlzl2());
         bcpInParam.setYl3(bcpOutParam.getYl3());
+        bcpInParam.setTlzl3(bcpOutParam.getTlzl3());
         bcpInParam.setYl4(bcpOutParam.getYl4());
+        bcpInParam.setTlzl4(bcpOutParam.getTlzl4());
         bcpInParam.setYl5(bcpOutParam.getYl5());
+        bcpInParam.setTlzl5(bcpOutParam.getTlzl5());
         bcpInParam.setYl6(bcpOutParam.getYl6());
+        bcpInParam.setTlzl6(bcpOutParam.getTlzl6());
         bcpInParam.setYl7(bcpOutParam.getYl7());
+        bcpInParam.setTlzl7(bcpOutParam.getTlzl7());
         bcpInParam.setYl8(bcpOutParam.getYl8());
+        bcpInParam.setTlzl8(bcpOutParam.getTlzl8());
         bcpInParam.setYl9(bcpOutParam.getYl9());
+        bcpInParam.setTlzl9(bcpOutParam.getTlzl9());
         bcpInParam.setYl10(bcpOutParam.getYl10());
+        bcpInParam.setTlzl10(bcpOutParam.getTlzl10());
         return bcpInParam;
     }
 

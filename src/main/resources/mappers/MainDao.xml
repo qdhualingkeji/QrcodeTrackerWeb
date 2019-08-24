@@ -653,7 +653,7 @@
 
     <select id="getBigCpInShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.BcpInShowBean">
         SELECT QRCode_ID as qRCodeID, CP_Code as wLCode, CP_Name as productName, GG as gG, c.SortID as sortID, s.SortName,
-        YLPC as yLPC, SCPC as sCPC, SC_Time as time, Indh as inDh, DW as dW, DWZL as dWZL, CZY as cZY
+        YLPC as yLPC, SCPC as sCPC, SC_Time as time, Indh as inDh, DW as dW, DWZL as dWZL, CZY as cZY, ZJZT as zjzt
         FROM M_CPIn2 c LEFT JOIN Hl_Sort s ON c.SortID = s.SortID
         WHERE Indh = #{0}
     </select>
