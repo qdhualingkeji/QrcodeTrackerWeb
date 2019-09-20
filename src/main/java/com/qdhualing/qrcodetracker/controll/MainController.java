@@ -3322,10 +3322,12 @@ public class MainController {
     private WLOutParam convertWLOutShowInParam(WLOutShowBean wlOutShowBean) {
         WLOutParam wlOutParam = new WLOutParam();
         wlOutParam.setQrCodeId(wlOutShowBean.getqRCodeID());
-        if(wlOutShowBean.getcKZL()==wlOutShowBean.getcKZL1())
+        if(wlOutShowBean.getcKZL()==wlOutShowBean.getcKZL1()) {
             wlOutParam.setCkzl(0);
-        else
-            wlOutParam.setCkzl(wlOutShowBean.getcKZL()-wlOutShowBean.getcKZL1());
+        }
+        else {
+            wlOutParam.setCkzl(wlOutShowBean.getcKZL() - wlOutShowBean.getcKZL1());
+        }
         return wlOutParam;
     }
 

@@ -11,6 +11,8 @@ package com.qdhualing.qrcodetracker.bean;
 
 public class WLOutShowBean {
 
+    //主键
+    private Integer id;
     //二维码编号
     private String qRCodeID;
     //物料编码
@@ -45,6 +47,14 @@ public class WLOutShowBean {
     private String time;
     //标志位
     private int bz;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getqRCodeID() {
         return qRCodeID;
