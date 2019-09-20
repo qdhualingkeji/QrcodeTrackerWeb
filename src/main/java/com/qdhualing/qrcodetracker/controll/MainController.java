@@ -3319,6 +3319,16 @@ public class MainController {
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
     }
 
+    private WLOutParam convertWLOutShowInParam(WLOutShowBean wlOutShowBean) {
+        WLOutParam wlOutParam = new WLOutParam();
+        wlOutParam.setQrCodeId(wlOutShowBean.getqRCodeID());
+        if(wlOutShowBean.getcKZL()==wlOutShowBean.getcKZL1())
+            wlOutParam.setCkzl(0);
+        else
+            wlOutParam.setCkzl(wlOutShowBean.getcKZL()-wlOutShowBean.getcKZL1());
+        return wlOutParam;
+    }
+
     /**
      * 将半成品出库参数放进半成品入库参数里
      * @param bcpOutParam
@@ -3847,10 +3857,15 @@ public class MainController {
                 }else {
                     List<WLOutShowBean> beans = param.getBeans();
                     for (int i = 0; i < beans.size(); i++) {
-                        b =  mainService.updateWlOutData(beans.get(i));
+                        WLOutShowBean wlOutShowBean=beans.get(i);
+                        b =  mainService.updateWlOutData(wlOutShowBean);
                         if (b<0){
                             result = ActionResultUtils.setResultMsg(result,ActionResult.STATUS_MESSAGE_ERROR,"修改物料出库数据失败");
                             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+                        }
+                        else{
+                            WLOutParam wlOutParam=convertWLOutShowInParam(wlOutShowBean);
+                            b = mainService.outUpdateWLS(wlOutParam);
                         }
                     }
                 }
@@ -3862,6 +3877,7 @@ public class MainController {
         }
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
     }
+
     /**
      * @return
      * @author 马鹏昊

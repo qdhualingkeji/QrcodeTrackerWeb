@@ -27,8 +27,12 @@ public class WLOutShowBean {
     private float shl ;
     //出库重量
     private float cKZL;
+    //修改前的出库重量
+    private float cKZL1;
     //单位重量
     private float dWZL;
+    //剩余重量
+    private float sYZL;
     //批次总量
     private float pCZL;
     //单位
@@ -106,12 +110,28 @@ public class WLOutShowBean {
         this.cKZL = cKZL;
     }
 
+    public float getcKZL1() {
+        return cKZL1;
+    }
+
+    public void setcKZL1(float cKZL1) {
+        this.cKZL1 = cKZL1;
+    }
+
     public float getdWZL() {
         return dWZL;
     }
 
     public void setdWZL(float dWZL) {
         this.dWZL = dWZL;
+    }
+
+    public float getsYZL() {
+        return sYZL;
+    }
+
+    public void setsYZL(float sYZL) {
+        this.sYZL = sYZL;
     }
 
     public float getpCZL() {
