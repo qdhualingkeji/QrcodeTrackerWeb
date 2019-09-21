@@ -941,7 +941,7 @@ public class MainController {
             }
             //查询临时库存表中是否有数据
             int count=b;
-            int insertCount=0;
+            //int insertCount=0;
             String existQrCodeID="";
             String qRCodeID = bcpInParam.getQrCodeId();
             String typeNum = qRCodeID.substring(0, 9);
@@ -953,7 +953,7 @@ public class MainController {
                 num++;
                 b = mainService.findBCPTempS(bcpInParam.getQrCodeId());
                 if (b <= 0) {
-                    insertCount+=mainService.insertBCPTempS(bcpInParam);
+                    //insertCount+=mainService.insertBCPTempS(bcpInParam);
 
                     List<Map<String,Object>> tlList=new ArrayList<Map<String,Object>>();
                     Map<String,Object> tlMap=null;
@@ -1052,16 +1052,18 @@ public class MainController {
                     existQrCodeID+=","+bcpInParam.getQrCodeId();
                 }
             }
-            if(insertCount==ts1){
+            //if(insertCount==ts1){
                 String errorTipMsg="半成品入库成功";
                 if(count<ts)
                     errorTipMsg+=(",已经录入"+count+"条，还有"+((int)ts-count)+"条没有录入");
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, errorTipMsg);
+            /*
             }
             else{
                 existQrCodeID=existQrCodeID.substring(1);
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "BCPTempS表中二维码id"+existQrCodeID+"记录已存在，其他记录插入成功");
             }
+            */
         } catch (Exception e) {
             e.printStackTrace();
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
@@ -3107,6 +3109,12 @@ public class MainController {
                             }
                             */
                         }
+                        else{
+                            for(BcpInShowBean bcpInShowBean:bcpInDataList){
+                                BCPINParam bcpInParam = convertBcpInShowInParam(bcpInShowBean);
+                                mainService.insertBCPTempS(bcpInParam);
+                            }
+                        }
                     }
                     else if(bcpRkdBean.getBzStatus() == 1 && bcpRkdBean.getFlfzrStatus() == 1 && bcpRkdBean.getZjyStatus() == 1
                             && bcpRkdBean.getZjldStatus() == 1 && bcpRkdBean.getKgStatus() == 1 && bcpRkdBean.getLlfzrStatus() == 1){
@@ -3317,6 +3325,51 @@ public class MainController {
             }
         }
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
+    }
+
+    private BCPINParam convertBcpInShowInParam(BcpInShowBean bcpInShowBean) {
+        BCPINParam bcpInParam = new BCPINParam();
+        bcpInParam.setQrCodeId(bcpInShowBean.getqRCodeID());
+        bcpInParam.setProductName(bcpInShowBean.getProductName());
+        bcpInParam.setSortID(bcpInShowBean.getSortID());
+        bcpInParam.setBcpCode(bcpInShowBean.getwLCode());
+        bcpInParam.setYlpc(bcpInShowBean.getyLPC());
+        bcpInParam.setScpc(bcpInShowBean.getsCPC());
+        bcpInParam.setGg(bcpInShowBean.getgG());
+        bcpInParam.setShl(bcpInShowBean.getShl());
+        bcpInParam.setRkzl(bcpInShowBean.getrKZL());
+        bcpInParam.setDwzl(bcpInShowBean.getdWZL());
+        bcpInParam.setSyzl(bcpInShowBean.getsYZL());
+        bcpInParam.setScTime(bcpInShowBean.getTime());
+        bcpInParam.setKsTime(bcpInShowBean.getKsTime());
+        bcpInParam.setWcTime(bcpInShowBean.getWcTime());
+        bcpInParam.setGx(bcpInShowBean.getGx());
+        bcpInParam.setCzy(bcpInShowBean.getCzy());
+        bcpInParam.setZjy(bcpInShowBean.getZjy());
+        bcpInParam.setJyzt(bcpInShowBean.getJyzt());
+        bcpInParam.setCheJian(bcpInShowBean.getCheJian());
+        bcpInParam.setDw(bcpInShowBean.getdW());
+        bcpInParam.setYl1(bcpInShowBean.getYl1());
+        bcpInParam.setTlzl1(bcpInShowBean.getTlzl1());
+        bcpInParam.setYl2(bcpInShowBean.getYl2());
+        bcpInParam.setTlzl2(bcpInShowBean.getTlzl2());
+        bcpInParam.setYl3(bcpInShowBean.getYl3());
+        bcpInParam.setTlzl3(bcpInShowBean.getTlzl3());
+        bcpInParam.setYl4(bcpInShowBean.getYl4());
+        bcpInParam.setTlzl4(bcpInShowBean.getTlzl4());
+        bcpInParam.setYl5(bcpInShowBean.getYl5());
+        bcpInParam.setTlzl5(bcpInShowBean.getTlzl5());
+        bcpInParam.setYl6(bcpInShowBean.getYl6());
+        bcpInParam.setTlzl6(bcpInShowBean.getTlzl6());
+        bcpInParam.setYl7(bcpInShowBean.getYl7());
+        bcpInParam.setTlzl7(bcpInShowBean.getTlzl7());
+        bcpInParam.setYl8(bcpInShowBean.getYl8());
+        bcpInParam.setTlzl8(bcpInShowBean.getTlzl8());
+        bcpInParam.setYl9(bcpInShowBean.getYl9());
+        bcpInParam.setTlzl9(bcpInShowBean.getTlzl9());
+        bcpInParam.setYl10(bcpInShowBean.getYl10());
+        bcpInParam.setTlzl10(bcpInShowBean.getTlzl10());
+        return bcpInParam;
     }
 
     private WLOutParam convertWLTkShowInOutParam(WLTkShowBean wlTkShowBean) {
