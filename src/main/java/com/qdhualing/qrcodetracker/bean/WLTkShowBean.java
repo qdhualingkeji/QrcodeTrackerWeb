@@ -10,6 +10,8 @@ package com.qdhualing.qrcodetracker.bean;
  */
 
 public class WLTkShowBean {
+    //主键
+    private Integer id;
     //二维码编号
     private String qRCodeID;
     //物料编码
@@ -28,8 +30,12 @@ public class WLTkShowBean {
     private float pCZL;
     //单位重量
     private float dWZL;
+    //剩余重量
+    private float sYZL;
     //退库重量
     private float tKZL;
+    //原来的退库重量
+    private float tKZL1;
     //单位
     private String dW ;
     //规格
@@ -40,6 +46,16 @@ public class WLTkShowBean {
     private String time;
     //标志位
     private int bz;
+    private String chd ;
+    private String czy ;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getqRCodeID() {
         return qRCodeID;
@@ -113,12 +129,28 @@ public class WLTkShowBean {
         this.dWZL = dWZL;
     }
 
+    public float getsYZL() {
+        return sYZL;
+    }
+
+    public void setsYZL(float sYZL) {
+        this.sYZL = sYZL;
+    }
+
     public float gettKZL() {
         return tKZL;
     }
 
     public void settKZL(float tKZL) {
         this.tKZL = tKZL;
+    }
+
+    public float gettKZL1() {
+        return tKZL1;
+    }
+
+    public void settKZL1(float tKZL1) {
+        this.tKZL1 = tKZL1;
     }
 
     public String getdW() {
@@ -159,5 +191,21 @@ public class WLTkShowBean {
 
     public void setBz(int bz) {
         this.bz = bz;
+    }
+
+    public String getChd() {
+        return chd;
+    }
+
+    public void setChd(String chd) {
+        this.chd = chd;
+    }
+
+    public String getCzy() {
+        return czy;
+    }
+
+    public void setCzy(String czy) {
+        this.czy = czy;
     }
 }

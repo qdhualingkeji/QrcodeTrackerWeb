@@ -3319,6 +3319,37 @@ public class MainController {
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
     }
 
+    private WLOutParam convertWLTkShowInOutParam(WLTkShowBean wlTkShowBean) {
+        WLOutParam wlOutParam = new WLOutParam();
+        wlOutParam.setQrCodeId(wlTkShowBean.getqRCodeID());
+        wlOutParam.setProductName(wlTkShowBean.getProductName());
+        wlOutParam.setSortId(wlTkShowBean.getSortID());
+        wlOutParam.setWlCode(wlTkShowBean.getwLCode());
+        wlOutParam.setYlpc(wlTkShowBean.getyLPC());
+        wlOutParam.setPczl(wlTkShowBean.getpCZL());
+        wlOutParam.setTime(wlTkShowBean.getTime());
+        wlOutParam.setDwzl(wlTkShowBean.getdWZL());
+        wlOutParam.setCkzl(wlTkShowBean.gettKZL1()-wlTkShowBean.gettKZL());
+        wlOutParam.setCkShL((wlTkShowBean.gettKZL1()-wlTkShowBean.gettKZL())/wlTkShowBean.getdWZL());
+        wlOutParam.setChd(wlTkShowBean.getChd());
+        wlOutParam.setGg(wlTkShowBean.getgG());
+        wlOutParam.setCzy(wlTkShowBean.getCzy());
+        wlOutParam.setDw(wlTkShowBean.getdW());
+        return wlOutParam;
+    }
+
+    private WLTKParam convertWLTkShowInParam(WLTkShowBean wlTkShowBean){
+        WLTKParam wlTKParam = new WLTKParam();
+        wlTKParam.setQrCodeId(wlTkShowBean.getqRCodeID());
+        if(wlTkShowBean.gettKZL()==wlTkShowBean.gettKZL1()) {
+            wlTKParam.setTkzl(0);
+        }
+        else {
+            wlTKParam.setTkzl(wlTkShowBean.gettKZL() - wlTkShowBean.gettKZL1());
+        }
+        return wlTKParam;
+    }
+
     private WLOutParam convertWLOutShowInParam(WLOutShowBean wlOutShowBean) {
         WLOutParam wlOutParam = new WLOutParam();
         wlOutParam.setQrCodeId(wlOutShowBean.getqRCodeID());
@@ -3899,10 +3930,30 @@ public class MainController {
                 }else {
                     List<WLTkShowBean> beans = param.getBeans();
                     for (int i = 0; i < beans.size(); i++) {
-                        b =  mainService.updateWlTkData(beans.get(i));
+                        WLTkShowBean wlTkShowBean = beans.get(i);
+                        b =  mainService.updateWlTkData(wlTkShowBean);
                         if (b<0){
                             result = ActionResultUtils.setResultMsg(result,ActionResult.STATUS_MESSAGE_ERROR,"修改物料退库数据失败");
                             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+                        }
+                        else{
+                            //查询临时库存表中是否有数据
+                            b = mainService.findWLTempS(wlTkShowBean.getqRCodeID());
+                            if (b <= 0) {
+                                //插入临时库存表（车间）
+                                WLOutParam wlOutParam = convertWLTkShowInOutParam(wlTkShowBean);
+                                b = mainService.insertWLTempS(wlOutParam);
+                            } else {
+                                //查找临时库存表信息
+                                WLTempSBean wlTempSBean = mainService.getWLTempS(wlTkShowBean.getqRCodeID());
+                                //临时库存表中数据减去或者删除
+                                WLTKParam wlTKParam=convertWLTkShowInParam(wlTkShowBean);
+                                if (wlTkShowBean.getShl() >= wlTempSBean.getSHL()&&wlTkShowBean.gettKZL() >= wlTempSBean.getSYZL()+wlTkShowBean.gettKZL1()) {
+                                    b = mainService.deleteFromWLTempS(wlTKParam.getQrCodeId());
+                                } else {
+                                    b = mainService.updateWLTempSByTk(wlTKParam);
+                                }
+                            }
                         }
                     }
                 }
@@ -3914,6 +3965,7 @@ public class MainController {
         }
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
     }
+
     /**
      * @return
      * @author 马鹏昊

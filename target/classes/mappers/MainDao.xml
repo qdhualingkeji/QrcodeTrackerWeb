@@ -304,8 +304,12 @@
     </update>
 
     <update id="updateWlTkData" parameterType="com.qdhualing.qrcodetracker.bean.WLTkShowBean">
-        UPDATE M_WLBk SET DWZL=#{dWZL},SHL=#{shl}
-        WHERE QRCode_ID = #{qRCodeID}
+        UPDATE M_WLBk SET TKZL=#{tKZL},
+        <if test="tKZL!=tKZL1">
+            SYZL=SYZL-#{tKZL}+#{tKZL1},
+        </if>
+        SHL=#{shl}
+        WHERE QRCode_ID = #{qRCodeID} AND ID = #{id}
     </update>
     <update id="updateWlTkdData" parameterType="com.qdhualing.qrcodetracker.bean.WlTkVerifyResult">
         UPDATE Tkd_Wl SET ThDw = #{thDw}, ThR=#{thR}, ShR=#{shR}, BzID=#{bzID}, Bz=#{bz}, BzStatus=#{bzStatus}, TlfzrID=#{tlfzrID}, ThFzr=#{thFzr},
@@ -700,7 +704,7 @@
     </select>
 
     <select id="getWLTkShowBeanListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.WLTkShowBean">
-        SELECT w.*,s.SortName
+        SELECT w.*,w.TKZL as TKZL1,s.SortName
         FROM M_WLBk w,Hl_Sort s
         WHERE w.SortID = s.SortID AND OutDh = #{0}
     </select>

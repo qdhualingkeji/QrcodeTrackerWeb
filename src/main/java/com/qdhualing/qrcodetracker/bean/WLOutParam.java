@@ -32,6 +32,7 @@ public class WLOutParam {
 
     private float ckShL ;
     private String llbm ;
+    private String czy ;
 
     public String getChd() {
         return chd;
@@ -175,6 +176,14 @@ public class WLOutParam {
 
     public void setLlbm(String llbm) {
         this.llbm = llbm;
+    }
+
+    public String getCzy() {
+        return czy;
+    }
+
+    public void setCzy(String czy) {
+        this.czy = czy;
     }
 
     public float getCkShL() {
