@@ -3295,13 +3295,6 @@ public class MainController {
                     if(bcpCkd.getKgStatus()==1&&bcpCkd.getFzrStatus()==1&&bcpCkd.getBzStatus()==1&&bcpCkd.getLlfzrStatus()==1) {
                         List<BcpOutParam> bcpOutList = mainService.getBcpOutParamListByOutDh(param.getDh());
                         for (BcpOutParam bcpOutParam : bcpOutList) {
-                            /*
-                            //更新仓库库存表数量
-                            a = mainService.outUpdateBCPS(bcpOutParam);
-                            if (a <= 0) {
-                                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改库存表数据失败");
-                            }
-                            */
                             BCPINParam bcpInParam = convertBcpOutIntoInParam(bcpOutParam);
                             //查询临时库存表中是否有数据
                             a = mainService.findBCPTempS(bcpOutParam.getQrCodeId());
@@ -3472,6 +3465,18 @@ public class MainController {
             wlOutParam.setCkzl(wlOutShowBean.getcKZL() - wlOutShowBean.getcKZL1());
         }
         return wlOutParam;
+    }
+
+    private BcpOutParam convertBcpOutShowInParam(BcpOutShowBean bcpOutShowBean) {
+        BcpOutParam bcpOutParam = new BcpOutParam();
+        bcpOutParam.setQrCodeId(bcpOutShowBean.getqRCodeID());
+        if(bcpOutShowBean.getcKZL()==bcpOutShowBean.getcKZL1()) {
+            bcpOutParam.setCkzl(0);
+        }
+        else {
+            bcpOutParam.setCkzl(bcpOutShowBean.getcKZL() - bcpOutShowBean.getcKZL1());
+        }
+        return bcpOutParam;
     }
 
     /**
@@ -4150,6 +4155,21 @@ public class MainController {
                 if (b<0){
                     result = ActionResultUtils.setResultMsg(result,ActionResult.STATUS_MESSAGE_ERROR,"修改半成品出库单数据失败");
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+                }
+                else{
+                    List<BcpOutShowBean> beans = param.getBeans();
+                    for (int i = 0; i < beans.size(); i++) {
+                        BcpOutShowBean bcpOutShowBean=beans.get(i);
+                        b =  mainService.updateBcpOutData(bcpOutShowBean);
+                        if (b<0){
+                            result = ActionResultUtils.setResultMsg(result,ActionResult.STATUS_MESSAGE_ERROR,"修改半成品出库数据失败");
+                            return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
+                        }
+                        else{
+                            BcpOutParam bcpOutParam=convertBcpOutShowInParam(bcpOutShowBean);
+                            b = mainService.outUpdateBCPS(bcpOutParam);
+                        }
+                    }
                 }
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
             } catch (Exception e) {

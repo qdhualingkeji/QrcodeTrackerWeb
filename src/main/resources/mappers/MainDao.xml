@@ -329,6 +329,16 @@
         SHL=#{shl}
         WHERE QRCode_ID = #{qRCodeID} AND ID = #{id}
     </update>
+
+    <update id="updateBcpOutData" parameterType="com.qdhualing.qrcodetracker.bean.BcpOutShowBean">
+        UPDATE M_BCPOut SET CKZL=#{cKZL},
+        <if test="cKZL!=cKZL1">
+        SYZL=SYZL-#{cKZL}+#{cKZL1},
+        </if>
+        SHL=#{shl}
+        WHERE QRCode_ID = #{qRCodeID} AND ID = #{id}
+    </update>
+
     <update id="updateWlCkdData" parameterType="com.qdhualing.qrcodetracker.bean.WlOutVerifyResult">
         UPDATE Ckd_Wl SET LhDw = #{lhDw}, KgID=#{kgID}, Kg=#{kg}, KgStatus=#{kgStatus}, FlfzrID=#{flfzrID}, FhFzr=#{fhFzr}, FlfzrStatus=#{flfzrStatus}, BzID=#{bzID}, Bz=#{bz}, BzStatus=#{bzStatus}, LlfzrID=#{llfzrID}, LhFzr=#{lhFzr}, LlfzrStatus=#{llfzrStatus}, Remark=#{remark}
         WHERE OutDh = #{outDh}
@@ -642,7 +652,7 @@
     </select>
 
     <select id="getBcpOutShowBeanListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.BcpOutShowBean">
-        SELECT b.*,s.SortName
+        SELECT b.*,b.CKZL as CKZL1,s.SortName
         FROM M_BCPOut b LEFT JOIN Hl_Sort s ON b.SortID = s.SortID
         WHERE OutDh = #{0}
     </select>

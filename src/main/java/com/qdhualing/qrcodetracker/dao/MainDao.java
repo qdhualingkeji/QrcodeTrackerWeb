@@ -337,6 +337,8 @@ public interface MainDao {
 
     int updateWlOutData(WLOutShowBean wlOutShowBean);
 
+    int updateBcpOutData(BcpOutShowBean bcpOutShowBean);
+
     int updateWlTkdData(WlTkVerifyResult param);
 
     int updateWlTkData(WLTkShowBean wlTkShowBean);

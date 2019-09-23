@@ -796,6 +796,10 @@ public class MainService {
 		return mainDao.updateWlOutData(wlOutShowBean);
 	}
 
+	public int updateBcpOutData(BcpOutShowBean bcpOutShowBean) {
+    	return mainDao.updateBcpOutData(bcpOutShowBean);
+	}
+
 	public int updateWlTkdData(WlTkVerifyResult param) {
 		return mainDao.updateWlTkdData(param);
 	}
