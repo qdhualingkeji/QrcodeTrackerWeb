@@ -1308,6 +1308,7 @@ public class MainController {
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成退库记录失败");
                 } else {
+                    /*
                     //更新仓库半成品库存表数量（退库的数量加上）
                     b = mainService.getBCPSCount(param.getQrCodeId());
                     if (b <= 0) {
@@ -1323,6 +1324,7 @@ public class MainController {
                             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改半成品库存表数据失败");
                         }
                     }
+                    */
                     //临时库存表中数据减去或者删除
                     if (param.getShl() >= bcpTempSBean.getShl()&&param.getDwzl() >= bcpTempSBean.getDwzl()) {
                         b = mainService.deleteFromBcpTempS(param.getQrCodeId());
@@ -3720,6 +3722,29 @@ public class MainController {
 
                 int a = mainService.agreeBcpTk(bcpTkd);
                 if (a == 1) {
+                    BcpTkdBean bcpTKD = mainService.getBcpTkdBean(param.getDh());
+                    if(bcpTKD.getBzStatus()==1&&bcpTKD.getTlfzrStatus()==1&&bcpTKD.getZjyStatus()==1&&bcpTKD.getZjldStatus()==1&&bcpTKD.getKgStatus()==1&&bcpTKD.getSlfzrStatus()==1){
+                        //更新仓库库存表数量（退库的数量加上）
+                        List<BCPTKParam> bcpTKList = mainService.getBCPTKParamListByOutDh(param.getDh());
+                        for(BCPTKParam bcpTKParam : bcpTKList) {
+                            //更新仓库半成品库存表数量（退库的数量加上）
+                            a = mainService.getBCPSCount(bcpTKParam.getQrCodeId());
+                            if (a <= 0) {
+                                a = mainService.insertBCPS(bcpTKParam);
+                                if (a <= 0) {
+                                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "插入半成品库存表数据失败");
+                                }
+                            } else if (a > 1) {
+                                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "半成品库存表记录不唯一");
+                            } else {
+                                a = mainService.updateBCPSByTk(bcpTKParam);
+                                if (a <= 0) {
+                                    return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "修改半成品库存表数据失败");
+                                }
+                            }
+                        }
+                    }
+
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");
                 } else {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "审核失败");

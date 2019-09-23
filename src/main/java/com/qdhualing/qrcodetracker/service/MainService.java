@@ -982,6 +982,10 @@ public class MainService {
 		return mainDao.getWLTKParamListByOutDh(dh);
 	}
 
+	public List<BCPTKParam> getBCPTKParamListByOutDh(String dh) {
+		return mainDao.getBCPTKParamListByOutDh(dh);
+	}
+
 	public List<BigCPINParam> getBigCPINParamListByInDh(String dh) {
 		return mainDao.getBigCPINParamListByInDh(dh);
 	}
@@ -1090,4 +1094,5 @@ public class MainService {
 	public int updateBCPTlByBcpIn(BcpThrowParam bcpThrowParam) {
 		return mainDao.updateBCPTlByBcpIn(bcpThrowParam);
 	}
+
 }

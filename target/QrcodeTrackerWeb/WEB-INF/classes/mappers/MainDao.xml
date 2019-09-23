@@ -720,6 +720,12 @@
         WHERE OutDh = #{0}
     </select>
 
+    <select id="getBCPTKParamListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.BCPTKParam">
+        SELECT *,PCZL AS RKZL
+        FROM M_BCPBk
+        WHERE BackDh = #{0}
+    </select>
+
     <select id="getWlTkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlTkdBean">
         SELECT * FROM Tkd_Wl WHERE BackDh = #{0}
     </select>

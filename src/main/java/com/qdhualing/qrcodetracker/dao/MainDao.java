@@ -253,6 +253,8 @@ public interface MainDao {
 
     List<WLTKParam> getWLTKParamListByOutDh(String dh);
 
+    List<BCPTKParam> getBCPTKParamListByOutDh(String dh);
+
     BcpRkdBean getBcpRkdBean(String dh);
 
     List<BcpInShowBean> getBcpInShowBeanListByInDh(String dh);
@@ -431,4 +433,5 @@ public interface MainDao {
     int updateWLTlByBcpIn(WLThrowParam wlThrowParam);
 
     int updateBCPTlByBcpIn(BcpThrowParam bcpThrowParam);
+
 }
