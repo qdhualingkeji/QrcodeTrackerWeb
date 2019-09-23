@@ -140,8 +140,12 @@
     </update>
 
     <update id="updateBcpTkData" parameterType="com.qdhualing.qrcodetracker.bean.BcpTkShowBean">
-        UPDATE M_BCPBk SET DWZL=#{dWZL},SHL=#{shl},remark=#{remark}
-        WHERE QRCode_ID = #{qRCodeID}
+        UPDATE M_BCPBk SET TKZL=#{tKZL},
+        <if test="tKZL!=tKZL1">
+            SYZL=SYZL-#{tKZL}+#{tKZL1},
+        </if>
+        SHL=#{shl},remark=#{remark}
+        WHERE QRCode_ID = #{qRCodeID} AND ID = #{id}
     </update>
     <update id="updateBcpTkdData" parameterType="com.qdhualing.qrcodetracker.bean.BcpTkVerifyResult">
         UPDATE Tkd_Bcp SET
@@ -628,7 +632,7 @@
         WHERE InDh = #{inDh}
     </update>
     <select id="getBcpTkShowBeanListByBackDh" resultType="com.qdhualing.qrcodetracker.bean.BcpTkShowBean">
-        SELECT b.*,s.SortName
+        SELECT b.*,b.TKZL as TKZL1,s.SortName
         FROM M_BCPBk b LEFT JOIN Hl_Sort s ON b.SortID = s.SortID
         WHERE BackDh = #{0}
     </select>
@@ -2269,6 +2273,72 @@ SmlPk45		= #{smlPk45},
             <if test="thDw!=null">
                 ThDw,
             </if>
+            <if test="dw!=null">
+                DW,
+            </if>
+            <if test="gg!=null">
+                GG,
+            </if>
+            <if test="yl1!=null">
+                Yl_1,
+            </if>
+            <if test="tlzl1!=null">
+                Tlzl_1,
+            </if>
+            <if test="yl2!=null">
+                Yl_2,
+            </if>
+            <if test="tlzl2!=null">
+                Tlzl_2,
+            </if>
+            <if test="yl3!=null">
+                Yl_3,
+            </if>
+            <if test="tlzl3!=null">
+                Tlzl_3,
+            </if>
+            <if test="yl4!=null">
+                Yl_4,
+            </if>
+            <if test="tlzl4!=null">
+                Tlzl_4,
+            </if>
+            <if test="yl5!=null">
+                Yl_5,
+            </if>
+            <if test="tlzl5!=null">
+                Tlzl_5,
+            </if>
+            <if test="yl6!=null">
+                Yl_6,
+            </if>
+            <if test="tlzl6!=null">
+                Tlzl_6,
+            </if>
+            <if test="yl7!=null">
+                Yl_7,
+            </if>
+            <if test="tlzl7!=null">
+                Tlzl_7,
+            </if>
+            <if test="yl8!=null">
+                Yl_8,
+            </if>
+            <if test="tlzl8!=null">
+                Tlzl_8,
+            </if>
+            <if test="yl9!=null">
+                Yl_9,
+            </if>
+            <if test="tlzl9!=null">
+                Tlzl_9,
+            </if>
+            <if test="yl10!=null">
+                Yl_10,
+            </if>
+            <if test="tlzl10!=null">
+                Tlzl_10,
+            </if>
         </trim>
         values
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -2336,6 +2406,72 @@ SmlPk45		= #{smlPk45},
             </if>
             <if test="thDw!=null">
                 #{thDw},
+            </if>
+            <if test="dw!=null">
+                #{dw},
+            </if>
+            <if test="gg!=null">
+                #{gg},
+            </if>
+            <if test="yl1!=null">
+                #{yl1},
+            </if>
+            <if test="tlzl1!=null">
+                #{tlzl1},
+            </if>
+            <if test="yl2!=null">
+                #{yl2},
+            </if>
+            <if test="tlzl2!=null">
+                #{tlzl2},
+            </if>
+            <if test="yl3!=null">
+                #{yl3},
+            </if>
+            <if test="tlzl3!=null">
+                #{tlzl3},
+            </if>
+            <if test="yl4!=null">
+                #{yl4},
+            </if>
+            <if test="tlzl4!=null">
+                #{tlzl4},
+            </if>
+            <if test="yl5!=null">
+                #{yl5},
+            </if>
+            <if test="tlzl5!=null">
+                #{tlzl5},
+            </if>
+            <if test="yl6!=null">
+                #{yl6},
+            </if>
+            <if test="tlzl6!=null">
+                #{tlzl6},
+            </if>
+            <if test="yl7!=null">
+                #{yl7},
+            </if>
+            <if test="tlzl7!=null">
+                #{tlzl7},
+            </if>
+            <if test="yl8!=null">
+                #{yl8},
+            </if>
+            <if test="tlzl8!=null">
+                #{tlzl8},
+            </if>
+            <if test="yl9!=null">
+                #{yl9},
+            </if>
+            <if test="tlzl9!=null">
+                #{tlzl9},
+            </if>
+            <if test="yl10!=null">
+                #{yl10},
+            </if>
+            <if test="tlzl10!=null">
+                #{tlzl10},
             </if>
         </trim>
     </insert>
