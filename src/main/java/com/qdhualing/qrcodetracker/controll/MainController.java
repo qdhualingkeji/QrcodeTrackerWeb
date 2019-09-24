@@ -436,6 +436,7 @@ public class MainController {
                 wlOutParam.setSortId(wlsBean.getSortID());
                 wlOutParam.setYlpc(wlsBean.getYLPC());
                 wlOutParam.setChd(wlsBean.getCHD());
+                wlOutParam.setCzy(wlsBean.getCZY());
                 int b = mainService.insertWLOUT(wlOutParam);
                 if (b <= 0) {
                     return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_LOGIC_ERROR, "生成出库记录失败");
@@ -3455,6 +3456,25 @@ public class MainController {
         return wlTKParam;
     }
 
+    private WLINParam convertWLOutShowInInParam(WLOutShowBean wlOutShowBean) {
+        WLINParam wlInParam = new WLINParam();
+        wlInParam.setqRCodeID(wlOutShowBean.getqRCodeID());
+        wlInParam.setProductName(wlOutShowBean.getProductName());
+        wlInParam.setdWZL(wlOutShowBean.getdWZL());
+        wlInParam.setpCZL(wlOutShowBean.getpCZL());
+        wlInParam.setsYZL(wlOutShowBean.getdWZL()-wlOutShowBean.getcKZL());
+        wlInParam.setdW(wlOutShowBean.getdW());
+        wlInParam.setLb(wlOutShowBean.getSortID());
+        wlInParam.setwLCode(wlOutShowBean.getwLCode());
+        wlInParam.setyLPC(wlOutShowBean.getyLPC());
+        wlInParam.setgG(wlOutShowBean.getgG());
+        wlInParam.setcHD(wlOutShowBean.getcHD());
+        wlInParam.setShl((wlOutShowBean.getdWZL()-wlOutShowBean.getcKZL())/wlOutShowBean.getdWZL());
+        wlInParam.setcZY(wlOutShowBean.getcZY());
+        wlInParam.setlLTime(wlOutShowBean.getTime());
+        return wlInParam;
+    }
+
     private WLOutParam convertWLOutShowInParam(WLOutShowBean wlOutShowBean) {
         WLOutParam wlOutParam = new WLOutParam();
         wlOutParam.setQrCodeId(wlOutShowBean.getqRCodeID());
@@ -4037,8 +4057,23 @@ public class MainController {
                             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
                         }
                         else{
-                            WLOutParam wlOutParam=convertWLOutShowInParam(wlOutShowBean);
-                            b = mainService.outUpdateWLS(wlOutParam);
+                            //查询库存表中是否有数据
+                            b = mainService.queryWLS(wlOutShowBean.getqRCodeID());
+                            if (b <= 0) {
+                                //插入库存表
+                                WLINParam wlInParam = convertWLOutShowInInParam(wlOutShowBean);
+                                b = mainService.insertWLS(wlInParam);
+                            } else {
+                                //查找库存表信息
+                                WLSBean wlSBean = mainService.findWLS(wlOutShowBean.getqRCodeID());
+                                //库存表中数据减去或者删除
+                                WLOutParam wlOutParam = convertWLOutShowInParam(wlOutShowBean);
+                                if (wlOutShowBean.getShl() >= wlSBean.getSHL()&&wlOutShowBean.getcKZL() >= wlSBean.getSYZL()+wlOutShowBean.getcKZL1()) {
+                                    b = mainService.deleteFromWLS(wlOutParam.getQrCodeId());
+                                } else {
+                                    b = mainService.outUpdateWLS(wlOutParam);
+                                }
+                            }
                         }
                     }
                 }

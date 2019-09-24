@@ -4139,6 +4139,9 @@ SmlPk45		= #{smlPk45},
             <if test="chd!=null">
                 CHD
             </if>
+            <if test="czy!=null">
+                CZY
+            </if>
         </trim>
         values
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -4198,6 +4201,9 @@ SmlPk45		= #{smlPk45},
             </if>
             <if test="chd!=null">
                 #{chd},
+            </if>
+            <if test="czy!=null">
+                #{czy},
             </if>
         </trim>
     </insert>
