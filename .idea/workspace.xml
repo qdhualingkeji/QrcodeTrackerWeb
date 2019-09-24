@@ -8,15 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ff6a10a-c7d8-472d-8c1a-6507d6ca6a39" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/QrcodeTrackerWeb.war" afterPath="$PROJECT_DIR$/target/QrcodeTrackerWeb.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_Release.xml" afterPath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_Release.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_Release1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_Release1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_spring4_Release.xml" afterPath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_spring4_Release.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_spring4_Release1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_spring4_Release1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/WLOutShowBean.java" afterPath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/WLOutShowBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BcpOutShowBean.java" afterPath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BcpOutShowBean.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml" afterPath="$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -33,8 +27,8 @@
       <file leaf-file-name="MainDao.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="4486" column="30" lean-forward="true" selection-start-line="4486" selection-start-column="30" selection-end-line="4486" selection-end-column="30" />
+            <state relative-caret-position="268">
+              <caret line="656" column="26" lean-forward="true" selection-start-line="656" selection-start-column="26" selection-end-line="656" selection-end-column="26" />
               <folding>
                 <marker date="1569293458476" expanded="true" signature="317:401" ph="SELECT disti... Tkd_Bcp" />
                 <marker date="1569293458476" expanded="true" signature="317:782" ph="SELECT disti... Tkd_Bcp" />
@@ -413,8 +407,8 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="4060" column="82" lean-forward="true" selection-start-line="4060" selection-start-column="82" selection-end-line="4060" selection-end-column="82" />
+            <state relative-caret-position="339">
+              <caret line="4272" column="96" lean-forward="true" selection-start-line="4272" selection-start-column="96" selection-end-line="4272" selection-end-column="96" />
               <folding>
                 <element signature="e#1479#1492#0" expanded="true" />
                 <element signature="e#3374#3386#0" expanded="true" />
@@ -491,27 +485,171 @@
                 <element signature="e#143982#143996#0" expanded="true" />
                 <element signature="e#154762#154776#0" expanded="true" />
                 <element signature="e#157613#157627#0" expanded="true" />
-                <element signature="e#172374#172388#0" expanded="true" />
-                <element signature="e#175205#175219#0" expanded="true" />
-                <element signature="e#177114#177128#0" expanded="true" />
-                <element signature="e#178637#178651#0" expanded="true" />
-                <element signature="e#182438#182452#0" expanded="true" />
-                <element signature="e#184764#184788#0" expanded="true" />
-                <element signature="e#186258#186277#0" expanded="true" />
-                <element signature="e#191139#191153#0" expanded="true" />
-                <element signature="e#193071#193085#0" expanded="true" />
-                <element signature="e#194813#194827#0" expanded="true" />
-                <element signature="e#197800#197814#0" expanded="true" />
-                <element signature="e#200829#200843#0" expanded="true" />
-                <element signature="e#202434#202448#0" expanded="true" />
-                <element signature="e#204492#204506#0" expanded="true" />
-                <element signature="e#205698#205712#0" expanded="true" />
-                <element signature="e#208688#208702#0" expanded="true" />
-                <element signature="e#209603#209617#0" expanded="true" />
-                <element signature="e#210604#210618#0" expanded="true" />
-                <element signature="e#212001#212017#0" expanded="true" />
-                <element signature="e#212193#212207#0" expanded="true" />
-                <element signature="e#217813#217825#0" expanded="true" />
+                <element signature="e#174711#174725#0" expanded="true" />
+                <element signature="e#177542#177556#0" expanded="true" />
+                <element signature="e#179451#179465#0" expanded="true" />
+                <element signature="e#180974#180988#0" expanded="true" />
+                <element signature="e#184775#184789#0" expanded="true" />
+                <element signature="e#187101#187125#0" expanded="true" />
+                <element signature="e#188595#188614#0" expanded="true" />
+                <element signature="e#193476#193490#0" expanded="true" />
+                <element signature="e#195408#195422#0" expanded="true" />
+                <element signature="e#197150#197164#0" expanded="true" />
+                <element signature="e#200137#200151#0" expanded="true" />
+                <element signature="e#203166#203180#0" expanded="true" />
+                <element signature="e#204771#204785#0" expanded="true" />
+                <element signature="e#207813#207827#0" expanded="true" />
+                <element signature="e#209019#209033#0" expanded="true" />
+                <element signature="e#212009#212023#0" expanded="true" />
+                <element signature="e#212924#212938#0" expanded="true" />
+                <element signature="e#213925#213939#0" expanded="true" />
+                <element signature="e#215322#215338#0" expanded="true" />
+                <element signature="e#215514#215528#0" expanded="true" />
+                <element signature="e#221134#221146#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BcpOutShowBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BcpOutShowBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+              <folding>
+                <element signature="e#2781#2782#0" expanded="true" />
+                <element signature="e#2808#2809#0" expanded="true" />
+                <element signature="e#3956#3957#0" expanded="true" />
+                <element signature="e#3985#3986#0" expanded="true" />
+                <element signature="e#4029#4030#0" expanded="true" />
+                <element signature="e#4065#4066#0" expanded="true" />
+                <element signature="e#4098#4099#0" expanded="true" />
+                <element signature="e#4127#4128#0" expanded="true" />
+                <element signature="e#4171#4172#0" expanded="true" />
+                <element signature="e#4207#4208#0" expanded="true" />
+                <element signature="e#4236#4237#0" expanded="true" />
+                <element signature="e#4261#4262#0" expanded="true" />
+                <element signature="e#4297#4298#0" expanded="true" />
+                <element signature="e#4325#4326#0" expanded="true" />
+                <element signature="e#4355#4356#0" expanded="true" />
+                <element signature="e#4381#4382#0" expanded="true" />
+                <element signature="e#4419#4420#0" expanded="true" />
+                <element signature="e#4449#4450#0" expanded="true" />
+                <element signature="e#4483#4484#0" expanded="true" />
+                <element signature="e#4513#4514#0" expanded="true" />
+                <element signature="e#4559#4560#0" expanded="true" />
+                <element signature="e#4597#4598#0" expanded="true" />
+                <element signature="e#4626#4627#0" expanded="true" />
+                <element signature="e#4651#4652#0" expanded="true" />
+                <element signature="e#4687#4688#0" expanded="true" />
+                <element signature="e#4715#4716#0" expanded="true" />
+                <element signature="e#4745#4746#0" expanded="true" />
+                <element signature="e#4771#4772#0" expanded="true" />
+                <element signature="e#4809#4810#0" expanded="true" />
+                <element signature="e#4839#4840#0" expanded="true" />
+                <element signature="e#4870#4871#0" expanded="true" />
+                <element signature="e#4898#4899#0" expanded="true" />
+                <element signature="e#4939#4940#0" expanded="true" />
+                <element signature="e#4973#4974#0" expanded="true" />
+                <element signature="e#5003#5004#0" expanded="true" />
+                <element signature="e#5029#5030#0" expanded="true" />
+                <element signature="e#5067#5068#0" expanded="true" />
+                <element signature="e#5097#5098#0" expanded="true" />
+                <element signature="e#5128#5129#0" expanded="true" />
+                <element signature="e#5156#5157#0" expanded="true" />
+                <element signature="e#5197#5198#0" expanded="true" />
+                <element signature="e#5231#5232#0" expanded="true" />
+                <element signature="e#5261#5262#0" expanded="true" />
+                <element signature="e#5287#5288#0" expanded="true" />
+                <element signature="e#5325#5326#0" expanded="true" />
+                <element signature="e#5355#5356#0" expanded="true" />
+                <element signature="e#5386#5387#0" expanded="true" />
+                <element signature="e#5414#5415#0" expanded="true" />
+                <element signature="e#5455#5456#0" expanded="true" />
+                <element signature="e#5489#5490#0" expanded="true" />
+                <element signature="e#5519#5520#0" expanded="true" />
+                <element signature="e#5545#5546#0" expanded="true" />
+                <element signature="e#5583#5584#0" expanded="true" />
+                <element signature="e#5613#5614#0" expanded="true" />
+                <element signature="e#5644#5645#0" expanded="true" />
+                <element signature="e#5672#5673#0" expanded="true" />
+                <element signature="e#5713#5714#0" expanded="true" />
+                <element signature="e#5747#5748#0" expanded="true" />
+                <element signature="e#5777#5778#0" expanded="true" />
+                <element signature="e#5803#5804#0" expanded="true" />
+                <element signature="e#5841#5842#0" expanded="true" />
+                <element signature="e#5871#5872#0" expanded="true" />
+                <element signature="e#5902#5903#0" expanded="true" />
+                <element signature="e#5930#5931#0" expanded="true" />
+                <element signature="e#5971#5972#0" expanded="true" />
+                <element signature="e#6005#6006#0" expanded="true" />
+                <element signature="e#6035#6036#0" expanded="true" />
+                <element signature="e#6061#6062#0" expanded="true" />
+                <element signature="e#6099#6100#0" expanded="true" />
+                <element signature="e#6129#6130#0" expanded="true" />
+                <element signature="e#6160#6161#0" expanded="true" />
+                <element signature="e#6188#6189#0" expanded="true" />
+                <element signature="e#6229#6230#0" expanded="true" />
+                <element signature="e#6263#6264#0" expanded="true" />
+                <element signature="e#6293#6294#0" expanded="true" />
+                <element signature="e#6319#6320#0" expanded="true" />
+                <element signature="e#6357#6358#0" expanded="true" />
+                <element signature="e#6387#6388#0" expanded="true" />
+                <element signature="e#6418#6419#0" expanded="true" />
+                <element signature="e#6446#6447#0" expanded="true" />
+                <element signature="e#6487#6488#0" expanded="true" />
+                <element signature="e#6521#6522#0" expanded="true" />
+                <element signature="e#6551#6552#0" expanded="true" />
+                <element signature="e#6577#6578#0" expanded="true" />
+                <element signature="e#6615#6616#0" expanded="true" />
+                <element signature="e#6645#6646#0" expanded="true" />
+                <element signature="e#6676#6677#0" expanded="true" />
+                <element signature="e#6704#6705#0" expanded="true" />
+                <element signature="e#6745#6746#0" expanded="true" />
+                <element signature="e#6779#6780#0" expanded="true" />
+                <element signature="e#6809#6810#0" expanded="true" />
+                <element signature="e#6835#6836#0" expanded="true" />
+                <element signature="e#6873#6874#0" expanded="true" />
+                <element signature="e#6903#6904#0" expanded="true" />
+                <element signature="e#6934#6935#0" expanded="true" />
+                <element signature="e#6962#6963#0" expanded="true" />
+                <element signature="e#7003#7004#0" expanded="true" />
+                <element signature="e#7037#7038#0" expanded="true" />
+                <element signature="e#7068#7069#0" expanded="true" />
+                <element signature="e#7095#7096#0" expanded="true" />
+                <element signature="e#7135#7136#0" expanded="true" />
+                <element signature="e#7167#7168#0" expanded="true" />
+                <element signature="e#7199#7200#0" expanded="true" />
+                <element signature="e#7228#7229#0" expanded="true" />
+                <element signature="e#7271#7272#0" expanded="true" />
+                <element signature="e#7307#7308#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BCPTKParam.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BCPTKParam.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="38" column="22" lean-forward="true" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+              <folding>
+                <element signature="e#1439#1440#0" expanded="true" />
+                <element signature="e#1467#1468#0" expanded="true" />
+                <element signature="e#1679#1680#0" expanded="true" />
+                <element signature="e#1709#1710#0" expanded="true" />
+                <element signature="e#5943#5944#0" expanded="true" />
+                <element signature="e#5979#5980#0" expanded="true" />
+                <element signature="e#6597#6598#0" expanded="true" />
+                <element signature="e#6633#6634#0" expanded="true" />
+                <element signature="e#6739#6740#0" expanded="true" />
+                <element signature="e#6775#6776#0" expanded="true" />
+                <element signature="e#6865#6866#0" expanded="true" />
+                <element signature="e#6893#6894#0" expanded="true" />
+                <element signature="e#6987#6988#0" expanded="true" />
+                <element signature="e#7017#7018#0" expanded="true" />
+                <element signature="e#7381#7382#0" expanded="true" />
+                <element signature="e#7419#7420#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -666,14 +804,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>/bcpOut</find>
-      <find>inService.outUpdateBCPS</find>
-      <find>UpdateBcpOutData</find>
-      <find>updateBcpCkdData</find>
-      <find>UPDATE M_BCPTempS</find>
       <find>updatewlOutData</find>
       <find>updateWlOutData</find>
-      <find>UpdatebcpOutData</find>
       <find>outUpdateWLS</find>
       <find>outUpdatebcpS</find>
       <find>nService.outUpdateWLS(wlOutPar</find>
@@ -684,8 +816,6 @@
       <find>qRCodeID</find>
       <find>sYZL</find>
       <find>shl</find>
-      <find>getBcpOutVerifyData</find>
-      <find>getBcpOutShowBeanListByOutDh</find>
       <find>FROM M_WLS</find>
       <find>updateWltkData</find>
       <find>chd</find>
@@ -696,6 +826,14 @@
       <find>insertWLOUT</find>
       <find>/wlOut</find>
       <find>from M_WLS</find>
+      <find>from M_BCPS</find>
+      <find>scpc</find>
+      <find>UpdatebcpOutData</find>
+      <find>syzl</find>
+      <find>UpdateBcpOutData</find>
+      <find>insertBCPS</find>
+      <find>getBcpOutVerifyData</find>
+      <find>getBcpOutShowBeanListByOutDh</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -759,9 +897,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BcpTkShowBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/service/MainService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/dao/MainDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BcpOutShowBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/WLOutShowBean.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BcpOutShowBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java" />
       </list>
     </option>
@@ -1760,7 +1898,7 @@
       <workItem from="1568943045079" duration="19558000" />
       <workItem from="1569027914222" duration="16141000" />
       <workItem from="1569200606955" duration="22802000" />
-      <workItem from="1569287282326" duration="4389000" />
+      <workItem from="1569287282326" duration="11396000" />
     </task>
     <servers />
   </component>
@@ -1797,7 +1935,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1760595000" />
+    <option name="totallyTimeSpent" value="1767602000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1866,11 +2004,17 @@
           <properties />
           <option name="timeStamp" value="432" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java</url>
+          <line>4247</line>
+          <properties />
+          <option name="timeStamp" value="464" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="464" />
+      <option name="time" value="465" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -2042,6 +2186,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1325">
           <caret line="53" column="25" lean-forward="false" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2496,13 +2641,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BCPTKParam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BcpOutVerifyResult.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2200">
@@ -2591,14 +2729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BcpOutShowBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1380">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/WLINParam.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
@@ -2637,10 +2767,150 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BCPTKParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="38" column="22" lean-forward="true" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+          <folding>
+            <element signature="e#1439#1440#0" expanded="true" />
+            <element signature="e#1467#1468#0" expanded="true" />
+            <element signature="e#1679#1680#0" expanded="true" />
+            <element signature="e#1709#1710#0" expanded="true" />
+            <element signature="e#5943#5944#0" expanded="true" />
+            <element signature="e#5979#5980#0" expanded="true" />
+            <element signature="e#6597#6598#0" expanded="true" />
+            <element signature="e#6633#6634#0" expanded="true" />
+            <element signature="e#6739#6740#0" expanded="true" />
+            <element signature="e#6775#6776#0" expanded="true" />
+            <element signature="e#6865#6866#0" expanded="true" />
+            <element signature="e#6893#6894#0" expanded="true" />
+            <element signature="e#6987#6988#0" expanded="true" />
+            <element signature="e#7017#7018#0" expanded="true" />
+            <element signature="e#7381#7382#0" expanded="true" />
+            <element signature="e#7419#7420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/bean/BcpOutShowBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+          <folding>
+            <element signature="e#2781#2782#0" expanded="true" />
+            <element signature="e#2808#2809#0" expanded="true" />
+            <element signature="e#3956#3957#0" expanded="true" />
+            <element signature="e#3985#3986#0" expanded="true" />
+            <element signature="e#4029#4030#0" expanded="true" />
+            <element signature="e#4065#4066#0" expanded="true" />
+            <element signature="e#4098#4099#0" expanded="true" />
+            <element signature="e#4127#4128#0" expanded="true" />
+            <element signature="e#4171#4172#0" expanded="true" />
+            <element signature="e#4207#4208#0" expanded="true" />
+            <element signature="e#4236#4237#0" expanded="true" />
+            <element signature="e#4261#4262#0" expanded="true" />
+            <element signature="e#4297#4298#0" expanded="true" />
+            <element signature="e#4325#4326#0" expanded="true" />
+            <element signature="e#4355#4356#0" expanded="true" />
+            <element signature="e#4381#4382#0" expanded="true" />
+            <element signature="e#4419#4420#0" expanded="true" />
+            <element signature="e#4449#4450#0" expanded="true" />
+            <element signature="e#4483#4484#0" expanded="true" />
+            <element signature="e#4513#4514#0" expanded="true" />
+            <element signature="e#4559#4560#0" expanded="true" />
+            <element signature="e#4597#4598#0" expanded="true" />
+            <element signature="e#4626#4627#0" expanded="true" />
+            <element signature="e#4651#4652#0" expanded="true" />
+            <element signature="e#4687#4688#0" expanded="true" />
+            <element signature="e#4715#4716#0" expanded="true" />
+            <element signature="e#4745#4746#0" expanded="true" />
+            <element signature="e#4771#4772#0" expanded="true" />
+            <element signature="e#4809#4810#0" expanded="true" />
+            <element signature="e#4839#4840#0" expanded="true" />
+            <element signature="e#4870#4871#0" expanded="true" />
+            <element signature="e#4898#4899#0" expanded="true" />
+            <element signature="e#4939#4940#0" expanded="true" />
+            <element signature="e#4973#4974#0" expanded="true" />
+            <element signature="e#5003#5004#0" expanded="true" />
+            <element signature="e#5029#5030#0" expanded="true" />
+            <element signature="e#5067#5068#0" expanded="true" />
+            <element signature="e#5097#5098#0" expanded="true" />
+            <element signature="e#5128#5129#0" expanded="true" />
+            <element signature="e#5156#5157#0" expanded="true" />
+            <element signature="e#5197#5198#0" expanded="true" />
+            <element signature="e#5231#5232#0" expanded="true" />
+            <element signature="e#5261#5262#0" expanded="true" />
+            <element signature="e#5287#5288#0" expanded="true" />
+            <element signature="e#5325#5326#0" expanded="true" />
+            <element signature="e#5355#5356#0" expanded="true" />
+            <element signature="e#5386#5387#0" expanded="true" />
+            <element signature="e#5414#5415#0" expanded="true" />
+            <element signature="e#5455#5456#0" expanded="true" />
+            <element signature="e#5489#5490#0" expanded="true" />
+            <element signature="e#5519#5520#0" expanded="true" />
+            <element signature="e#5545#5546#0" expanded="true" />
+            <element signature="e#5583#5584#0" expanded="true" />
+            <element signature="e#5613#5614#0" expanded="true" />
+            <element signature="e#5644#5645#0" expanded="true" />
+            <element signature="e#5672#5673#0" expanded="true" />
+            <element signature="e#5713#5714#0" expanded="true" />
+            <element signature="e#5747#5748#0" expanded="true" />
+            <element signature="e#5777#5778#0" expanded="true" />
+            <element signature="e#5803#5804#0" expanded="true" />
+            <element signature="e#5841#5842#0" expanded="true" />
+            <element signature="e#5871#5872#0" expanded="true" />
+            <element signature="e#5902#5903#0" expanded="true" />
+            <element signature="e#5930#5931#0" expanded="true" />
+            <element signature="e#5971#5972#0" expanded="true" />
+            <element signature="e#6005#6006#0" expanded="true" />
+            <element signature="e#6035#6036#0" expanded="true" />
+            <element signature="e#6061#6062#0" expanded="true" />
+            <element signature="e#6099#6100#0" expanded="true" />
+            <element signature="e#6129#6130#0" expanded="true" />
+            <element signature="e#6160#6161#0" expanded="true" />
+            <element signature="e#6188#6189#0" expanded="true" />
+            <element signature="e#6229#6230#0" expanded="true" />
+            <element signature="e#6263#6264#0" expanded="true" />
+            <element signature="e#6293#6294#0" expanded="true" />
+            <element signature="e#6319#6320#0" expanded="true" />
+            <element signature="e#6357#6358#0" expanded="true" />
+            <element signature="e#6387#6388#0" expanded="true" />
+            <element signature="e#6418#6419#0" expanded="true" />
+            <element signature="e#6446#6447#0" expanded="true" />
+            <element signature="e#6487#6488#0" expanded="true" />
+            <element signature="e#6521#6522#0" expanded="true" />
+            <element signature="e#6551#6552#0" expanded="true" />
+            <element signature="e#6577#6578#0" expanded="true" />
+            <element signature="e#6615#6616#0" expanded="true" />
+            <element signature="e#6645#6646#0" expanded="true" />
+            <element signature="e#6676#6677#0" expanded="true" />
+            <element signature="e#6704#6705#0" expanded="true" />
+            <element signature="e#6745#6746#0" expanded="true" />
+            <element signature="e#6779#6780#0" expanded="true" />
+            <element signature="e#6809#6810#0" expanded="true" />
+            <element signature="e#6835#6836#0" expanded="true" />
+            <element signature="e#6873#6874#0" expanded="true" />
+            <element signature="e#6903#6904#0" expanded="true" />
+            <element signature="e#6934#6935#0" expanded="true" />
+            <element signature="e#6962#6963#0" expanded="true" />
+            <element signature="e#7003#7004#0" expanded="true" />
+            <element signature="e#7037#7038#0" expanded="true" />
+            <element signature="e#7068#7069#0" expanded="true" />
+            <element signature="e#7095#7096#0" expanded="true" />
+            <element signature="e#7135#7136#0" expanded="true" />
+            <element signature="e#7167#7168#0" expanded="true" />
+            <element signature="e#7199#7200#0" expanded="true" />
+            <element signature="e#7228#7229#0" expanded="true" />
+            <element signature="e#7271#7272#0" expanded="true" />
+            <element signature="e#7307#7308#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/MainDao.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="4486" column="30" lean-forward="true" selection-start-line="4486" selection-start-column="30" selection-end-line="4486" selection-end-column="30" />
+        <state relative-caret-position="268">
+          <caret line="656" column="26" lean-forward="true" selection-start-line="656" selection-start-column="26" selection-end-line="656" selection-end-column="26" />
           <folding>
             <marker date="1569293458476" expanded="true" signature="317:401" ph="SELECT disti... Tkd_Bcp" />
             <marker date="1569293458476" expanded="true" signature="317:782" ph="SELECT disti... Tkd_Bcp" />
@@ -2842,8 +3112,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qdhualing/qrcodetracker/controll/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="4060" column="82" lean-forward="true" selection-start-line="4060" selection-start-column="82" selection-end-line="4060" selection-end-column="82" />
+        <state relative-caret-position="339">
+          <caret line="4272" column="96" lean-forward="true" selection-start-line="4272" selection-start-column="96" selection-end-line="4272" selection-end-column="96" />
           <folding>
             <element signature="e#1479#1492#0" expanded="true" />
             <element signature="e#3374#3386#0" expanded="true" />
@@ -2920,27 +3190,27 @@
             <element signature="e#143982#143996#0" expanded="true" />
             <element signature="e#154762#154776#0" expanded="true" />
             <element signature="e#157613#157627#0" expanded="true" />
-            <element signature="e#172374#172388#0" expanded="true" />
-            <element signature="e#175205#175219#0" expanded="true" />
-            <element signature="e#177114#177128#0" expanded="true" />
-            <element signature="e#178637#178651#0" expanded="true" />
-            <element signature="e#182438#182452#0" expanded="true" />
-            <element signature="e#184764#184788#0" expanded="true" />
-            <element signature="e#186258#186277#0" expanded="true" />
-            <element signature="e#191139#191153#0" expanded="true" />
-            <element signature="e#193071#193085#0" expanded="true" />
-            <element signature="e#194813#194827#0" expanded="true" />
-            <element signature="e#197800#197814#0" expanded="true" />
-            <element signature="e#200829#200843#0" expanded="true" />
-            <element signature="e#202434#202448#0" expanded="true" />
-            <element signature="e#204492#204506#0" expanded="true" />
-            <element signature="e#205698#205712#0" expanded="true" />
-            <element signature="e#208688#208702#0" expanded="true" />
-            <element signature="e#209603#209617#0" expanded="true" />
-            <element signature="e#210604#210618#0" expanded="true" />
-            <element signature="e#212001#212017#0" expanded="true" />
-            <element signature="e#212193#212207#0" expanded="true" />
-            <element signature="e#217813#217825#0" expanded="true" />
+            <element signature="e#174711#174725#0" expanded="true" />
+            <element signature="e#177542#177556#0" expanded="true" />
+            <element signature="e#179451#179465#0" expanded="true" />
+            <element signature="e#180974#180988#0" expanded="true" />
+            <element signature="e#184775#184789#0" expanded="true" />
+            <element signature="e#187101#187125#0" expanded="true" />
+            <element signature="e#188595#188614#0" expanded="true" />
+            <element signature="e#193476#193490#0" expanded="true" />
+            <element signature="e#195408#195422#0" expanded="true" />
+            <element signature="e#197150#197164#0" expanded="true" />
+            <element signature="e#200137#200151#0" expanded="true" />
+            <element signature="e#203166#203180#0" expanded="true" />
+            <element signature="e#204771#204785#0" expanded="true" />
+            <element signature="e#207813#207827#0" expanded="true" />
+            <element signature="e#209019#209033#0" expanded="true" />
+            <element signature="e#212009#212023#0" expanded="true" />
+            <element signature="e#212924#212938#0" expanded="true" />
+            <element signature="e#213925#213939#0" expanded="true" />
+            <element signature="e#215322#215338#0" expanded="true" />
+            <element signature="e#215514#215528#0" expanded="true" />
+            <element signature="e#221134#221146#0" expanded="true" />
           </folding>
         </state>
       </provider>

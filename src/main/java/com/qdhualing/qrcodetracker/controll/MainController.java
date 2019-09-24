@@ -3323,6 +3323,49 @@ public class MainController {
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
     }
 
+    private BCPTKParam convertBcpOutShowInTKParam(BcpOutShowBean bcpOutShowBean) {
+        BCPTKParam bcpTKParam = new BCPTKParam();
+        bcpTKParam.setQrCodeId(bcpOutShowBean.getqRCodeID());
+        bcpTKParam.setProductName(bcpOutShowBean.getProductName());
+        bcpTKParam.setSortID(bcpOutShowBean.getSortID());
+        bcpTKParam.setBcpCode(bcpOutShowBean.getBcpCode());
+        bcpTKParam.setYlpc(bcpOutShowBean.getyLPC());
+        bcpTKParam.setScpc(bcpOutShowBean.getsCPC());
+        bcpTKParam.setShl((bcpOutShowBean.getcKZL1()-bcpOutShowBean.getcKZL())/bcpOutShowBean.getdWZL());
+        bcpTKParam.setScTime(bcpOutShowBean.getScTime());
+        bcpTKParam.setRkzl(bcpOutShowBean.getrKZL());
+        bcpTKParam.setDwzl(bcpOutShowBean.getdWZL());
+        bcpTKParam.setTkzl(bcpOutShowBean.getcKZL1()-bcpOutShowBean.getcKZL());
+        bcpTKParam.setKsTime(bcpOutShowBean.getKsTime());
+        bcpTKParam.setWcTime(bcpOutShowBean.getWcTime());
+        bcpTKParam.setGx(bcpOutShowBean.getGx());
+        bcpTKParam.setCzy(bcpOutShowBean.getCzy());
+        bcpTKParam.setCheJian(bcpOutShowBean.getCheJian());
+        bcpTKParam.setYl1(bcpOutShowBean.getYl1());
+        bcpTKParam.setTlzl1(bcpOutShowBean.getTlzl1());
+        bcpTKParam.setYl2(bcpOutShowBean.getYl2());
+        bcpTKParam.setTlzl2(bcpOutShowBean.getTlzl2());
+        bcpTKParam.setYl3(bcpOutShowBean.getYl3());
+        bcpTKParam.setTlzl3(bcpOutShowBean.getTlzl3());
+        bcpTKParam.setYl4(bcpOutShowBean.getYl4());
+        bcpTKParam.setTlzl4(bcpOutShowBean.getTlzl4());
+        bcpTKParam.setYl5(bcpOutShowBean.getYl5());
+        bcpTKParam.setTlzl5(bcpOutShowBean.getTlzl5());
+        bcpTKParam.setYl6(bcpOutShowBean.getYl6());
+        bcpTKParam.setTlzl6(bcpOutShowBean.getTlzl6());
+        bcpTKParam.setYl7(bcpOutShowBean.getYl7());
+        bcpTKParam.setTlzl7(bcpOutShowBean.getTlzl7());
+        bcpTKParam.setYl8(bcpOutShowBean.getYl8());
+        bcpTKParam.setTlzl8(bcpOutShowBean.getTlzl8());
+        bcpTKParam.setYl9(bcpOutShowBean.getYl9());
+        bcpTKParam.setTlzl9(bcpOutShowBean.getTlzl9());
+        bcpTKParam.setYl10(bcpOutShowBean.getYl10());
+        bcpTKParam.setTlzl10(bcpOutShowBean.getTlzl10());
+        bcpTKParam.setGg(bcpOutShowBean.getGg());
+        bcpTKParam.setDw(bcpOutShowBean.getDw());
+        return bcpTKParam;
+    }
+
     private BCPTKParam convertBCPTkShowInTKParam(BcpTkShowBean bcpTkShowBean) {
         BCPTKParam bcpTKParam = new BCPTKParam();
         bcpTKParam.setQrCodeId(bcpTkShowBean.getqRCodeID());
@@ -4201,8 +4244,23 @@ public class MainController {
                             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_EXCEPTION, "系统异常");
                         }
                         else{
-                            BcpOutParam bcpOutParam=convertBcpOutShowInParam(bcpOutShowBean);
-                            b = mainService.outUpdateBCPS(bcpOutParam);
+                            //查询库存表中是否有数据
+                            b = mainService.getBCPSCount(bcpOutShowBean.getqRCodeID());
+                            if (b <= 0) {
+                                //插入库存表
+                                BCPTKParam bcpTKParam = convertBcpOutShowInTKParam(bcpOutShowBean);
+                                b = mainService.insertBCPS(bcpTKParam);
+                            } else {
+                                //查找库存表信息
+                                BcpSBean bcpSBean = mainService.findBcpS(bcpOutShowBean.getqRCodeID());
+                                //库存表中数据减去或者删除
+                                BcpOutParam bcpOutParam=convertBcpOutShowInParam(bcpOutShowBean);
+                                if (bcpOutShowBean.getShl() >= bcpSBean.getShl()&&bcpOutShowBean.getcKZL() >= bcpSBean.getSyzl()+bcpOutShowBean.getcKZL1()) {
+                                    b = mainService.deleteFromBCPS(bcpOutParam.getQrCodeId());
+                                } else {
+                                    b = mainService.outUpdateBCPS(bcpOutParam);
+                                }
+                            }
                         }
                     }
                 }
