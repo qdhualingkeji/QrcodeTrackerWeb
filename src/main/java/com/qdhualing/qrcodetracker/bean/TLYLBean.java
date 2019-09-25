@@ -15,6 +15,7 @@ public class TLYLBean {
     private String QRCodeID;
     private String ProductName;
     private Float syzl;
+    private Float tlzl;
     private String dw;
     private boolean flag ;
 
@@ -48,6 +49,14 @@ public class TLYLBean {
 
     public void setSyzl(Float syzl) {
         this.syzl = syzl;
+    }
+
+    public Float getTlzl() {
+        return tlzl;
+    }
+
+    public void setTlzl(Float tlzl) {
+        this.tlzl = tlzl;
     }
 
     public String getDw() {

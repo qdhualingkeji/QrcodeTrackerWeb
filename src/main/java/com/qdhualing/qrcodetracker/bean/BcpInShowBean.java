@@ -60,24 +60,34 @@ public class BcpInShowBean implements Serializable {
     //质检状态
     private Integer zjzt;
     private String yl1;
+    private String ylmc1;
     private float tlzl1;
     private String yl2;
+    private String ylmc2;
     private float tlzl2;
     private String yl3;
+    private String ylmc3;
     private float tlzl3;
     private String yl4;
+    private String ylmc4;
     private float tlzl4;
     private String yl5;
+    private String ylmc5;
     private float tlzl5;
     private String yl6;
+    private String ylmc6;
     private float tlzl6;
     private String yl7;
+    private String ylmc7;
     private float tlzl7;
     private String yl8;
+    private String ylmc8;
     private float tlzl8;
     private String yl9;
+    private String ylmc9;
     private float tlzl9;
     private String yl10;
+    private String ylmc10;
     private float tlzl10;
 
     public Integer getZjzt() {
@@ -273,6 +283,14 @@ public class BcpInShowBean implements Serializable {
         this.yl1 = yl1;
     }
 
+    public String getYlmc1() {
+        return ylmc1;
+    }
+
+    public void setYlmc1(String ylmc1) {
+        this.ylmc1 = ylmc1;
+    }
+
     public float getTlzl1() {
         return tlzl1;
     }
@@ -287,6 +305,14 @@ public class BcpInShowBean implements Serializable {
 
     public void setYl2(String yl2) {
         this.yl2 = yl2;
+    }
+
+    public String getYlmc2() {
+        return ylmc2;
+    }
+
+    public void setYlmc2(String ylmc2) {
+        this.ylmc2 = ylmc2;
     }
 
     public float getTlzl2() {
@@ -305,6 +331,14 @@ public class BcpInShowBean implements Serializable {
         this.yl3 = yl3;
     }
 
+    public String getYlmc3() {
+        return ylmc3;
+    }
+
+    public void setYlmc3(String ylmc3) {
+        this.ylmc3 = ylmc3;
+    }
+
     public float getTlzl3() {
         return tlzl3;
     }
@@ -319,6 +353,14 @@ public class BcpInShowBean implements Serializable {
 
     public void setYl4(String yl4) {
         this.yl4 = yl4;
+    }
+
+    public String getYlmc4() {
+        return ylmc4;
+    }
+
+    public void setYlmc4(String ylmc4) {
+        this.ylmc4 = ylmc4;
     }
 
     public float getTlzl4() {
@@ -337,6 +379,14 @@ public class BcpInShowBean implements Serializable {
         this.yl5 = yl5;
     }
 
+    public String getYlmc5() {
+        return ylmc5;
+    }
+
+    public void setYlmc5(String ylmc5) {
+        this.ylmc5 = ylmc5;
+    }
+
     public float getTlzl5() {
         return tlzl5;
     }
@@ -351,6 +401,14 @@ public class BcpInShowBean implements Serializable {
 
     public void setYl6(String yl6) {
         this.yl6 = yl6;
+    }
+
+    public String getYlmc6() {
+        return ylmc6;
+    }
+
+    public void setYlmc6(String ylmc6) {
+        this.ylmc6 = ylmc6;
     }
 
     public float getTlzl6() {
@@ -369,6 +427,14 @@ public class BcpInShowBean implements Serializable {
         this.yl7 = yl7;
     }
 
+    public String getYlmc7() {
+        return ylmc7;
+    }
+
+    public void setYlmc7(String ylmc7) {
+        this.ylmc7 = ylmc7;
+    }
+
     public float getTlzl7() {
         return tlzl7;
     }
@@ -383,6 +449,14 @@ public class BcpInShowBean implements Serializable {
 
     public void setYl8(String yl8) {
         this.yl8 = yl8;
+    }
+
+    public String getYlmc8() {
+        return ylmc8;
+    }
+
+    public void setYlmc8(String ylmc8) {
+        this.ylmc8 = ylmc8;
     }
 
     public float getTlzl8() {
@@ -401,6 +475,14 @@ public class BcpInShowBean implements Serializable {
         this.yl9 = yl9;
     }
 
+    public String getYlmc9() {
+        return ylmc9;
+    }
+
+    public void setYlmc9(String ylmc9) {
+        this.ylmc9 = ylmc9;
+    }
+
     public float getTlzl9() {
         return tlzl9;
     }
@@ -415,6 +497,14 @@ public class BcpInShowBean implements Serializable {
 
     public void setYl10(String yl10) {
         this.yl10 = yl10;
+    }
+
+    public String getYlmc10() {
+        return ylmc10;
+    }
+
+    public void setYlmc10(String ylmc10) {
+        this.ylmc10 = ylmc10;
     }
 
     public float getTlzl10() {

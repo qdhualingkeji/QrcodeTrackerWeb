@@ -3517,13 +3517,13 @@ SmlPk45		= #{smlPk45},
     </select>
 
     <select id="getWLTLDataByGxId" resultType="com.qdhualing.qrcodetracker.bean.TLYLBean">
-        SELECT ID , QRCode_ID , ProductName, DW, SYZL
+        SELECT ID , QRCode_ID , ProductName, DW, SYZL, 0 as TLZL
         FROM M_WLTl
         WHERE GX_ID = #{0}
     </select>
 
     <select id="getBCPTLDataByGxId" resultType="com.qdhualing.qrcodetracker.bean.TLYLBean">
-        SELECT ID , QRCode_ID , ProductName, DW, SYZL
+        SELECT ID , QRCode_ID , ProductName, DW, SYZL, 0 as TLZL
         FROM M_BCPTl
         WHERE GX_ID = #{0}
     </select>
