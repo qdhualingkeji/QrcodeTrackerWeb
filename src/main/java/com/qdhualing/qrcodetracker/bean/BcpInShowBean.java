@@ -27,8 +27,12 @@ public class BcpInShowBean implements Serializable {
     private String yLPC;
     //生产批次
     private String sCPC;
+    //车间id
+    private int cjId;
     //车间
     private String cheJian;
+    //工序id
+    private int gxId;
     //工序
     private String gx;
     //操作员
@@ -158,12 +162,28 @@ public class BcpInShowBean implements Serializable {
         return sCPC;
     }
 
+    public int getCjId() {
+        return cjId;
+    }
+
+    public void setCjId(int cjId) {
+        this.cjId = cjId;
+    }
+
     public String getCheJian() {
         return cheJian;
     }
 
     public void setCheJian(String cheJian) {
         this.cheJian = cheJian;
+    }
+
+    public int getGxId() {
+        return gxId;
+    }
+
+    public void setGxId(int gxId) {
+        this.gxId = gxId;
     }
 
     public String getGx() {

@@ -227,7 +227,11 @@
     </update>
     <update id="updateBcpInData" parameterType="com.qdhualing.qrcodetracker.bean.BcpInShowBean">
         UPDATE M_BCPIn SET BCP_Code = #{wLCode}, ProductName=#{productName}, SortID=#{sortID}, YLPC=#{yLPC},
-        RKZL=#{rKZL}, DWZL=#{dWZL}, SYZL=#{sYZL}, SHL=#{shl}, GG=#{gG}, DW=#{dW}
+        RKZL=#{rKZL}, DWZL=#{dWZL}, SYZL=#{sYZL}, SHL=#{shl}, GG=#{gG}, DW=#{dW}, CJID=#{cjId}, CheJian=#{cheJian},
+        GXID=#{gxId}, GX=#{gx}, Yl_1=#{yl1}, Ylmc_1=#{ylmc1}, Tlzl_1=#{tlzl1}, Yl_2=#{yl2}, Ylmc_2=#{ylmc2}, Tlzl_2=#{tlzl2},
+        Yl_3=#{yl3}, Ylmc_3=#{ylmc3}, Tlzl_3=#{tlzl3}, Yl_4=#{yl4}, Ylmc_4=#{ylmc4}, Tlzl_4=#{tlzl4}, Yl_5=#{yl5}, Ylmc_5=#{ylmc5}, Tlzl_5=#{tlzl5},
+        Yl_6=#{yl6}, Ylmc_6=#{ylmc6}, Tlzl_6=#{tlzl6}, Yl_7=#{yl7}, Ylmc_7=#{ylmc7}, Tlzl_7=#{tlzl7}, Yl_8=#{yl8}, Ylmc_8=#{ylmc8}, Tlzl_8=#{tlzl8},
+        Yl_9=#{yl9}, Ylmc_9=#{ylmc9}, Tlzl_9=#{tlzl9}, Yl_10=#{yl10}, Ylmc_10=#{ylmc10}, Tlzl_10=#{tlzl10}
         WHERE QRCode_ID = #{qRCodeID}
     </update>
     <update id="updateBcpRkdData" parameterType="com.qdhualing.qrcodetracker.bean.BcpInVerifyResult">
@@ -708,8 +712,8 @@
 
     <select id="getBcpInShowBeanListByInDh" resultType="com.qdhualing.qrcodetracker.bean.BcpInShowBean">
         SELECT QRCode_ID as qRCodeID, BCP_Code as wLCode, ProductName as productName, GG as gG, b.SortID as sortID, s.SortName as sortName,
-        YLPC as yLPC, SCPC as sCPC, SC_Time as time,KS_Time,WC_Time, CheJian as cheJian, GX as gx, CZY as czy, InDh as inDh, DW as dW,RKZL as rKZL, DWZL as dWZL,SYZL as sYZL,ZJZT as Zjzt,
-        Yl_1,Tlzl_1,Yl_2,Tlzl_2,Yl_3,Tlzl_3,Yl_4,Tlzl_4,Yl_5,Tlzl_5,Yl_6,Tlzl_6,Yl_7,Tlzl_7,Yl_8,Tlzl_8,Yl_9,Tlzl_9,Yl_10,Tlzl_10,SHL as shl
+        YLPC as yLPC, SCPC as sCPC, SC_Time as time,KS_Time,WC_Time, CJID as cjID, CheJian as cheJian, GXID as gxID, GX as gx, CZY as czy, InDh as inDh, DW as dW,RKZL as rKZL, DWZL as dWZL,SYZL as sYZL,ZJZT as Zjzt,
+        Yl_1,Ylmc_1,Tlzl_1,Yl_2,Ylmc_2,Tlzl_2,Yl_3,Ylmc_3,Tlzl_3,Yl_4,Ylmc_4,Tlzl_4,Yl_5,Ylmc_5,Tlzl_5,Yl_6,Ylmc_6,Tlzl_6,Yl_7,Ylmc_7,Tlzl_7,Yl_8,Ylmc_8,Tlzl_8,Yl_9,Ylmc_9,Tlzl_9,Yl_10,Ylmc_10,Tlzl_10,SHL as shl
         FROM M_BCPIn b LEFT JOIN Hl_Sort s ON b.SortID = s.SortID
         WHERE b.InDh = #{0}
     </select>
