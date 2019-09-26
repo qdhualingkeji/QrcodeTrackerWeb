@@ -1099,4 +1099,7 @@ public class MainService {
 		return mainDao.updateBCPTlByBcpIn(bcpThrowParam);
 	}
 
+	public WLTlUpdateSBean getWLTlUpdateS(String qrCodeId) {
+		return mainDao.getWLTlUpdateS(qrCodeId);
+	}
 }

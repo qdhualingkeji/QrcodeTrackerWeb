@@ -18,7 +18,7 @@ public class WLThrowParam {
     private int gxId;
     private String gx;
     private int cjId;
-    private String cj;
+    private int cj;
 
     public int getGxId() {
         return gxId;
@@ -74,11 +74,11 @@ public class WLThrowParam {
         this.gx = gx;
     }
 
-    public String getCj() {
+    public int getCj() {
         return cj;
     }
 
-    public void setCj(String cj) {
+    public void setCj(int cj) {
         this.cj = cj;
     }
 

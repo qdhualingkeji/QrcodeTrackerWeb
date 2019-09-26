@@ -93,6 +93,9 @@ public class BcpInShowBean implements Serializable {
     private String yl10;
     private String ylmc10;
     private float tlzl10;
+    private String allYlStr;
+    private String allYlQrCode;
+    private String allYlTlzl;
 
     public Integer getZjzt() {
         return zjzt;
@@ -533,5 +536,29 @@ public class BcpInShowBean implements Serializable {
 
     public void setTlzl10(float tlzl10) {
         this.tlzl10 = tlzl10;
+    }
+
+    public String getAllYlStr() {
+        return allYlStr;
+    }
+
+    public void setAllYlStr(String allYlStr) {
+        this.allYlStr = allYlStr;
+    }
+
+    public String getAllYlQrCode() {
+        return allYlQrCode;
+    }
+
+    public void setAllYlQrCode(String allYlQrCode) {
+        this.allYlQrCode = allYlQrCode;
+    }
+
+    public String getAllYlTlzl() {
+        return allYlTlzl;
+    }
+
+    public void setAllYlTlzl(String allYlTlzl) {
+        this.allYlTlzl = allYlTlzl;
     }
 }
