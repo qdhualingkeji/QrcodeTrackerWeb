@@ -4306,6 +4306,9 @@ SmlPk45		= #{smlPk45},
             <if test="ylpc!=null">
                 YLPC,
             </if>
+            <if test="scpc!=null">
+                SCPC,
+            </if>
             <if test="gg!=null">
                 GG,
             </if>
@@ -4437,6 +4440,9 @@ SmlPk45		= #{smlPk45},
             </if>
             <if test="ylpc!=null">
                 #{ylpc},
+            </if>
+            <if test="scpc!=null">
+                #{scpc},
             </if>
             <if test="gg!=null">
                 #{gg},

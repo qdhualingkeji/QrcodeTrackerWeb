@@ -498,6 +498,7 @@ public class MainController {
                 bcpOutParam.setGg(bcpsBean.getGg());
                 bcpOutParam.setSortId(bcpsBean.getSortID());
                 bcpOutParam.setYlpc(bcpsBean.getYlpc());
+                bcpOutParam.setScpc(bcpsBean.getScpc());
                 bcpOutParam.setScTime(bcpsBean.getScTime());
                 bcpOutParam.setKsTime(bcpsBean.getKsTime());
                 bcpOutParam.setWcTime(bcpsBean.getWcTime());
