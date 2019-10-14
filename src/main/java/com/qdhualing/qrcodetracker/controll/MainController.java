@@ -1700,23 +1700,20 @@ public class MainController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         param.setFhDate(sdf.format(date));
         try {
-            SmallCpBean bigCpBean = mainService.getCPS(param.getQrCodeId());
-            param.setCpName(bigCpBean.getCpName());
-            param.setCpCode(bigCpBean.getCpCode());
-            param.setDwzl(bigCpBean.getDwzl());
-            param.setScpc(bigCpBean.getScpc());
-            param.setYlpc(bigCpBean.getYlpc());
-            param.setSortId(bigCpBean.getSortID());
+            SmallCpBean smallCpBean = mainService.getCPS(param.getQrCodeId());
+            param.setCpName(smallCpBean.getCpName());
+            param.setCpCode(smallCpBean.getCpCode());
+            param.setDwzl(smallCpBean.getDwzl());
+            param.setScpc(smallCpBean.getScpc());
+            param.setYlpc(smallCpBean.getYlpc());
+            param.setSortId(smallCpBean.getSortID());
             int b = mainService.insertCPOutBySmallParam(param);
             if (b <= 0) {
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "出库记录生成失败");
             }
-            /*
-            b = mainService.deleteCPSByQrId(param.getQrCodeId());
-            if (b <= 0) {
-                return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_MESSAGE_ERROR, "删除小包装记录失败");
+            else{
+                b = mainService.updateBigCpSYZL(smallCpBean.getDwzl(),smallCpBean.getcPS2QRCode());
             }
-            */
             return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "小包装出库成功");
         } catch (Exception e) {
             e.printStackTrace();
@@ -1950,6 +1947,7 @@ public class MainController {
                     singleData.setCzy(bb.getCzy());
                     singleData.setDw(bb.getDw());
                     singleData.setDwzl(bb.getDwzl());
+                    singleData.setSyzl(bb.getSyzl());
                     singleData.setGg(bb.getGg());
                     singleData.setJyzt(bb.getJyzt());
                     singleData.setScpc(bb.getScpc());

@@ -755,9 +755,9 @@
     </select>
 
     <select id="getBcpOutParamListByOutDh" resultType="com.qdhualing.qrcodetracker.bean.BcpOutParam">
-        SELECT o.*,o.SHL AS ckShL,s.SCPC
-        FROM M_BCPOUT o,M_BCPS s
-        WHERE o.QRCode_ID=s.QRCode_ID AND o.OutDh = #{0}
+        SELECT *,SHL AS ckShL
+        FROM M_BCPOUT
+        WHERE OutDh = #{0}
     </select>
 
     <select id="getWlCkdBean" resultType="com.qdhualing.qrcodetracker.bean.WlCkdBean">
@@ -1072,9 +1072,16 @@
     </select>
 
     <select id="getBigCpIn2" resultType="com.qdhualing.qrcodetracker.bean.BigCpBean">
-        SELECT *,ZJZT jyzt
-        FROM M_CPIn2
-        WHERE QRCode_ID = #{0}
+        SELECT a.CP_Code,a.CP_Name,a.SortID,a.CZY,a.DW,a.DWZL,a.GG,a.SCPC,a.SC_Time,a.SmlPk1,a.YLPC,a.ZJY,
+        CASE
+        WHEN
+        b.SYZL IS NULL THEN 0
+        ELSE b.SYZL
+        END
+        SYZL,
+        a.ZJZT jyzt
+        FROM M_CPIn2 a LEFT JOIN M_CPS2 b ON a.QRCode_ID = b.QRCode_ID
+        WHERE a.QRCode_ID = #{0}
     </select>
 
     <select id="getSmallCpInData" resultType="com.qdhualing.qrcodetracker.bean.CPINParam">
@@ -1691,6 +1698,7 @@ SmlPk45		= #{smlPk45},
                 SC_Time,
             </if>
             DWZL,
+            SYZL,
             <if test="czy!=null">
                 CZY,
             </if>
@@ -1732,6 +1740,7 @@ SmlPk45		= #{smlPk45},
                 #{scTime},
             </if>
             #{dwzl},
+            #{syzl},
             <if test="czy!=null">
                 #{czy},
             </if>
@@ -3216,6 +3225,7 @@ SmlPk45		= #{smlPk45},
         SCPC = #{scpc},
         SC_Time = #{scTime},
         DWZL = #{dwzl},
+        SYZL = #{syzl},
         CZY = #{czy},
         ZJY = #{zjy},
         JYZT = #{jyzt},
@@ -4192,10 +4202,10 @@ SmlPk45		= #{smlPk45},
                 CKZL,
             </if>
             <if test="chd!=null">
-                CHD
+                CHD,
             </if>
             <if test="czy!=null">
-                CZY
+                CZY,
             </if>
         </trim>
         values
@@ -5125,4 +5135,8 @@ SmlPk45		= #{smlPk45},
             </if>
         </if>
     </select>
+
+    <update id="updateBigCpSYZL">
+        UPDATE M_CPS2 SET SYZL=SYZL-#{0} WHERE QRCode_ID=#{1}
+    </update>
 </mapper>

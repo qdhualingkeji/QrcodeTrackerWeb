@@ -19,6 +19,7 @@ public class BigCpBean {
     private String scpc;
     private String scTime;
     private float dwzl;
+    private float syzl;
     private String gYName;
     private String czy;
     private String zjy;
@@ -170,6 +171,14 @@ public class BigCpBean {
 
     public void setDwzl(float dwzl) {
         this.dwzl = dwzl;
+    }
+
+    public float getSyzl() {
+        return syzl;
+    }
+
+    public void setSyzl(float syzl) {
+        this.syzl = syzl;
     }
 
     public String getgYName() {
