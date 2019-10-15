@@ -111,7 +111,7 @@ public interface MainDao {
     //通过工序id获取半成品投料表的数据（获取已经投到此工序上的半成品）
     List<TLYLBean> getBCPTLDataByGxId(int gxId);
     //获取物料投料表数据数量
-    int getWLTLDataCount(String qrcodeId);
+    int getWLTLDataCount(WLThrowParam wlTLParam);
     //根据物料投料参数更新物料投料表数据
     int updateWLTl(WLThrowParam wlTLParam);
     //插入半成品入库记录
@@ -127,7 +127,7 @@ public interface MainDao {
     //半成品投料操作获取办成品临时库存表
     BCPTempSBean getBcpTempS(String qrcodeId);
     //半成品投料操作获取半成品投料表的记录数量
-    int getBcpTLDataCount(String qrcodeId);
+    int getBcpTLDataCount(BcpThrowParam bcpTLParam);
     //半成品投料操作插入半成品投料记录
     int insertBcpTl(BcpThrowParam bcpTLParam);
     //半成品投料操作更新半成品投料表记录
@@ -422,13 +422,13 @@ public interface MainDao {
 
     int deleteFromWLS(String qrCodeId);
 
-    WLThrowShowDataResult getWLTl(String qrCodeId);
+    WLThrowShowDataResult getWLTl(WLThrowParam wlThrowParam);
 
-    BcpThrowShowDataResult getBCPTl(String qrCodeId);
+    BcpThrowShowDataResult getBCPTl(BcpThrowParam bcpThrowParam);
 
-    int deleteFromWLTl(String qrCodeId);
+    int deleteFromWLTl(WLThrowParam wlThrowParam);
 
-    int deleteFromBCPTl(String qrCodeId);
+    int deleteFromBCPTl(BcpThrowParam bcpThrowParam);
 
     int deleteFromBCPS(String qrCodeId);
 

@@ -290,8 +290,8 @@ public class MainService {
 		return result;
 	}
 
-	public int getWLTLDataCount(String qrcodeId) {
-    	return mainDao.getWLTLDataCount(qrcodeId);
+	public int getWLTLDataCount(WLThrowParam wlTLParam) {
+    	return mainDao.getWLTLDataCount(wlTLParam);
 	}
 
 	public int updateWLTl(WLThrowParam wlTLParam) {
@@ -324,8 +324,8 @@ public class MainService {
 		return mainDao.getBcpTempS(qrcodeId);
 	}
 
-	public int getBcpTLDataCount(String qrcodeId) {
-		return mainDao.getBcpTLDataCount(qrcodeId);
+	public int getBcpTLDataCount(BcpThrowParam bcpTLParam) {
+		return mainDao.getBcpTLDataCount(bcpTLParam);
 	}
 
 	public int insertBcpTl(BcpThrowParam bcpTLParam) {
@@ -1071,20 +1071,20 @@ public class MainService {
 		return mainDao.deleteFromWLS(qrCodeId);
 	}
 
-	public WLThrowShowDataResult getWLTl(String qrCodeId) {
-		return mainDao.getWLTl(qrCodeId);
+	public WLThrowShowDataResult getWLTl(WLThrowParam wlThrowParam) {
+		return mainDao.getWLTl(wlThrowParam);
 	}
 
-	public BcpThrowShowDataResult getBCPTl(String qrCodeId) {
-		return mainDao.getBCPTl(qrCodeId);
+	public BcpThrowShowDataResult getBCPTl(BcpThrowParam bcpThrowParam) {
+		return mainDao.getBCPTl(bcpThrowParam);
 	}
 
-	public int deleteFromWLTl(String qrCodeId) {
-		return mainDao.deleteFromWLTl(qrCodeId);
+	public int deleteFromWLTl(WLThrowParam wlThrowParam) {
+		return mainDao.deleteFromWLTl(wlThrowParam);
 	}
 
-	public int deleteFromBCPTl(String qrCodeId) {
-		return mainDao.deleteFromBCPTl(qrCodeId);
+	public int deleteFromBCPTl(BcpThrowParam bcpThrowParam) {
+		return mainDao.deleteFromBCPTl(bcpThrowParam);
 	}
 
 	public int deleteFromBCPS(String qrCodeId) {

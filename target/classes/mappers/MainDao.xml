@@ -2688,7 +2688,7 @@ SmlPk45		= #{smlPk45},
         SET
         SYZL = SYZL + #{tlzl},
         SHL = (SYZL + #{tlzl})/RKZL
-        WHERE QRCode_ID = #{qrcodeId};
+        WHERE QRCode_ID = #{qrcodeId} AND CJ_ID=#{cjId} AND GX_ID=#{gxId};
     </update>
 
     <insert id="insertBcpTl" parameterType="com.qdhualing.qrcodetracker.bean.BcpThrowParam">
@@ -2936,16 +2936,16 @@ SmlPk45		= #{smlPk45},
         </trim>
     </insert>
 
-    <select id="getBcpTLDataCount" resultType="java.lang.Integer">
+    <select id="getBcpTLDataCount" parameterType="com.qdhualing.qrcodetracker.bean.BcpThrowParam" resultType="java.lang.Integer">
         SELECT COUNT(0)
         FROM M_BCPTl
-        WHERE QRCode_ID = #{0}
+        WHERE QRCode_ID = #{qrcodeId} AND CJ_ID=#{cjId} AND GX_ID=#{gxId}
     </select>
 
-    <select id="getBCPTl" resultType="com.qdhualing.qrcodetracker.bean.BcpThrowShowDataResult">
+    <select id="getBCPTl" parameterType="com.qdhualing.qrcodetracker.bean.BcpThrowParam" resultType="com.qdhualing.qrcodetracker.bean.BcpThrowShowDataResult">
         SELECT *
         FROM M_BCPTl
-        WHERE QRCode_ID = #{0}
+        WHERE QRCode_ID = #{qrcodeId} AND CJ_ID=#{cjId} AND GX_ID=#{gxId}
     </select>
 
     <select id="getBcpTempS" resultType="com.qdhualing.qrcodetracker.bean.BCPTempSBean">
@@ -3298,6 +3298,8 @@ SmlPk45		= #{smlPk45},
                 JYZT=#{jyzt},
                 JYBZ= #{jybz},
                 BZ= #{bz},
+                CJID=#{cjId},
+                GXID=#{gxId},
                 CheJian=#{cheJian},
                 InDh=#{indh},
                 DW=#{dw},
@@ -3521,13 +3523,13 @@ SmlPk45		= #{smlPk45},
         SET
         SYZL = SYZL + #{tlzl},
         SHL = (SYZL + #{tlzl})/PCZL
-        WHERE QRCode_ID = #{qrcodeId};
+        WHERE QRCode_ID = #{qrcodeId} AND CJ_ID = #{cjId} AND GX_ID = #{gxId};
     </update>
 
-    <select id="getWLTLDataCount" resultType="java.lang.Integer">
+    <select id="getWLTLDataCount" parameterType="com.qdhualing.qrcodetracker.bean.WLThrowParam" resultType="java.lang.Integer">
         SELECT COUNT(0)
         FROM M_WLTl
-        WHERE QRCode_ID = #{0}
+        WHERE QRCode_ID = #{qrcodeId} AND CJ_ID = #{cjId} AND GX_ID = #{gxId}
     </select>
 
     <select id="getWLTLDataByGxId" resultType="com.qdhualing.qrcodetracker.bean.TLYLBean">
@@ -3740,7 +3742,7 @@ SmlPk45		= #{smlPk45},
         SET
         SYZL = SYZL - #{tlzl},
         SHL = (SYZL - #{tlzl})/PCZL
-        WHERE QRCode_ID = #{qrcodeId};
+        WHERE QRCode_ID = #{qrcodeId} AND CJ_ID=#{cjId} AND GX_ID=#{gxId};
     </update>
 
     <update id="updateBCPTlByBcpIn" parameterType="com.qdhualing.qrcodetracker.bean.BcpThrowParam">
@@ -3748,7 +3750,7 @@ SmlPk45		= #{smlPk45},
         SET
         SYZL = SYZL - #{tlzl},
         SHL = (SYZL - #{tlzl})/RKZL
-        WHERE QRCode_ID = #{qrcodeId};
+        WHERE QRCode_ID = #{qrcodeId} AND CJ_ID=#{cjId} AND GX_ID=#{gxId};
     </update>
 
     <insert id="insertWLTl" parameterType="com.qdhualing.qrcodetracker.bean.WLThrowParam">
@@ -3796,51 +3798,6 @@ SmlPk45		= #{smlPk45},
         </trim>
     </insert>
 
-    <insert id="insertWLTlUpdateS" parameterType="com.qdhualing.qrcodetracker.bean.WLTlUpdateSParam">
-        insert into M_WLTlUpdateS
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="qrCodeId!=null">QRCode_ID,</if>
-            <if test="productName!=null">ProductName,</if>
-            PCZL,
-            DWZL,
-            SYZL,
-            <if test="sortID!=null">SortID,</if>
-            <if test="wlCode!=null">WL_Code,</if>
-            <if test="ylpc!=null">YLPC,</if>
-            <if test="gg!=null">GG,</if>
-            <if test="dw!=null">DW,</if>
-            <if test="cj!=null">TlCJ,</if>
-            <if test="gx!=null">Tl_Gx,</if>
-            <if test="cjId!=-1">CJ_ID,</if>
-            <if test="gxId!=-1">GX_ID,</if>
-            SHL,
-            <if test="czy!=null">CZY,</if>
-            <if test="tlTime!=null">Tl_TIME,</if>
-            <if test="remark!=null">BZ,</if>
-        </trim>
-        values
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="qrCodeId!=null">#{qrCodeId},</if>
-            <if test="productName!=null">#{productName},</if>
-            #{pczl},
-            #{dwzl},
-            #{tlzl},
-            <if test="sortID!=null">#{sortID},</if>
-            <if test="wlCode!=null">#{wlCode},</if>
-            <if test="ylpc!=null">#{ylpc},</if>
-            <if test="gg!=null">#{gg},</if>
-            <if test="dw!=null">#{dw},</if>
-            <if test="cj!=null">#{cj},</if>
-            <if test="gx!=null">#{gx},</if>
-            <if test="cjId!=null">#{cjId},</if>
-            <if test="gxId!=null">#{gxId},</if>
-            #{shl},
-            <if test="czy!=null">#{czy},</if>
-            <if test="tlTime!=null">#{tlTime},</if>
-            <if test="remark!=null">#{remark},</if>
-        </trim>
-    </insert>
-
     <update id="updateWLTempSByTk" parameterType="com.qdhualing.qrcodetracker.bean.WLTKParam">
         UPDATE M_WLTempS
         SET
@@ -3859,14 +3816,14 @@ SmlPk45		= #{smlPk45},
         WHERE QRCode_ID = #{0}
     </delete>
 
-    <delete id="deleteFromWLTl">
+    <delete id="deleteFromWLTl" parameterType="com.qdhualing.qrcodetracker.bean.WLThrowParam">
         DELETE FROM M_WLTl
-        WHERE QRCode_ID = #{0}
+        WHERE QRCode_ID = #{qrcodeId} AND CJ_ID=#{cjId} AND GX_ID=#{gxId}
     </delete>
 
-    <delete id="deleteFromBCPTl">
+    <delete id="deleteFromBCPTl" parameterType="com.qdhualing.qrcodetracker.bean.BcpThrowParam">
         DELETE FROM M_BCPTl
-        WHERE QRCode_ID = #{0}
+        WHERE QRCode_ID = #{qrcodeId} AND CJ_ID=#{cjId} AND GX_ID=#{gxId}
     </delete>
 
     <update id="updateWLSByTk" parameterType="com.qdhualing.qrcodetracker.bean.WLTKParam">
@@ -3932,16 +3889,10 @@ SmlPk45		= #{smlPk45},
         WHERE QRCode_ID = #{0}
     </select>
 
-    <select id="getWLTl" resultType="com.qdhualing.qrcodetracker.bean.WLThrowShowDataResult">
+    <select id="getWLTl" parameterType="com.qdhualing.qrcodetracker.bean.WLThrowParam" resultType="com.qdhualing.qrcodetracker.bean.WLThrowShowDataResult">
         SELECT *
         FROM M_WLTl
-        WHERE QRCode_ID = #{0}
-    </select>
-
-    <select id="getWLTlUpdateS" resultType="com.qdhualing.qrcodetracker.bean.WLTlUpdateSBean">
-        SELECT *
-        FROM M_WLTlUpdateS
-        WHERE QRCode_ID = #{0}
+        WHERE QRCode_ID = #{qrcodeId} AND CJ_ID=#{cjId} AND GX_ID=#{gxId}
     </select>
 
     <select id="findWL_TKD" resultType="com.qdhualing.qrcodetracker.bean.TKDWLBean">

@@ -38,8 +38,8 @@ public class BCPINParam {
     private String cheJian ;
     private String indh ;
     private String dw ;
-
-
+    private int cjId;
+    private int gxId;
     private String yl1;
     private float tlzl1;
     private String yl2;
@@ -251,6 +251,22 @@ public class BCPINParam {
 
     public void setDw(String dw) {
         this.dw = dw;
+    }
+
+    public int getCjId() {
+        return cjId;
+    }
+
+    public void setCjId(int cjId) {
+        this.cjId = cjId;
+    }
+
+    public int getGxId() {
+        return gxId;
+    }
+
+    public void setGxId(int gxId) {
+        this.gxId = gxId;
     }
 
     public String getYl1() {

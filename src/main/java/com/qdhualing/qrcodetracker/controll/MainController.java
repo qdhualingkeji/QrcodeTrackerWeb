@@ -763,7 +763,7 @@ public class MainController {
                 wlTLParam.setGg(wlTempSBean.getGG());
                 wlTLParam.setSortId(wlTempSBean.getSortID());
                 wlTLParam.setYlpc(wlTempSBean.getYLPC());
-                int b = mainService.getWLTLDataCount(wlTLParam.getQrcodeId());
+                int b = mainService.getWLTLDataCount(wlTLParam);
                 if (b <= 0) {
                     //生成物料投料记录
                     b = mainService.insertWLTl(wlTLParam);
@@ -1025,26 +1025,32 @@ public class MainController {
                         float tlzl=Float.valueOf(tlMap1.get("tlzl").toString());
 
                         if(TrackType.WL.equals(yl.substring(8, 9))) {
-                            WLThrowShowDataResult wlThrowShowDataResult = mainService.getWLTl(yl);
+                            WLThrowParam wlThrowParam = new WLThrowParam();
+                            wlThrowParam.setQrcodeId(yl);
+                            wlThrowParam.setCjId(bcpInParam.getCjId());
+                            wlThrowParam.setGxId(bcpInParam.getGxId());
+                            wlThrowParam.setTlzl(tlzl);
+
+                            WLThrowShowDataResult wlThrowShowDataResult = mainService.getWLTl(wlThrowParam);
                             //投料表中数据减去或者删除
                             if (tlzl >= wlThrowShowDataResult.getSyzl()) {
-                                mainService.deleteFromWLTl(yl);
+                                mainService.deleteFromWLTl(wlThrowParam);
                             } else {
-                                WLThrowParam wlThrowParam = new WLThrowParam();
-                                wlThrowParam.setQrcodeId(yl);
-                                wlThrowParam.setTlzl(tlzl);
                                 mainService.updateWLTlByBcpIn(wlThrowParam);
                             }
                         }
                         else if(TrackType.BCP.equals(yl.substring(8, 9))) {
-                            BcpThrowShowDataResult bcpThrowShowDataResult = mainService.getBCPTl(yl);
+                            BcpThrowParam bcpThrowParam = new BcpThrowParam();
+                            bcpThrowParam.setQrcodeId(yl);
+                            bcpThrowParam.setCjId(bcpInParam.getCjId());
+                            bcpThrowParam.setGxId(bcpInParam.getGxId());
+                            bcpThrowParam.setTlzl(tlzl);
+
+                            BcpThrowShowDataResult bcpThrowShowDataResult = mainService.getBCPTl(bcpThrowParam);
                             //投料表中数据减去或者删除
                             if (tlzl >= bcpThrowShowDataResult.getSyzl()) {
-                                mainService.deleteFromBCPTl(yl);
+                                mainService.deleteFromBCPTl(bcpThrowParam);
                             } else {
-                                BcpThrowParam bcpThrowParam = new BcpThrowParam();
-                                bcpThrowParam.setQrcodeId(yl);
-                                bcpThrowParam.setTlzl(tlzl);
                                 mainService.updateBCPTlByBcpIn(bcpThrowParam);
                             }
                         }
@@ -1148,7 +1154,7 @@ public class MainController {
                 bcpTLParam.setTlzl9(bcpTempSBean.getTlzl9());
                 bcpTLParam.setYl10(bcpTempSBean.getYl10());
                 bcpTLParam.setTlzl10(bcpTempSBean.getTlzl10());
-                int b = mainService.getBcpTLDataCount(bcpTLParam.getQrcodeId());
+                int b = mainService.getBcpTLDataCount(bcpTLParam);
                 if (b <= 0) {
                     //生成半成品投料记录
                     b = mainService.insertBcpTl(bcpTLParam);
@@ -1553,14 +1559,17 @@ public class MainController {
                     float tlzl=Float.valueOf(tlMap1.get("tlzl").toString());
 
                     if(TrackType.BCP.equals(yl.substring(8, 9))) {
-                        BcpThrowShowDataResult bcpThrowShowDataResult = mainService.getBCPTl(yl);
+                        BcpThrowParam bcpThrowParam = new BcpThrowParam();
+                        bcpThrowParam.setQrcodeId(yl);
+                        bcpThrowParam.setCjId(inParam.getCjId());
+                        bcpThrowParam.setGxId(inParam.getGxId());
+                        bcpThrowParam.setTlzl(tlzl);
+
+                        BcpThrowShowDataResult bcpThrowShowDataResult = mainService.getBCPTl(bcpThrowParam);
                         //投料表中数据减去或者删除
                         if (tlzl >= bcpThrowShowDataResult.getSyzl()) {
-                            mainService.deleteFromBCPTl(yl);
+                            mainService.deleteFromBCPTl(bcpThrowParam);
                         } else {
-                            BcpThrowParam bcpThrowParam = new BcpThrowParam();
-                            bcpThrowParam.setQrcodeId(yl);
-                            bcpThrowParam.setTlzl(tlzl);
                             mainService.updateBCPTlByBcpIn(bcpThrowParam);
                         }
                     }
