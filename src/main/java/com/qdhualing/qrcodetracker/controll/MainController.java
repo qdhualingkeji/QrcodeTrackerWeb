@@ -3322,29 +3322,6 @@ public class MainController {
         return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_PARAMS_ERROR, "传参异常");
     }
 
-    private WLThrowParam convertWLTlUpdateSInTlParam(WLTlUpdateSBean wlTlUpdateSBean) {
-        WLThrowParam wlThrowParam=new WLThrowParam();
-        wlThrowParam.setQrcodeId(wlTlUpdateSBean.getQrCodeId());
-        wlThrowParam.setProductName(wlTlUpdateSBean.getProductName());
-        wlThrowParam.setPczl(wlTlUpdateSBean.getPczl());
-        wlThrowParam.setDwzl(wlTlUpdateSBean.getDwzl());
-        wlThrowParam.setSyzl(wlTlUpdateSBean.getSyzl());
-        wlThrowParam.setSortId(wlTlUpdateSBean.getSortID());
-        wlThrowParam.setWlCode(wlTlUpdateSBean.getWlCode());
-        wlThrowParam.setYlpc(wlTlUpdateSBean.getYlpc());
-        wlThrowParam.setGg(wlTlUpdateSBean.getGg());
-        wlThrowParam.setDw(wlTlUpdateSBean.getDw());
-        wlThrowParam.setCj(wlTlUpdateSBean.getCj());
-        wlThrowParam.setGx(wlTlUpdateSBean.getGx());
-        wlThrowParam.setCjId(wlTlUpdateSBean.getCjId());
-        wlThrowParam.setGxId(wlTlUpdateSBean.getGxId());
-        wlThrowParam.setTlShl(wlTlUpdateSBean.getShl());
-        wlThrowParam.setCzy(wlTlUpdateSBean.getCzy());
-        wlThrowParam.setTlTime(wlTlUpdateSBean.getTlTime());
-        wlThrowParam.setRemark(wlTlUpdateSBean.getRemark());
-        return wlThrowParam;
-    }
-
     private BCPTKParam convertBcpOutShowInTKParam(BcpOutShowBean bcpOutShowBean) {
         BCPTKParam bcpTKParam = new BCPTKParam();
         bcpTKParam.setQrCodeId(bcpOutShowBean.getqRCodeID());
@@ -4229,36 +4206,6 @@ public class MainController {
                         b =  mainService.updateBcpInData(bcpInShowBean);
                         b =  mainService.updateSmallCpInData(bcpInShowBean);
                         b =  mainService.updateBigCpInData(bcpInShowBean);
-
-                        /*
-                        String[] ylQrCodeArr = bcpInShowBean.getAllYlQrCode().split(",");
-                        String ylTlzlArr = bcpInShowBean.getAllYlTlzl();
-                        for(int j = 0; j < ylQrCodeArr.length; j++) {
-                            //查询投料表中是否有数据
-                            if(ylQrCodeArr[i].substring(TrackType.START_INDEX,TrackType.END_INDEX).equals(TrackType.WL)) {
-                                b = mainService.getWLTLDataCount(ylQrCodeArr[i]);
-                                //else if(ylQrCodeArr[i].substring(TrackType.START_INDEX,TrackType.END_INDEX).equals(TrackType.BCP))
-                                //b =  mainService.getBcpTLDataCount(ylQrCodeArr[i]);
-
-                                if (b <= 0) {
-                                    //插入投料表
-                                    WLTlUpdateSBean wlTlUpdateSBean=mainService.getWLTlUpdateS(ylQrCodeArr[i]);
-                                    WLThrowParam wlThrowParam = convertWLTlUpdateSInTlParam(wlTlUpdateSBean);
-                                    b = mainService.insertWLTl(wlThrowParam);
-                                } else {
-                                    //查找投料表信息
-                                    BcpSBean bcpSBean = mainService.findBcpS(bcpOutShowBean.getqRCodeID());
-                                    //投料表中数据减去或者删除
-                                    BcpOutParam bcpOutParam = convertBcpOutShowInParam(bcpOutShowBean);
-                                    if (bcpOutShowBean.getShl() >= bcpSBean.getShl() && bcpOutShowBean.getcKZL() >= bcpSBean.getSyzl() + bcpOutShowBean.getcKZL1()) {
-                                        b = mainService.deleteFromBCPS(bcpOutParam.getQrCodeId());
-                                    } else {
-                                        b = mainService.outUpdateBCPS(bcpOutParam);
-                                    }
-                                }
-                            }
-                        }
-                        */
                     }
                 }
                 return ActionResultUtils.setResultMsg(result, ActionResult.STATUS_SUCCEED, "成功");

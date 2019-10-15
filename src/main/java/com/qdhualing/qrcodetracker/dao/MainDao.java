@@ -436,7 +436,5 @@ public interface MainDao {
 
     int updateBCPTlByBcpIn(BcpThrowParam bcpThrowParam);
 
-    WLTlUpdateSBean getWLTlUpdateS(String qrCodeId);
-
     int updateBigCpSYZL(float dwzl, String qrCodeId);
 }

@@ -1099,10 +1099,6 @@ public class MainService {
 		return mainDao.updateBCPTlByBcpIn(bcpThrowParam);
 	}
 
-	public WLTlUpdateSBean getWLTlUpdateS(String qrCodeId) {
-		return mainDao.getWLTlUpdateS(qrCodeId);
-	}
-
 	public int updateBigCpSYZL(float dwzl, String qrCodeId) {
 		return mainDao.updateBigCpSYZL(dwzl,qrCodeId);
 	}
