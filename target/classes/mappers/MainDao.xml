@@ -1670,9 +1670,7 @@ SmlPk45		= #{smlPk45},
         WHERE QRCode_ID = #{0}
     </select>
     <select id="getBigCpData" resultType="com.qdhualing.qrcodetracker.bean.BigCpBean">
-        SELECT *
-        FROM M_CPIn2
-        WHERE IfFull=0
+        SELECT c.* FROM M_CPIn2 c,Rkd_Bcp r WHERE IfFull=0 and c.Indh=r.InDh and r.BzStatus=0 and r.FlfzrStatus=0 and r.ZjyStatus=0 and r.ZjldStatus=0 and r.KgStatus=0 and r.LlfzrStatus=0
     </select>
 
     <insert id="insertCPS2" parameterType="com.qdhualing.qrcodetracker.bean.BigCPINParam">
