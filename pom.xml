@@ -23,7 +23,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spring.version>4.1.4.RELEASE</spring.version>
+    <spring.version>5.2.22.RELEASE</spring.version>
     <hibernate.version>4.3.8.Final</hibernate.version>
     <jackson.version>2.5.0</jackson.version>
     <jackson-mapper-asl-version>1.9.12</jackson-mapper-asl-version>
